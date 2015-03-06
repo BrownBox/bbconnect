@@ -1,0 +1,217 @@
+/*	------------------------------------------------------- 
+	PANEL STRUCTURE
+	------------------------------------------------------- */
+
+#envoyconnectpanels-wrapper {
+	background: #DDDDDD url('../g/pw_maze_white.png') top left repeat;
+	color: #333;
+}
+#envoyconnectpanels-wrapper h1, 
+#envoyconnectpanels-wrapper h2, 
+#envoyconnectpanels-wrapper h3, 
+#envoyconnectpanels-wrapper h4, 
+#envoyconnectpanels-wrapper h5, 
+#envoyconnectpanels-wrapper h6 {
+	color: #333 !important;
+	text-shadow: none !important;
+}
+#envoyconnectpanels-wrapper a {
+	color: #333;
+}
+#envoyconnectpanels-wrapper a:hover {
+	border-bottom: 1px dotted #333;
+}
+#envoyconnectpanels-wrapper a.button, 
+#envoyconnectpanels-wrapper input[type="submit"].button,  
+#envoyconnectpanels-wrapper .button, 
+#envoyconnectpanels-wrapper .button-primary {
+	color: #FFFFFF;
+	background-color: #999;
+	background-image: none;
+	border: none;
+	text-shadow: none;
+	font-weight: normal;
+}
+#envoyconnectpanels-wrapper a.button:hover, 
+#envoyconnectpanels-wrapper input[type="submit"].button:hover,  
+#envoyconnectpanels-wrapper .button:hover, 
+#envoyconnectpanels-wrapper .button-primary:hover {
+	text-shadow: none;
+	font-weight: normal;
+	background-color: #777;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL LINKS
+	------------------------------------------------------- */
+
+a.envoyconnectpanels-close {
+	background: transparent url('../g/x-black.png') 0 -3px no-repeat;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL FORM SYSTEM
+	------------------------------------------------------- */
+
+.envoyconnectpanels-req-notify .required {
+	color: #990000;
+}
+
+#envoyconnect .required, 
+#envoyconnect .asterix-required {
+color: #990000 !important;
+}
+
+/*	------------------------------------------------------- 
+	CHECKBOXES
+	------------------------------------------------------- */
+
+#envoyconnectpanel #envoyconnect a.umt, 
+#envoyconnectpanel #envoyconnect a.upt, 
+#envoyconnectpanel #envoyconnect a.uwpt {
+	color: #333;
+}
+
+/*	------------------------------------------------------- 
+	EXPANDABLE PANELS
+	------------------------------------------------------- */
+
+.t-wrapper {
+	background-color: #777777;
+	-moz-box-shadow: inset 0 0 10px #555555;
+	-webkit-box-shadow: inset 0 0 10px #555555;
+	box-shadow: inset 0 0 10px #555555;
+}
+.t-wrapper:hover, .t-wrapper.group:hover {
+	background-color: transparent;
+}
+.t-trigger {
+ 	padding: 10px 0;
+ }
+.t-wrapper.group {
+	padding: 5px 0;
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.t-trigger-wrapper.group {
+	float: left;
+	display: block;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #333;
+}
+.t-wrapper.group .t-panel {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+}
+.t-wrapper.group .t-panel {
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background-color: #CCC;
+	border-top: 1px dashed #000000;
+	padding: 10px;
+}
+.t-wrapper.group .t-panel li {
+	padding-left: 0;
+	color: #333;
+}
+
+#envoyconnectpanel .umt {
+	color: #333;
+}
+#envoyconnectpanel #envoyconnect a.umt, 
+#envoyconnectpanel #envoyconnect a.upt, 
+#envoyconnectpanel #envoyconnect a.uwpt, 
+#envoyconnectpanel #envoyconnect a.rui, 
+#envoyconnectpanel #envoyconnect a.pmt, 
+#envoyconnectpanel a.umt, 
+#envoyconnectpanel a.upt, 
+#envoyconnectpanel a.uwpt, 
+#envoyconnectpanel a.rui, 
+#envoyconnectpanel a.pmt, 
+#envoyconnectpanel .icon-no  { 
+	background-image: url('../g/no.png');
+	
+}
+#envoyconnectpanel #envoyconnect a.pmt, 
+#envoyconnectpanel a.pmt {
+	background-image: url('../g/private-black.png');
+}
+#envoyconnectpanel #envoyconnect a.help, 
+#envoyconnectpanel a.help {
+	background-image: url('../g/help.png');
+}
+#envoyconnectpanel #envoyconnect a.add, 
+#envoyconnectpanel a.add, 
+#envoyconnectpanel #envoyconnect a.query_add, 
+#envoyconnectpanel a.query_add {
+	background-image: url('../g/add-black.png');
+}
+#envoyconnectpanel #envoyconnect a.sub, 
+#envoyconnectpanel a.sub, 
+#envoyconnectpanel #envoyconnect a.query_sub, 
+#envoyconnectpanel a.query_sub {
+	background-image: url('../g/sub-black.png');
+}
+
+#envoyconnectpanel #envoyconnect a.umt:hover, 
+#envoyconnectpanel #envoyconnect a.upt:hover, 
+#envoyconnectpanel #envoyconnect a.uwpt:hover, 
+#envoyconnectpanel #envoyconnect a.rui:hover, 
+#envoyconnectpanel #envoyconnect a.pmt:hover { 
+	/*-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #CCCCCC;*/
+	/*opacity: 100;*/
+}
+
+#envoyconnectpanel #envoyconnect a.umt.on, 
+#envoyconnectpanel #envoyconnect a.upt.on, 
+#envoyconnectpanel #envoyconnect a.uwpt.on, 
+#envoyconnectpanel #envoyconnect a.rui.on, 
+#envoyconnectpanel a.umt.on, 
+#envoyconnectpanel a.upt.on, 
+#envoyconnectpanel a.uwpt.on, 
+#envoyconnectpanel a.rui.on { 
+	background-image: url('../g/ok.png');
+	/*display: inline;*/
+}
+#envoyconnectpanel #envoyconnect a.pmt.on, 
+#envoyconnectpanel a.pmt.on {
+	background-image: url('../g/public-black.png');
+}
+#envoyconnect .photo {
+	float: none;
+	padding: 0;
+}
+#envoyconnect .photo:hover {
+	background: none;
+}
+
+#envoyconnectpanel #envoyconnect #profile-navigation a.button.on {
+	background-color: #333;
+}
+#envoyconnectpanel #envoyconnect .tn-wrapper {
+	background: none;
+	border-bottom: 1px dashed #CCCCCC;
+	
+}
+.chzn-select, .chzn-container {
+	color: #333;
+}
+.halt {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding-top: 15px !important;
+}
+.halt-example {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding: 5px 15px;
+}
+

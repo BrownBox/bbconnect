@@ -1,0 +1,36 @@
+/*	------------------------------------------------------- 
+	SEARCH
+	------------------------------------------------------- */
+	
+.date_field,  {
+	display: none;
+}
+.query-child-holder {
+	float: left;
+}
+.query-child-holder .envoyconnect-field {
+	padding: 0;
+}
+#envoyconnect .tn-wrapper span.query-child-holder span.envoyconnect-field input[type="text"], 
+#envoyconnect .tn-wrapper span.query-child-holder span.envoyconnect-field textarea {
+	font-size: 14px;
+}
+
+div.query-parent-held {
+	float: left;
+}
+div.query-child-held, 
+div.query-item-held {
+	float: left;
+}
+#homes div.query-child-held ul li {
+	float: left;
+}
+
+.query-buttons {
+	width: 50px;
+	float: right;
+}
+.query-buttons a.button {
+	padding: 3px 8px;
+}

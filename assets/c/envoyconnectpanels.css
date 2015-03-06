@@ -1,0 +1,543 @@
+/*	------------------------------------------------------- 
+	PANEL STRUCTURE
+	------------------------------------------------------- */
+
+.envoyconnectf-frame, 
+.envoyconnectf-frame #envoyconnect, 
+.envoyconnectf-frame #envoyconnectpanels-tabs {
+	font-size: 14px !important;
+	font-family: Helvetica, Arial, sans-serif !important;
+}
+.envoyconnectf-frame {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#envoyconnectpanels-wrapper {
+	background: #DDDDDD url('../g/darkdenim3.png') top left repeat;
+	overflow: auto;
+	width: auto;
+	text-align: center;
+	color: #FFFFFF;
+}
+#envoyconnectpanels-frame-embed #envoyconnectpanels-wrapper, 
+.envoyconnectf-page, 
+#envoyconnectpanels-wrapper.envoyconnectf-page {
+	background: transparent !important;
+	overflow: hidden;
+}
+#envoyconnectpanels-wrapper h1, 
+#envoyconnectpanels-wrapper h2, 
+#envoyconnectpanels-wrapper h3, 
+#envoyconnectpanels-wrapper h4, 
+#envoyconnectpanels-wrapper h5, 
+#envoyconnectpanels-wrapper h6 {
+	color: #FFFFFF !important;
+	text-shadow: none !important;
+}
+#envoyconnectpanels-wrapper h2 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	margin-bottom: 10px;
+}
+#envoyconnectpanels-wrapper p {
+	line-height: 1.5em;
+}
+#envoyconnectpanels-wrapper a {
+	color: #6495ED;
+}
+#envoyconnectpanels-wrapper a.button, 
+#envoyconnectpanels-wrapper input[type="submit"].button,  
+#envoyconnectpanels-wrapper .button, 
+#envoyconnectpanels-wrapper .button-primary {
+	color: #FFFFFF;
+	background-color: #555;
+	background-image: none;
+	padding: 5px 10px;
+	margin: 2px;
+	-moz-border-radius: 12px; 
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+}
+#envoyconnectpanels-wrapper a.button.disabled, 
+.envoyconnectpanels-toggle.disabled {
+	cursor: default;
+}
+#envoyconnectpanels-wrapper .inside {
+	padding: 10px;
+}
+#envoyconnectpanels-wrapper .inside-vertical {
+	padding: 0 10px;
+}
+#envoyconnectpanels-wrapper .container {
+	padding: 0 0 10px 0;
+	background-color: transparent !important;
+}
+#envoyconnect {
+	height: auto !important;
+	padding: 0 5px;
+}
+#envoyconnect .envoyconnect-fields {
+	text-align: left;
+}
+#envoyconnectpanel {
+	display: none;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL MENU SYSTEM
+	------------------------------------------------------- */
+
+#pp-title, #pp-notify {
+	cursor: pointer;
+}
+/*
+#pp-menu li:hover ul, #pp-menu li li:hover ul, #pp-menu li.sfhover ul, #pp-menu li li.sfhover ul {
+	left: auto;
+}
+*/
+
+#envoyconnectpanels-tabs {
+	height: 28px;
+	padding: 0 30px 0 0;
+	font-size: .85em;
+	line-height: 1.5em;
+}
+#envoyconnectpanels-tabs #envoyconnectpanels-tabs-wrap {
+	float: right;
+}
+#envoyconnectpanels-tabs #pp-menu {
+	width: 150px;
+	float: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#envoyconnectpanels-tabs #pp-menu li {
+	display: block;
+	width: 150px;
+	float: right;
+	list-style-type: none;
+}
+#envoyconnectpanels-tabs #pp-menu li a  {
+	display: block;
+	width: auto;
+	float: right;
+}
+#envoyconnectpanels-tabs #pp-menu li ul {
+	position: absolute;
+	width: 150px;
+	margin: 2em 0 0 0;
+	background-color: #FFF;
+	float: right;
+	display: none;
+	z-index: 100;
+}
+#envoyconnectpanels-tabs #pp-menu #pp-title, 
+#envoyconnectpanels-tabs #pp-menu #pp-notify {
+	float: left;
+	display: block;
+	width: auto;
+}
+#envoyconnectpanels-tabs #pp-menu #pp-title {
+	background: url('../g/gear.png') 0 0 no-repeat;
+	padding: 5px 0 5px 25px;
+}
+#envoyconnectpanels-tabs #pp-menu li ul li {
+	display: block;
+	width: 150px;
+	float: right;
+}
+#envoyconnectpanels-tabs #pp-menu:hover {
+	background-color: #FFF;
+}
+#envoyconnectpanels-tabs #pp-menu .pp-sub-menu li a {
+	padding: 5px;
+	border: 1px solid #FFF;
+	display: block;
+	width: 138px;
+}
+#envoyconnectpanels-tabs #pp-menu .pp-sub-menu li a:hover {
+	background-color: #555;
+	color: #FFF;
+}
+
+
+a.envoyconnectpanels-toggle, 
+a.envoyconnectpanels-toggle-wp-admin, 
+a.envoyconnectpanels-close {
+	cursor: pointer;
+	text-decoration: none !important;
+}
+a.envoyconnectpanels-close {
+	margin: 0 5px 0 0;
+	padding: 3px 10px 4px 25px;
+	background: transparent url('../g/x-white.png') 0 -3px no-repeat;
+	line-height: normal;
+	border: none;
+	text-decoration: none !important;
+}
+span.hey {
+	padding: 5px;
+	margin: 0 0 0 1px;
+	border: none;
+	float: right;
+}
+
+/*	------------------------------------------------------- 
+	PANEL LINKS
+	------------------------------------------------------- */
+
+.continue {
+	clear: both;
+	text-align: right;
+	margin: 15px 0;
+	float: right;
+	width: 100%;
+}
+.return {
+	cursor: pointer;
+}
+.login-lost {
+	color: #990000;
+	font-style: italic;
+	text-decoration: none;
+	border: none;
+	padding: 0 7px;
+}
+.login-lost:hover {
+	color: #000000;
+	border: none;
+	text-decoration: none;
+}
+#close-top, #close-bot {
+	text-align: right;
+}
+#close-top {
+	display: none;
+	padding: 1em 0 3em 0;
+}
+#close-bot {
+	clear: both;
+	padding: 3em 0 1em 0;
+}
+.close-panel {
+	padding: 3px 7px;
+	background-color: #333333;
+	color: #FFFFFF;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: none;
+	text-decoration: none;
+}
+.close-panel:hover {
+	background-color: #000000;
+	border: none;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL FORM SYSTEM
+	------------------------------------------------------- */
+
+.envoyconnectpanels-forms {
+	background-color: #FFFFFF;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	text-align: left;
+	margin-bottom: 10px;
+	color: #777777;
+}
+
+#envoyconnect form {
+	text-align: left;
+}
+#envoyconnect .center { 
+	text-align: center;
+	margin: 0 25%;
+}
+#envoyconnect .errors {
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px 0;
+	background: #FBE3E4;
+	color: #8a1f11;
+	border: 2px solid #8a1f11;
+	margin: 0 0 20px 0;
+}
+.envoyconnect-center {
+	text-align: center;
+	width: 48%;
+}
+.envoyconnect-left {
+	float: left;
+	width: 48%;
+}
+.envoyconnect-right {
+	float: right;
+	width: 48%;
+}
+.envoyconnectpanels-req-notify {
+	display: block;
+	clear: both;
+	padding-bottom: 10px;
+}
+.envoyconnectpanels-req-notify .required {
+	color: #FFD324;
+}
+
+#envoyconnect .required, 
+#envoyconnect .asterix-required, 
+.envoyconnect .required, 
+.envoyconnect .asterix-required {
+	color: #FFD324 !important;
+}
+
+.envoyconnectpanels-profile-label {
+	padding-right: 10px;
+	color: #999;
+}
+/*	------------------------------------------------------- 
+	CHECKBOXES
+	------------------------------------------------------- */
+
+#envoyconnectpanel #envoyconnect a.umt, 
+#envoyconnectpanel #envoyconnect a.upt, 
+#envoyconnectpanel #envoyconnect a.uwpt {
+	color: #FFFFFF;
+}
+
+/*	------------------------------------------------------- 
+	EXPANDABLE PANELS
+	------------------------------------------------------- */
+
+.t-wrapper {
+	background-color: #777777;
+	-moz-box-shadow: inset 0 0 10px #555555;
+	-webkit-box-shadow: inset 0 0 10px #555555;
+	box-shadow: inset 0 0 10px #555555;
+}
+.t-wrapper:hover, .t-wrapper.group:hover {
+	background-color: transparent;
+}
+.t-trigger {
+ 	padding: 10px 0;
+ }
+.t-wrapper.group {
+	padding: 5px 0;
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.t-trigger-wrapper.group {
+	float: left;
+	display: block;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #FFFFFF;
+}
+.t-wrapper.group .t-panel {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+}
+.t-wrapper.group .t-panel {
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background-color: #444444;
+	border-top: 1px dashed #000000;
+	padding: 10px;
+}
+.t-wrapper.group .t-panel li {
+	padding-left: 0;
+	color: #FFFFFF;
+}
+
+#envoyconnectpanel .umt {
+	color: #FFFFFF;
+}
+#envoyconnectpanel #envoyconnect a.umt, 
+#envoyconnectpanel #envoyconnect a.upt, 
+#envoyconnectpanel #envoyconnect a.uwpt, 
+#envoyconnectpanel #envoyconnect a.rui, 
+#envoyconnectpanel #envoyconnect a.pmt, 
+#envoyconnectpanel a.umt, 
+#envoyconnectpanel a.upt, 
+#envoyconnectpanel a.uwpt, 
+#envoyconnectpanel a.rui, 
+#envoyconnectpanel a.pmt, 
+#envoyconnectpanel .icon-no  { 
+	background-image: url('../g/no-white.png');
+	
+}
+#envoyconnectpanel #envoyconnect a.pmt, 
+#envoyconnectpanel a.pmt {
+	background-image: url('../g/private-white.png');
+}
+#envoyconnectpanel #envoyconnect a.help, 
+#envoyconnectpanel a.help {
+	background-image: url('../g/help-white.png');
+}
+#envoyconnectpanel #envoyconnect a.add, 
+#envoyconnectpanel a.add, 
+#envoyconnectpanel #envoyconnect a.query_add, 
+#envoyconnectpanel a.query_add {
+	background-image: url('../g/add-white.png');
+}
+#envoyconnectpanel #envoyconnect a.sub, 
+#envoyconnectpanel a.sub, 
+#envoyconnectpanel #envoyconnect a.query_sub, 
+#envoyconnectpanel a.query_sub {
+	background-image: url('../g/sub-white.png');
+}
+
+#envoyconnectpanel #envoyconnect a.umt:hover, 
+#envoyconnectpanel #envoyconnect a.upt:hover, 
+#envoyconnectpanel #envoyconnect a.uwpt:hover, 
+#envoyconnectpanel #envoyconnect a.rui:hover, 
+#envoyconnectpanel #envoyconnect a.pmt:hover { 
+	/*-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #CCCCCC;*/
+	/*opacity: 100;*/
+}
+
+#envoyconnectpanel #envoyconnect a.umt.on, 
+#envoyconnectpanel #envoyconnect a.upt.on, 
+#envoyconnectpanel #envoyconnect a.uwpt.on, 
+#envoyconnectpanel #envoyconnect a.rui.on, 
+#envoyconnectpanel a.umt.on, 
+#envoyconnectpanel a.upt.on, 
+#envoyconnectpanel a.uwpt.on, 
+#envoyconnectpanel a.rui.on { 
+	background-image: url('../g/ok-white.png');
+	/*display: inline;*/
+}
+#envoyconnectpanel #envoyconnect a.pmt.on, 
+#envoyconnectpanel a.pmt.on {
+	background-image: url('../g/public-white.png');
+}
+#envoyconnect .photo {
+	float: none;
+	padding: 0;
+}
+#envoyconnect .photo:hover {
+	background: none;
+}
+
+#profile-navigation {
+	overflow: auto;
+}
+#profile-nav-name {
+	text-align: left;
+}
+#profile-nav-links {
+	text-align: right;
+}
+#envoyconnectpanel #envoyconnect #profile-navigation a.button.on {
+	background-color: #6495ED;
+}
+#envoyconnectpanel #envoyconnect .tn-wrapper {
+	background: none;
+	border-bottom: 1px dashed #CCCCCC;
+	
+}
+.chzn-select, .chzn-container {
+	color: #333;
+}
+.halt {
+	background: url('../g/halt-white.png') top left no-repeat;
+	padding-top: 15px !important;
+}
+.halt-example {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding: 5px 15px;
+}
+
+#envoyconnectpanel #form-msg,
+#envoyconnectpanel #tschuss, 
+#envoyconnectpanel .tschuss, 
+#envoyconnectpanel #content-instructions {
+	padding: 10px 0;
+	margin: 10px 0;
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+}
+#tschuss-redirect {
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+}
+#signcounter {
+	padding: 3px 9px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #000000;
+	color: #FFF;
+}
+
+#envoyconnectpanels-wrapper #column_main, 
+#envoyconnectpanels-wrapper #column_side {
+	width: 100%;
+	margin: 0;
+	padding: 3px;
+	float: left;
+}
+#envoyconnectpanels-wrapper .handlediv {
+	display: none;
+}
+.paucontent-wrapper {
+	clear: both;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
+}
+.paucontent-wrapper h2 {
+	font-size: 2em;
+	line-height: 3em;
+	text-align: center;
+}
+.paucontent-wrapper p {
+	text-align: center;
+	line-height: 1.5em;
+}
+
+@media screen and (min-width: 600px) {
+
+	#envoyconnectpanels-wrapper .container {
+		width: 100%;
+	}
+
+}
+@media screen and (min-width: 950px) {
+
+	#envoyconnectpanels-wrapper .container {
+		width: 950px;
+	}
+	.envoyconnectf-page .container {
+		width: 100% !important;
+	}
+	
+	#envoyconnectpanels-wrapper #column_main {
+		width: 600px;
+		margin-right: 25px;
+	}
+	#envoyconnectpanels-wrapper #column_side {
+		width: 300px;
+	}
+
+}

@@ -1,0 +1,3165 @@
+# Copyright (C) 2013 EnvoyConnect
+# This file is distributed under the same license as the EnvoyConnect package.
+msgid ""
+msgstr ""
+"Project-Id-Version: EnvoyConnect 1.0.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/envoyconnect\n"
+"POT-Creation-Date: 2013-12-07 21:44-0800\n"
+"PO-Revision-Date: 2013-12-12 01:34-0800\n"
+"Last-Translator: tomaz <info@kreatis.si>\n"
+"Language-Team: Tomaz Turk, kreatis.si <info@kreatis.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;gettext\\r;gettext_noop\\r;__;_e\n"
+"X-Poedit-Basepath: .\n"
+
+#: envoyconnect.php:105
+#, fuzzy
+msgid "sign in"
+msgstr "Prijava"
+
+#: envoyconnect.php:106
+#, fuzzy
+msgid "sign out"
+msgstr "Izhod"
+
+#: envoyconnect.php:107
+#, fuzzy
+msgid "sign up"
+msgstr "Odjava"
+
+#: envoyconnect.php:108 envoyconnect.php:367
+msgid "My Profile"
+msgstr "Moj profil"
+
+#: envoyconnect.php:109
+#, fuzzy
+msgid "Thank you!"
+msgstr "Hvala"
+
+#: envoyconnect.php:110
+msgid "How did you get here?"
+msgstr ""
+
+#: envoyconnect.php:111
+msgid "Confirm Deletion?"
+msgstr ""
+
+#: envoyconnect.php:112
+#, fuzzy
+msgid "Confirm Submission?"
+msgstr "Dodajanje vsebine"
+
+#: envoyconnect.php:113
+msgid "Support Documentation"
+msgstr ""
+
+#: envoyconnect.php:114
+msgid "Discount"
+msgstr ""
+
+#: envoyconnect.php:115
+msgid "Quantity"
+msgstr ""
+
+#: envoyconnect.php:116
+msgid "Amount"
+msgstr ""
+
+#: envoyconnect.php:117
+msgid "Tax"
+msgstr ""
+
+#: envoyconnect.php:118
+msgid "Shipping"
+msgstr ""
+
+#: envoyconnect.php:119
+msgid "Billing"
+msgstr ""
+
+#: envoyconnect.php:120
+msgid "Refund"
+msgstr ""
+
+#: envoyconnect.php:121
+msgid "Credit"
+msgstr ""
+
+#: envoyconnect.php:122
+#, php-format
+msgid "%1$sDefault%2$s"
+msgstr ""
+
+#: envoyconnect.php:317
+msgid "duplicate key!"
+msgstr ""
+
+#: envoyconnect.php:318
+msgid "One Moment Please..."
+msgstr "Trenutek..."
+
+#: envoyconnect.php:320 theme/envoyconnectpanels.php:76
+#, php-format
+msgid ""
+"We found some errors -- please attend to the fields below marked with %1$s"
+msgstr ""
+
+#: envoyconnect.php:367 envoyconnect.php:371
+msgid "EnvoyConnect User"
+msgstr "Stranke"
+
+#: envoyconnect.php:371 users/envoyconnect-profile.php:60
+msgid "Add New User"
+msgstr "Dodaj novo stranko"
+
+#: envoyconnect.php:374
+msgid "EnvoyConnect Reports"
+msgstr "Poročila"
+
+#: envoyconnect.php:374 reports/envoyconnect-reports.php:287
+msgid "User Reports"
+msgstr "Poročila in Iskalniki"
+
+#: envoyconnect.php:377
+msgid "EnvoyConnect"
+msgstr ""
+
+#: envoyconnect.php:380 fields/envoyconnect-field-management.php:233
+msgid "Manage Fields"
+msgstr "Urejaj Polja"
+
+#: envoyconnect.php:383 theme/envoyconnectpanels-incoming.php:14
+msgid "Inbound Activity"
+msgstr "Notranje dejavnosti"
+
+#: envoyconnect.php:386
+msgid "New Action"
+msgstr "Novo dejanje"
+
+#: updates.php:99
+msgid " find out why and how to fix it!"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:36
+msgid "Australian Capital Territory"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:37
+msgid "New South Wales"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:38
+msgid "Northern Territory"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:39
+msgid "Queensland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:40
+msgid "South Australia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:41
+msgid "Tasmania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:42
+msgid "Victoria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:43
+msgid "Western Australia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:46
+msgid "Alberta"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:47
+msgid "British Columbia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:48
+msgid "Manitoba"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:49
+msgid "New Brunswick"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:50
+msgid "Newfoundland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:51
+msgid "Northwest Territories"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:52
+msgid "Nova Scotia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:53
+msgid "Nunavut"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:54
+msgid "Ontario"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:55
+msgid "Prince Edward Island"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:56
+msgid "Quebec"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:57
+msgid "Saskatchewan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:58
+msgid "Yukon Territory"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:61
+msgid "Alabama"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:62
+msgid "Alaska"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:63
+msgid "Arizona"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:64
+msgid "Arkansas"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:65
+msgid "California"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:66
+msgid "Colorado"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:67
+msgid "Connecticut"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:68
+msgid "Delaware"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:69
+msgid "District Of Columbia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:70
+msgid "Florida"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:71 fields/envoyconnect-field-helpers.php:206
+msgid "Georgia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:72
+msgid "Hawaii"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:73
+msgid "Idaho"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:74
+msgid "Illinois"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:75
+msgid "Indiana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:76
+msgid "Iowa"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:77
+msgid "Kansas"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:78
+msgid "Kentucky"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:79
+msgid "Louisiana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:80
+msgid "Maine"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:81
+msgid "Maryland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:82
+msgid "Massachusetts"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:83
+msgid "Michigan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:84
+msgid "Minnesota"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:85
+msgid "Mississippi"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:86
+msgid "Missouri"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:87
+msgid "Montana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:88
+msgid "Nebraska"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:89
+msgid "Nevada"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:90
+msgid "New Hampshire"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:91
+msgid "New Jersey"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:92
+msgid "New Mexico"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:93
+msgid "New York"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:94
+msgid "North Carolina"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:95
+msgid "North Dakota"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:96
+msgid "Ohio"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:97
+msgid "Oklahoma"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:98
+msgid "Oregon"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:99
+msgid "Pennsylvania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:100
+msgid "Rhode Island"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:101
+msgid "South Carolina"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:102
+msgid "South Dakota"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:103
+msgid "Tennessee"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:104
+msgid "Texas"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:105
+msgid "Utah"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:106
+msgid "Vermont"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:107
+msgid "Virginia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:108
+msgid "Washington"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:109
+msgid "West Virginia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:110
+msgid "Wisconsin"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:111
+msgid "Wyoming"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:112
+msgid "Armed Forces Americas"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:113
+msgid "Armed Forces Europe"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:114
+msgid "Armed Forces Pacific"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:115
+msgid "American Samoa"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:116
+msgid "Micronesia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:117
+msgid "Guam"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:118
+msgid "Marshall Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:119
+msgid "Puerto Rico"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:120
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:129
+msgid "Afghanistan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:130
+msgid "&#197;land Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:131
+msgid "Albania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:132
+msgid "Algeria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:133
+msgid "Andorra"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:134
+msgid "Angola"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:135
+msgid "Anguilla"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:136
+msgid "Antarctica"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:137
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:138
+msgid "Argentina"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:139
+msgid "Armenia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:140
+msgid "Aruba"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:141
+msgid "Australia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:142
+msgid "Austria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:143
+msgid "Azerbaijan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:144
+msgid "Bahamas"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:145
+msgid "Bahrain"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:146
+msgid "Bangladesh"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:147
+msgid "Barbados"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:148
+msgid "Belarus"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:149
+msgid "Belgium"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:150
+msgid "Belize"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:151
+msgid "Benin"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:152
+msgid "Bermuda"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:153
+msgid "Bhutan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:154
+msgid "Bolivia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:155
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:156
+msgid "Botswana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:157
+msgid "Brazil"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:158
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:159
+msgid "British Virgin Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:160
+msgid "Brunei"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:161
+msgid "Bulgaria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:162
+msgid "Burkina Faso"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:163
+msgid "Burundi"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:164
+msgid "Cambodia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:165
+msgid "Cameroon"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:166
+msgid "Canada"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:167
+msgid "Cape Verde"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:168
+msgid "Cayman Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:169
+msgid "Central African Republic"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:170
+msgid "Chad"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:171
+msgid "Chile"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:172
+msgid "China"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:173
+msgid "Christmas Island"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:174
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:175
+msgid "Colombia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:176
+msgid "Comoros"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:177
+msgid "Congo (Brazzaville)"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:178
+msgid "Congo (Kinshasa)"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:179
+msgid "Cook Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:180
+msgid "Costa Rica"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:181
+msgid "Croatia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:182
+msgid "Cuba"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:183
+msgid "Cyprus"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:184
+msgid "Czech Republic"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:185
+msgid "Denmark"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:186
+msgid "Djibouti"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:187
+msgid "Dominica"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:188
+msgid "Dominican Republic"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:189
+msgid "Ecuador"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:190
+msgid "Egypt"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:191
+msgid "El Salvador"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:192
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:193
+msgid "Eritrea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:194
+msgid "Estonia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:195
+msgid "Ethiopia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:196
+msgid "Falkland Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:197
+msgid "Faroe Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:198
+msgid "Fiji"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:199
+msgid "Finland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:200
+msgid "France"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:201
+msgid "French Guiana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:202
+msgid "French Polynesia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:203
+msgid "French Southern Territories"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:204
+msgid "Gabon"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:205
+msgid "Gambia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:207
+msgid "Germany"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:208
+msgid "Ghana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:209
+msgid "Gibraltar"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:210
+msgid "Greece"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:211
+msgid "Greenland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:212
+msgid "Grenada"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:213
+msgid "Guadeloupe"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:214
+msgid "Guatemala"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:215
+msgid "Guernsey"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:216
+msgid "Guinea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:217
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:218
+msgid "Guyana"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:219
+msgid "Haiti"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:220
+msgid "Honduras"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:221
+msgid "Hong Kong"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:222
+msgid "Hungary"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:223
+msgid "Iceland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:224
+msgid "India"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:225
+msgid "Indonesia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:226
+msgid "Iran"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:227
+msgid "Iraq"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:228
+msgid "Republic of Ireland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:229
+msgid "Isle of Man"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:230
+msgid "Israel"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:231
+msgid "Italy"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:232
+msgid "Ivory Coast"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:233
+msgid "Jamaica"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:234
+msgid "Japan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:235
+msgid "Jersey"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:236
+msgid "Jordan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:237
+msgid "Kazakhstan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:238
+msgid "Kenya"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:239
+msgid "Kiribati"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:240
+msgid "Kuwait"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:241
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:242
+msgid "Laos"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:243
+msgid "Latvia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:244
+msgid "Lebanon"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:245
+msgid "Lesotho"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:246
+msgid "Liberia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:247
+msgid "Libya"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:248
+msgid "Liechtenstein"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:249
+msgid "Lithuania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:250
+msgid "Luxembourg"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:251
+msgid "Macao S.A.R., China"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:252
+msgid "Macedonia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:253
+msgid "Madagascar"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:254
+msgid "Malawi"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:255
+msgid "Malaysia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:256
+msgid "Maldives"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:257
+msgid "Mali"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:258
+msgid "Malta"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:259
+msgid "Martinique"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:260
+msgid "Mauritania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:261
+msgid "Mauritius"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:262
+msgid "Mayotte"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:263
+msgid "Mexico"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:264
+msgid "Moldova"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:265
+msgid "Monaco"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:266
+msgid "Mongolia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:267
+msgid "Montenegro"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:268
+msgid "Montserrat"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:269
+msgid "Morocco"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:270
+msgid "Mozambique"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:271
+msgid "Myanmar"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:272
+msgid "Namibia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:273
+msgid "Nauru"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:274
+msgid "Nepal"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:275
+msgid "Netherlands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:276
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:277
+msgid "New Caledonia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:278
+msgid "New Zealand"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:279
+msgid "Nicaragua"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:280
+msgid "Niger"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:281
+msgid "Nigeria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:282
+msgid "Niue"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:283
+msgid "Norfolk Island"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:284
+msgid "North Korea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:285
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:286
+msgid "Norway"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:287
+msgid "Oman"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:288
+msgid "Pakistan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:289
+msgid "Palau"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:290
+msgid "Palestinian Territory"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:291
+msgid "Panama"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:292
+msgid "Papua New Guinea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:293
+msgid "Paraguay"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:294
+msgid "Peru"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:295
+msgid "Philippines"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:296
+msgid "Pitcairn"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:297
+msgid "Poland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:298
+msgid "Portugal"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:299
+msgid "Qatar"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:300
+msgid "Reunion"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:301
+msgid "Romania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:302
+msgid "Russia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:303
+msgid "Rwanda"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:304
+msgid "Saint Barth&eacute;lemy"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:305
+msgid "Saint Helena"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:306
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:307
+msgid "Saint Lucia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:308
+msgid "Saint Martin (French part)"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:309
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:310
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:311
+msgid "Samoa"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:312
+msgid "San Marino"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:313
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:314
+msgid "Saudi Arabia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:315
+msgid "Senegal"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:316
+msgid "Serbia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:317
+msgid "Seychelles"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:318
+msgid "Sierra Leone"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:319
+msgid "Singapore"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:320
+msgid "Slovakia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:321
+msgid "Slovenia"
+msgstr "Slovenija"
+
+#: fields/envoyconnect-field-helpers.php:322
+msgid "Solomon Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:323
+msgid "Somalia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:324
+msgid "South Africa"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:325
+msgid "South Georgia/Sandwich Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:326
+msgid "South Korea"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:327
+msgid "Spain"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:328
+msgid "Sri Lanka"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:329
+msgid "Sudan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:330
+msgid "Suriname"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:331
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:332
+msgid "Swaziland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:333
+msgid "Sweden"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:334
+msgid "Switzerland"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:335
+msgid "Syria"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:336
+msgid "Taiwan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:337
+msgid "Tajikistan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:338
+msgid "Tanzania"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:339
+msgid "Thailand"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:340
+msgid "Timor-Leste"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:341
+msgid "Togo"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:342
+msgid "Tokelau"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:343
+msgid "Tonga"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:344
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:345
+msgid "Tunisia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:346
+msgid "Turkey"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:347
+msgid "Turkmenistan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:348
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:349
+msgid "Tuvalu"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:350
+msgid "US Minor Outlying Islands"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:351
+msgid "Uganda"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:352
+msgid "Ukraine"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:353
+msgid "United Arab Emirates"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:354
+msgid "United Kingdom"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:355
+msgid "United States"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:356
+msgid "Uruguay"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:357
+msgid "Uzbekistan"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:358
+msgid "Vanuatu"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:359
+msgid "Vatican"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:360
+msgid "Venezuela"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:361
+msgid "Vietnam"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:362
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:363
+msgid "Western Sahara"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:364
+msgid "Yemen"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:365
+msgid "Zambia"
+msgstr ""
+
+#: fields/envoyconnect-field-helpers.php:366
+msgid "Zimbabwe"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:8
+msgid "that was an illegal action. no data was saved."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:68
+msgid "There seems to be a problem."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:202
+msgid "Fields updated!"
+msgstr "Polja obnovljena"
+
+#: fields/envoyconnect-field-management.php:204
+msgid "There were no fields to update."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:215 options/envoyconnect-settings.php:107
+#: users/envoyconnect-profile.php:14
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:233
+msgid "Add a Field"
+msgstr "Dodaj polje"
+
+#: fields/envoyconnect-field-management.php:247
+msgid "Column One"
+msgstr "Kolona 1"
+
+#: fields/envoyconnect-field-management.php:282
+msgid "Column Two"
+msgstr "Kolona 2"
+
+#: fields/envoyconnect-field-management.php:304
+msgid "Unused fields"
+msgstr "Neuporabljena polja"
+
+#: fields/envoyconnect-field-management.php:450
+msgid "Only Admins can see this."
+msgstr "Samo Administratorji lahko to vidijo"
+
+#: fields/envoyconnect-field-management.php:453
+msgid "This field is publicly visible."
+msgstr "To polje je vidno za javnost"
+
+#: fields/envoyconnect-field-management.php:456
+msgid "This field appears at signup."
+msgstr "To polje se pojavi ob registraciji."
+
+#: fields/envoyconnect-field-management.php:474 fields/envoyconnect-form.php:195
+msgid "Delete this field"
+msgstr "Zbriši to polje"
+
+#: fields/envoyconnect-field-management.php:474
+#, fuzzy
+msgid "Please remove the fields in this section first!"
+msgstr "Prosimo, najprej izberite ključ (key) za to polje!"
+
+#: fields/envoyconnect-field-management.php:475 fields/envoyconnect-form.php:196
+#: options/envoyconnect-settings.php:252
+msgid "Undo"
+msgstr "Nazaj"
+
+#: fields/envoyconnect-field-management.php:482
+msgid "Labels"
+msgstr "Oznake"
+
+#: fields/envoyconnect-field-management.php:485
+#: fields/envoyconnect-field-management.php:753
+msgid "Name"
+msgstr "Naziv"
+
+#: fields/envoyconnect-field-management.php:485
+msgid "This cannot be changed."
+msgstr "To se ne more spremeniti"
+
+#: fields/envoyconnect-field-management.php:489
+msgid "Label"
+msgstr "Oznaka"
+
+#: fields/envoyconnect-field-management.php:489
+msgid "Change the title of this field."
+msgstr "Spremeni naslov tega polja."
+
+#: fields/envoyconnect-field-management.php:495
+#: fields/envoyconnect-field-management.php:498
+msgid "Key (Required)"
+msgstr "Ključ (Zahtevan)"
+
+#: fields/envoyconnect-field-management.php:495
+msgid ""
+"This is the unique key for this field in the database. It must be a unique "
+"name, contain only lowercase characters and no spaces -- use underscores or "
+"dashes."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:498
+msgid ""
+"This is the unique key for this field in the database and cannot be changed."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:505
+msgid "Tag"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:505
+msgid "Uppercase key for syncing externally."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:510
+msgid "Help Text"
+msgstr "Besedilo pomoči"
+
+#: fields/envoyconnect-field-management.php:510
+msgid ""
+"Text you enter here will appear alongside the field through a similar icon."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:540
+msgid "Options"
+msgstr "Opcije"
+
+#: fields/envoyconnect-field-management.php:541
+msgid "Control how and where this field will behave and appear."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:542
+msgid "Admin"
+msgstr "Administrator"
+
+#: fields/envoyconnect-field-management.php:544
+msgid "User"
+msgstr "Stranka"
+
+#: fields/envoyconnect-field-management.php:546
+msgid "Signup"
+msgstr "Registracija"
+
+#: fields/envoyconnect-field-management.php:547
+#, fuzzy
+msgid "Reports & Forms"
+msgstr "Poročila"
+
+#: fields/envoyconnect-field-management.php:548 fields/envoyconnect-field.php:303
+msgid "Required"
+msgstr "Obvezno"
+
+#: fields/envoyconnect-field-management.php:549
+#: options/envoyconnect-actions-settings.php:73
+msgid "Public"
+msgstr "Javno"
+
+#: fields/envoyconnect-field-management.php:551
+msgid "Unique"
+msgstr "Unikatno"
+
+#: fields/envoyconnect-field-management.php:593
+msgid "Field Type"
+msgstr "Tip polja"
+
+#: fields/envoyconnect-field-management.php:599
+msgid "This field is restricted and cannot be modified."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:616
+msgid "Please make a selection."
+msgstr "Prosim, odločite se za izbiro."
+
+#: fields/envoyconnect-field-management.php:620
+msgid "Section"
+msgstr "Sekcija"
+
+#: fields/envoyconnect-field-management.php:621
+msgid "Text"
+msgstr "Besedilo"
+
+#: fields/envoyconnect-field-management.php:622
+msgid "Text Area"
+msgstr "Tekstovno polje"
+
+#: fields/envoyconnect-field-management.php:623
+msgid "Single Checkbox"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:624
+msgid "Taxonomy (checkboxes)"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:625
+msgid "Radio Button"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:626
+msgid "Select List"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:627
+msgid "Multi-Text"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:628
+#: options/envoyconnect-system-settings.php:142
+#: posts/envoyconnect-user-actions.php:302 users/envoyconnect-profile.php:553
+msgid "Date"
+msgstr "Datum"
+
+#: fields/envoyconnect-field-management.php:638
+msgid ""
+"Data integrity may be compromised if changing the field type after you have "
+"recorded data."
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:738
+msgid "Terms"
+msgstr "Pravila"
+
+#: fields/envoyconnect-field-management.php:739
+msgid "View, add and delete terms"
+msgstr "Poglej, dodaj in izbriši pravila"
+
+#: fields/envoyconnect-field-management.php:740
+msgid "Open editor"
+msgstr "Odpri urejevalnik"
+
+#: fields/envoyconnect-field-management.php:745
+msgid "Heirarchical Options"
+msgstr "Hieararhične opcije"
+
+#: fields/envoyconnect-field-management.php:746
+msgid "Include/exclude child terms and choose sort order"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:747
+msgid "Children"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:751
+msgid "Sort order"
+msgstr "Vrstni red"
+
+#: fields/envoyconnect-field-management.php:752
+msgid "Order Added"
+msgstr "Vrstni red dodan"
+
+#: fields/envoyconnect-field-management.php:761
+msgid "Content"
+msgstr "Vsebina"
+
+#: fields/envoyconnect-field-management.php:762
+msgid "Which post types will this also be attached to?"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:809
+#, php-format
+msgid "Choices%1$sOptionally enter pre-selected qualities for each row.%2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:816
+#: fields/envoyconnect-field-management.php:832
+#: fields/envoyconnect-field-management.php:848
+msgid "key:"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:816
+#: fields/envoyconnect-field-management.php:832
+#: fields/envoyconnect-field-management.php:848
+msgid "label:"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:868
+#, php-format
+msgid "%1$s Drag other fields into the area below to group them %2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:872
+#, php-format
+msgid "%1$s Supply the name of the function you wish to call %2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:880
+#, php-format
+msgid ""
+"%1$s Please choose a key first before selecting a field type or dragging "
+"into place. %2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:882 fields/envoyconnect-form.php:71
+#: reports/envoyconnect-actions.php:177
+msgid "Please make a selection"
+msgstr "Prosimo, odločite se za izbiro"
+
+#: fields/envoyconnect-field-management.php:892
+#, php-format
+msgid "%1$s There are no choices for this field type %2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:910 fields/envoyconnect-form.php:88
+#: fields/envoyconnect-form.php:132 fields/envoyconnect-form.php:148
+msgid "terribly sorry."
+msgstr "zelo nam je žal."
+
+#: fields/envoyconnect-field-management.php:1006
+msgid "Please choose a key for this field first!"
+msgstr "Prosimo, najprej izberite ključ (key) za to polje!"
+
+#: fields/envoyconnect-field.php:339
+msgid "Only visible to admins."
+msgstr "Vidno samo administratorjem."
+
+#: fields/envoyconnect-field.php:340
+msgid "Public or Private"
+msgstr "Javno ali zasebno"
+
+#: fields/envoyconnect-field.php:481
+msgid "Append"
+msgstr "Dodaj"
+
+#: fields/envoyconnect-field.php:481
+msgid "Overwrite"
+msgstr "Prepiši"
+
+#: fields/envoyconnect-field.php:481
+msgid "Remove"
+msgstr "Odstrani"
+
+#: fields/envoyconnect-field.php:484
+msgid "Add terms"
+msgstr "Dodaj pogoje"
+
+#: fields/envoyconnect-field.php:572
+msgid "All Options"
+msgstr "Vse opcije"
+
+#: fields/envoyconnect-field.php:628
+msgid "No role for this site"
+msgstr "Brez vloge za to stran"
+
+#: fields/envoyconnect-field.php:630 fields/envoyconnect-field.php:632
+msgid "&mdash; No role for this site &mdash;"
+msgstr ""
+
+#: fields/envoyconnect-field.php:765 fields/envoyconnect-field.php:773
+msgid "yes"
+msgstr "da"
+
+#: fields/envoyconnect-field.php:766 fields/envoyconnect-field.php:774
+msgid "no"
+msgstr "ne"
+
+#: fields/envoyconnect-field.php:772 reports/envoyconnect-filter-form.php:334
+msgid "empty"
+msgstr "brez"
+
+#: fields/envoyconnect-field.php:1081
+msgid "Value"
+msgstr ""
+
+#: fields/envoyconnect-field.php:1155 fields/envoyconnect-field.php:1160
+msgid "type password"
+msgstr "vpiši geslo"
+
+#: fields/envoyconnect-field.php:1156 fields/envoyconnect-field.php:1161
+msgid "re-type password"
+msgstr "ponovno vpiši geslo"
+
+#: fields/envoyconnect-field.php:1255
+msgid "start"
+msgstr "začetek"
+
+#: fields/envoyconnect-field.php:1256
+msgid "end"
+msgstr "konec"
+
+#: fields/envoyconnect-form.php:55
+msgid "Confirm"
+msgstr "Potrdi"
+
+#: fields/envoyconnect-form.php:72
+msgid "Choose a form to edit"
+msgstr "Izberite obrazec za urejanje"
+
+#: fields/envoyconnect-form.php:77
+msgid "Create a New Form"
+msgstr "Ustvari nov obrazec"
+
+#: fields/envoyconnect-form.php:78
+msgid "+ Add Form"
+msgstr "+ Dodaj Obrazec"
+
+#: fields/envoyconnect-form.php:108
+msgid "New form failed"
+msgstr "Nov obrazec ni uspel"
+
+#: fields/envoyconnect-form.php:113
+msgid "Duplicate form. Please try another name."
+msgstr "Podvojen obrazec. Prosimo, poskusite z drugim imenom."
+
+#: fields/envoyconnect-form.php:120
+msgid "New form successfully created"
+msgstr "Nov obrazec uspešno ustvarjen."
+
+#: fields/envoyconnect-form.php:166
+msgid "Delete failed"
+msgstr "Brisanje ni uspelo"
+
+#: fields/envoyconnect-form.php:168
+msgid "Form successfully deleted"
+msgstr "Obrazec uspešno izbrisan"
+
+#: fields/envoyconnect-form.php:210
+msgid "Messages"
+msgstr "Sporočila"
+
+#: fields/envoyconnect-form.php:211
+#, php-format
+msgid "Add a %1$sgreeting%2$s or instructions to the form."
+msgstr ""
+
+#: fields/envoyconnect-form.php:214
+#, php-format
+msgid "Add a %1$sthank you%2$s or instructions to the form."
+msgstr ""
+
+#: fields/envoyconnect-form.php:221
+msgid "Notifications"
+msgstr "Sporočila"
+
+#: fields/envoyconnect-form.php:222
+#, php-format
+msgid ""
+"Decide which email addresses should be %1$snotified%2$s after the form is "
+"submitted. Multiple emails should be separated by commas."
+msgstr ""
+
+#: fields/envoyconnect-form.php:228 options/envoyconnect-settings.php:235
+msgid "Add fields"
+msgstr "Dodaj polje"
+
+#: fields/envoyconnect-form.php:230
+msgid "+ Add Field"
+msgstr "+ Dodaj polje"
+
+#: fields/envoyconnect-form.php:323
+msgid "Display this form"
+msgstr "Prikaži ta obrazec"
+
+#: fields/envoyconnect-form.php:325
+#, php-format
+msgid ""
+"Use the link, shortcode or menu options below to link to this form. You can "
+"replace %1$s with your own text."
+msgstr ""
+
+#: fields/envoyconnect-form.php:326
+msgid "Shortcode"
+msgstr ""
+
+#: fields/envoyconnect-form.php:327
+msgid "Link"
+msgstr "Povezava"
+
+#: fields/envoyconnect-form.php:342
+msgid "Delete this form"
+msgstr "Zbrišite ta obrazec"
+
+#: fields/envoyconnect-form.php:343
+msgid "Delete This Form"
+msgstr "Zbrišite ta obrazec"
+
+#: fields/envoyconnect-form.php:399
+msgid "Subject"
+msgstr "Naslov"
+
+#: fields/envoyconnect-form.php:412
+msgid "Message"
+msgstr "Sporočilo"
+
+#: fields/envoyconnect-form.php:425
+msgid "Send me a copy"
+msgstr "Pošlji mi kopijo"
+
+#: fields/envoyconnect-form.php:442
+msgid "Standard Fields"
+msgstr "Standardna polja"
+
+#: fields/envoyconnect-form.php:456
+msgid ""
+"If you wish to remove this menu item, you must delete it from the actual "
+"menu instead of unchecking the box(es) below."
+msgstr ""
+
+#: fields/envoyconnect-form.php:456
+msgid "Add to Menu"
+msgstr "Dodaj v Menu"
+
+#: options/envoyconnect-actions-settings.php:12
+msgid "EnvoyConnect Actions"
+msgstr "Dejanja"
+
+#: options/envoyconnect-actions-settings.php:14
+msgid ""
+"EnvoyConnect actions are, essentially, WordPress post types that users can "
+"manipulate."
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:60
+msgid "This is a Pro feature. Visit www.envoyconnect.com for more information! "
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:70
+#: options/envoyconnect-system-settings.php:144
+msgid "Type"
+msgstr "Tip"
+
+#: options/envoyconnect-actions-settings.php:71
+msgid "Admins"
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:71
+msgid "Admins can view and edit this type through the user profile history tab"
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:72 options/envoyconnect-settings.php:30
+#: reports/envoyconnect-reports.php:509
+msgid "Users"
+msgstr "Stranke"
+
+#: options/envoyconnect-actions-settings.php:72
+msgid "Users can view this type through their profile history tab"
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:73
+#, php-format
+msgid "%1$s This type is publicly visible in the user profile history tab"
+msgstr ""
+
+#: options/envoyconnect-actions-settings.php:74
+msgid "Reports"
+msgstr "Poročila"
+
+#: options/envoyconnect-actions-settings.php:74
+#, php-format
+msgid "%1$s Admins can search for this type in the Reports section"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:120
+msgid "Account Information"
+msgstr "Podatki o računu"
+
+#: options/envoyconnect-defaults.php:123
+msgid "Preferences"
+msgstr "Preference"
+
+#: options/envoyconnect-defaults.php:136
+msgid "Basic Information"
+msgstr "Osnovne informacije"
+
+#: options/envoyconnect-defaults.php:139
+msgid "Contact Information"
+msgstr "Kontaktne informacije"
+
+#: options/envoyconnect-defaults.php:151 utilities/envoyconnect-users.php:115
+#: utilities/envoyconnect-users.php:119
+msgid "Email"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:153
+msgid "Username"
+msgstr "Uporabniško ime"
+
+#: options/envoyconnect-defaults.php:155 options/envoyconnect-updates.php:174
+msgid "User ID"
+msgstr "ID Uporabnika"
+
+#: options/envoyconnect-defaults.php:157 options/envoyconnect-updates.php:176
+msgid "Date Registered"
+msgstr "Datum registracije"
+
+#: options/envoyconnect-defaults.php:159
+msgid "User Type"
+msgstr "Vrste strank"
+
+#: options/envoyconnect-defaults.php:159
+msgid "person"
+msgstr "stranka"
+
+#: options/envoyconnect-defaults.php:159
+msgid "Person"
+msgstr "Stranka"
+
+#: options/envoyconnect-defaults.php:159
+msgid "organization"
+msgstr "podjetje"
+
+#: options/envoyconnect-defaults.php:159 options/envoyconnect-defaults.php:184
+msgid "Organization"
+msgstr "Podjetje"
+
+#: options/envoyconnect-defaults.php:159
+msgid "household"
+msgstr "gospodinjstvo"
+
+#: options/envoyconnect-defaults.php:159
+msgid "Household"
+msgstr "Gospodinjstvo"
+
+#: options/envoyconnect-defaults.php:161
+msgid "Role"
+msgstr "Vloga"
+
+#: options/envoyconnect-defaults.php:163
+msgid "Display Name"
+msgstr "Prikaži ime"
+
+#: options/envoyconnect-defaults.php:165
+msgid "Password"
+msgstr "Geslo"
+
+#: options/envoyconnect-defaults.php:176 posts/envoyconnect-user-actions.php:289
+msgid "Title"
+msgstr "Naziv"
+
+#: options/envoyconnect-defaults.php:178
+msgid "First Name"
+msgstr "Ime"
+
+#: options/envoyconnect-defaults.php:180
+msgid "Middle Name"
+msgstr "Srednje ime"
+
+#: options/envoyconnect-defaults.php:182
+msgid "Last Name"
+msgstr "Priimek"
+
+#: options/envoyconnect-defaults.php:186
+msgid "Nickname"
+msgstr "Vzdevek"
+
+#: options/envoyconnect-defaults.php:188
+msgid "Biography"
+msgstr "Bio"
+
+#: options/envoyconnect-defaults.php:201
+msgid "Website"
+msgstr "Spletna stran"
+
+#: options/envoyconnect-defaults.php:203
+msgid "Telephone"
+msgstr "Telefon"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "home"
+msgstr "doma"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Home"
+msgstr "Doma"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "work"
+msgstr "služba"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Work"
+msgstr "Služba"
+
+#: options/envoyconnect-defaults.php:203
+msgid "mobile"
+msgstr "gsm"
+
+#: options/envoyconnect-defaults.php:203
+msgid "Mobile"
+msgstr "Gsm"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "other"
+msgstr "ostalo"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Other"
+msgstr "Ostalo"
+
+#: options/envoyconnect-defaults.php:205
+msgid "Additional Email Addresses"
+msgstr "Dodatni email naslovi"
+
+#: options/envoyconnect-defaults.php:207
+msgid "AIM"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:209
+msgid "Yahoo IM"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:211
+msgid "Jabber / Google Talk"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:214
+msgid "Address One"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:214 options/envoyconnect-defaults.php:216
+#: options/envoyconnect-defaults.php:218
+msgid "Click to expand"
+msgstr "Kliknite za razširitev"
+
+#: options/envoyconnect-defaults.php:216
+msgid "Address Two"
+msgstr "Naslov 2"
+
+#: options/envoyconnect-defaults.php:218
+msgid "Address Three"
+msgstr "Naslov 3"
+
+#: options/envoyconnect-defaults.php:230
+msgid "Show Admin Bar: when viewing the site"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:233
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:236
+msgid "Subscribe to email updates"
+msgstr "Prijavi se na posodobitve preko emaila"
+
+#: options/envoyconnect-defaults.php:239
+msgid "Allow others to contact me"
+msgstr "Dovoli drugim, da me kontaktirajo"
+
+#: options/envoyconnect-defaults.php:252
+msgid "Address Location"
+msgstr "Naslov lokacije"
+
+#: options/envoyconnect-defaults.php:254 options/envoyconnect-updates.php:38
+msgid "Address Recipient"
+msgstr "Naslovnik"
+
+#: options/envoyconnect-defaults.php:254 options/envoyconnect-updates.php:38
+msgid "The person receiving deliveries at this address."
+msgstr ""
+
+#: options/envoyconnect-defaults.php:256 options/envoyconnect-updates.php:40
+msgid "Address Organization"
+msgstr "Naslov podjetja"
+
+#: options/envoyconnect-defaults.php:256 options/envoyconnect-updates.php:40
+msgid "The company or organization at this address."
+msgstr ""
+
+#: options/envoyconnect-defaults.php:258
+msgid "Address Line One"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:258
+msgid "Typically, this is a street address"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:260
+msgid "Address Line Two"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:260
+msgid "Typically, this is a unit, suite or apartment"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:262
+msgid "Address Line Three"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:262
+msgid "Typically, this is the title of a business or in-care-of notation"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:264
+msgid "City"
+msgstr "Mesto"
+
+#: options/envoyconnect-defaults.php:266
+msgid "State or Province"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:268
+msgid "Country"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:270
+msgid "Postal Code"
+msgstr "Poštna številka"
+
+#: options/envoyconnect-defaults.php:272
+msgid "Latitude"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:274
+msgid "Longitude"
+msgstr ""
+
+#: options/envoyconnect-defaults.php:295
+msgid "Public Option"
+msgstr "Javne opcije"
+
+#: options/envoyconnect-defaults.php:295
+msgid "Use this to toggle the public status of all available fields."
+msgstr ""
+
+#: options/envoyconnect-defaults.php:322 posts/envoyconnect-user-actions-meta.php:401
+msgid "Contact Form"
+msgstr "Kontaktni obrazec"
+
+#: options/envoyconnect-forms-settings.php:10
+msgid "General Forms"
+msgstr "Osnovni obrazci"
+
+#: options/envoyconnect-forms-settings.php:12
+msgid ""
+"Forms allow you to receive information from your site visitors. You can "
+"arrange and place selected user fields for data collection in addition to "
+"standard fields like \"subject\", \"message\" and the option for a visitor "
+"to copy themselves on the messsage. All incoming responses are sent to you "
+"and then logged."
+msgstr ""
+
+#: options/envoyconnect-forms-settings.php:24
+msgid "Create and Edit Forms"
+msgstr "Ustvari in uredi obrazce"
+
+#: options/envoyconnect-general-settings.php:18
+msgid "hi there. we're really glad you're here."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:19
+msgid ""
+"We hope this plugin makes what you do in life a little better. To that end, "
+"here's a few helpful resources."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:22
+msgid "Setup"
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:24
+#, php-format
+msgid ""
+"%1$sManage Fields%2$s: Set the fields and permissions to start collecting "
+"data."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:25
+#, php-format
+msgid "%1$sCheck Your Profile%2$s: Make sure you have it the way you want it."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:26
+#, php-format
+msgid "%1$sTry a Search%2$s: Data mining is a surprising amount of fun."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:27
+#, php-format
+msgid ""
+"%1$sTweak Your Options%2$s: Visit the tabs above to customize envoyconnect for "
+"you."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:29
+#, php-format
+msgid ""
+"Lastly, there's a %1$sGetting Started Guide%2$s on our website that walks "
+"you through the above steps."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:34
+msgid "Help"
+msgstr "Pomoč"
+
+#: options/envoyconnect-general-settings.php:36
+#, php-format
+msgid ""
+"%1$sRight Now%2$s: Most of the help you will need can be found in the in "
+"handy %3$s\"help\" tabs%4$s at the top right of your screen."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:37
+#, php-format
+msgid ""
+"%1$sPro Online%2$s: If you need more help than the help tabs offer, please "
+"make sure to visit our site %3$senvoyconnect.com%4$s. Pro users have the added "
+"ability to post a new support request which is our first priority."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:38
+#, php-format
+msgid ""
+"%1$sStandard Online%2$s: If you are not a pro subscriber, you can still "
+"visit our site %3$senvoyconnect.com%4$s OR our plugin page support forums. While "
+"we do give preference to pro users of the application (see above) we are "
+"actively monitoring the plugin page forums."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:43
+msgid "Suggestions"
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:45
+#, php-format
+msgid ""
+"%1$sContact Us%2$s: We want to hear from you! Please make sure to visit our "
+"site %3$senvoyconnect.com%4$s or our plugin page support forums to let us know "
+"what you think of the application."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:51
+msgid "looking for more? go pro!"
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:52
+#, php-format
+msgid "There's a lot more %1$sgreat stuff you can do with EnvoyConnect%2$s."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:54
+msgid "Just a few reasons"
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:56
+#, php-format
+msgid ""
+"%1$sGuaranteed Support%2$s: We do try our best to provide support for all "
+"users but as a Pro user it's part of the package."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:57
+#, php-format
+msgid ""
+"%1$sSearch User History & Actions%2$s: Go beyond the profile information and "
+"really dig deep."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:58
+#, php-format
+msgid ""
+"%1$sImport Users & Bulk Editing%2$s: Use it once and the application pays "
+"for itself in time saved alone."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:59
+#, php-format
+msgid ""
+"%1$sSaved Searches%2$s: One-click searching for things you look for the most "
+"-- plus, you can apply the results elsewhere in the application."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:60
+#, php-format
+msgid ""
+"%1$sGoogle Geolocation%2$s: See all of your users or a segment on a map."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:61
+#, php-format
+msgid ""
+"%1$sFront-end Registration, Login and Account Management%2$s: Take over the "
+"default WordPress registration and login and optionally keep all user "
+"management on the front end of your site."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:62
+#, php-format
+msgid ""
+"%1$sRestrict Access to Content (Membership Feature)%2$s: Choose exactly who "
+"gets access to what using rules you specify. Change them at any time."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:63
+#, php-format
+msgid ""
+"%1$sDisplay and search a member directory (Member Directory Feature)%2$s: "
+"Display all or a subset of your members. Have as many directories as you "
+"like."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:64
+#, php-format
+msgid ""
+"%1$sAccept User-Generated Content (Community Feature)%2$s: Accept content "
+"for any post type from whomever you choose -- you set the rules and, again, "
+"change them at anytime."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:65
+#, php-format
+msgid ""
+"%1$sE-Commerce Engine%2$s: Sell anything anywhere on your site or accept "
+"donations. Search for it all using the User Search Engine. And, of course, "
+"you can Bulk Edit, Import or Export transactions."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:66
+#, php-format
+msgid ""
+"%1$sE-Mail Marketing Engine & MailChimp Synchronization%2$s: Send HTML "
+"newsletters using WordPress or MailChimp and if you're using MailChimp, "
+"enjoy full end-to-end synchronization for complete freedom to use whichever "
+"system you like, whenever you like."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:67
+#, php-format
+msgid ""
+"%1$sFind out more%2$s and explore our growing library of extensions. If you "
+"don't see exactly what you need, drop us a line -- we're always open to "
+"ideas we're growing fast."
+msgstr ""
+
+#: options/envoyconnect-pro-settings.php:10
+msgid "PauPro License Information"
+msgstr ""
+
+#: options/envoyconnect-pro-settings.php:12
+msgid ""
+"Please enter your license details below to enable automatic updates. Please "
+"note that you have to download and install the Pro version before you are "
+"able to take advantage of the Pro features."
+msgstr ""
+
+#: options/envoyconnect-pro-settings.php:24
+msgid "Your license key"
+msgstr ""
+
+#: options/envoyconnect-settings.php:20
+msgid "General"
+msgstr "Osnovno"
+
+#: options/envoyconnect-settings.php:25
+msgid "Pro"
+msgstr "Pro"
+
+#: options/envoyconnect-settings.php:35 reports/envoyconnect-actions.php:10
+#: reports/envoyconnect-reports.php:291 reports/envoyconnect-reports.php:471
+#: reports/envoyconnect-reports.php:473
+msgid "Actions"
+msgstr "Dejanja"
+
+#: options/envoyconnect-settings.php:40
+msgid "System"
+msgstr "Sistem"
+
+#: options/envoyconnect-settings.php:45
+msgid "Forms"
+msgstr "Obrazci"
+
+#: options/envoyconnect-settings.php:51
+msgid "EnvoyConnect Options"
+msgstr "Opcije Kartoteke"
+
+#: options/envoyconnect-settings.php:112
+msgid "Settings Updated"
+msgstr ""
+
+#: options/envoyconnect-settings.php:175
+msgid "Save Your Options"
+msgstr "Shrani svoje opcije"
+
+#: options/envoyconnect-settings.php:251
+#, fuzzy
+msgid "Delete"
+msgstr "Brisanje ni uspelo"
+
+#: options/envoyconnect-settings.php:258
+#, fuzzy
+msgid "Make A Selection"
+msgstr "Izberite"
+
+#: options/envoyconnect-settings.php:282
+#, fuzzy
+msgid "+ Add"
+msgstr "+ Dodaj Obrazec"
+
+#: options/envoyconnect-system-settings.php:10
+msgid "Mail Defaults"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:12
+msgid "Set the default email information for your site"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:24
+msgid "Default email"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:37
+msgid "Default email name"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:50
+#, fuzzy
+msgid "Field Preferences"
+msgstr "Preference"
+
+#: options/envoyconnect-system-settings.php:63
+msgid "Low range for date fields"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:64
+msgid "Choose how many years the date field will go into the past"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:77
+msgid "High range for date fields"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:78
+msgid "Choose how many years the date field will go into the future"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:91
+msgid "System Information"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:105
+msgid "Error Log"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:143
+msgid "Application"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:143
+msgid "What component was affected?"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:144
+msgid "Did this affect a user or an action?"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:145
+msgid "ID"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:145
+msgid "The ID of the affected user or action"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:146
+msgid "Error"
+msgstr "Napaka"
+
+#: options/envoyconnect-system-settings.php:146
+msgid "Details on the error"
+msgstr "Podrobnosti napake"
+
+#: options/envoyconnect-system-settings.php:165
+msgid "hooray! no errors here!"
+msgstr "Super! Ni napake!"
+
+#: options/envoyconnect-system-settings.php:172
+msgid "Clear Log"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:12
+msgid "Administrator Controls"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:26
+msgid "Grant database access to:"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:27
+msgid "Determine who can create, edit, and delete users from your system."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:39
+msgid "User Controls"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:53
+msgid "Prevent Subscribers from accessing the WordPress Admin Area"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:54
+msgid ""
+"This applies to the Subscriber role and restricts all operations to the "
+"front end of the site."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:66
+msgid "Default display of public fields to \"on\""
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:67
+msgid ""
+"Public fields by default are hidden. If a user has not stated a preference "
+"on their profile, you can change the default to show their public fields."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:79
+msgid "Default display of \"contact me\" to \"on\""
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:80
+msgid ""
+"Individual contact forms are disabled by default. If a user has not stated a "
+"preference on their profile, you can change the default to enable their "
+"contact form."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:92
+msgid "Enable links to in-page profiles"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:93
+msgid ""
+"User profiles are automatically enabled via the panel system. This option, "
+"however, is an additional resource for users to link back directly to a page "
+"on your site containing their profile and public content."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:105
+msgid "Profile Controls"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:119
+msgid "Alternate display of user taxonomies"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:120
+msgid "The select list option uses an advanced type-as-you-go option."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:148
+msgid "WordPress Compatability Mode"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:150
+msgid "Preferences to ease the transition."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:162
+msgid "Enable WordPress Default User View"
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:163
+msgid ""
+"By default, EnvoyConnect replaces the WordPress default list view. You can re-"
+"enable it with this option."
+msgstr ""
+
+#: options/envoyconnect-user-settings.php:201
+#, php-format
+msgid "%1$s Enabled by default"
+msgstr ""
+
+#: posts/envoyconnect-post-actions-meta.php:54
+#: posts/envoyconnect-user-actions-meta.php:93
+msgid "Action Meta"
+msgstr ""
+
+#: posts/envoyconnect-user-actions-meta.php:270
+#, php-format
+msgid "Last edited by: %1$s %2$s on %3$s "
+msgstr "Nazadnje urejeno:  %1$s %2$s on %3$s "
+
+#: posts/envoyconnect-user-actions-meta.php:292
+msgid "Type of Interaction"
+msgstr "Vrsta posega"
+
+#: posts/envoyconnect-user-actions-meta.php:305
+#: posts/envoyconnect-user-actions-meta.php:371
+msgid "Current Status"
+msgstr "Trenutni status"
+
+#: posts/envoyconnect-user-actions-meta.php:332
+msgid "Note"
+msgstr "Večkratna terapija"
+
+#: posts/envoyconnect-user-actions-meta.php:333
+msgid "E-mail Conversation"
+msgstr "Napotitev k zdravniku"
+
+#: posts/envoyconnect-user-actions-meta.php:334
+msgid "Telephone Conversation"
+msgstr "Svetovanje"
+
+#: posts/envoyconnect-user-actions-meta.php:335
+msgid "In-Person Conversation"
+msgstr "Poseg v ordinaciji"
+
+#: posts/envoyconnect-user-actions-meta.php:358
+msgid "Type of log"
+msgstr "Vrsta zabeležke"
+
+#: posts/envoyconnect-user-actions-meta.php:398
+msgid "Admin Registration"
+msgstr ""
+
+#: posts/envoyconnect-user-actions-meta.php:399
+msgid "User Registration"
+msgstr "Registracija stranke"
+
+#: posts/envoyconnect-user-actions-meta.php:400
+msgid "Import"
+msgstr "Uvoz"
+
+#: posts/envoyconnect-user-actions-meta.php:402
+msgid "Content Submission"
+msgstr "Dodajanje vsebine"
+
+#: posts/envoyconnect-user-actions-meta.php:439
+msgid "Archived"
+msgstr "Arhivirano"
+
+#: posts/envoyconnect-user-actions.php:20
+msgid "Log"
+msgstr "Zabeležka"
+
+#: posts/envoyconnect-user-actions.php:21
+msgid "Logs"
+msgstr "Zabeležke"
+
+#: posts/envoyconnect-user-actions.php:35
+msgid "Interaction"
+msgstr "Posegi in storitve"
+
+#: posts/envoyconnect-user-actions.php:36
+msgid "Interactions"
+msgstr "Posegi in storitve"
+
+#: posts/envoyconnect-user-actions.php:222 posts/envoyconnect-user-actions.php:387
+msgid "Terribly sorry."
+msgstr "Žal."
+
+#: posts/envoyconnect-user-actions.php:360
+msgid "Save"
+msgstr "Shrani"
+
+#: posts/envoyconnect-user-actions.php:491
+msgid "EnvoyConnect Action"
+msgstr "Dejanja"
+
+#: reports/envoyconnect-actions.php:9
+msgid "Select an Action"
+msgstr "Izberi dejanje"
+
+#: reports/envoyconnect-actions.php:11 reports/envoyconnect-actions.php:49
+msgid "Export"
+msgstr "Izvozi"
+
+#: reports/envoyconnect-actions.php:36
+msgid "New Export"
+msgstr "Nov izvoz"
+
+#: reports/envoyconnect-actions.php:37
+msgid "What would you like to call this export?"
+msgstr "Kako bi poimenovali ta izvoz?"
+
+#: reports/envoyconnect-actions.php:40
+msgid "User Options"
+msgstr "Opcije stranke"
+
+#: reports/envoyconnect-actions.php:41
+msgid "Select all users for this query"
+msgstr "Izberite vse stranke za to iskanje"
+
+#: reports/envoyconnect-actions.php:42
+msgid "Select all possible fields"
+msgstr "Izberite vsa možna polja"
+
+#: reports/envoyconnect-actions.php:45
+msgid "Actions Options"
+msgstr "Opcije dejanj"
+
+#: reports/envoyconnect-actions.php:171
+msgid "Your file"
+msgstr "Vaša datoteka"
+
+#: reports/envoyconnect-actions.php:173
+msgid "I was not able to complete the export."
+msgstr "Izvoz nismo mogli izvesti."
+
+#: reports/envoyconnect-edit.php:8 reports/envoyconnect-queries.php:8
+#, php-format
+msgid ""
+"%1$s This is a pro feature and we're really sorry we couldn't include it "
+"here. Consider upgrading - each purchase supports future development and "
+"improvement! %2$s %3$s"
+msgstr ""
+
+#: reports/envoyconnect-filter-form.php:28
+msgid "Re-load last search"
+msgstr "Ponovno naloži zadnje iskanje"
+
+#: reports/envoyconnect-filter-form.php:30
+msgid "Reset current search"
+msgstr "Izbriši trenutno iskanje"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Order"
+msgstr "Vrstni red"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Descending"
+msgstr "Padajoče"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Ascending"
+msgstr "Rastoče"
+
+#: reports/envoyconnect-filter-form.php:64
+msgid "Order by"
+msgstr "Vrstni red po"
+
+#: reports/envoyconnect-filter-form.php:70
+msgid "Results Per Page"
+msgstr "Rezultati na stran"
+
+#: reports/envoyconnect-filter-form.php:75
+msgid "Match"
+msgstr "Ujemanje"
+
+#: reports/envoyconnect-filter-form.php:75 users/envoyconnect-profile.php:558
+msgid "All"
+msgstr "Vse"
+
+#: reports/envoyconnect-filter-form.php:75
+msgid "Any"
+msgstr "Kakšen"
+
+#: reports/envoyconnect-filter-form.php:189
+msgid "Make a selection"
+msgstr "Izberite"
+
+#: reports/envoyconnect-filter-form.php:190
+msgid "Profile Fields"
+msgstr "Izbire"
+
+#: reports/envoyconnect-filter-form.php:330
+msgid "is"
+msgstr "je"
+
+#: reports/envoyconnect-filter-form.php:331
+msgid "not"
+msgstr "ni"
+
+#: reports/envoyconnect-filter-form.php:332
+msgid "like"
+msgstr "kot"
+
+#: reports/envoyconnect-filter-form.php:333
+msgid "not like"
+msgstr "ni kot"
+
+#: reports/envoyconnect-filter-form.php:335
+msgid "not empty"
+msgstr "ni brez"
+
+#: reports/envoyconnect-filter-form.php:336
+msgid "any"
+msgstr "kakšen"
+
+#: reports/envoyconnect-filter-form.php:337
+msgid "all"
+msgstr "vse"
+
+#: reports/envoyconnect-filter-form.php:338
+msgid "show"
+msgstr "prikaži"
+
+#: reports/envoyconnect-filter-form.php:358
+msgid ">="
+msgstr ""
+
+#: reports/envoyconnect-filter-form.php:359
+msgid "<="
+msgstr ""
+
+#: reports/envoyconnect-filter-form.php:368
+msgid "Title or Body"
+msgstr "Naslov ali vsebina"
+
+#: reports/envoyconnect-filter-form.php:372
+msgid "Date Options"
+msgstr "Izbire datuma"
+
+#: reports/envoyconnect-filter-form.php:373
+msgid "Date Range"
+msgstr "Interval datuma"
+
+#: reports/envoyconnect-filter-form.php:374
+msgid "Relative Date"
+msgstr "Relativno"
+
+#: reports/envoyconnect-filter-form.php:382
+msgid "Time"
+msgstr "Čas"
+
+#: reports/envoyconnect-filter-form.php:383
+msgid "days"
+msgstr "dnevi"
+
+#: reports/envoyconnect-filter-form.php:384
+msgid "weeks"
+msgstr "tedni"
+
+#: reports/envoyconnect-filter-form.php:385
+msgid "months"
+msgstr "meseci"
+
+#: reports/envoyconnect-filter-form.php:386
+msgid "years"
+msgstr "leta"
+
+#: reports/envoyconnect-filter-form.php:389
+msgid "Frame"
+msgstr "Okvir"
+
+#: reports/envoyconnect-filter-form.php:390
+msgid "before"
+msgstr "pred"
+
+#: reports/envoyconnect-filter-form.php:391
+msgid "after"
+msgstr "po"
+
+#: reports/envoyconnect-filter-form.php:394
+msgid "When"
+msgstr "Ko"
+
+#: reports/envoyconnect-filter-form.php:395
+msgid "now"
+msgstr "zdaj"
+
+#: reports/envoyconnect-filter-form.php:396
+msgid "date"
+msgstr "datum"
+
+#: reports/envoyconnect-filter-form.php:501
+msgid "Primary"
+msgstr "Primarno"
+
+#: reports/envoyconnect-reports.php:85
+msgid "of"
+msgstr "od"
+
+#: reports/envoyconnect-reports.php:111 reports/envoyconnect-reports.php:131
+#, fuzzy, php-format
+msgid "Page %1$s"
+msgstr "Stran"
+
+#: reports/envoyconnect-reports.php:290
+msgid "Search"
+msgstr "Iskanje"
+
+#: reports/envoyconnect-reports.php:292
+msgid "Edits"
+msgstr "Urejanja"
+
+#: reports/envoyconnect-reports.php:293
+msgid "Saved Searches"
+msgstr "Shranjena iskanja"
+
+#: reports/envoyconnect-reports.php:540
+msgid "terribly sorry. i did not find anything."
+msgstr "žal nam je. Nismo našli ničesar."
+
+#: reports/envoyconnect-reports.php:682
+msgid "edit"
+msgstr ""
+
+#: reports/envoyconnect-reports.php:683
+msgid "email"
+msgstr ""
+
+#: reports/envoyconnect-reports.php:685
+msgid "view"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:76
+#, php-format
+msgid "%1$s indicates a required field %2$s"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:240
+msgid ""
+"very sorry. there seems to be an error. please refresh the page and try "
+"again."
+msgstr ""
+"Zelo nam je žal. Prišlo je do neke napake. Prosimo, obnovite stran in "
+"poskusite znova."
+
+#: theme/envoyconnectpanels.php:328
+#, fuzzy
+msgid "Submission"
+msgstr "Dodajanje vsebine"
+
+#: theme/envoyconnectpanels.php:407
+#, php-format
+msgid "The following came to you from the website: %1$s"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:409
+#, php-format
+msgid "It was sent from: %1$s <%2$s>"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:429
+#, php-format
+msgid ""
+"You asked to be copied on the message below that you sent via the website: "
+"%1$s"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:440
+msgid "Thank you."
+msgstr "Hvala"
+
+#: theme/envoyconnectpanels.php:569
+msgid "Submit"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:679
+#, fuzzy
+msgid "recover password"
+msgstr "ponovno vpiši geslo"
+
+#: theme/envoyconnectpanels.php:691
+msgid "Contact"
+msgstr "Kontakt"
+
+#: theme/envoyconnectpanels.php:696
+msgid "try again"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:701
+msgid "close panel"
+msgstr "Zaprite panel"
+
+#: theme/envoyconnectpanels.php:728
+msgid " or "
+msgstr ""
+
+#: users/envoyconnect-profile.php:40
+msgid "User created!"
+msgstr "Stranka ustvarjena!"
+
+#: users/envoyconnect-profile.php:69
+msgid "Add Them!"
+msgstr "Dodaj!"
+
+#: users/envoyconnect-profile.php:91 users/envoyconnect-profile.php:176
+msgid "You do not have permission to edit this user."
+msgstr "Nimate pravic za urejanje te stranke."
+
+#: users/envoyconnect-profile.php:112
+msgid "Profile Updated."
+msgstr "Profil posodobljen."
+
+#: users/envoyconnect-profile.php:130
+msgid "History updated."
+msgstr "Posodobljeno!"
+
+#: users/envoyconnect-profile.php:170 users/envoyconnect-profile.php:172
+msgid "Invalid user ID."
+msgstr "Nepravilni ID stranke."
+
+#: users/envoyconnect-profile.php:209
+msgid "Profile"
+msgstr "Osebni podatki"
+
+#: users/envoyconnect-profile.php:214
+msgid "History"
+msgstr "Pregledi in zgodovina"
+
+#: users/envoyconnect-profile.php:256
+msgid "Update!"
+msgstr "Obnovi!"
+
+#: users/envoyconnect-profile.php:555
+msgid "Title &amp; Excerpt"
+msgstr "Naslov in povzetek"
+
+#: users/envoyconnect-profile.php:614
+msgid "Edit Actions"
+msgstr "Urejaj"
+
+#: users/envoyconnect-profile.php:616
+msgid "Create or Edit Actions"
+msgstr "Ustvari ali urejaj"
+
+#: users/envoyconnect-profile.php:767
+msgid "Edit"
+msgstr "Uredi"
+
+#: users/envoyconnect-users.php:703
+msgid "primary"
+msgstr "primarno"
+
+#: utilities/envoyconnect-users.php:119
+msgid "username"
+msgstr ""
+
+#~ msgid "EnvoyConnect Events"
+#~ msgstr "EnvoyConnect Dogodki"
+
+#~ msgid "full name"
+#~ msgstr "polno ime"
+
+#~ msgid "lost password?"
+#~ msgstr "izgubljeno geslo?"
+
+#~ msgid "or"
+#~ msgstr "ali"
+
+#~ msgid "View or Edit Actions"
+#~ msgstr "Poglej ali urejaj"
+
+#~ msgid "Create a New Action"
+#~ msgstr "Ustvari novo"
+
+#~ msgid "General Information"
+#~ msgstr "Osnovne informacije"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Coming Soon!</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Prihaja kmalu!</p>\n"
+#~ "\t\t\t    "
+
+#~ msgid "Saved Queries"
+#~ msgstr "Shranjena iskanja"
+
+#~ msgid "User Profile"
+#~ msgstr "Profil stranke"
+
+#~ msgid "User History"
+#~ msgstr "Zgodovina stranke"

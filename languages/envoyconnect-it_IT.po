@@ -1,0 +1,4047 @@
+# Copyright (C) 2013 EnvoyConnect
+# This file is distributed under the same license as the EnvoyConnect package.
+msgid ""
+msgstr ""
+"Project-Id-Version: EnvoyConnect 1.0.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/envoyconnect\n"
+"POT-Creation-Date: 2013-12-07 21:44-0800\n"
+"PO-Revision-Date: 2013-12-12 01:35-0800\n"
+"Last-Translator: http://www.iononmollo.it <redazione@iononmollo.it>\n"
+"Language-Team: http://www.iononmollo.it <redazione@iononmollo.it>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: envoyconnect.php:105
+#, fuzzy
+msgid "sign in"
+msgstr "Accedi"
+
+#: envoyconnect.php:106
+#, fuzzy
+msgid "sign out"
+msgstr "Esci"
+
+#: envoyconnect.php:107
+#, fuzzy
+msgid "sign up"
+msgstr "Iscriviti"
+
+#: envoyconnect.php:108 envoyconnect.php:367
+msgid "My Profile"
+msgstr "Mio Profilo"
+
+#: envoyconnect.php:109
+#, fuzzy
+msgid "Thank you!"
+msgstr "Grazie."
+
+#: envoyconnect.php:110
+msgid "How did you get here?"
+msgstr ""
+
+#: envoyconnect.php:111
+msgid "Confirm Deletion?"
+msgstr ""
+
+#: envoyconnect.php:112
+#, fuzzy
+msgid "Confirm Submission?"
+msgstr "Contenuto Presentato"
+
+#: envoyconnect.php:113
+msgid "Support Documentation"
+msgstr ""
+
+#: envoyconnect.php:114
+msgid "Discount"
+msgstr ""
+
+#: envoyconnect.php:115
+msgid "Quantity"
+msgstr ""
+
+#: envoyconnect.php:116
+#, fuzzy
+msgid "Amount"
+msgstr "Nazione"
+
+#: envoyconnect.php:117
+#, fuzzy
+msgid "Tax"
+msgstr "Tag"
+
+#: envoyconnect.php:118
+#, fuzzy
+msgid "Shipping"
+msgstr "Filippine"
+
+#: envoyconnect.php:119
+msgid "Billing"
+msgstr ""
+
+#: envoyconnect.php:120
+msgid "Refund"
+msgstr ""
+
+#: envoyconnect.php:121
+msgid "Credit"
+msgstr ""
+
+#: envoyconnect.php:122
+#, php-format
+msgid "%1$sDefault%2$s"
+msgstr ""
+
+#: envoyconnect.php:317
+msgid "duplicate key!"
+msgstr "chiave duplicata!"
+
+#: envoyconnect.php:318
+msgid "One Moment Please..."
+msgstr "Abbi pazienza..."
+
+#: envoyconnect.php:320 theme/envoyconnectpanels.php:76
+#, php-format
+msgid ""
+"We found some errors -- please attend to the fields below marked with %1$s"
+msgstr ""
+"Abbiamo trovato alcuni errori -- si prega di prestare attenzione ai campi di "
+"seguito indicati con %1$s"
+
+#: envoyconnect.php:367 envoyconnect.php:371
+msgid "EnvoyConnect User"
+msgstr "EnvoyConnect Utente"
+
+#: envoyconnect.php:371 users/envoyconnect-profile.php:60
+msgid "Add New User"
+msgstr "Aggiungi Nuovo Utente"
+
+#: envoyconnect.php:374
+msgid "EnvoyConnect Reports"
+msgstr "EnvoyConnect Rapporti"
+
+#: envoyconnect.php:374 reports/envoyconnect-reports.php:287
+msgid "User Reports"
+msgstr "Utente Rapporti"
+
+#: envoyconnect.php:377
+msgid "EnvoyConnect"
+msgstr "EnvoyConnect"
+
+#: envoyconnect.php:380 fields/envoyconnect-field-management.php:233
+msgid "Manage Fields"
+msgstr "Gestisci Campi"
+
+#: envoyconnect.php:383 theme/envoyconnectpanels-incoming.php:14
+msgid "Inbound Activity"
+msgstr "Attivit&agrave;"
+
+#: envoyconnect.php:386
+msgid "New Action"
+msgstr "Nuova Azione"
+
+#: updates.php:99
+msgid " find out why and how to fix it!"
+msgstr "scoprire perch&egrave; e come risolvere il problema!"
+
+#: fields/envoyconnect-field-helpers.php:36
+msgid "Australian Capital Territory"
+msgstr "Territorio della Capitale Australiana"
+
+#: fields/envoyconnect-field-helpers.php:37
+msgid "New South Wales"
+msgstr "Nuovo Galles del Sud"
+
+#: fields/envoyconnect-field-helpers.php:38
+msgid "Northern Territory"
+msgstr "Territorio del Nord"
+
+#: fields/envoyconnect-field-helpers.php:39
+msgid "Queensland"
+msgstr "Queensland"
+
+#: fields/envoyconnect-field-helpers.php:40
+msgid "South Australia"
+msgstr "Australia del Sud"
+
+#: fields/envoyconnect-field-helpers.php:41
+msgid "Tasmania"
+msgstr "Tasmania"
+
+#: fields/envoyconnect-field-helpers.php:42
+msgid "Victoria"
+msgstr "Vittoria"
+
+#: fields/envoyconnect-field-helpers.php:43
+msgid "Western Australia"
+msgstr "Australia Occidentale"
+
+#: fields/envoyconnect-field-helpers.php:46
+msgid "Alberta"
+msgstr "Alberta"
+
+#: fields/envoyconnect-field-helpers.php:47
+msgid "British Columbia"
+msgstr "Columbia Britannica"
+
+#: fields/envoyconnect-field-helpers.php:48
+msgid "Manitoba"
+msgstr "Manitoba"
+
+#: fields/envoyconnect-field-helpers.php:49
+msgid "New Brunswick"
+msgstr "Nuovo Brunswick"
+
+#: fields/envoyconnect-field-helpers.php:50
+msgid "Newfoundland"
+msgstr "Terranova"
+
+#: fields/envoyconnect-field-helpers.php:51
+msgid "Northwest Territories"
+msgstr "Territori del Nordovest"
+
+#: fields/envoyconnect-field-helpers.php:52
+msgid "Nova Scotia"
+msgstr "Nuova Scozia"
+
+#: fields/envoyconnect-field-helpers.php:53
+msgid "Nunavut"
+msgstr "Nunavut"
+
+#: fields/envoyconnect-field-helpers.php:54
+msgid "Ontario"
+msgstr "Ontario"
+
+#: fields/envoyconnect-field-helpers.php:55
+msgid "Prince Edward Island"
+msgstr "Isola del Principe Edoardo"
+
+#: fields/envoyconnect-field-helpers.php:56
+msgid "Quebec"
+msgstr "Quebec"
+
+#: fields/envoyconnect-field-helpers.php:57
+msgid "Saskatchewan"
+msgstr "Saskatchewan"
+
+#: fields/envoyconnect-field-helpers.php:58
+msgid "Yukon Territory"
+msgstr "Yukon"
+
+#: fields/envoyconnect-field-helpers.php:61
+msgid "Alabama"
+msgstr "Alabama"
+
+#: fields/envoyconnect-field-helpers.php:62
+msgid "Alaska"
+msgstr "Alaska"
+
+#: fields/envoyconnect-field-helpers.php:63
+msgid "Arizona"
+msgstr "Arizona"
+
+#: fields/envoyconnect-field-helpers.php:64
+msgid "Arkansas"
+msgstr "Arkansas"
+
+#: fields/envoyconnect-field-helpers.php:65
+msgid "California"
+msgstr "California"
+
+#: fields/envoyconnect-field-helpers.php:66
+msgid "Colorado"
+msgstr "Colorado"
+
+#: fields/envoyconnect-field-helpers.php:67
+msgid "Connecticut"
+msgstr "Connecticut"
+
+#: fields/envoyconnect-field-helpers.php:68
+msgid "Delaware"
+msgstr "Delaware"
+
+#: fields/envoyconnect-field-helpers.php:69
+msgid "District Of Columbia"
+msgstr "Distretto di Columbia"
+
+#: fields/envoyconnect-field-helpers.php:70
+msgid "Florida"
+msgstr "Florida"
+
+#: fields/envoyconnect-field-helpers.php:71 fields/envoyconnect-field-helpers.php:206
+msgid "Georgia"
+msgstr "Georgia"
+
+#: fields/envoyconnect-field-helpers.php:72
+msgid "Hawaii"
+msgstr "Hawaii"
+
+#: fields/envoyconnect-field-helpers.php:73
+msgid "Idaho"
+msgstr "Idaho"
+
+#: fields/envoyconnect-field-helpers.php:74
+msgid "Illinois"
+msgstr "Illinois"
+
+#: fields/envoyconnect-field-helpers.php:75
+msgid "Indiana"
+msgstr "Indiana"
+
+#: fields/envoyconnect-field-helpers.php:76
+msgid "Iowa"
+msgstr "Iowa"
+
+#: fields/envoyconnect-field-helpers.php:77
+msgid "Kansas"
+msgstr "Kansas"
+
+#: fields/envoyconnect-field-helpers.php:78
+msgid "Kentucky"
+msgstr "Kentucky"
+
+#: fields/envoyconnect-field-helpers.php:79
+msgid "Louisiana"
+msgstr "Louisiana"
+
+#: fields/envoyconnect-field-helpers.php:80
+msgid "Maine"
+msgstr "Maine"
+
+#: fields/envoyconnect-field-helpers.php:81
+msgid "Maryland"
+msgstr "Maryland"
+
+#: fields/envoyconnect-field-helpers.php:82
+msgid "Massachusetts"
+msgstr "Massachusetts"
+
+#: fields/envoyconnect-field-helpers.php:83
+msgid "Michigan"
+msgstr "Michigan"
+
+#: fields/envoyconnect-field-helpers.php:84
+msgid "Minnesota"
+msgstr "Minnesota"
+
+#: fields/envoyconnect-field-helpers.php:85
+msgid "Mississippi"
+msgstr "Mississippi"
+
+#: fields/envoyconnect-field-helpers.php:86
+msgid "Missouri"
+msgstr "Missouri"
+
+#: fields/envoyconnect-field-helpers.php:87
+msgid "Montana"
+msgstr "Montana"
+
+#: fields/envoyconnect-field-helpers.php:88
+msgid "Nebraska"
+msgstr "Nebraska"
+
+#: fields/envoyconnect-field-helpers.php:89
+msgid "Nevada"
+msgstr "Nevada"
+
+#: fields/envoyconnect-field-helpers.php:90
+msgid "New Hampshire"
+msgstr "New Hampshire"
+
+#: fields/envoyconnect-field-helpers.php:91
+msgid "New Jersey"
+msgstr "New Jersey"
+
+#: fields/envoyconnect-field-helpers.php:92
+msgid "New Mexico"
+msgstr "Nuovo Mexico"
+
+#: fields/envoyconnect-field-helpers.php:93
+msgid "New York"
+msgstr "New York"
+
+#: fields/envoyconnect-field-helpers.php:94
+msgid "North Carolina"
+msgstr "Nord Carolina"
+
+#: fields/envoyconnect-field-helpers.php:95
+msgid "North Dakota"
+msgstr "Nord Dakota"
+
+#: fields/envoyconnect-field-helpers.php:96
+msgid "Ohio"
+msgstr "Ohio"
+
+#: fields/envoyconnect-field-helpers.php:97
+msgid "Oklahoma"
+msgstr "Oklahoma"
+
+#: fields/envoyconnect-field-helpers.php:98
+msgid "Oregon"
+msgstr "Oregon"
+
+#: fields/envoyconnect-field-helpers.php:99
+msgid "Pennsylvania"
+msgstr "Pennsylvania"
+
+#: fields/envoyconnect-field-helpers.php:100
+msgid "Rhode Island"
+msgstr "Isola di Rodi"
+
+#: fields/envoyconnect-field-helpers.php:101
+msgid "South Carolina"
+msgstr "Sud Carolina"
+
+#: fields/envoyconnect-field-helpers.php:102
+msgid "South Dakota"
+msgstr "Sud Dakota"
+
+#: fields/envoyconnect-field-helpers.php:103
+msgid "Tennessee"
+msgstr "Tennessee"
+
+#: fields/envoyconnect-field-helpers.php:104
+msgid "Texas"
+msgstr "Texas"
+
+#: fields/envoyconnect-field-helpers.php:105
+msgid "Utah"
+msgstr "Utah"
+
+#: fields/envoyconnect-field-helpers.php:106
+msgid "Vermont"
+msgstr "Vermont"
+
+#: fields/envoyconnect-field-helpers.php:107
+msgid "Virginia"
+msgstr "Virginia"
+
+#: fields/envoyconnect-field-helpers.php:108
+msgid "Washington"
+msgstr "Washington"
+
+#: fields/envoyconnect-field-helpers.php:109
+msgid "West Virginia"
+msgstr "West Virginia"
+
+#: fields/envoyconnect-field-helpers.php:110
+msgid "Wisconsin"
+msgstr "Wisconsin"
+
+#: fields/envoyconnect-field-helpers.php:111
+msgid "Wyoming"
+msgstr "Wyoming"
+
+#: fields/envoyconnect-field-helpers.php:112
+msgid "Armed Forces Americas"
+msgstr "Forze Armate Americane"
+
+#: fields/envoyconnect-field-helpers.php:113
+msgid "Armed Forces Europe"
+msgstr "Forze Armate Europee"
+
+#: fields/envoyconnect-field-helpers.php:114
+msgid "Armed Forces Pacific"
+msgstr "Forze Armate Pacifico"
+
+#: fields/envoyconnect-field-helpers.php:115
+msgid "American Samoa"
+msgstr "Samoa Americana"
+
+#: fields/envoyconnect-field-helpers.php:116
+msgid "Micronesia"
+msgstr "Micronesia"
+
+#: fields/envoyconnect-field-helpers.php:117
+msgid "Guam"
+msgstr "Guam"
+
+#: fields/envoyconnect-field-helpers.php:118
+msgid "Marshall Islands"
+msgstr "Isole Marshall"
+
+#: fields/envoyconnect-field-helpers.php:119
+msgid "Puerto Rico"
+msgstr "Porto Rico"
+
+#: fields/envoyconnect-field-helpers.php:120
+msgid "U.S. Virgin Islands"
+msgstr "Isole Vergini Americane"
+
+#: fields/envoyconnect-field-helpers.php:129
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: fields/envoyconnect-field-helpers.php:130
+msgid "&#197;land Islands"
+msgstr "Isole &#197;land"
+
+#: fields/envoyconnect-field-helpers.php:131
+msgid "Albania"
+msgstr "Albania"
+
+#: fields/envoyconnect-field-helpers.php:132
+msgid "Algeria"
+msgstr "Algeria"
+
+#: fields/envoyconnect-field-helpers.php:133
+msgid "Andorra"
+msgstr "Andorra"
+
+#: fields/envoyconnect-field-helpers.php:134
+msgid "Angola"
+msgstr "Angola"
+
+#: fields/envoyconnect-field-helpers.php:135
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: fields/envoyconnect-field-helpers.php:136
+msgid "Antarctica"
+msgstr "Antartide"
+
+#: fields/envoyconnect-field-helpers.php:137
+msgid "Antigua and Barbuda"
+msgstr "Antigua e Barbuda"
+
+#: fields/envoyconnect-field-helpers.php:138
+msgid "Argentina"
+msgstr "Argentina"
+
+#: fields/envoyconnect-field-helpers.php:139
+msgid "Armenia"
+msgstr "Armenia"
+
+#: fields/envoyconnect-field-helpers.php:140
+msgid "Aruba"
+msgstr "Aruba"
+
+#: fields/envoyconnect-field-helpers.php:141
+msgid "Australia"
+msgstr "Australia"
+
+#: fields/envoyconnect-field-helpers.php:142
+msgid "Austria"
+msgstr "Austria"
+
+#: fields/envoyconnect-field-helpers.php:143
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: fields/envoyconnect-field-helpers.php:144
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: fields/envoyconnect-field-helpers.php:145
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: fields/envoyconnect-field-helpers.php:146
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+#: fields/envoyconnect-field-helpers.php:147
+msgid "Barbados"
+msgstr "Barbados"
+
+#: fields/envoyconnect-field-helpers.php:148
+msgid "Belarus"
+msgstr "Bielorussia"
+
+#: fields/envoyconnect-field-helpers.php:149
+msgid "Belgium"
+msgstr "Belgio"
+
+#: fields/envoyconnect-field-helpers.php:150
+msgid "Belize"
+msgstr "Belize"
+
+#: fields/envoyconnect-field-helpers.php:151
+msgid "Benin"
+msgstr "Benin"
+
+#: fields/envoyconnect-field-helpers.php:152
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: fields/envoyconnect-field-helpers.php:153
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: fields/envoyconnect-field-helpers.php:154
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: fields/envoyconnect-field-helpers.php:155
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnia-Erzegovina"
+
+#: fields/envoyconnect-field-helpers.php:156
+msgid "Botswana"
+msgstr "Botswana"
+
+#: fields/envoyconnect-field-helpers.php:157
+msgid "Brazil"
+msgstr "Brasile"
+
+#: fields/envoyconnect-field-helpers.php:158
+msgid "British Indian Ocean Territory"
+msgstr "Territorio britannico dell'Oceano Indiano"
+
+#: fields/envoyconnect-field-helpers.php:159
+msgid "British Virgin Islands"
+msgstr "Isole Vergini Britanniche"
+
+#: fields/envoyconnect-field-helpers.php:160
+msgid "Brunei"
+msgstr "Brunei"
+
+#: fields/envoyconnect-field-helpers.php:161
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: fields/envoyconnect-field-helpers.php:162
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: fields/envoyconnect-field-helpers.php:163
+msgid "Burundi"
+msgstr "Burundi"
+
+#: fields/envoyconnect-field-helpers.php:164
+msgid "Cambodia"
+msgstr "Cambogia"
+
+#: fields/envoyconnect-field-helpers.php:165
+msgid "Cameroon"
+msgstr "Camerun"
+
+#: fields/envoyconnect-field-helpers.php:166
+msgid "Canada"
+msgstr "Canada"
+
+#: fields/envoyconnect-field-helpers.php:167
+msgid "Cape Verde"
+msgstr "Capo Verde"
+
+#: fields/envoyconnect-field-helpers.php:168
+msgid "Cayman Islands"
+msgstr "Isole Cayman"
+
+#: fields/envoyconnect-field-helpers.php:169
+msgid "Central African Republic"
+msgstr "Repubblica Centrale Africana"
+
+#: fields/envoyconnect-field-helpers.php:170
+msgid "Chad"
+msgstr "Ciad"
+
+#: fields/envoyconnect-field-helpers.php:171
+msgid "Chile"
+msgstr "Cile"
+
+#: fields/envoyconnect-field-helpers.php:172
+msgid "China"
+msgstr "Cina"
+
+#: fields/envoyconnect-field-helpers.php:173
+msgid "Christmas Island"
+msgstr "Isola di Natale"
+
+#: fields/envoyconnect-field-helpers.php:174
+msgid "Cocos (Keeling) Islands"
+msgstr "Isole Cocos (Keeling)"
+
+#: fields/envoyconnect-field-helpers.php:175
+msgid "Colombia"
+msgstr "Colombia"
+
+#: fields/envoyconnect-field-helpers.php:176
+msgid "Comoros"
+msgstr "Comore"
+
+#: fields/envoyconnect-field-helpers.php:177
+msgid "Congo (Brazzaville)"
+msgstr "Congo (Brazzaville)"
+
+#: fields/envoyconnect-field-helpers.php:178
+msgid "Congo (Kinshasa)"
+msgstr "Congo (Kinshasa)"
+
+#: fields/envoyconnect-field-helpers.php:179
+msgid "Cook Islands"
+msgstr "Isole Cook"
+
+#: fields/envoyconnect-field-helpers.php:180
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: fields/envoyconnect-field-helpers.php:181
+msgid "Croatia"
+msgstr "Croazia"
+
+#: fields/envoyconnect-field-helpers.php:182
+msgid "Cuba"
+msgstr "Cuba"
+
+#: fields/envoyconnect-field-helpers.php:183
+msgid "Cyprus"
+msgstr "Cipro"
+
+#: fields/envoyconnect-field-helpers.php:184
+msgid "Czech Republic"
+msgstr "Repubblica Ceca"
+
+#: fields/envoyconnect-field-helpers.php:185
+msgid "Denmark"
+msgstr "Danimarca"
+
+#: fields/envoyconnect-field-helpers.php:186
+msgid "Djibouti"
+msgstr "Gibuti"
+
+#: fields/envoyconnect-field-helpers.php:187
+msgid "Dominica"
+msgstr "Dominica"
+
+#: fields/envoyconnect-field-helpers.php:188
+msgid "Dominican Republic"
+msgstr "Repubblica Dominicana"
+
+#: fields/envoyconnect-field-helpers.php:189
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: fields/envoyconnect-field-helpers.php:190
+msgid "Egypt"
+msgstr "Egitto"
+
+#: fields/envoyconnect-field-helpers.php:191
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: fields/envoyconnect-field-helpers.php:192
+msgid "Equatorial Guinea"
+msgstr "Guinea Equatoriale"
+
+#: fields/envoyconnect-field-helpers.php:193
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: fields/envoyconnect-field-helpers.php:194
+msgid "Estonia"
+msgstr "Estonia"
+
+#: fields/envoyconnect-field-helpers.php:195
+msgid "Ethiopia"
+msgstr "Etiopia"
+
+#: fields/envoyconnect-field-helpers.php:196
+msgid "Falkland Islands"
+msgstr "Isole Falkland"
+
+#: fields/envoyconnect-field-helpers.php:197
+msgid "Faroe Islands"
+msgstr "Isole Faroe"
+
+#: fields/envoyconnect-field-helpers.php:198
+msgid "Fiji"
+msgstr "Fiji"
+
+#: fields/envoyconnect-field-helpers.php:199
+msgid "Finland"
+msgstr "Finlandia"
+
+#: fields/envoyconnect-field-helpers.php:200
+msgid "France"
+msgstr "Francia"
+
+#: fields/envoyconnect-field-helpers.php:201
+msgid "French Guiana"
+msgstr "Guiana Francese"
+
+#: fields/envoyconnect-field-helpers.php:202
+msgid "French Polynesia"
+msgstr "Polinesia Francese"
+
+#: fields/envoyconnect-field-helpers.php:203
+msgid "French Southern Territories"
+msgstr "Territori francesi meridionali"
+
+#: fields/envoyconnect-field-helpers.php:204
+msgid "Gabon"
+msgstr "Gabon"
+
+#: fields/envoyconnect-field-helpers.php:205
+msgid "Gambia"
+msgstr "Gambia"
+
+#: fields/envoyconnect-field-helpers.php:207
+msgid "Germany"
+msgstr "Germania"
+
+#: fields/envoyconnect-field-helpers.php:208
+msgid "Ghana"
+msgstr "Ghana"
+
+#: fields/envoyconnect-field-helpers.php:209
+msgid "Gibraltar"
+msgstr "Gibilterra"
+
+#: fields/envoyconnect-field-helpers.php:210
+msgid "Greece"
+msgstr "Grecia"
+
+#: fields/envoyconnect-field-helpers.php:211
+msgid "Greenland"
+msgstr "Groenlandia"
+
+#: fields/envoyconnect-field-helpers.php:212
+msgid "Grenada"
+msgstr "Granada"
+
+#: fields/envoyconnect-field-helpers.php:213
+msgid "Guadeloupe"
+msgstr "Guadalupe"
+
+#: fields/envoyconnect-field-helpers.php:214
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: fields/envoyconnect-field-helpers.php:215
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: fields/envoyconnect-field-helpers.php:216
+msgid "Guinea"
+msgstr "Guinea"
+
+#: fields/envoyconnect-field-helpers.php:217
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: fields/envoyconnect-field-helpers.php:218
+msgid "Guyana"
+msgstr "Guyana"
+
+#: fields/envoyconnect-field-helpers.php:219
+msgid "Haiti"
+msgstr "Haiti"
+
+#: fields/envoyconnect-field-helpers.php:220
+msgid "Honduras"
+msgstr "Honduras"
+
+#: fields/envoyconnect-field-helpers.php:221
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: fields/envoyconnect-field-helpers.php:222
+msgid "Hungary"
+msgstr "Ungheria"
+
+#: fields/envoyconnect-field-helpers.php:223
+msgid "Iceland"
+msgstr "Islanda"
+
+#: fields/envoyconnect-field-helpers.php:224
+msgid "India"
+msgstr "India"
+
+#: fields/envoyconnect-field-helpers.php:225
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#: fields/envoyconnect-field-helpers.php:226
+msgid "Iran"
+msgstr "Iran"
+
+#: fields/envoyconnect-field-helpers.php:227
+msgid "Iraq"
+msgstr "Iraq"
+
+#: fields/envoyconnect-field-helpers.php:228
+msgid "Republic of Ireland"
+msgstr "Irlanda"
+
+#: fields/envoyconnect-field-helpers.php:229
+msgid "Isle of Man"
+msgstr "Isola di Man"
+
+#: fields/envoyconnect-field-helpers.php:230
+msgid "Israel"
+msgstr "Israele"
+
+#: fields/envoyconnect-field-helpers.php:231
+msgid "Italy"
+msgstr "Italia"
+
+#: fields/envoyconnect-field-helpers.php:232
+msgid "Ivory Coast"
+msgstr "Costa d&#39;Avorio"
+
+#: fields/envoyconnect-field-helpers.php:233
+msgid "Jamaica"
+msgstr "Giamaica"
+
+#: fields/envoyconnect-field-helpers.php:234
+msgid "Japan"
+msgstr "Giappone"
+
+#: fields/envoyconnect-field-helpers.php:235
+msgid "Jersey"
+msgstr "Jersey"
+
+#: fields/envoyconnect-field-helpers.php:236
+msgid "Jordan"
+msgstr "Giordania"
+
+#: fields/envoyconnect-field-helpers.php:237
+msgid "Kazakhstan"
+msgstr "Kazakistan"
+
+#: fields/envoyconnect-field-helpers.php:238
+msgid "Kenya"
+msgstr "Kenya"
+
+#: fields/envoyconnect-field-helpers.php:239
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: fields/envoyconnect-field-helpers.php:240
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: fields/envoyconnect-field-helpers.php:241
+msgid "Kyrgyzstan"
+msgstr "Kirghizistan"
+
+#: fields/envoyconnect-field-helpers.php:242
+msgid "Laos"
+msgstr "Laos"
+
+#: fields/envoyconnect-field-helpers.php:243
+msgid "Latvia"
+msgstr "Lettonia"
+
+#: fields/envoyconnect-field-helpers.php:244
+msgid "Lebanon"
+msgstr "Libano"
+
+#: fields/envoyconnect-field-helpers.php:245
+msgid "Lesotho"
+msgstr "Lesoto"
+
+#: fields/envoyconnect-field-helpers.php:246
+msgid "Liberia"
+msgstr "Liberia"
+
+#: fields/envoyconnect-field-helpers.php:247
+msgid "Libya"
+msgstr "Libia"
+
+#: fields/envoyconnect-field-helpers.php:248
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: fields/envoyconnect-field-helpers.php:249
+msgid "Lithuania"
+msgstr "Lituania"
+
+#: fields/envoyconnect-field-helpers.php:250
+msgid "Luxembourg"
+msgstr "Lussemburgo"
+
+#: fields/envoyconnect-field-helpers.php:251
+msgid "Macao S.A.R., China"
+msgstr "S.A.R. Macao, Cina"
+
+#: fields/envoyconnect-field-helpers.php:252
+msgid "Macedonia"
+msgstr "Macedonia"
+
+#: fields/envoyconnect-field-helpers.php:253
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: fields/envoyconnect-field-helpers.php:254
+msgid "Malawi"
+msgstr "Malawi"
+
+#: fields/envoyconnect-field-helpers.php:255
+msgid "Malaysia"
+msgstr "Malesia"
+
+#: fields/envoyconnect-field-helpers.php:256
+msgid "Maldives"
+msgstr "Maldive"
+
+#: fields/envoyconnect-field-helpers.php:257
+msgid "Mali"
+msgstr "Mali"
+
+#: fields/envoyconnect-field-helpers.php:258
+msgid "Malta"
+msgstr "Malta"
+
+#: fields/envoyconnect-field-helpers.php:259
+msgid "Martinique"
+msgstr "Martinica"
+
+#: fields/envoyconnect-field-helpers.php:260
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: fields/envoyconnect-field-helpers.php:261
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: fields/envoyconnect-field-helpers.php:262
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: fields/envoyconnect-field-helpers.php:263
+msgid "Mexico"
+msgstr "Messico"
+
+#: fields/envoyconnect-field-helpers.php:264
+msgid "Moldova"
+msgstr "Moldavia"
+
+#: fields/envoyconnect-field-helpers.php:265
+msgid "Monaco"
+msgstr "Monaco"
+
+#: fields/envoyconnect-field-helpers.php:266
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: fields/envoyconnect-field-helpers.php:267
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: fields/envoyconnect-field-helpers.php:268
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: fields/envoyconnect-field-helpers.php:269
+msgid "Morocco"
+msgstr "Marocco"
+
+#: fields/envoyconnect-field-helpers.php:270
+msgid "Mozambique"
+msgstr "Mozambico"
+
+#: fields/envoyconnect-field-helpers.php:271
+msgid "Myanmar"
+msgstr "Birmania"
+
+#: fields/envoyconnect-field-helpers.php:272
+msgid "Namibia"
+msgstr "Namibia"
+
+#: fields/envoyconnect-field-helpers.php:273
+msgid "Nauru"
+msgstr "Nauru"
+
+#: fields/envoyconnect-field-helpers.php:274
+msgid "Nepal"
+msgstr "Nepal"
+
+#: fields/envoyconnect-field-helpers.php:275
+msgid "Netherlands"
+msgstr "Paesi Bassi"
+
+#: fields/envoyconnect-field-helpers.php:276
+msgid "Netherlands Antilles"
+msgstr "Antille Olandesi"
+
+#: fields/envoyconnect-field-helpers.php:277
+msgid "New Caledonia"
+msgstr "Nuova Caledonia"
+
+#: fields/envoyconnect-field-helpers.php:278
+msgid "New Zealand"
+msgstr "Nuova Zelanda"
+
+#: fields/envoyconnect-field-helpers.php:279
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: fields/envoyconnect-field-helpers.php:280
+msgid "Niger"
+msgstr "Niger"
+
+#: fields/envoyconnect-field-helpers.php:281
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: fields/envoyconnect-field-helpers.php:282
+msgid "Niue"
+msgstr "Niue"
+
+#: fields/envoyconnect-field-helpers.php:283
+msgid "Norfolk Island"
+msgstr "Isola di Norfolk"
+
+#: fields/envoyconnect-field-helpers.php:284
+msgid "North Korea"
+msgstr "Nord Corea"
+
+#: fields/envoyconnect-field-helpers.php:285
+msgid "Northern Mariana Islands"
+msgstr "Isole Marianne Settentrionali"
+
+#: fields/envoyconnect-field-helpers.php:286
+msgid "Norway"
+msgstr "Norvegia"
+
+#: fields/envoyconnect-field-helpers.php:287
+msgid "Oman"
+msgstr "Oman"
+
+#: fields/envoyconnect-field-helpers.php:288
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: fields/envoyconnect-field-helpers.php:289
+msgid "Palau"
+msgstr "Palau"
+
+#: fields/envoyconnect-field-helpers.php:290
+msgid "Palestinian Territory"
+msgstr "Territori Palestinesi"
+
+#: fields/envoyconnect-field-helpers.php:291
+msgid "Panama"
+msgstr "Panama"
+
+#: fields/envoyconnect-field-helpers.php:292
+msgid "Papua New Guinea"
+msgstr "Papua Nuova Guinea"
+
+#: fields/envoyconnect-field-helpers.php:293
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: fields/envoyconnect-field-helpers.php:294
+msgid "Peru"
+msgstr "Peru"
+
+#: fields/envoyconnect-field-helpers.php:295
+msgid "Philippines"
+msgstr "Filippine"
+
+#: fields/envoyconnect-field-helpers.php:296
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+#: fields/envoyconnect-field-helpers.php:297
+msgid "Poland"
+msgstr "Polonia"
+
+#: fields/envoyconnect-field-helpers.php:298
+msgid "Portugal"
+msgstr "Portogallo"
+
+#: fields/envoyconnect-field-helpers.php:299
+msgid "Qatar"
+msgstr "Qatar"
+
+#: fields/envoyconnect-field-helpers.php:300
+msgid "Reunion"
+msgstr "Reunion"
+
+#: fields/envoyconnect-field-helpers.php:301
+msgid "Romania"
+msgstr "Romania"
+
+#: fields/envoyconnect-field-helpers.php:302
+msgid "Russia"
+msgstr "Russia"
+
+#: fields/envoyconnect-field-helpers.php:303
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: fields/envoyconnect-field-helpers.php:304
+msgid "Saint Barth&eacute;lemy"
+msgstr "San Bartolomeo"
+
+#: fields/envoyconnect-field-helpers.php:305
+msgid "Saint Helena"
+msgstr "Sant&#39;Elena"
+
+#: fields/envoyconnect-field-helpers.php:306
+msgid "Saint Kitts and Nevis"
+msgstr "San Cristoforo e Nevis"
+
+#: fields/envoyconnect-field-helpers.php:307
+msgid "Saint Lucia"
+msgstr "Santa Lucia"
+
+#: fields/envoyconnect-field-helpers.php:308
+msgid "Saint Martin (French part)"
+msgstr "Saint Martin (parte francese)"
+
+#: fields/envoyconnect-field-helpers.php:309
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint Pierre and Miquelon"
+
+#: fields/envoyconnect-field-helpers.php:310
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint Vincent and the Grenadines"
+
+#: fields/envoyconnect-field-helpers.php:311
+msgid "Samoa"
+msgstr "Samoa"
+
+#: fields/envoyconnect-field-helpers.php:312
+msgid "San Marino"
+msgstr "San Marino"
+
+#: fields/envoyconnect-field-helpers.php:313
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+
+#: fields/envoyconnect-field-helpers.php:314
+msgid "Saudi Arabia"
+msgstr "Arabia Saudita"
+
+#: fields/envoyconnect-field-helpers.php:315
+msgid "Senegal"
+msgstr "Senegal"
+
+#: fields/envoyconnect-field-helpers.php:316
+msgid "Serbia"
+msgstr "Serbia"
+
+#: fields/envoyconnect-field-helpers.php:317
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: fields/envoyconnect-field-helpers.php:318
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: fields/envoyconnect-field-helpers.php:319
+msgid "Singapore"
+msgstr "Singapore"
+
+#: fields/envoyconnect-field-helpers.php:320
+msgid "Slovakia"
+msgstr "Slovacchia"
+
+#: fields/envoyconnect-field-helpers.php:321
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: fields/envoyconnect-field-helpers.php:322
+msgid "Solomon Islands"
+msgstr "Isole Salomone"
+
+#: fields/envoyconnect-field-helpers.php:323
+msgid "Somalia"
+msgstr "Somalia"
+
+#: fields/envoyconnect-field-helpers.php:324
+msgid "South Africa"
+msgstr "Sud Africa"
+
+#: fields/envoyconnect-field-helpers.php:325
+msgid "South Georgia/Sandwich Islands"
+msgstr "Georgia del Sud/Isole Sandwich"
+
+#: fields/envoyconnect-field-helpers.php:326
+msgid "South Korea"
+msgstr "Sud Corea"
+
+#: fields/envoyconnect-field-helpers.php:327
+msgid "Spain"
+msgstr "Spagna"
+
+#: fields/envoyconnect-field-helpers.php:328
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: fields/envoyconnect-field-helpers.php:329
+msgid "Sudan"
+msgstr "Sudan"
+
+#: fields/envoyconnect-field-helpers.php:330
+msgid "Suriname"
+msgstr "Suriname"
+
+#: fields/envoyconnect-field-helpers.php:331
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard e Jan Mayen"
+
+#: fields/envoyconnect-field-helpers.php:332
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: fields/envoyconnect-field-helpers.php:333
+msgid "Sweden"
+msgstr "Svezia"
+
+#: fields/envoyconnect-field-helpers.php:334
+msgid "Switzerland"
+msgstr "Svizzera"
+
+#: fields/envoyconnect-field-helpers.php:335
+msgid "Syria"
+msgstr "Siria"
+
+#: fields/envoyconnect-field-helpers.php:336
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: fields/envoyconnect-field-helpers.php:337
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#: fields/envoyconnect-field-helpers.php:338
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: fields/envoyconnect-field-helpers.php:339
+msgid "Thailand"
+msgstr "Tailandia"
+
+#: fields/envoyconnect-field-helpers.php:340
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: fields/envoyconnect-field-helpers.php:341
+msgid "Togo"
+msgstr "Togo"
+
+#: fields/envoyconnect-field-helpers.php:342
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: fields/envoyconnect-field-helpers.php:343
+msgid "Tonga"
+msgstr "Tonga"
+
+#: fields/envoyconnect-field-helpers.php:344
+msgid "Trinidad and Tobago"
+msgstr "Trinidad e Tobago"
+
+#: fields/envoyconnect-field-helpers.php:345
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: fields/envoyconnect-field-helpers.php:346
+msgid "Turkey"
+msgstr "Turchia"
+
+#: fields/envoyconnect-field-helpers.php:347
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: fields/envoyconnect-field-helpers.php:348
+msgid "Turks and Caicos Islands"
+msgstr "Isole Turks e Caicos"
+
+#: fields/envoyconnect-field-helpers.php:349
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: fields/envoyconnect-field-helpers.php:350
+msgid "US Minor Outlying Islands"
+msgstr "Isole Minori degli Stati Uniti"
+
+#: fields/envoyconnect-field-helpers.php:351
+msgid "Uganda"
+msgstr "Uganda"
+
+#: fields/envoyconnect-field-helpers.php:352
+msgid "Ukraine"
+msgstr "Ucraina"
+
+#: fields/envoyconnect-field-helpers.php:353
+msgid "United Arab Emirates"
+msgstr "Emirati Arabi Uniti"
+
+#: fields/envoyconnect-field-helpers.php:354
+msgid "United Kingdom"
+msgstr "Regno Unito"
+
+#: fields/envoyconnect-field-helpers.php:355
+msgid "United States"
+msgstr "Stati Uniti"
+
+#: fields/envoyconnect-field-helpers.php:356
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: fields/envoyconnect-field-helpers.php:357
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: fields/envoyconnect-field-helpers.php:358
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: fields/envoyconnect-field-helpers.php:359
+msgid "Vatican"
+msgstr "Vaticano"
+
+#: fields/envoyconnect-field-helpers.php:360
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: fields/envoyconnect-field-helpers.php:361
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: fields/envoyconnect-field-helpers.php:362
+msgid "Wallis and Futuna"
+msgstr "Wallis e Futuna"
+
+#: fields/envoyconnect-field-helpers.php:363
+msgid "Western Sahara"
+msgstr "Sahara Occidentale"
+
+#: fields/envoyconnect-field-helpers.php:364
+msgid "Yemen"
+msgstr "Yemen"
+
+#: fields/envoyconnect-field-helpers.php:365
+msgid "Zambia"
+msgstr "Zambia"
+
+#: fields/envoyconnect-field-helpers.php:366
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: fields/envoyconnect-field-management.php:8
+msgid "that was an illegal action. no data was saved."
+msgstr "è un'azione illegale. Nessun dato è stato salvato."
+
+#: fields/envoyconnect-field-management.php:68
+msgid "There seems to be a problem."
+msgstr "Sembra ci sia un prblema."
+
+#: fields/envoyconnect-field-management.php:202
+msgid "Fields updated!"
+msgstr "Campi aggiornati!."
+
+#: fields/envoyconnect-field-management.php:204
+msgid "There were no fields to update."
+msgstr "Non ci sono campi da aggiornare."
+
+#: fields/envoyconnect-field-management.php:215 options/envoyconnect-settings.php:107
+#: users/envoyconnect-profile.php:14
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai permessi sufficienti per accedere a questa pagina."
+
+#: fields/envoyconnect-field-management.php:233
+msgid "Add a Field"
+msgstr "Aggiungi un Campo"
+
+#: fields/envoyconnect-field-management.php:247
+msgid "Column One"
+msgstr "Colonna Uno"
+
+#: fields/envoyconnect-field-management.php:282
+msgid "Column Two"
+msgstr "Colonna Due"
+
+#: fields/envoyconnect-field-management.php:304
+msgid "Unused fields"
+msgstr "Campi Inutilizzati"
+
+#: fields/envoyconnect-field-management.php:450
+msgid "Only Admins can see this."
+msgstr "Solo l&#39;Amministratore pu&ograve; vedere questo"
+
+#: fields/envoyconnect-field-management.php:453
+msgid "This field is publicly visible."
+msgstr "Questo campo &egrave; visibile pubblicamente"
+
+#: fields/envoyconnect-field-management.php:456
+msgid "This field appears at signup."
+msgstr "Questo campo viene visualizzato al momento dell&#39;iscrizione."
+
+#: fields/envoyconnect-field-management.php:474 fields/envoyconnect-form.php:195
+msgid "Delete this field"
+msgstr "Cancellare questo campo"
+
+#: fields/envoyconnect-field-management.php:474
+#, fuzzy
+msgid "Please remove the fields in this section first!"
+msgstr "Si prega di scegliere prima una chiave per questo campo!"
+
+#: fields/envoyconnect-field-management.php:475 fields/envoyconnect-form.php:196
+#: options/envoyconnect-settings.php:252
+msgid "Undo"
+msgstr "Annulla"
+
+#: fields/envoyconnect-field-management.php:482
+msgid "Labels"
+msgstr "Etichette"
+
+#: fields/envoyconnect-field-management.php:485
+#: fields/envoyconnect-field-management.php:753
+msgid "Name"
+msgstr "Nome"
+
+#: fields/envoyconnect-field-management.php:485
+msgid "This cannot be changed."
+msgstr "Questo non pu&ograve; essere modificato."
+
+#: fields/envoyconnect-field-management.php:489
+msgid "Label"
+msgstr "Etichetta"
+
+#: fields/envoyconnect-field-management.php:489
+msgid "Change the title of this field."
+msgstr "Modificare il titolo di questo campo."
+
+#: fields/envoyconnect-field-management.php:495
+#: fields/envoyconnect-field-management.php:498
+msgid "Key (Required)"
+msgstr "Chiave (Obbligatorio)"
+
+#: fields/envoyconnect-field-management.php:495
+msgid ""
+"This is the unique key for this field in the database. It must be a unique "
+"name, contain only lowercase characters and no spaces -- use underscores or "
+"dashes."
+msgstr ""
+"Questa &egrave; la chiave unica per questo campo nel database. Deve essere "
+"un nome univoco, contenere solo caratteri minuscoli e senza spazi - usare  "
+"trattini bassi o trattini."
+
+#: fields/envoyconnect-field-management.php:498
+msgid ""
+"This is the unique key for this field in the database and cannot be changed."
+msgstr ""
+"Questa &egrave; la chiave univoca per questo campo nel database e non "
+"pu&ograve; essere modificata."
+
+#: fields/envoyconnect-field-management.php:505
+msgid "Tag"
+msgstr "Tag"
+
+#: fields/envoyconnect-field-management.php:505
+msgid "Uppercase key for syncing externally."
+msgstr "Tasto maiuscolo per la sincronizzazione esterna."
+
+#: fields/envoyconnect-field-management.php:510
+msgid "Help Text"
+msgstr "Testo guida"
+
+#: fields/envoyconnect-field-management.php:510
+msgid ""
+"Text you enter here will appear alongside the field through a similar icon."
+msgstr ""
+"Il testo che hai inserito qui comparirà al fianco del campo attraverso una "
+"icona simile."
+
+#: fields/envoyconnect-field-management.php:540
+msgid "Options"
+msgstr "Opzioni"
+
+#: fields/envoyconnect-field-management.php:541
+msgid "Control how and where this field will behave and appear."
+msgstr ""
+"Controllare come e dove questo campo si comporter&agrave; ed apparir&agrave;."
+
+#: fields/envoyconnect-field-management.php:542
+msgid "Admin"
+msgstr "Amministratore"
+
+#: fields/envoyconnect-field-management.php:544
+msgid "User"
+msgstr "Utente"
+
+#: fields/envoyconnect-field-management.php:546
+msgid "Signup"
+msgstr "Iscrizione"
+
+#: fields/envoyconnect-field-management.php:547
+#, fuzzy
+msgid "Reports & Forms"
+msgstr "Rapporti"
+
+#: fields/envoyconnect-field-management.php:548 fields/envoyconnect-field.php:303
+msgid "Required"
+msgstr "Obbligatorio"
+
+#: fields/envoyconnect-field-management.php:549
+#: options/envoyconnect-actions-settings.php:73
+msgid "Public"
+msgstr "Pubblico"
+
+#: fields/envoyconnect-field-management.php:551
+msgid "Unique"
+msgstr "Unico"
+
+#: fields/envoyconnect-field-management.php:593
+msgid "Field Type"
+msgstr "Tipo di Campo"
+
+#: fields/envoyconnect-field-management.php:599
+msgid "This field is restricted and cannot be modified."
+msgstr "Questo campo &egrave; riservato e non pu&ograve; essere modificato."
+
+#: fields/envoyconnect-field-management.php:616
+msgid "Please make a selection."
+msgstr "Per favore effettua una selezione."
+
+#: fields/envoyconnect-field-management.php:620
+msgid "Section"
+msgstr "Sezione"
+
+#: fields/envoyconnect-field-management.php:621
+msgid "Text"
+msgstr "Testo"
+
+#: fields/envoyconnect-field-management.php:622
+msgid "Text Area"
+msgstr "Area di Testo"
+
+#: fields/envoyconnect-field-management.php:623
+msgid "Single Checkbox"
+msgstr "Casella di controllo singola"
+
+#: fields/envoyconnect-field-management.php:624
+msgid "Taxonomy (checkboxes)"
+msgstr "Tassonomia (caselle di controllo)"
+
+#: fields/envoyconnect-field-management.php:625
+msgid "Radio Button"
+msgstr "Pulsante di opzione"
+
+#: fields/envoyconnect-field-management.php:626
+msgid "Select List"
+msgstr "Selezione ad Elenco"
+
+#: fields/envoyconnect-field-management.php:627
+msgid "Multi-Text"
+msgstr "Multi-Testo"
+
+#: fields/envoyconnect-field-management.php:628
+#: options/envoyconnect-system-settings.php:142
+#: posts/envoyconnect-user-actions.php:302 users/envoyconnect-profile.php:553
+msgid "Date"
+msgstr "Data"
+
+#: fields/envoyconnect-field-management.php:638
+msgid ""
+"Data integrity may be compromised if changing the field type after you have "
+"recorded data."
+msgstr ""
+"L&#39;integrit&agrave; dei dati può essere compromessa se si cambia il tipo "
+"di campo, dopo aver registrato i dati."
+
+#: fields/envoyconnect-field-management.php:738
+msgid "Terms"
+msgstr "Condizioni"
+
+#: fields/envoyconnect-field-management.php:739
+msgid "View, add and delete terms"
+msgstr "Visualizzare, aggiungere e cancellare le condizioni."
+
+#: fields/envoyconnect-field-management.php:740
+msgid "Open editor"
+msgstr "Apri editor"
+
+#: fields/envoyconnect-field-management.php:745
+msgid "Heirarchical Options"
+msgstr "Opzioni gerarchiche"
+
+#: fields/envoyconnect-field-management.php:746
+msgid "Include/exclude child terms and choose sort order"
+msgstr "Includere/escludere termini derivati e scegliere ordinamento"
+
+#: fields/envoyconnect-field-management.php:747
+msgid "Children"
+msgstr "Derivati"
+
+#: fields/envoyconnect-field-management.php:751
+msgid "Sort order"
+msgstr "Ordinamento"
+
+#: fields/envoyconnect-field-management.php:752
+msgid "Order Added"
+msgstr "Ordine Inserito"
+
+#: fields/envoyconnect-field-management.php:761
+msgid "Content"
+msgstr "Contenuto"
+
+#: fields/envoyconnect-field-management.php:762
+msgid "Which post types will this also be attached to?"
+msgstr "Quali tipi di articoli saranno allegati anche a questo?"
+
+#: fields/envoyconnect-field-management.php:809
+#, php-format
+msgid "Choices%1$sOptionally enter pre-selected qualities for each row.%2$s"
+msgstr ""
+
+#: fields/envoyconnect-field-management.php:816
+#: fields/envoyconnect-field-management.php:832
+#: fields/envoyconnect-field-management.php:848
+msgid "key:"
+msgstr "chiave:"
+
+#: fields/envoyconnect-field-management.php:816
+#: fields/envoyconnect-field-management.php:832
+#: fields/envoyconnect-field-management.php:848
+msgid "label:"
+msgstr "etichetta:"
+
+#: fields/envoyconnect-field-management.php:868
+#, php-format
+msgid "%1$s Drag other fields into the area below to group them %2$s"
+msgstr ""
+"%1$s Trascinare altri campi nell'area sottostante per raggrupparli %2$s"
+
+#: fields/envoyconnect-field-management.php:872
+#, php-format
+msgid "%1$s Supply the name of the function you wish to call %2$s"
+msgstr "%1$s Fornire il nome della funzione che si desidera chiamare %2$s"
+
+#: fields/envoyconnect-field-management.php:880
+#, php-format
+msgid ""
+"%1$s Please choose a key first before selecting a field type or dragging "
+"into place. %2$s"
+msgstr ""
+"%1$s Scegliere un tasto prima di selezionare un tipo di campo o di "
+"trascinarlo nel posto. %2$s"
+
+#: fields/envoyconnect-field-management.php:882 fields/envoyconnect-form.php:71
+#: reports/envoyconnect-actions.php:177
+msgid "Please make a selection"
+msgstr "Si prega di effettuare una selezione"
+
+#: fields/envoyconnect-field-management.php:892
+#, php-format
+msgid "%1$s There are no choices for this field type %2$s"
+msgstr "%1$s Non ci sono scelte per questo tipo di campo %2$s"
+
+#: fields/envoyconnect-field-management.php:910 fields/envoyconnect-form.php:88
+#: fields/envoyconnect-form.php:132 fields/envoyconnect-form.php:148
+msgid "terribly sorry."
+msgstr "terribilmente dispiaciuto."
+
+#: fields/envoyconnect-field-management.php:1006
+msgid "Please choose a key for this field first!"
+msgstr "Si prega di scegliere prima una chiave per questo campo!"
+
+#: fields/envoyconnect-field.php:339
+msgid "Only visible to admins."
+msgstr "Visibile solo agli amministratori"
+
+#: fields/envoyconnect-field.php:340
+msgid "Public or Private"
+msgstr "Pubblico o Privato"
+
+#: fields/envoyconnect-field.php:481
+msgid "Append"
+msgstr "Accodare"
+
+#: fields/envoyconnect-field.php:481
+msgid "Overwrite"
+msgstr "Sovrascrivere"
+
+#: fields/envoyconnect-field.php:481
+msgid "Remove"
+msgstr "Rimuovere"
+
+#: fields/envoyconnect-field.php:484
+msgid "Add terms"
+msgstr "Aggiungere termini"
+
+#: fields/envoyconnect-field.php:572
+msgid "All Options"
+msgstr "Tutte le Opzioni"
+
+#: fields/envoyconnect-field.php:628
+msgid "No role for this site"
+msgstr "Nessun ruolo per questo sito"
+
+#: fields/envoyconnect-field.php:630 fields/envoyconnect-field.php:632
+msgid "&mdash; No role for this site &mdash;"
+msgstr "&mdash; Nessun ruolo per questo sito &mdash; "
+
+#: fields/envoyconnect-field.php:765 fields/envoyconnect-field.php:773
+msgid "yes"
+msgstr "si"
+
+#: fields/envoyconnect-field.php:766 fields/envoyconnect-field.php:774
+msgid "no"
+msgstr "no"
+
+#: fields/envoyconnect-field.php:772 reports/envoyconnect-filter-form.php:334
+msgid "empty"
+msgstr "vuoto"
+
+#: fields/envoyconnect-field.php:1081
+msgid "Value"
+msgstr ""
+
+#: fields/envoyconnect-field.php:1155 fields/envoyconnect-field.php:1160
+msgid "type password"
+msgstr "digita la password"
+
+#: fields/envoyconnect-field.php:1156 fields/envoyconnect-field.php:1161
+msgid "re-type password"
+msgstr "ri-digita la password"
+
+#: fields/envoyconnect-field.php:1255
+msgid "start"
+msgstr "inizio"
+
+#: fields/envoyconnect-field.php:1256
+msgid "end"
+msgstr "fine"
+
+#: fields/envoyconnect-form.php:55
+msgid "Confirm"
+msgstr "Conferma"
+
+#: fields/envoyconnect-form.php:72
+msgid "Choose a form to edit"
+msgstr "Scegli una scheda per modificare"
+
+#: fields/envoyconnect-form.php:77
+msgid "Create a New Form"
+msgstr "Crea una nuova scheda"
+
+#: fields/envoyconnect-form.php:78
+msgid "+ Add Form"
+msgstr "+ Aggiungi Scheda"
+
+#: fields/envoyconnect-form.php:108
+msgid "New form failed"
+msgstr "Nuovo modulo fallito"
+
+#: fields/envoyconnect-form.php:113
+msgid "Duplicate form. Please try another name."
+msgstr "Modulo duplicato. Per favore prova un altro nome."
+
+#: fields/envoyconnect-form.php:120
+msgid "New form successfully created"
+msgstr "Nuovo modulo creato con successo"
+
+#: fields/envoyconnect-form.php:166
+msgid "Delete failed"
+msgstr "Cancellazione fallita"
+
+#: fields/envoyconnect-form.php:168
+msgid "Form successfully deleted"
+msgstr "Schedao cancellata con sucesso"
+
+#: fields/envoyconnect-form.php:210
+msgid "Messages"
+msgstr "Messaggi"
+
+#: fields/envoyconnect-form.php:211
+#, php-format
+msgid "Add a %1$sgreeting%2$s or instructions to the form."
+msgstr "Aggiungi un %1$ssaluto%2$s o istruzioni al modulo."
+
+#: fields/envoyconnect-form.php:214
+#, php-format
+msgid "Add a %1$sthank you%2$s or instructions to the form."
+msgstr "Aggiungi %1$sgrazie%2$s o istruzioni al modulo."
+
+#: fields/envoyconnect-form.php:221
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: fields/envoyconnect-form.php:222
+#, php-format
+msgid ""
+"Decide which email addresses should be %1$snotified%2$s after the form is "
+"submitted. Multiple emails should be separated by commas."
+msgstr ""
+"Decidere quali indirizzi di posta elettronica devono essere %1$snotificati"
+"%2$s dopo che il modulo viene inviato. Pi&ugrave; e-mail devono essere "
+"separate da virgole."
+
+#: fields/envoyconnect-form.php:228 options/envoyconnect-settings.php:235
+msgid "Add fields"
+msgstr "Aggiungi campi"
+
+#: fields/envoyconnect-form.php:230
+msgid "+ Add Field"
+msgstr "+ Aggiungi Campo"
+
+#: fields/envoyconnect-form.php:323
+msgid "Display this form"
+msgstr "Visualizza questo modulo"
+
+#: fields/envoyconnect-form.php:325
+#, php-format
+msgid ""
+"Use the link, shortcode or menu options below to link to this form. You can "
+"replace %1$s with your own text."
+msgstr ""
+"Utilizzare i lcollegamento, codice funzione o il menu opzioni sottostante "
+"per linkare a questo modulo. E&#39; possibile sostituire %1$s con il proprio "
+"testo."
+
+#: fields/envoyconnect-form.php:326
+msgid "Shortcode"
+msgstr "Codice Funzione"
+
+#: fields/envoyconnect-form.php:327
+msgid "Link"
+msgstr "Cillegamento"
+
+#: fields/envoyconnect-form.php:342
+msgid "Delete this form"
+msgstr "Cancella questo modulo"
+
+#: fields/envoyconnect-form.php:343
+msgid "Delete This Form"
+msgstr "Cancella Questo Form"
+
+#: fields/envoyconnect-form.php:399
+msgid "Subject"
+msgstr "Oggetto"
+
+#: fields/envoyconnect-form.php:412
+msgid "Message"
+msgstr "Messaggio"
+
+#: fields/envoyconnect-form.php:425
+msgid "Send me a copy"
+msgstr "Inviami una copia"
+
+#: fields/envoyconnect-form.php:442
+msgid "Standard Fields"
+msgstr "Campi Standard"
+
+#: fields/envoyconnect-form.php:456
+msgid ""
+"If you wish to remove this menu item, you must delete it from the actual "
+"menu instead of unchecking the box(es) below."
+msgstr ""
+
+#: fields/envoyconnect-form.php:456
+msgid "Add to Menu"
+msgstr "Aggiungi al Menu"
+
+#: options/envoyconnect-actions-settings.php:12
+msgid "EnvoyConnect Actions"
+msgstr "Azioni EnvoyConnect"
+
+#: options/envoyconnect-actions-settings.php:14
+msgid ""
+"EnvoyConnect actions are, essentially, WordPress post types that users can "
+"manipulate."
+msgstr ""
+"Le azioni EnvoyConnect sono, essenzialmente, tipici articoli di Wordpress, che "
+"l&#39;utente pu&ograve; manipolare."
+
+#: options/envoyconnect-actions-settings.php:60
+msgid "This is a Pro feature. Visit www.envoyconnect.com for more information! "
+msgstr ""
+"Questa &egrave; una caratteristica Pro. Visita www.envoyconnect.com per "
+"ulteriori informazioni!."
+
+#: options/envoyconnect-actions-settings.php:70
+#: options/envoyconnect-system-settings.php:144
+msgid "Type"
+msgstr "Tipo"
+
+#: options/envoyconnect-actions-settings.php:71
+msgid "Admins"
+msgstr "Amministratori"
+
+#: options/envoyconnect-actions-settings.php:71
+msgid "Admins can view and edit this type through the user profile history tab"
+msgstr ""
+"Gli amministratori possono visualizzare e modificare questo tipo attraverso "
+"la scheda Cronologia profilo utente"
+
+#: options/envoyconnect-actions-settings.php:72 options/envoyconnect-settings.php:30
+#: reports/envoyconnect-reports.php:509
+msgid "Users"
+msgstr "Utenti"
+
+#: options/envoyconnect-actions-settings.php:72
+msgid "Users can view this type through their profile history tab"
+msgstr ""
+"Gli utenti possono visualizzare questo tipo attraverso la loro scheda "
+"Cronologia profilo"
+
+#: options/envoyconnect-actions-settings.php:73
+#, php-format
+msgid "%1$s This type is publicly visible in the user profile history tab"
+msgstr ""
+"%1$s Questo tipo &egrave; pubblicamente visibile nella scheda Cronologia "
+"profilo utente"
+
+#: options/envoyconnect-actions-settings.php:74
+msgid "Reports"
+msgstr "Rapporti"
+
+#: options/envoyconnect-actions-settings.php:74
+#, php-format
+msgid "%1$s Admins can search for this type in the Reports section"
+msgstr ""
+"%1$s Gli amministratori possono cercare questo tipo nella sezione Rapporti "
+
+#: options/envoyconnect-defaults.php:120
+msgid "Account Information"
+msgstr "Informazioni Account"
+
+#: options/envoyconnect-defaults.php:123
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: options/envoyconnect-defaults.php:136
+msgid "Basic Information"
+msgstr "Informazioni di Base"
+
+#: options/envoyconnect-defaults.php:139
+msgid "Contact Information"
+msgstr "Informazioni di Contatto"
+
+#: options/envoyconnect-defaults.php:151 utilities/envoyconnect-users.php:115
+#: utilities/envoyconnect-users.php:119
+msgid "Email"
+msgstr "E-mail"
+
+#: options/envoyconnect-defaults.php:153
+msgid "Username"
+msgstr "Nome Utente"
+
+#: options/envoyconnect-defaults.php:155 options/envoyconnect-updates.php:174
+msgid "User ID"
+msgstr "ID Utente"
+
+#: options/envoyconnect-defaults.php:157 options/envoyconnect-updates.php:176
+msgid "Date Registered"
+msgstr "Data di Registrazione"
+
+#: options/envoyconnect-defaults.php:159
+msgid "User Type"
+msgstr "Tipo di Utente"
+
+#: options/envoyconnect-defaults.php:159
+msgid "person"
+msgstr "persona fisica"
+
+#: options/envoyconnect-defaults.php:159
+msgid "Person"
+msgstr "Persona"
+
+#: options/envoyconnect-defaults.php:159
+msgid "organization"
+msgstr "organizzazione"
+
+#: options/envoyconnect-defaults.php:159 options/envoyconnect-defaults.php:184
+msgid "Organization"
+msgstr "Organizzazione"
+
+#: options/envoyconnect-defaults.php:159
+msgid "household"
+msgstr "famiglia"
+
+#: options/envoyconnect-defaults.php:159
+msgid "Household"
+msgstr "Famiglia"
+
+#: options/envoyconnect-defaults.php:161
+msgid "Role"
+msgstr "Ruolo"
+
+#: options/envoyconnect-defaults.php:163
+msgid "Display Name"
+msgstr "Nome Visualizzato"
+
+#: options/envoyconnect-defaults.php:165
+msgid "Password"
+msgstr "Password"
+
+#: options/envoyconnect-defaults.php:176 posts/envoyconnect-user-actions.php:289
+msgid "Title"
+msgstr "Titolo"
+
+#: options/envoyconnect-defaults.php:178
+msgid "First Name"
+msgstr "Nome"
+
+#: options/envoyconnect-defaults.php:180
+msgid "Middle Name"
+msgstr "Secondo Nome"
+
+#: options/envoyconnect-defaults.php:182
+msgid "Last Name"
+msgstr "Cognome"
+
+#: options/envoyconnect-defaults.php:186
+msgid "Nickname"
+msgstr "Pseudonimo"
+
+#: options/envoyconnect-defaults.php:188
+msgid "Biography"
+msgstr "Biografia"
+
+#: options/envoyconnect-defaults.php:201
+msgid "Website"
+msgstr "SitoWeb"
+
+#: options/envoyconnect-defaults.php:203
+msgid "Telephone"
+msgstr "Telefono"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "home"
+msgstr "home"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Home"
+msgstr "Home"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "work"
+msgstr "lavoro"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Work"
+msgstr "Lavoro"
+
+#: options/envoyconnect-defaults.php:203
+msgid "mobile"
+msgstr "cellulare"
+
+#: options/envoyconnect-defaults.php:203
+msgid "Mobile"
+msgstr "Cellulare"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "other"
+msgstr "altro"
+
+#: options/envoyconnect-defaults.php:203 options/envoyconnect-defaults.php:205
+#: options/envoyconnect-defaults.php:252
+msgid "Other"
+msgstr "Altro"
+
+#: options/envoyconnect-defaults.php:205
+msgid "Additional Email Addresses"
+msgstr "Indirizzo E-mail Addizionale"
+
+#: options/envoyconnect-defaults.php:207
+msgid "AIM"
+msgstr "AIM"
+
+#: options/envoyconnect-defaults.php:209
+msgid "Yahoo IM"
+msgstr "Yahoo IM"
+
+#: options/envoyconnect-defaults.php:211
+msgid "Jabber / Google Talk"
+msgstr "Jabber / Google Talk"
+
+#: options/envoyconnect-defaults.php:214
+msgid "Address One"
+msgstr "Indirizzo Uno"
+
+#: options/envoyconnect-defaults.php:214 options/envoyconnect-defaults.php:216
+#: options/envoyconnect-defaults.php:218
+msgid "Click to expand"
+msgstr "Clicca per allargare"
+
+#: options/envoyconnect-defaults.php:216
+msgid "Address Two"
+msgstr "Indirizzo Due"
+
+#: options/envoyconnect-defaults.php:218
+msgid "Address Three"
+msgstr "Indirizzo Tre"
+
+#: options/envoyconnect-defaults.php:230
+msgid "Show Admin Bar: when viewing the site"
+msgstr "Mostra Barra Amministrazione: Quando si sta visionando il sito"
+
+#: options/envoyconnect-defaults.php:233
+msgid "Keyboard Shortcuts"
+msgstr "Tasti di Scelta Rapida"
+
+#: options/envoyconnect-defaults.php:236
+msgid "Subscribe to email updates"
+msgstr "Iscriviti ad aggiornamenti via e-mail"
+
+#: options/envoyconnect-defaults.php:239
+msgid "Allow others to contact me"
+msgstr "Permetti ad altri di contattarmi"
+
+#: options/envoyconnect-defaults.php:252
+msgid "Address Location"
+msgstr "Indirizzo Localit&agrave;"
+
+#: options/envoyconnect-defaults.php:254 options/envoyconnect-updates.php:38
+msgid "Address Recipient"
+msgstr "Indirizzo Destinatario"
+
+#: options/envoyconnect-defaults.php:254 options/envoyconnect-updates.php:38
+msgid "The person receiving deliveries at this address."
+msgstr "La persona che riceve le consegne a questo indirizzo."
+
+#: options/envoyconnect-defaults.php:256 options/envoyconnect-updates.php:40
+msgid "Address Organization"
+msgstr "Indirizzo Organizzazione"
+
+#: options/envoyconnect-defaults.php:256 options/envoyconnect-updates.php:40
+msgid "The company or organization at this address."
+msgstr "L&#39;azienda o l&#39;organizzazione a questo indirizzo."
+
+#: options/envoyconnect-defaults.php:258
+msgid "Address Line One"
+msgstr "Indirizzo Linea Uno"
+
+#: options/envoyconnect-defaults.php:258
+msgid "Typically, this is a street address"
+msgstr "In genere, si tratta di un indirizzo"
+
+#: options/envoyconnect-defaults.php:260
+msgid "Address Line Two"
+msgstr "Indirizzo Linea Due"
+
+#: options/envoyconnect-defaults.php:260
+msgid "Typically, this is a unit, suite or apartment"
+msgstr "In genere, si tratta di una unità, suite o appartamento"
+
+#: options/envoyconnect-defaults.php:262
+msgid "Address Line Three"
+msgstr "Indirizzo Linea Tre"
+
+#: options/envoyconnect-defaults.php:262
+msgid "Typically, this is the title of a business or in-care-of notation"
+msgstr ""
+"In genere, questo &egrave; il titolo di un lavoro o a-cura-di notazione"
+
+#: options/envoyconnect-defaults.php:264
+msgid "City"
+msgstr "Citt&agrave;"
+
+#: options/envoyconnect-defaults.php:266
+msgid "State or Province"
+msgstr "Stato o Provincia"
+
+#: options/envoyconnect-defaults.php:268
+msgid "Country"
+msgstr "Nazione"
+
+#: options/envoyconnect-defaults.php:270
+msgid "Postal Code"
+msgstr "Codice Postale"
+
+#: options/envoyconnect-defaults.php:272
+msgid "Latitude"
+msgstr "Latitudine"
+
+#: options/envoyconnect-defaults.php:274
+msgid "Longitude"
+msgstr "Longitudine"
+
+#: options/envoyconnect-defaults.php:295
+msgid "Public Option"
+msgstr "Opzione Pubblica"
+
+#: options/envoyconnect-defaults.php:295
+msgid "Use this to toggle the public status of all available fields."
+msgstr ""
+"Usare questo per cambiare lo stato pubblico di tutti i campi disponibili."
+
+#: options/envoyconnect-defaults.php:322 posts/envoyconnect-user-actions-meta.php:401
+msgid "Contact Form"
+msgstr "Scheda di Contatto"
+
+#: options/envoyconnect-forms-settings.php:10
+msgid "General Forms"
+msgstr "Schede Generali"
+
+#: options/envoyconnect-forms-settings.php:12
+msgid ""
+"Forms allow you to receive information from your site visitors. You can "
+"arrange and place selected user fields for data collection in addition to "
+"standard fields like \"subject\", \"message\" and the option for a visitor "
+"to copy themselves on the messsage. All incoming responses are sent to you "
+"and then logged."
+msgstr ""
+"Moduli ti consentono di ricevere informazioni dai visitatori del sito. "
+"E&#39; possibile organizzare e posizionare i campi utente selezionati per la "
+"raccolta dei dati in aggiunta ai campi standard come \"oggetto\", \"messaggio"
+"\" e l&#39;opzione per un visitatore di copiarli nel messsaggio. Tutte le "
+"risposte in entrata ti vengono inviate e poi registrate."
+
+#: options/envoyconnect-forms-settings.php:24
+msgid "Create and Edit Forms"
+msgstr "Creare e modificare i moduli"
+
+#: options/envoyconnect-general-settings.php:18
+msgid "hi there. we're really glad you're here."
+msgstr "Ciao. Siamo davvero felice che tu sia qui."
+
+#: options/envoyconnect-general-settings.php:19
+msgid ""
+"We hope this plugin makes what you do in life a little better. To that end, "
+"here's a few helpful resources."
+msgstr ""
+"Ci auguriamo che questo plugin ti aiuti a fare ci&ograve; che fai nella vita "
+"ed anche un po&#39; meglio. A tal fine, ecco alcune risorse utili."
+
+#: options/envoyconnect-general-settings.php:22
+msgid "Setup"
+msgstr "Impostazione"
+
+#: options/envoyconnect-general-settings.php:24
+#, php-format
+msgid ""
+"%1$sManage Fields%2$s: Set the fields and permissions to start collecting "
+"data."
+msgstr ""
+"%1$sGestione Campi%2$s: Impostare i campi e le autorizzazioni per avviare la "
+"raccolta dei dati."
+
+#: options/envoyconnect-general-settings.php:25
+#, php-format
+msgid "%1$sCheck Your Profile%2$s: Make sure you have it the way you want it."
+msgstr ""
+"%1$sControllare il tuo Profilo%2$s: Assicurati di averlo come lo desideri."
+
+#: options/envoyconnect-general-settings.php:26
+#, php-format
+msgid "%1$sTry a Search%2$s: Data mining is a surprising amount of fun."
+msgstr ""
+"%1$sProva con una Ricerca%2$s: L&#39;strazione dei dati &egrave; una "
+"sorprendente quantit&agrave; di divertimento."
+
+#: options/envoyconnect-general-settings.php:27
+#, php-format
+msgid ""
+"%1$sTweak Your Options%2$s: Visit the tabs above to customize envoyconnect for "
+"you."
+msgstr ""
+"%1$sRitoccare le tue Opzioni%2$s: Visita le diverse opzioni per "
+"personalizzare envoyconnect per te."
+
+#: options/envoyconnect-general-settings.php:29
+#, php-format
+msgid ""
+"Lastly, there's a %1$sGetting Started Guide%2$s on our website that walks "
+"you through the above steps."
+msgstr ""
+"Infine, c'è una %1$sGuida Introduttiva%2$s sul nostro sito che ti guida "
+"attraverso le fasi di cui sopra."
+
+#: options/envoyconnect-general-settings.php:34
+msgid "Help"
+msgstr "Aiuto"
+
+#: options/envoyconnect-general-settings.php:36
+#, php-format
+msgid ""
+"%1$sRight Now%2$s: Most of the help you will need can be found in the in "
+"handy %3$s\"help\" tabs%4$s at the top right of your screen."
+msgstr ""
+"%1$sAdesso%2$s: Il miglior aiuto di cui necessiti, lo potrai trovare utile "
+"%3$s\"aiuto\" linguette%4$s il alto a destra del tuo schermo."
+
+#: options/envoyconnect-general-settings.php:37
+#, php-format
+msgid ""
+"%1$sPro Online%2$s: If you need more help than the help tabs offer, please "
+"make sure to visit our site %3$senvoyconnect.com%4$s. Pro users have the added "
+"ability to post a new support request which is our first priority."
+msgstr ""
+"%1$sPro Online%2$s: Se hai bisogno di maggiore aiuto di quello che offrono "
+"le linguette aiuto, assicurati di visitare il nostro sito %3$senvoyconnect.com"
+"%4$s. Pro utenti hanno pi&ugrave; possibilit&agrave; di inviare una nuova "
+"richiesta di supporto che &egrave; la nostra prima priorit&agrave;."
+
+#: options/envoyconnect-general-settings.php:38
+#, php-format
+msgid ""
+"%1$sStandard Online%2$s: If you are not a pro subscriber, you can still "
+"visit our site %3$senvoyconnect.com%4$s OR our plugin page support forums. While "
+"we do give preference to pro users of the application (see above) we are "
+"actively monitoring the plugin page forums."
+msgstr ""
+"%1$sStandard Online%2$s: Se non sei un abbonato Pro, &egrave; comunque "
+"sempre possibile visitare il nostro sito %3$senvoyconnect.com%4$s o il nostro "
+"forum di supporto al plugin. Non importa se diamo la preferenza agli utenti "
+"pro dell&#39;applicazione (vedi sopra), poich&egrave;  noi continuiamo a "
+"monitorare attivamente la pagina forum del plugin ."
+
+#: options/envoyconnect-general-settings.php:43
+msgid "Suggestions"
+msgstr "Suggerimenti "
+
+#: options/envoyconnect-general-settings.php:45
+#, php-format
+msgid ""
+"%1$sContact Us%2$s: We want to hear from you! Please make sure to visit our "
+"site %3$senvoyconnect.com%4$s or our plugin page support forums to let us know "
+"what you think of the application."
+msgstr ""
+"%1$sContattaci%2$s: Vogliamo sentirti!. Assicurati di visitare il nostro "
+"sito %3$senvoyconnect.com%4$s o la pagina del forum di supporto del plugin e di "
+"farci sapere cosa ne pensi dell&#39;applicazione."
+
+#: options/envoyconnect-general-settings.php:51
+msgid "looking for more? go pro!"
+msgstr "Sei in cerca di qualcosa di meglio?. Passa aPro!."
+
+#: options/envoyconnect-general-settings.php:52
+#, php-format
+msgid "There's a lot more %1$sgreat stuff you can do with EnvoyConnect%2$s."
+msgstr "C'è molto di più %1$s e grandi cose che puoi fare con EnvoyConnect%2$s."
+
+#: options/envoyconnect-general-settings.php:54
+msgid "Just a few reasons"
+msgstr "Solo alcuni motivi"
+
+#: options/envoyconnect-general-settings.php:56
+#, php-format
+msgid ""
+"%1$sGuaranteed Support%2$s: We do try our best to provide support for all "
+"users but as a Pro user it's part of the package."
+msgstr ""
+"%1$sSupporto Garantito%2$s: Facciamo del nostro meglio per fornire supporto "
+"per tutti gli utenti, ma per l&#39;utente Pro  &egrave; gi&agrave;parte del "
+"pacchetto."
+
+#: options/envoyconnect-general-settings.php:57
+#, php-format
+msgid ""
+"%1$sSearch User History & Actions%2$s: Go beyond the profile information and "
+"really dig deep."
+msgstr ""
+"%1$sRicerca Storia Utenti & Azioni%2$s: Andare oltre le informazioni del "
+"profilo e scavare veramente in profondit&agrave;."
+
+#: options/envoyconnect-general-settings.php:58
+#, php-format
+msgid ""
+"%1$sImport Users & Bulk Editing%2$s: Use it once and the application pays "
+"for itself in time saved alone."
+msgstr ""
+"%1$sImporta Utenti e Modifica Collettiva%2$s: Usalo una volta e l&#39;"
+"applicazione si ripaga da sola per il tempo salvato."
+
+#: options/envoyconnect-general-settings.php:59
+#, php-format
+msgid ""
+"%1$sSaved Searches%2$s: One-click searching for things you look for the most "
+"-- plus, you can apply the results elsewhere in the application."
+msgstr ""
+"%1$sRicerche Salvate%2$s: One-Click per la ricerca di cose che cerchi nella "
+"maggior parte dei casi - in pi&ugrave;, &egrave; possibile applicare i "
+"risultati in altri punti dell&#39;applicazione."
+
+#: options/envoyconnect-general-settings.php:60
+#, php-format
+msgid ""
+"%1$sGoogle Geolocation%2$s: See all of your users or a segment on a map."
+msgstr ""
+"%1$sGoogle Geolocalizzazione%2$s: Vedi tutti gli utenti o un segmento di "
+"essi su una mappa."
+
+#: options/envoyconnect-general-settings.php:61
+#, php-format
+msgid ""
+"%1$sFront-end Registration, Login and Account Management%2$s: Take over the "
+"default WordPress registration and login and optionally keep all user "
+"management on the front end of your site."
+msgstr ""
+"%1$sFront-end Registrazione, Login e Gestione Account%2$s: Mantenere la "
+"registrazione ed il login di WordPress e, facoltativamente, tenere tutta la "
+"gestione utenti sul front-end del tuo sito."
+
+#: options/envoyconnect-general-settings.php:62
+#, php-format
+msgid ""
+"%1$sRestrict Access to Content (Membership Feature)%2$s: Choose exactly who "
+"gets access to what using rules you specify. Change them at any time."
+msgstr ""
+"%1$sLimitare l&#39;Accesso ai Contenuti (Caratteristica di Adesione)%2$s: "
+"Scegliere esattamente chi ha accesso ed a cosa, utilizzando le regole "
+"specificate, modificabili in qualsiasi momento."
+
+#: options/envoyconnect-general-settings.php:63
+#, php-format
+msgid ""
+"%1$sDisplay and search a member directory (Member Directory Feature)%2$s: "
+"Display all or a subset of your members. Have as many directories as you "
+"like."
+msgstr ""
+
+#: options/envoyconnect-general-settings.php:64
+#, php-format
+msgid ""
+"%1$sAccept User-Generated Content (Community Feature)%2$s: Accept content "
+"for any post type from whomever you choose -- you set the rules and, again, "
+"change them at anytime."
+msgstr ""
+"%1$sAccettare Contenuto-Generato-Utente (Caratteristica della "
+"Comunit&agrave;)%2$s: Accettare contenuto per qualsiasi tipo di articolo da "
+"chi vuoi tu - tu imposti le regole e, ancora una volta, le modifichi, in "
+"qualsiasi momento."
+
+#: options/envoyconnect-general-settings.php:65
+#, php-format
+msgid ""
+"%1$sE-Commerce Engine%2$s: Sell anything anywhere on your site or accept "
+"donations. Search for it all using the User Search Engine. And, of course, "
+"you can Bulk Edit, Import or Export transactions."
+msgstr ""
+"%1$sE-Commerce Engine%2$s: Vendere qualsiasi cosa ovunque sul tuo sito o "
+"accettare donazioni. Cerca il tutto utilizzando il Motore di Ricerca Utente. "
+"E, naturalmente, puoi usare la Modifica Collettiva, in operazioni di "
+"importazione o esportazione."
+
+#: options/envoyconnect-general-settings.php:66
+#, php-format
+msgid ""
+"%1$sE-Mail Marketing Engine & MailChimp Synchronization%2$s: Send HTML "
+"newsletters using WordPress or MailChimp and if you're using MailChimp, "
+"enjoy full end-to-end synchronization for complete freedom to use whichever "
+"system you like, whenever you like."
+msgstr ""
+"%1$sE-Mail Marketing Engine & MailChimp Synchronization%2$s: Inviare "
+"newsletter HTML utilizzando WordPress o MailChimp e, se si sta utilizzando "
+"MailChimp, godere della sincronizzazione completa end-to-end per la completa "
+"libert&agrave; di utilizzare qualsiasi sistema tu voglia, quando vuoi."
+
+#: options/envoyconnect-general-settings.php:67
+#, php-format
+msgid ""
+"%1$sFind out more%2$s and explore our growing library of extensions. If you "
+"don't see exactly what you need, drop us a line -- we're always open to "
+"ideas we're growing fast."
+msgstr ""
+"%1$sPer saperne di più%2$s ed esplorare la nostra crescente libreria di "
+"estensioni. Se non vedi esattamente ci&ograve; di cui hai bisogno, scrivici "
+"una linea - siamo sempre aperti alle idee, stiamo crescendo velocemente."
+
+#: options/envoyconnect-pro-settings.php:10
+msgid "PauPro License Information"
+msgstr "PauPro Informazione Licensza "
+
+#: options/envoyconnect-pro-settings.php:12
+msgid ""
+"Please enter your license details below to enable automatic updates. Please "
+"note that you have to download and install the Pro version before you are "
+"able to take advantage of the Pro features."
+msgstr ""
+
+#: options/envoyconnect-pro-settings.php:24
+msgid "Your license key"
+msgstr "La tua chiave di licenza"
+
+#: options/envoyconnect-settings.php:20
+msgid "General"
+msgstr "Generale"
+
+#: options/envoyconnect-settings.php:25
+msgid "Pro"
+msgstr "Pro"
+
+#: options/envoyconnect-settings.php:35 reports/envoyconnect-actions.php:10
+#: reports/envoyconnect-reports.php:291 reports/envoyconnect-reports.php:471
+#: reports/envoyconnect-reports.php:473
+msgid "Actions"
+msgstr "Azioni"
+
+#: options/envoyconnect-settings.php:40
+msgid "System"
+msgstr "Sistema"
+
+#: options/envoyconnect-settings.php:45
+msgid "Forms"
+msgstr "Moduli"
+
+#: options/envoyconnect-settings.php:51
+msgid "EnvoyConnect Options"
+msgstr "EnvoyConnect Opzioni"
+
+#: options/envoyconnect-settings.php:112
+msgid "Settings Updated"
+msgstr "Impostazioni Aggiornate"
+
+#: options/envoyconnect-settings.php:175
+msgid "Save Your Options"
+msgstr "Salva le Tue Opzioni"
+
+#: options/envoyconnect-settings.php:251
+#, fuzzy
+msgid "Delete"
+msgstr "Cancellazione fallita"
+
+#: options/envoyconnect-settings.php:258
+#, fuzzy
+msgid "Make A Selection"
+msgstr "Effettuare una selezione"
+
+#: options/envoyconnect-settings.php:282
+#, fuzzy
+msgid "+ Add"
+msgstr "+ Aggiungi Scheda"
+
+#: options/envoyconnect-system-settings.php:10
+msgid "Mail Defaults"
+msgstr "Impostazioni Predefinite di Posta"
+
+#: options/envoyconnect-system-settings.php:12
+msgid "Set the default email information for your site"
+msgstr ""
+"Impostare le informazioni predefinite di posta elettronica per il tuo sito"
+
+#: options/envoyconnect-system-settings.php:24
+msgid "Default email"
+msgstr "E-mail predefinito"
+
+#: options/envoyconnect-system-settings.php:37
+msgid "Default email name"
+msgstr "Nome Predefinito E-mail"
+
+#: options/envoyconnect-system-settings.php:50
+#, fuzzy
+msgid "Field Preferences"
+msgstr "Preferenze"
+
+#: options/envoyconnect-system-settings.php:63
+msgid "Low range for date fields"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:64
+msgid "Choose how many years the date field will go into the past"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:77
+msgid "High range for date fields"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:78
+msgid "Choose how many years the date field will go into the future"
+msgstr ""
+
+#: options/envoyconnect-system-settings.php:91
+msgid "System Information"
+msgstr "Informazioni di Sistema"
+
+#: options/envoyconnect-system-settings.php:105
+msgid "Error Log"
+msgstr "Registro Errori"
+
+#: options/envoyconnect-system-settings.php:143
+msgid "Application"
+msgstr "Applicazione"
+
+#: options/envoyconnect-system-settings.php:143
+msgid "What component was affected?"
+msgstr "Che componente ne risente?"
+
+#: options/envoyconnect-system-settings.php:144
+msgid "Did this affect a user or an action?"
+msgstr "Ha influito un utente o un&#39;azione?"
+
+#: options/envoyconnect-system-settings.php:145
+msgid "ID"
+msgstr "ID"
+
+#: options/envoyconnect-system-settings.php:145
+msgid "The ID of the affected user or action"
+msgstr "L&#39;ID utente o l&#39;azione interessata"
+
+#: options/envoyconnect-system-settings.php:146
+msgid "Error"
+msgstr "Errore"
+
+#: options/envoyconnect-system-settings.php:146
+msgid "Details on the error"
+msgstr "Dettagli dell&#39;errore"
+
+#: options/envoyconnect-system-settings.php:165
+msgid "hooray! no errors here!"
+msgstr "Evviva, nessun errore!."
+
+#: options/envoyconnect-system-settings.php:172
+msgid "Clear Log"
+msgstr "Pulizia Registro"
+
+#: options/envoyconnect-user-settings.php:12
+msgid "Administrator Controls"
+msgstr "Controlli di Amministratore"
+
+#: options/envoyconnect-user-settings.php:26
+msgid "Grant database access to:"
+msgstr "Concedi accesso al database a:"
+
+#: options/envoyconnect-user-settings.php:27
+msgid "Determine who can create, edit, and delete users from your system."
+msgstr ""
+"Stabilire chi pu&ograve; creare, modificare e cancellare gli utenti dal tuo "
+"sistema."
+
+#: options/envoyconnect-user-settings.php:39
+msgid "User Controls"
+msgstr "Controlli Utente"
+
+#: options/envoyconnect-user-settings.php:53
+msgid "Prevent Subscribers from accessing the WordPress Admin Area"
+msgstr ""
+"Impedire che gli abbonati abbiano accesso all&#39;area di amministrazione di "
+"WordPress"
+
+#: options/envoyconnect-user-settings.php:54
+msgid ""
+"This applies to the Subscriber role and restricts all operations to the "
+"front end of the site."
+msgstr ""
+"Questo vale per il ruolo Abbonato e limita tutte le operazioni verso il fron-"
+"end del sito."
+
+#: options/envoyconnect-user-settings.php:66
+msgid "Default display of public fields to \"on\""
+msgstr "Visualizzazione predefinita dei campi pubblici a \"on\""
+
+#: options/envoyconnect-user-settings.php:67
+msgid ""
+"Public fields by default are hidden. If a user has not stated a preference "
+"on their profile, you can change the default to show their public fields."
+msgstr ""
+"I campi pubblici sono nascosti per default. Se un utente non ha indicato una "
+"preferenza sul suo profilo, è possibile modificare l'impostazione "
+"predefinita per mostrare i suoi campi pubblici."
+
+#: options/envoyconnect-user-settings.php:79
+msgid "Default display of \"contact me\" to \"on\""
+msgstr "Visualizzazione predefinita di \"contattami\" a \"on\""
+
+#: options/envoyconnect-user-settings.php:80
+msgid ""
+"Individual contact forms are disabled by default. If a user has not stated a "
+"preference on their profile, you can change the default to enable their "
+"contact form."
+msgstr ""
+"Moduli di contatto individuali sono disabilitati di default. Se un utente "
+"non ha indicato una preferenza sul suo profilo, è possibile modificare "
+"l'impostazione predefinita per abilitare il suo modulo di contatto."
+
+#: options/envoyconnect-user-settings.php:92
+msgid "Enable links to in-page profiles"
+msgstr "Attiva collegamenti ai profili in-page"
+
+#: options/envoyconnect-user-settings.php:93
+msgid ""
+"User profiles are automatically enabled via the panel system. This option, "
+"however, is an additional resource for users to link back directly to a page "
+"on your site containing their profile and public content."
+msgstr ""
+"I profili utente sono abilitati automaticamente tramite il pannello di "
+"sistema. Questa opzione, tuttavia, è una risorsa aggiuntiva per gli utenti, "
+"al fine di avere un collegamento diretto a una pagina del tuo sito "
+"contenente il loro profilo e il contenuto pubblico."
+
+#: options/envoyconnect-user-settings.php:105
+msgid "Profile Controls"
+msgstr "Controlli Profilo"
+
+#: options/envoyconnect-user-settings.php:119
+msgid "Alternate display of user taxonomies"
+msgstr "Visualizzazione alternativa di tassonomie utenti"
+
+#: options/envoyconnect-user-settings.php:120
+msgid "The select list option uses an advanced type-as-you-go option."
+msgstr ""
+"Il selettore elenco opzione utilizza un avanzato type-as-you-go opzione."
+
+#: options/envoyconnect-user-settings.php:148
+msgid "WordPress Compatability Mode"
+msgstr "WordPress Modalit&agrave; Compatibilit&agrave;"
+
+#: options/envoyconnect-user-settings.php:150
+msgid "Preferences to ease the transition."
+msgstr "Preferenze per facilitare la transizione."
+
+#: options/envoyconnect-user-settings.php:162
+msgid "Enable WordPress Default User View"
+msgstr "Abilita Wordpress Visualizzazione Predefinita Utente"
+
+#: options/envoyconnect-user-settings.php:163
+msgid ""
+"By default, EnvoyConnect replaces the WordPress default list view. You can re-"
+"enable it with this option."
+msgstr ""
+"Per impostazione predefinita, EnvoyConnect sostituisce il default vista elenco "
+"di WordPress. È possibile riattivarlo con questa opzione."
+
+#: options/envoyconnect-user-settings.php:201
+#, php-format
+msgid "%1$s Enabled by default"
+msgstr "%1$s Attivata per impostazione predefinita"
+
+#: posts/envoyconnect-post-actions-meta.php:54
+#: posts/envoyconnect-user-actions-meta.php:93
+msgid "Action Meta"
+msgstr "Azione Meta"
+
+#: posts/envoyconnect-user-actions-meta.php:270
+#, php-format
+msgid "Last edited by: %1$s %2$s on %3$s "
+msgstr "Ultima modifica di: %1$s %2$s on %3$s "
+
+#: posts/envoyconnect-user-actions-meta.php:292
+msgid "Type of Interaction"
+msgstr "Tipo di Interazione"
+
+#: posts/envoyconnect-user-actions-meta.php:305
+#: posts/envoyconnect-user-actions-meta.php:371
+msgid "Current Status"
+msgstr "Stato Corrente"
+
+#: posts/envoyconnect-user-actions-meta.php:332
+msgid "Note"
+msgstr "Nota"
+
+#: posts/envoyconnect-user-actions-meta.php:333
+msgid "E-mail Conversation"
+msgstr "Comunicazione E-mail"
+
+#: posts/envoyconnect-user-actions-meta.php:334
+msgid "Telephone Conversation"
+msgstr "Conversazione Telefonica"
+
+#: posts/envoyconnect-user-actions-meta.php:335
+msgid "In-Person Conversation"
+msgstr "Conversazione di Persona"
+
+#: posts/envoyconnect-user-actions-meta.php:358
+msgid "Type of log"
+msgstr "Tipo di Registro"
+
+#: posts/envoyconnect-user-actions-meta.php:398
+msgid "Admin Registration"
+msgstr "Registrazione Admin"
+
+#: posts/envoyconnect-user-actions-meta.php:399
+msgid "User Registration"
+msgstr "Registrazione Utente"
+
+#: posts/envoyconnect-user-actions-meta.php:400
+msgid "Import"
+msgstr "Importazione"
+
+#: posts/envoyconnect-user-actions-meta.php:402
+msgid "Content Submission"
+msgstr "Contenuto Presentato"
+
+#: posts/envoyconnect-user-actions-meta.php:439
+msgid "Archived"
+msgstr "Archiviato"
+
+#: posts/envoyconnect-user-actions.php:20
+msgid "Log"
+msgstr "Registro"
+
+#: posts/envoyconnect-user-actions.php:21
+msgid "Logs"
+msgstr "Registri"
+
+#: posts/envoyconnect-user-actions.php:35
+msgid "Interaction"
+msgstr "Interazione"
+
+#: posts/envoyconnect-user-actions.php:36
+msgid "Interactions"
+msgstr "Interazioni"
+
+#: posts/envoyconnect-user-actions.php:222 posts/envoyconnect-user-actions.php:387
+msgid "Terribly sorry."
+msgstr "terribilmente dispiaciuto."
+
+#: posts/envoyconnect-user-actions.php:360
+msgid "Save"
+msgstr "Salva"
+
+#: posts/envoyconnect-user-actions.php:491
+msgid "EnvoyConnect Action"
+msgstr "EnvoyConnect Azione"
+
+#: reports/envoyconnect-actions.php:9
+msgid "Select an Action"
+msgstr "Seleziona un&#39;Azione"
+
+#: reports/envoyconnect-actions.php:11 reports/envoyconnect-actions.php:49
+msgid "Export"
+msgstr "Esportazione"
+
+#: reports/envoyconnect-actions.php:36
+msgid "New Export"
+msgstr "Nuova Esportazione"
+
+#: reports/envoyconnect-actions.php:37
+msgid "What would you like to call this export?"
+msgstr "Come ti piacerebbe chiamare questa esportazione?"
+
+#: reports/envoyconnect-actions.php:40
+msgid "User Options"
+msgstr "Utente Opzioni"
+
+#: reports/envoyconnect-actions.php:41
+msgid "Select all users for this query"
+msgstr "Selezionare tutti gli utenti per questa ricerca"
+
+#: reports/envoyconnect-actions.php:42
+msgid "Select all possible fields"
+msgstr "Selezionare tutti i campi possibili"
+
+#: reports/envoyconnect-actions.php:45
+msgid "Actions Options"
+msgstr "Azioni Opzioni"
+
+#: reports/envoyconnect-actions.php:171
+msgid "Your file"
+msgstr "Tuo file"
+
+#: reports/envoyconnect-actions.php:173
+msgid "I was not able to complete the export."
+msgstr "Non ero in grado di completare l&#39;esportazione."
+
+#: reports/envoyconnect-edit.php:8 reports/envoyconnect-queries.php:8
+#, php-format
+msgid ""
+"%1$s This is a pro feature and we're really sorry we couldn't include it "
+"here. Consider upgrading - each purchase supports future development and "
+"improvement! %2$s %3$s"
+msgstr ""
+"%1$s Questa è una caratteristica pro e siamo davvero dispiaciuto non aver "
+"potuto includerla qui. Considerare l&#39;aggiornamento - ogni acquisto serve "
+"a supportare lo sviluppo futuro ed i miglioramenti!%2$s %3$s"
+
+#: reports/envoyconnect-filter-form.php:28
+msgid "Re-load last search"
+msgstr "Ri-carica ultima ricerca"
+
+#: reports/envoyconnect-filter-form.php:30
+msgid "Reset current search"
+msgstr "Azzera ricerca corrente"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Order"
+msgstr "Ordine"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Descending"
+msgstr "Discendente"
+
+#: reports/envoyconnect-filter-form.php:63
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: reports/envoyconnect-filter-form.php:64
+msgid "Order by"
+msgstr "Ordina per"
+
+#: reports/envoyconnect-filter-form.php:70
+msgid "Results Per Page"
+msgstr "Risultati Per Pagina"
+
+#: reports/envoyconnect-filter-form.php:75
+msgid "Match"
+msgstr "Corrispondenza"
+
+#: reports/envoyconnect-filter-form.php:75 users/envoyconnect-profile.php:558
+msgid "All"
+msgstr "Tutto"
+
+#: reports/envoyconnect-filter-form.php:75
+msgid "Any"
+msgstr "Ogni"
+
+#: reports/envoyconnect-filter-form.php:189
+msgid "Make a selection"
+msgstr "Effettuare una selezione"
+
+#: reports/envoyconnect-filter-form.php:190
+msgid "Profile Fields"
+msgstr "Campi Profilo"
+
+#: reports/envoyconnect-filter-form.php:330
+msgid "is"
+msgstr "&egrave;"
+
+#: reports/envoyconnect-filter-form.php:331
+msgid "not"
+msgstr "no"
+
+#: reports/envoyconnect-filter-form.php:332
+msgid "like"
+msgstr "come"
+
+#: reports/envoyconnect-filter-form.php:333
+msgid "not like"
+msgstr "non come"
+
+#: reports/envoyconnect-filter-form.php:335
+msgid "not empty"
+msgstr "non vuoto"
+
+#: reports/envoyconnect-filter-form.php:336
+msgid "any"
+msgstr "ogni"
+
+#: reports/envoyconnect-filter-form.php:337
+msgid "all"
+msgstr "tutto"
+
+#: reports/envoyconnect-filter-form.php:338
+msgid "show"
+msgstr "mostra"
+
+#: reports/envoyconnect-filter-form.php:358
+msgid ">="
+msgstr ">="
+
+#: reports/envoyconnect-filter-form.php:359
+msgid "<="
+msgstr "<="
+
+#: reports/envoyconnect-filter-form.php:368
+msgid "Title or Body"
+msgstr "Titolo o Corpo"
+
+#: reports/envoyconnect-filter-form.php:372
+msgid "Date Options"
+msgstr "Opzioni Data"
+
+#: reports/envoyconnect-filter-form.php:373
+msgid "Date Range"
+msgstr "Intervallo di Date"
+
+#: reports/envoyconnect-filter-form.php:374
+msgid "Relative Date"
+msgstr "Data Relativa"
+
+#: reports/envoyconnect-filter-form.php:382
+msgid "Time"
+msgstr "Ora"
+
+#: reports/envoyconnect-filter-form.php:383
+msgid "days"
+msgstr "giorni"
+
+#: reports/envoyconnect-filter-form.php:384
+msgid "weeks"
+msgstr "settimane"
+
+#: reports/envoyconnect-filter-form.php:385
+msgid "months"
+msgstr "mesi"
+
+#: reports/envoyconnect-filter-form.php:386
+msgid "years"
+msgstr "anni"
+
+#: reports/envoyconnect-filter-form.php:389
+msgid "Frame"
+msgstr "riquadro"
+
+#: reports/envoyconnect-filter-form.php:390
+msgid "before"
+msgstr "prima"
+
+#: reports/envoyconnect-filter-form.php:391
+msgid "after"
+msgstr "dopo"
+
+#: reports/envoyconnect-filter-form.php:394
+msgid "When"
+msgstr "Quando"
+
+#: reports/envoyconnect-filter-form.php:395
+msgid "now"
+msgstr "ora"
+
+#: reports/envoyconnect-filter-form.php:396
+msgid "date"
+msgstr "data"
+
+#: reports/envoyconnect-filter-form.php:501
+msgid "Primary"
+msgstr "Primario"
+
+#: reports/envoyconnect-reports.php:85
+msgid "of"
+msgstr "di"
+
+#: reports/envoyconnect-reports.php:111 reports/envoyconnect-reports.php:131
+#, fuzzy, php-format
+msgid "Page %1$s"
+msgstr "Pafina"
+
+#: reports/envoyconnect-reports.php:290
+msgid "Search"
+msgstr "Ricerca"
+
+#: reports/envoyconnect-reports.php:292
+msgid "Edits"
+msgstr "Modifiche"
+
+#: reports/envoyconnect-reports.php:293
+msgid "Saved Searches"
+msgstr "Ricerche Salvate"
+
+#: reports/envoyconnect-reports.php:540
+msgid "terribly sorry. i did not find anything."
+msgstr "terribilmente dispiaciuto. ho trovato nulla."
+
+#: reports/envoyconnect-reports.php:682
+msgid "edit"
+msgstr ""
+
+#: reports/envoyconnect-reports.php:683
+#, fuzzy
+msgid "email"
+msgstr "E-mail"
+
+#: reports/envoyconnect-reports.php:685
+msgid "view"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:76
+#, php-format
+msgid "%1$s indicates a required field %2$s"
+msgstr "%1$s indica un campo obbligatorio %2$s"
+
+#: theme/envoyconnectpanels.php:240
+msgid ""
+"very sorry. there seems to be an error. please refresh the page and try "
+"again."
+msgstr ""
+"molto dispiaciuto. sembra ci sia un errore. per favore fai il refresh della "
+"pagina e prova ancora."
+
+#: theme/envoyconnectpanels.php:328
+#, fuzzy
+msgid "Submission"
+msgstr "Contenuto Presentato"
+
+#: theme/envoyconnectpanels.php:407
+#, fuzzy, php-format
+msgid "The following came to you from the website: %1$s"
+msgstr "Il seguente messaggio ti arriva dal sito web: %1$s"
+
+#: theme/envoyconnectpanels.php:409
+#, php-format
+msgid "It was sent from: %1$s <%2$s>"
+msgstr "E&#39; stato inviato da: %1$s <%2$s>"
+
+#: theme/envoyconnectpanels.php:429
+#, php-format
+msgid ""
+"You asked to be copied on the message below that you sent via the website: "
+"%1$s"
+msgstr ""
+"Hai chiesto di ricevere una copia del messaggio sottostante, che è stato "
+"inviato tramite il sito web: %1$s"
+
+#: theme/envoyconnectpanels.php:440
+msgid "Thank you."
+msgstr "Grazie."
+
+#: theme/envoyconnectpanels.php:569
+msgid "Submit"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:679
+#, fuzzy
+msgid "recover password"
+msgstr "ri-digita la password"
+
+#: theme/envoyconnectpanels.php:691
+msgid "Contact"
+msgstr "Contatto"
+
+#: theme/envoyconnectpanels.php:696
+msgid "try again"
+msgstr ""
+
+#: theme/envoyconnectpanels.php:701
+msgid "close panel"
+msgstr "Chiudi il pannello"
+
+#: theme/envoyconnectpanels.php:728
+msgid " or "
+msgstr ""
+
+#: users/envoyconnect-profile.php:40
+msgid "User created!"
+msgstr "Utente creato!"
+
+#: users/envoyconnect-profile.php:69
+msgid "Add Them!"
+msgstr "Aggiungili!."
+
+#: users/envoyconnect-profile.php:91 users/envoyconnect-profile.php:176
+msgid "You do not have permission to edit this user."
+msgstr "Non hai il permesso di modificare questo utente."
+
+#: users/envoyconnect-profile.php:112
+msgid "Profile Updated."
+msgstr "Profilo Aggiornato."
+
+#: users/envoyconnect-profile.php:130
+msgid "History updated."
+msgstr "Storico aggiornato."
+
+#: users/envoyconnect-profile.php:170 users/envoyconnect-profile.php:172
+msgid "Invalid user ID."
+msgstr "ID utente non valido."
+
+#: users/envoyconnect-profile.php:209
+msgid "Profile"
+msgstr "Profilo"
+
+#: users/envoyconnect-profile.php:214
+msgid "History"
+msgstr "Storico"
+
+#: users/envoyconnect-profile.php:256
+msgid "Update!"
+msgstr "Aggiornamento!"
+
+#: users/envoyconnect-profile.php:555
+msgid "Title &amp; Excerpt"
+msgstr "Titolo &amp; Stralcio"
+
+#: users/envoyconnect-profile.php:614
+msgid "Edit Actions"
+msgstr "Modifica Azioni"
+
+#: users/envoyconnect-profile.php:616
+msgid "Create or Edit Actions"
+msgstr "Crea o Modifica Azioni"
+
+#: users/envoyconnect-profile.php:767
+msgid "Edit"
+msgstr "Modifica"
+
+#: users/envoyconnect-users.php:703
+msgid "primary"
+msgstr "primario"
+
+#: utilities/envoyconnect-users.php:119
+msgid "username"
+msgstr "nome utente"
+
+#~ msgid "Please enter your license details below."
+#~ msgstr "Inserire i dettagli della licenza di seguito."
+
+#~ msgid "EnvoyConnect Events"
+#~ msgstr "EnvoyConnect Eventi"
+
+#~ msgid "EnvoyConnect Events allows you to display events on your website."
+#~ msgstr ""
+#~ "EnvoyConnect Eventi ti consente di visualizzare gli eventi sul tuo sito web."
+
+#~ msgid "EnvoyConnect Support"
+#~ msgstr "EnvoyConnect Supporto"
+
+#~ msgid ""
+#~ "EnvoyConnect Support allows you to manage support requests on your website."
+#~ msgstr ""
+#~ "EnvoyConnect Supporto ti consente di gestire le richieste di supporto sul tuo "
+#~ "sito web."
+
+#~ msgid "EnvoyConnect Licenses"
+#~ msgstr "EnvoyConnect Licenze"
+
+#~ msgid ""
+#~ "EnvoyConnect Licenses allow you to sell software licenses on your website."
+#~ msgstr ""
+#~ "EnvoyConnect Licenze ti consente di vendere licenze software sul tuo sito web."
+
+#~ msgid "You need to have PauPack installed to access these settings."
+#~ msgstr ""
+#~ "È necessario disporre di Paupack installato per accedere a queste "
+#~ "impostazioni."
+
+#~ msgid "EnvoyConnect Licenses"
+#~ msgstr "EnvoyConnect Licenze"
+
+#~ msgid "full name"
+#~ msgstr "nome completo"
+
+#~ msgid "lost password?"
+#~ msgstr "Persa la password?"
+
+#~ msgid "or"
+#~ msgstr "o"
+
+#~ msgid "View or Edit Actions"
+#~ msgstr "Visualizza o Modifica Azioni"
+
+#~ msgid "Create a New Action"
+#~ msgstr "Creare una nuova azione"
+
+#~ msgid "General Information"
+#~ msgstr "Informazioni Generali"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>hi. this is where you will find much of your help for "
+#~ "the application.</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>ciao. qui &egrave; dove troverai gran parte del tuo "
+#~ "aiuto per l'applicazione.</p>\n"
+#~ "\t\t\t    "
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Inbound Activity is a simple log of all incoming site "
+#~ "activity. Notes entered in a user's history, e-mail signups, contact via "
+#~ "contact form, new user registration, etc. You can keep all activity in "
+#~ "this log, or choose to \"Archive\" it. Archiving items simple removes "
+#~ "items from view in this list; it does not have an effect on the actual "
+#~ "data.</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Attivit&agrave; in entrata &egrave; un semplice registro "
+#~ "di tutte le attivit&agrave; in arrivo al sito. Note immesse nello storico "
+#~ "di un utente, registrazioni di posta elettronica, contatti tramite modulo "
+#~ "di contatto, registrazione di nuovi utenti, ecc. E&#39; possibile "
+#~ "mantenere tutte le attività in questo registro, o scegliere di "
+#~ "\"Archiviarlo\". Articoli Archiviazione rimuove semplicemente elementi "
+#~ "dalla lista, ma non ha effetto sui dati effettivi.</p>\n"
+#~ "\t\t\t    "
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>The search utility has many uses within EnvoyConnect but in "
+#~ "general it serves to either FIND specific users and actions or SHOW you "
+#~ "information you may be missing. As you are growing your database you may "
+#~ "derive the most use from searching for information you may be missing.</"
+#~ "p>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<p>For example, you can run two very different searches "
+#~ "like so: \"Show me everyone in the system with the last name of Smith\" "
+#~ "OR \"Show me everyone in the system who does not have a last name.\" With "
+#~ "the second search, the emphasis, of course, is on finding areas where you "
+#~ "are missing data and then setting yourself a task to acquire it.</p>\n"
+#~ "\t\t\t    \t\t\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<h3>Search Panel: The main area where you build your "
+#~ "queries.</h3>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Search Criteria:</strong> each \"row\" of the "
+#~ "search panel contains:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>A dropdown selection for a specific profile field "
+#~ "or action. (eg. \"Last Name\")</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Each selection has qualifying options. (eg. \"is"
+#~ "\", \"not\", \"like\", \"not like\" or \"show\")</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Each option has a place to select your data (in "
+#~ "this case a text field though each field has an appropriate modifier) "
+#~ "where you can:\n"
+#~ "\t\t\t    \t\t\t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>leave it blank to search for missing data "
+#~ "(eg. \"is\" or \"not\" empty), </li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>fill it in with a partial or full match (eg "
+#~ "\"like\" or \"not like\" \"Smi\" or \"Smith\") or</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>select \"show\" which does not modify the "
+#~ "query but simply displays the results of that field</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Search Positions:</strong> each \"row\" also "
+#~ "contains:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>A \"plus\" or \"minus\" sign to either add or "
+#~ "subtract search criteria</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>A \"crosshair\" handle to the left of each "
+#~ "profile field or action that allows you to arrange your search criteria</"
+#~ "li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Search Modifiers:</strong> below the \"rows\" "
+#~ "are global modifiers:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Order:</strong> you may choose \"Ascending"
+#~ "\" or \"Descending\" order to rank your results.</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Orderby:</strong> you may choose any of "
+#~ "the available fields to order the results.</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Results Per Page:</strong> determines "
+#~ "whether or not the results will be paginated. In some cases like bulk "
+#~ "edits (pro version) you will often want to display all of the results on "
+#~ "one page.</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Match:</strong> whether the search should "
+#~ "be: \n"
+#~ "\t\t\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t\t\t\t\t    \t\t\t<li>Any: all users and actions matching any of "
+#~ "the criteria will be shown</li>\n"
+#~ "\t\t\t\t\t\t\t    \t\t\t<li>All: only those users and actions matching "
+#~ "all of the criteria will be shown</li>\n"
+#~ "\t\t\t\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t\t\t\t    \t\t</li>\n"
+#~ "\t\t\t\t\t\t    \t</ul>\n"
+#~ "\t\t\t\t\t\t    </li>\n"
+#~ "\t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<h3>Search Results: The main area where you view your "
+#~ "results</h3>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Result Controls:</strong> Medium grey row "
+#~ "between the Search Panel and the Search Results\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Pagination: Use the buttons to navigate multiple "
+#~ "pages of results</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>View Toggles: Various views of the results:\n"
+#~ "\t\t\t    \t\t\t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Table/List: Stacked bars show the results as "
+#~ "a table. This is the default.</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Globe: This shows the results spatially on a "
+#~ "Google map provided that you conform with the Google Maps V3 terms of "
+#~ "service (Pro version)</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Data: This shows the results in various "
+#~ "visual graphs (Beta)</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Query Saver: Use this field to name and save the "
+#~ "current search. If the current search is a modification of an existing "
+#~ "saved query, you can choose to update the saved query by re-saving it.</"
+#~ "li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Query Statistics:</strong> These are simple, "
+#~ "large numbers for the users, actions and other metrics presented in the "
+#~ "results.</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Result Display:</strong> The main area of "
+#~ "results\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Table/List: The default view places the users on "
+#~ "the left and the results of each search criteria in subsequent columns on "
+#~ "the right according to the order in which the search criteria rows are "
+#~ "arranged. You can modify the order by dragging and dropping the search "
+#~ "criteria rows in place.</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Map: Users in the query are arranged "
+#~ "geographically</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Data: Under development</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>L&#39;utilità di ricerca ha molti usi all&#39;interno di "
+#~ "EnvoyConnect, ma in generale serve a trovare sia gli utenti e le azioni "
+#~ "specifiche, che a MOSTRARE informazioni che possono risultare mancanti. "
+#~ "Come stai accrescendo il database, puoi ricavare il massimo utilizzo "
+#~ "dalla ricerca di informazioni che possono mancarti.</p>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<p>Ad esempio, è possibile eseguire due ricerche molto "
+#~ "diverse in questo modo: \"Mostrami tutti quelli che hanno il cognome di "
+#~ "Smith \" O \"Mostrami tutti quelli che non hanno un cognome.\" Con il "
+#~ "seconda ricerca, l'enfasi, ovviamente, è sulla ricerca di aree dove ci "
+#~ "sono dati mancanti e quindi impostando tu stesso un&#39;attivit&agrave; "
+#~ "per ottenerlo.</p>\n"
+#~ "\t\t\t    \t\t\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<h3>Pannello Ricerca: L&#39;area principale in cui formuli "
+#~ "le tue domande.</h3>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Criterio di Ricerca:</strong> ogni \"riga\" "
+#~ "del pannello di ricerca contiene:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Una selezione a discesa per uno specifico campo "
+#~ "profilo o azione. (eg. \"Cognome\")</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Ogni selezione ha qualificanti opzioni. (eg. "
+#~ "\"&egrave;\", \"no\", \"come\", \"non come\" o \"mostra\")</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Ogni opzione ha un posto per selezionare i dati "
+#~ "(in questo caso un campo di testo, anche se ogni campo ha un modificatore "
+#~ "appropriato) in cui &egrave; possibile:\n"
+#~ "\t\t\t    \t\t\t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>lasciare vuoto per la ricerca di dati "
+#~ "mancanti (eg. \"&egrave;\" o \"no\" vuoto), </li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>compilarlo con una corrispondenza parziale o "
+#~ "totale (eg \"come\" o \"non come\" \"Smi\" o \"Smith\") o</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>selezionare \"Mostra\" che non modifica la "
+#~ "query, ma mostra semplicemente i risultati di quel campo</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Posizioni di Ricerca:</strong> ogni \"riga\" "
+#~ "contiene anche:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Un segno \"pi&ugrave;\" o \"meno\" per aggiungere "
+#~ "o sottrarre i criteri di ricerca</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Un \"mirino\" a fianco di ogni campo del profilo "
+#~ "o azione che permette di organizzare i tuoi criteri di ricerca</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Opzioni di Ricerca:</strong>sotto le \"righe"
+#~ "\" sono modificatori globali:\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Ordine:</strong> puoi scegliere "
+#~ "\"Ascendente\" o \"Discendente\" al fine di classificare i risultati.</"
+#~ "li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Ordina per:</strong> puoi scegliere "
+#~ "qualsiasi campo disponibile per ordinare i risultati.</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Risultati Per Pagina:</strong> determina "
+#~ "se i risultati saranno impaginati. In alcuni casi, come modifiche "
+#~ "collettive (versione pro) spesso si desidera visualizzare tutti i "
+#~ "risultati in un&#39;unica pagina.</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li><strong>Corrisponde:</strong> se la ricerca deve "
+#~ "essere: \n"
+#~ "\t\t\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t\t\t\t\t    \t\t\t<li>Qualsiasi: verranno visualizzati tutti gli "
+#~ "utenti e le azioni che corrispondono ad uno dei criteri</li>\n"
+#~ "\t\t\t\t\t\t\t    \t\t\t<li>Tutti: verranno visualizzati solo gli utenti "
+#~ "e le azioni che corrispondono a tutti i criteri</li>\n"
+#~ "\t\t\t\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t\t\t\t    \t\t</li>\n"
+#~ "\t\t\t\t\t\t    \t</ul>\n"
+#~ "\t\t\t\t\t\t    </li>\n"
+#~ "\t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<h3>Risultati Ricerca: L&#39;area principale in cui si "
+#~ "visualizzano i risultati</h3>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Controllo dei risultati:</strong> Fila grigio "
+#~ "medio tra il pannello di ricerca ed i risultati della ricerca\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Impaginazione: Utilizzare i pulsanti per navigare "
+#~ "più pagine di risultati</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Vista Alterna: Vari punti di vista dei "
+#~ "risultati:\n"
+#~ "\t\t\t    \t\t\t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Tabella/Lista: Barre in pila mostrano i "
+#~ "risultati sotto forma di tabella. Questa &egrave; l&#39;impostazione "
+#~ "predefinita.</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Globo: Questo mostra i risultati spazialmente "
+#~ "su una mappa di Google a condizione che i termini di servizio si "
+#~ "conformino con le Google Maps V3 (versione Pro)</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t\t<li>Dati: Questo mostra i risultati in vari "
+#~ "grafici visivi (Beta)</li>\n"
+#~ "\t\t\t    \t\t\t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Query Risparmio: Usare questo campo per "
+#~ "denominare e salvare la ricerca corrente. Se la ricerca attuale &egrave; "
+#~ "una modifica di una query esistente salvata, &egrave; possibile scegliere "
+#~ "di aggiornare la query salvata ri-salvandola.</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Query Statistiche:</strong> Questi sono "
+#~ "semplici, grandi numeri per gli utenti, le azioni e altre metriche "
+#~ "presentate nei risultati.</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>Visualizza Risultato:</strong> L&#39;area "
+#~ "principale dei risultati\n"
+#~ "\t\t\t    \t\t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Tabella/Lista: La visualizzazione predefinita "
+#~ "pone gli utenti a sinistra ed i risultati di ogni ricerca in successive "
+#~ "colonne a destra secondo l'ordine in cui i vincoli di ricerca filari sono "
+#~ "disposti. È possibile modificare l'ordine trascinando i vincoli di "
+#~ "ricerca righe a posto.</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Mappa: Gli utenti nella query sono disposti "
+#~ "geograficamente</li>\n"
+#~ "\t\t\t    \t\t\t\t\t<li>Dati: In fase di sviluppo</li>\n"
+#~ "\t\t\t    \t\t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    "
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Coming Soon!</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>In arrivo!</p>\n"
+#~ "\t\t\t    "
+
+#~ msgid "Saved Queries"
+#~ msgstr "Query Salvate"
+
+#~ msgid "User Profile"
+#~ msgstr "Profilo Utente"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>FIELDS &amp; LAYOUT:</strong> Profile fields "
+#~ "and layout are managed via Manage Fields (EnvoyConnect Options &gt; Manage "
+#~ "Fields); there, you can create and modify profile fields; determine who "
+#~ "can view and edit fields; fine-tune the profile fields, divide them into "
+#~ "sections and then drag &amp; drop them into a one- or two-column layout.</"
+#~ "li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>VIEWING &amp; EDITING:</strong> The following "
+#~ "three levels govern viewing and editing permissions:\n"
+#~ "\t\t\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>Administrators: If a field has a lock icon next "
+#~ "to it, these fields can only be seen and edited by administrators</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>Users: In general if a field is visible without a "
+#~ "lock icon next to it, this field can be seen and edited by the user of "
+#~ "the profile</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>General Public: If a field has an eye icon next "
+#~ "to it, this field is eligible for viewing by the general public via the "
+#~ "panel system. Users and Administrators can disable public viewing by "
+#~ "clicking the eye icon and confirming that a slash appears through the "
+#~ "icon.</li>\n"
+#~ "\t\t\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t\t    \t\t</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>CAMPI &amp; LAYOUT:</strong>Campi del profilo "
+#~ "e il layout sono gestiti tramite Gestire i Campi (EnvoyConnect Opzioni> "
+#~ "Gestisci Campi), ci consente di creare e modificare i campi del profilo; "
+#~ "determinare chi pu&ograve; visualizzare e modificare i campi; "
+#~ "perfezionare i campi del profilo, dividerli in sezioni e trascinare e "
+#~ "posizionare in un layout a una o due colonne.</li>\n"
+#~ "\t\t\t    \t\t\t<li><strong>VISUALIZZAZIONE &amp; MODIFICA:</strong> I "
+#~ "seguenti tre livelli governano la visualizzazione e la modifica delle "
+#~ "autorizzazioni:\n"
+#~ "\t\t\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>Amministratori:Se un campo ha l&#39;icona di un "
+#~ "lucchetto accanto ad essa, questi campi possono essere visti e modificati "
+#~ "solo dagli amministratori</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>Utenti: In generale, se un campo &egrave; "
+#~ "visibile senza l&#39;icona di un lucchetto accanto ad essa, questo campo "
+#~ "pu&ograve; essere visto e modificato dall&#39;utente del profilo</li>\n"
+#~ "\t\t\t\t\t    \t\t\t<li>Pubblico in Generale: Se un campo ha un&#39;icona "
+#~ "occhio accanto ad essa, questo campo &egrave; idoneo per la "
+#~ "visualizzazione da parte del pubblico attraverso il sistema del pannello. "
+#~ "Gli utenti e gli amministratori possono disabilitare la visualizzazione "
+#~ "pubblica facendo clic sull&#39;icona occhio, confermando con la comparsa "
+#~ "di una barra sull&#39;icona.</li>\n"
+#~ "\t\t\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t\t    \t\t</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+
+#~ msgid "User History"
+#~ msgstr "Storico Utenti"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Coming soon!</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>In Arrivo!</p>\n"
+#~ "\t\t\t    "
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t        \t\t<p>The first step in setting up EnvoyConnect for your users "
+#~ "is to create the proper profile environment through field modification "
+#~ "and/or creation. Manage Fields allows you to add fields, customize "
+#~ "fields, and organize field order/appearance for users during site "
+#~ "registration and within user profiles. EnvoyConnect comes with some standard "
+#~ "defaults, along with the standard WordPress fields.</p>\n"
+#~ "\t\t        \t\t<ol>\n"
+#~ "\t\t        \t\t\t<li><strong>ADD A FIELD:</strong> Click the \"Add a "
+#~ "Field\" button to add a new field to hold user profile data. The new "
+#~ "field will appear for editing at the top of the page. You must enter a "
+#~ "key (see KEY, below) before you can drag &amp; drop a new field into "
+#~ "another location; in general, however, we recommend that you fully edit "
+#~ "your field, save your options, and then arrange your fields into sections."
+#~ "</li>\n"
+#~ "\t\t        \t\t\t<li><strong>EDIT A FIELD:</strong> For each field, "
+#~ "there are several options (below). A few items to note: (1) there are "
+#~ "restrictions on which system default fields can/cannot be modified or "
+#~ "deleted; (2) all field deletions are final once your changes are saved, "
+#~ "however your data is not deleted; and (3) to preserve data integrity, a "
+#~ "field type (see below) should not be modified once data has been entered/"
+#~ "collected.</li>\n"
+#~ "\t\t        \t\t\t<li><strong>ORGANIZATION:</strong> Fields may be "
+#~ "arranged by simple drag &amp; drop. The way in which they are arranged "
+#~ "here is how they will appear (if applicable,see Field Options &gt; "
+#~ "Options) to an end-user. You may have (a) one or two columns and (b) "
+#~ "unlimited sections. Unused fields will appear with a diagonal striped "
+#~ "background; to help with organization, you may want to drag all unused "
+#~ "profile fields to the Unused Fields section at end of page.</li>\n"
+#~ "\t\t        \t\t</ol>\n"
+#~ "\t\t        \t\t<p><strong>SAVE YOUR OPTIONS:</strong> Be sure to click "
+#~ "the \"Save your Options\" button when done creating, editing, or "
+#~ "rearranging fields.</p>\n"
+#~ "\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t        \t\t<p>Il primo passo nella creazione di EnvoyConnect per gli "
+#~ "utenti &egrave; quello di creare l&#39;ambiente di profilo adeguato "
+#~ "attraverso la modifica e/o la creazione di campo. Gestire i Campi "
+#~ "permette di aggiungere campi, personalizzare i campi, e organizzare l&#39;"
+#~ "ordine dei campi/apparizione per gli utenti durante la registrazione al "
+#~ "sito e all&#39;interno di profili utente. EnvoyConnect viene fornito con "
+#~ "alcune impostazioni predefinite standard insieme ai campi di WordPress "
+#~ "standard.</p>\n"
+#~ "\t\t        \t\t<ol>\n"
+#~ "\t\t        \t\t\t<li><strong>AGGIUNGERE UN CAMPO:</strong> Clicca sul "
+#~ "pulsante \"Aggiungi un Campo\" per aggiungere un nuovo campo per "
+#~ "contenere dati del profilo utente. Il nuovo campo apparir&agrave; per la "
+#~ "modifica nella parte superiore della pagina. E&#39; necessario inserire "
+#~ "una chiave (vedere la legenda, sotto) prima di poter trascinare e "
+#~ "rilasciare un nuovo campo in un altro luogo, in generale, tuttavia, si "
+#~ "consiglia di modificare completamente il vostro campo, salvare le "
+#~ "opzioni, e poi organizzare i vostri campi in sezioni .</li>\n"
+#~ "\t\t        \t\t\t<li><strong>MODIFICA UN CAMPO:</strong> Per ogni campo, "
+#~ "ci sono diverse opzioni (sotto). Alcuni elementi di nota: (1) non ci sono "
+#~ "restrizioni su quali campi predefiniti di sistema possono/non possono "
+#~ "essere modificati o eliminati, (2) tutte le cancellazioni di campo sono "
+#~ "definitive una volta che le modifiche vengono salvate, ma i dati non "
+#~ "vengono cancellati, e (3) per preservare l&#39;integrit&agrave; dei dati, "
+#~ "un tipo di campo (vedi sotto) non deve essere modificato una volta che i "
+#~ "dati sono stati immessi/raccolti.</li>\n"
+#~ "\t\t        \t\t\t<li><strong>ORGANIZZAZIONE:</strong> I campi possono "
+#~ "essere organizzati da un semplice drag & drop. Il modo in cui sono "
+#~ "disposti qui essi appariranno (se del caso, vedere Opzioni> Opzioni di "
+#~ "campo) per un utente finale. Si pu&ograve; avere (a) una o due colonne e "
+#~ "(b) sezioni illimitate. I campi non utilizzati verranno visualizzati con "
+#~ "uno sfondo a righe diagonali, per aiutare con l&#39;organizzazione, si "
+#~ "consiglia di trascinare tutti i campi del profilo non utilizzati alla "
+#~ "sezione campi non utilizzati alla fine della pagina.</li>\n"
+#~ "\t\t        \t\t</ol>\n"
+#~ "\t\t        \t\t<p><strong>SALVA LE TUE OPZIONI:</strong> Assicurati di "
+#~ "pigiare sul pulsante \"Salva le tue Opzioni\" quando si sono creati, "
+#~ "modificati o riorganizzati i campi.</p>\n"
+#~ "\t\t\t\t"
+
+#~ msgid "Field Labels"
+#~ msgstr "Etichette dei Campi"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>LABEL:</strong> Allows you to edit the user-"
+#~ "facing title of a particular field.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>KEY:</strong> A field's database key cannot "
+#~ "be changed for default system fields, but must be created for new fields. "
+#~ "For new fields, specify a unique name, all lowercase, no spaces -- use "
+#~ "underscores if needed.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>TAG:</strong> Uppercase tag for syncing data "
+#~ "externally.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>HELP TEXT:</strong> Text that appears on-"
+#~ "screen below the field.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>ETICHETTA:</strong> Consente di modificare il "
+#~ "titolo dell&#39;utente di un campo particolare.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>CHIAVE:</strong> Chiave del database di un "
+#~ "campo non pu&ograve; essere modificato per i campi di default del "
+#~ "sistema, ma deve essere creato per i nuovi campi. Per i nuovi campi, "
+#~ "specificare un nome univoco, tutto in minuscolo, senza spazi - sottolinea "
+#~ "l&#39;uso, se necessario.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>TAG:</strong> Tag maiuscolo per la "
+#~ "sincronizzazione esterna dei dati.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>TESTO GUIDA:</strong> Il testo che appare "
+#~ "sullo schermo sotto il campo.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+
+#~ msgid "Field Options"
+#~ msgstr "Opzioni dei Campi"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Control how and where this field will behave and appear. "
+#~ "A green checkmark indicates an option has been enabled. For quick and "
+#~ "easy identification, certain field options (Admin, Signup, and Public) "
+#~ "will result in icons placed next to the field name once options have been "
+#~ "saved.</p>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>ADMIN:</strong> Administrators may see/edit "
+#~ "this field.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>USER:</strong> The user may view and -- "
+#~ "depending on field type and data source -- edit this field.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>SIGNUP:</strong> This field will be part of "
+#~ "the signup form.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>REPORTS:</strong> Field data will be made "
+#~ "available in user reports.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>REQUIRED:</strong> Field completion is "
+#~ "required.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>PUBLIC:</strong> Field data will be visible "
+#~ "to the general public. Users have the option of disabling individual "
+#~ "fields via their profile.</li>\n"
+#~ "\t\t    \t\t\t\t<li>Unique: Field data eligible for acting as a unique "
+#~ "identifier during data imports. (see: Adding Users &gt; Import &gt; "
+#~ "Update any existing users with this data?) To avoid data integrity "
+#~ "issues, it is highly recommended that you specify at least one unique "
+#~ "field (e.g., email address) for your users. Please note: You must "
+#~ "<em>Save your Options</em> before this option becomes visible and may be "
+#~ "applied to a new field.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>MAILCHIMP:</strong> Data that will be synched "
+#~ "with your MailChimp account. Please note: You must <em>Save your Options</"
+#~ "em> before this option becomes visible and may be applied to a new field. "
+#~ "Currently, <a href=\"http://kb.mailchimp.com/article/how-many-fields-can-"
+#~ "i-have-in-my-list\" target=\"_blank\">MailChimp supports</a> up to 30 "
+#~ "different fields on your list.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p>Controllare come e dove questo campo si comporta ed "
+#~ "appare. Un segno di spunta verde indica che l&#39;opzione &egrave stata "
+#~ "abilitata. Per l&#39;identificazione rapida e semplice, alcune opzioni di "
+#~ "campo (Amministra, Iscriviti e Pubblica) si tradurr&agrave; in icone "
+#~ "poste accanto al nome del campo una volta che le opzioni sono state "
+#~ "salvate.</p>\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>AMMINISTRATORE:</strong> Amministratori "
+#~ "possono vedere/modificare questo campo.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>UTENTE:</strong> L&#39;Utente pu&ograve; "
+#~ "vedere e -- dipendentemente dal tipo di campo e dal sorgente dati -- "
+#~ "modificare questo campo.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>ISCRIZIONE:</strong> Questo campo sar&agrave; "
+#~ "parte del modulo d&#39;iscrizione.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>RAPPORTI:</strong> Campo dati sar&agrave; "
+#~ "reso disponibile nei rapporti utente.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>RICHIESTO:</strong> Richiesto il "
+#~ "completamento del campo.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>PUBBLICO:</strong> Campo dati sar&agrave; "
+#~ "visibile al pubblico. Gli utenti hanno la possibilità di disattivare "
+#~ "singoli campi tramite il loro profilo.</li>\n"
+#~ "\t\t    \t\t\t\t<li>Unique: Dati di campo che possono beneficiare di "
+#~ "agire come un identificatore univoco durante l&#39;importazione dei dati. "
+#~ "(vedi: Aggiunta di utenti> Importa> Aggiorna tutti gli utenti esistenti "
+#~ "con questi dati?) Per evitare problemi di integrit&agrave; dei dati, si "
+#~ "consiglia di specificare almeno un campo univoco (ad esempio, indirizzo "
+#~ "di posta elettronica) per gli utenti. Attenzione: <em>E&#39; necessario "
+#~ "Salvare le Opzioni </ em> prima che questa opzione diventi visibile e "
+#~ "possa essere applicata ad un nuovo campo.</li>\n"
+#~ "\t\t    \t\t\t\t<li><strong>MAILCHIMP:</strong> I dati che verranno "
+#~ "sincronizzati con l&#39;account MailChimp. Attenzione: <em>E&#39; "
+#~ "necessario Salvare le Opzioni</ em> prima che questa opzione diventi "
+#~ "visibile e possa essere applicata ad un nuovo campo. Attualmente, <a href="
+#~ "\"http://kb.mailchimp.com/article/how-many-fields-can-i-have-in-my-list\" "
+#~ "target=\"_blank\">MailChimp supporta</a> fino a 30 campi differenti della "
+#~ "vostra lista.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t "
+
+#~ msgid "Field Types"
+#~ msgstr "Tipi di Campi"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>SECTION:</strong> Choosing section allows you "
+#~ "to create a field grouping. Simply drag &amp; drop fields into place "
+#~ "within your new section. For an example of a section, see one of the "
+#~ "default EnvoyConnect sections such as \"Account Information.\"</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>TEXT:</strong> A simple text field.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>TEXT AREA:</strong> A simple text area "
+#~ "field.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>SINGLE CHECKBOX:</strong> Indicate whether "
+#~ "the default should be true (checked) or false (not checked).</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>TAXONOMY (checkboxes):</strong>\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Terms: View, add and delete terms to be used within "
+#~ "this taxonomy. <em>Please note: You must <em>Save your Options</em> "
+#~ "before this option becomes visible and may be applied to a new field.</"
+#~ "em></li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Hierarchical Options:\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Children: You may either include or exclude child "
+#~ "terms.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Sort order: Choose your preferred sort order.</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Content: Specify whether the taxonomy may also be "
+#~ "attached to posts or custom post types.</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>RADIO BUTTON:</strong>\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Key: Specify the database key (e.g., blue). Note: a "
+#~ "key must be a unique name, contain only lowercase characters and no "
+#~ "spaces -- use underscores if needed.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Label: Specify the user-facing field label (e.g., "
+#~ "Please send me the blue sock.)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>SELECT LIST:</strong> A dropdown list of "
+#~ "options; user may select one.\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Key: Specify the database key (e.g., blue). Note: a "
+#~ "key must be a unique name, contain only lowercase characters and no "
+#~ "spaces -- use underscores if needed.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Label: Specify the user-facing field label (e.g., "
+#~ "Please send me the blue sock.)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>MULTI-TEXT:</strong> This allows the user "
+#~ "to specify information and select a modifier. For example, a phone number "
+#~ "field may require user to specify whether the number is home, work, or "
+#~ "mobile.\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Key: Specify the database key (e.g., home). Note: a "
+#~ "key must be a unique name, contain only lowercase characters and no "
+#~ "spaces -- use underscores if needed.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Label: Specify the user-facing field label (e.g., "
+#~ "Home number)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>DATE:</strong> End-user will be presented "
+#~ "with a simple date picker.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<ul>\n"
+#~ "\t\t\t    \t\t\t<li><strong>SEZIONE:</strong> Scelta sezione ti permette "
+#~ "di creare un raggruppamento di campo. E&#39; sufficiente trascinare e "
+#~ "rilasciare i campi in posizione all&#39;interno della vostra nuova "
+#~ "sezione. Per un esempio di una sezione, vedere una delle sezioni EnvoyConnect "
+#~ "predefinita come\"Informazioni Account.\"</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>TESTO:</strong> A simple text field.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>AREA TESTO:</strong> Un semplice campo di "
+#~ "area testo.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>SINGOLA CASELLA DI CONTROLLO:</strong> "
+#~ "Indicare se il default dovrebbe essere vero (selezionata) o falso (non "
+#~ "verificato).</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>TASSONOMIA (caselle di controllo):</"
+#~ "strong>\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Termini: Visualizzare, aggiungere e cancellare i "
+#~ "termini da utilizzare all&#39;interno di questa tassonomia. <em> "
+#~ "Attenzione: <em>E&#39; necessario salvare le opzioni </ em> prima che "
+#~ "questa opzione diventi visibile e possa essere applicata ad un nuovo "
+#~ "campo.</em></li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Opzioni Gerarchiche:\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Dipendenti: Puoi includere o escludere termini "
+#~ "dipendenti</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Ordinamento: Scegli il tuo tipo di ordinamento "
+#~ "preferito.</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Contenuto: Specificare se la tassonomia pu&ograve "
+#~ "essere applicata anche agli articoli o al tipo di articolo personalizzato."
+#~ "</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>PULSANTE OPZIONE:</strong>\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Chiave: Specificare la chiave di database (ad "
+#~ "esempio, blu). Nota: la chiave deve essere un nome univoco, contenere "
+#~ "solo caratteri minuscoli e senza spazi -- usa il trattino basso, se "
+#~ "necessario.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Etichetta: Specifica l&#39;etichetta del campo user-"
+#~ "fronte (ad esempio, Ti prego di inviarmi il calzino blu.)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>LISTA DI SELEZIONE</strong> Un elenco a "
+#~ "discesa di opzioni; utente pu&ograve; selezionarne uno.\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Chiave: Specificare la chiave di database (ad "
+#~ "esempio, blu). Nota: la chiave deve essere un nome univoco, contenere "
+#~ "solo caratteri minuscoli e senza spazi -- usa il trattino basso, se "
+#~ "necessario.</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Etichetta: Specifica l&#39;etichetta del campo user-"
+#~ "fronte (ad esempio, Ti prego di inviarmi il calzino blu.)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>MULTI-TESTO:</strong> Questo permette "
+#~ "all&#39;utente di specificare le informazioni e selezionare un "
+#~ "modificatore. Ad esempio, un campo di numero di telefono potrebbe "
+#~ "richiedere all&#39;utente di specificare se il numero &egrave; quello di "
+#~ "casa, del lavoro o del cellulare.\n"
+#~ "\t\t\t    \t\t\t<ul>\n"
+#~ "\t\t\t    \t\t\t\t<li>Chiave: Specificare la chiave di database  (e.g., "
+#~ "casa). Nota: la chiave deve essere un nome univoco, contenere solo "
+#~ "caratteri minuscoli e senza spazi -- usa il trattino basso, se necessario."
+#~ "</li>\n"
+#~ "\t\t\t    \t\t\t\t<li>Etichetta: Specifica l&#39;etichetta del campo user-"
+#~ "fronte (e.g., Numero di Casa)</li>\n"
+#~ "\t\t\t    \t\t\t</ul>\n"
+#~ "\t\t\t    \t\t\t</li>\n"
+#~ "\t\t\t    \t\t\t\t<li><strong>DATA:</strong> L&#39;utente finale "
+#~ "sar&agrave; presentato con un semplice selettore data.</li>\n"
+#~ "\t\t\t    \t\t</ul>\n"
+#~ "\t\t\t    "
+
+#~ msgid "Special Considerations"
+#~ msgstr "Considerazioni Speciali"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p><strong>ADDRESS GROUPS:</strong> Address groups are a "
+#~ "collection of fields that pertain to addresses. Your are currently "
+#~ "provided with three by default though, the system will create additional "
+#~ "address groupings if necessary. If you would like to display address "
+#~ "information but do not want the entire field set, you can turn off all of "
+#~ "the field options for the parent address grouping and then work with the "
+#~ "child fields as individuals. A good example of this is if you only want "
+#~ "to collect City and Postal Code information on Address One (as the "
+#~ "primary address group) -- you would turn off all of the option for the "
+#~ "Address One grouping as well as all of the fields except for City and "
+#~ "Postal Code.</p>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<p><strong>SECTIONS:</strong> If during signup you are "
+#~ "showing fields inside of a section but do not want to show the section "
+#~ "header you still must include the section field as part of the signup "
+#~ "form but then you can simply disable the other options to hide the "
+#~ "section.</p>\n"
+#~ "\t\t\t    "
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t    \t\t<p> <strong> INDIRIZZO GRUPPI: </ strong> I gruppi di "
+#~ "indirizzi sono un insieme di campi che riguardano indirizzi. Attualmente "
+#~ "sei dotato di tre di default però, se necessario, il sistema creerà "
+#~ "ulteriori raggruppamenti di indirizzo. Se si desidera visualizzare le "
+#~ "informazioni di indirizzo, ma non si vuole l'intero set di campo, è "
+#~ "possibile disattivare tutte le opzioni di campo per l'indirizzo "
+#~ "raggruppamento genitore e poi lavorare con i campi secondari come "
+#~ "individui. Un buon esempio di questo è che se si vuole solo raccogliere "
+#~ "informazioni di Citt&agrave; e  CAP su Indirizzo Uno (come il gruppo di "
+#~ "indirizzo primario) - si dovrebbe fermare tutte le opzioni per "
+#~ "l'Indirizzo Uno raggruppamento così come tutti i campi, tranne per la "
+#~ "città e il codice postale. </ p>\n"
+#~ "\t\t\t    \t\t\n"
+#~ "\t\t\t    \t\t<p><strong> SEZIONIrong> Se al momento della registrazione "
+#~ "si stanno mostrando i campi all'interno di una sezione, ma non si vuole "
+#~ "mostrare l'intestazione della sezione, &egrave; comunque necessario "
+#~ "includere il campo sezione come parte del modulo di iscrizione, ma poi si "
+#~ "può semplicemente disattivare le altre opzioni per nascondere la sezione."
+#~ "</ p>\n"
+#~ "\t\t\t    "
+
+#~ msgid "http://envoyconnect.com/"
+#~ msgstr "http://envoyconnect.com/"
+
+#~ msgid ""
+#~ "A CRM framework for WordPress and any industry. The prefix acronym stands "
+#~ "for Perspectives on the Actions of your Users."
+#~ msgstr ""
+#~ "Un quadro CRM per WordPress e qualsiasi settore. L'acronimo prefisso sta "
+#~ "per Prospettive sulle Azioni dei tuoi Utenti."
+
+#~ msgid "havahula.org"
+#~ msgstr "havahula.org"
+
+#~ msgid "http://havahula.org/"
+#~ msgstr "http://havahula.org/"
