@@ -54,7 +54,7 @@ function bbconnect_post_types( $args = null ) {
 	// EXTRACT THE VARIABLES
 	extract( $args, EXTR_SKIP );
 
-	if ( defined( 'PAUPRO_VER' ) ) {
+	if ( defined( 'BBCPRO_VER' ) ) {
 		$pro_msg = '';
 	} else {
 		$pro_msg = __( 'This is a Pro feature. Visit www.bbconnect.com for more information! ', 'bbconnect' );
@@ -123,20 +123,20 @@ function bbconnect_post_types( $args = null ) {
 					<?php echo $post->description; ?>
 				</td>
 				<td>
-					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['admin'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type; ?>"  name="_pp_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][admin]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['admin'] ) { echo $fvalue[$post_type]['options']['admin']; } else { echo '0'; } ?>" />&nbsp;</a>
+					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['admin'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type; ?>"  name="_bbc_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][admin]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['admin'] ) { echo $fvalue[$post_type]['options']['admin']; } else { echo '0'; } ?>" />&nbsp;</a>
 					<?php
 						foreach ( $post_arr as $key => $val )
-							echo '<input type="hidden" name="_pp_option[_bbconnect_post_types][' . $post->name . '][' . $key . ']" value="' . $val . '" />';
+							echo '<input type="hidden" name="_bbc_option[_bbconnect_post_types][' . $post->name . '][' . $key . ']" value="' . $val . '" />';
 					?>
 				</td>
 				<td>
-					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['user'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_user'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_user'; ?>"  name="_pp_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][user]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['user'] ) { echo $fvalue[$post_type]['options']['user']; } else { echo '0'; } ?>" />&nbsp;</a>
+					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['user'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_user'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_user'; ?>"  name="_bbc_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][user]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['user'] ) { echo $fvalue[$post_type]['options']['user']; } else { echo '0'; } ?>" />&nbsp;</a>
 				</td>
 				<td>
-					<a class="<?php echo $pt; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['public'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_public'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_public'; ?>"  name="_pp_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][public]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['public'] ) { echo $fvalue[$post_type]['options']['public']; } else { echo '0'; } ?>" />&nbsp;</a>
+					<a class="<?php echo $pt; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['public'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_public'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_public'; ?>"  name="_bbc_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][public]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['public'] ) { echo $fvalue[$post_type]['options']['public']; } else { echo '0'; } ?>" />&nbsp;</a>
 				</td>
 				<td>
-					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['reports'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_reports'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_reports'; ?>"  name="_pp_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][reports]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['reports'] ) { echo $fvalue[$post_type]['options']['reports']; } else { echo '0'; } ?>" />&nbsp;</a>
+					<a class="<?php echo $ut; ?> bbconnect <?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['reports'] ) { echo 'on'; } else { echo 'off'; } ?>" title="bbconnect_<?php echo 'bbconnect_' . $post_type.'_reports'; ?>"><input type="hidden" id="bbconnect_<?php echo 'bbconnect_' . $post_type.'_reports'; ?>"  name="_bbc_option[_bbconnect_post_types][<?php echo $post_type; ?>][options][reports]" value="<?php if ( isset( $fvalue[$post_type] ) && false != $fvalue[$post_type]['options']['reports'] ) { echo $fvalue[$post_type]['options']['reports']; } else { echo '0'; } ?>" />&nbsp;</a>
 				</td>
 			</tr>
 		<?php } ?>

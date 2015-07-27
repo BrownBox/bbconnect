@@ -3,7 +3,7 @@
 function bbconnect_inbounds(){
 
     //Create an instance of our package class...
-    $inbounds = new PP_Inbound_Table();
+    $inbounds = new BBC_Inbound_Table();
     //Fetch, prepare, sort, and filter our data...
     $inbounds->prepare_items();
 
@@ -29,16 +29,16 @@ if(!class_exists('WP_List_Table')){
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class PP_Inbound_Table extends WP_List_Table {
+class BBC_Inbound_Table extends WP_List_Table {
 
 	function bbconnect_inbound_query() {
-		$pp_inbound = new WP_Query( array(
+		$bbc_inbound = new WP_Query( array(
 											'post_type' => apply_filters( 'bbconnect_inbound_posts', array('bb_note') ),
 											'post_status' => array( 'publish', 'private' ),
 											'posts_per_page' => apply_filters( 'bbconnect_inbound_per_page', -1 ),
 											'meta_query' => array(
 													array(
-														'key' => '_pp_action_status',
+														'key' => '_bbc_action_status',
 														'value' => 'archived',
 														'compare' => 'NOT EXISTS'
 													),
@@ -46,7 +46,7 @@ class PP_Inbound_Table extends WP_List_Table {
 		) );
 
 		$inbound = array();
-		if ( $pp_inbound->have_posts() ) : while( $pp_inbound->have_posts() ) : $pp_inbound->the_post();
+		if ( $bbc_inbound->have_posts() ) : while( $bbc_inbound->have_posts() ) : $bbc_inbound->the_post();
 
 			global $post;
 
@@ -195,7 +195,7 @@ class PP_Inbound_Table extends WP_List_Table {
         	//print_r($_REQUEST);
         	$postids = $_REQUEST['bbconnect_inbound'];
         	foreach ( $postids as $id ) {
-        		update_post_meta( $id, '_pp_action_status', 'archived' );
+        		update_post_meta( $id, '_bbc_action_status', 'archived' );
         	}
 
 

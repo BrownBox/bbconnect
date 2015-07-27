@@ -213,7 +213,7 @@ function bbconnect_capabilities( $args = null ) {
 			<?php if ( 'administrator' == $key ) { ?>
 			<a class="umtf admin on"><?php printf( __( '%1$s Enabled by default', 'bbconnect' ), $val['name'] ); ?></a>
 			<?php } else { ?>
-			<a class="umt admin <?php if ( !empty( $fvalue[$key] ) ) { echo 'on'; } else { echo 'off'; } ?>" title="admin_<?php echo 'bbconnect_' . $key; ?>"><input type="hidden" id="admin_<?php echo 'bbconnect_' . $key; ?>"  name="_pp_option[_bbconnect_capabilities][<?php echo $key; ?>]" value="<?php if ( !empty( $fvalue[$key] ) ) { echo $fvalue[$key]; } else { echo '0'; } ?>" /><?php echo $val['name']; ?></a>
+			<a class="umt admin <?php if ( !empty( $fvalue[$key] ) ) { echo 'on'; } else { echo 'off'; } ?>" title="admin_<?php echo 'bbconnect_' . $key; ?>"><input type="hidden" id="admin_<?php echo 'bbconnect_' . $key; ?>"  name="_bbc_option[_bbconnect_capabilities][<?php echo $key; ?>]" value="<?php if ( !empty( $fvalue[$key] ) ) { echo $fvalue[$key]; } else { echo '0'; } ?>" /><?php echo $val['name']; ?></a>
 			<?php } ?>
 		</li>
 <?php 
@@ -225,10 +225,10 @@ function bbconnect_capabilities( $args = null ) {
 
 
 function bbconnect_save_capabilities() {
-	if ( empty( $_POST['_pp_option']['_bbconnect_capabilities'] ) )
+	if ( empty( $_POST['_bbc_option']['_bbconnect_capabilities'] ) )
 		return false;
 		
-	foreach ( $_POST['_pp_option']['_bbconnect_capabilities'] as $key => $val ) {
+	foreach ( $_POST['_bbc_option']['_bbconnect_capabilities'] as $key => $val ) {
 		if ( 'administrator' != $key ) {
 			if ( false != $val ) {
 				bbconnect_role_capabilities( 'add', $key );
@@ -256,7 +256,7 @@ function bbconnect_username_prefix( $args = null ) {
 	// EXTRACT THE VARIABLES
 	extract( $args, EXTR_SKIP );
 	
-	echo '<input type="text" class="input-short" name="_pp_option[_bbconnect_username_prefix]" value="' . $fvalue . '" />' . bbconnect_random( array( 'compact' => true ) ) . '<br />';
+	echo '<input type="text" class="input-short" name="_bbc_option[_bbconnect_username_prefix]" value="' . $fvalue . '" />' . bbconnect_random( array( 'compact' => true ) ) . '<br />';
 	echo '<span class="example-text">' . sprintf( __( 'You may use this code %1$s for the Year or any text string as a prefix.', 'bbconnect' ), '%y%' ) . '</span>';
 	
 }

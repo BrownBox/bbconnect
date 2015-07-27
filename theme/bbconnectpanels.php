@@ -33,7 +33,7 @@ add_filter( 'bbconnect_flush_permalinks', 'bbconnectpanels_flush_permalinks', 10
 
 function bbconnectpanels_scripts(){
 	
-	$paustyle = get_option( 'bbconnectpanels_style' );
+	$bbcstyle = get_option( 'bbconnectpanels_style' );
 	
 	// QUEUE SCRIPTS
 	wp_enqueue_script( 'jquery' );
@@ -53,9 +53,9 @@ function bbconnectpanels_scripts(){
 	wp_enqueue_style( 'tiptipCSS' );
 	wp_enqueue_style( 'bbconnectGridCSS' );
 	wp_enqueue_style( 'bbconnectpanelsCSS' );
-	if ( false != $paustyle || 'true' == get_option( 'bbconnectpanels_embed' ) ) {
-		if ( 'true' == get_option( 'bbconnectpanels_embed' ) ) $paustyle = 'light';
-		wp_enqueue_style( $paustyle.'PaupanelsCSS', BBCONNECT_URL . 'assets/c/bbconnectpanels-'.$paustyle.'.css', array(), BBCONNECT_VER, false );
+	if ( false != $bbcstyle || 'true' == get_option( 'bbconnectpanels_embed' ) ) {
+		if ( 'true' == get_option( 'bbconnectpanels_embed' ) ) $bbcstyle = 'light';
+		wp_enqueue_style( $bbcstyle.'BBCpanelsCSS', BBCONNECT_URL . 'assets/c/bbconnectpanels-'.$bbcstyle.'.css', array(), BBCONNECT_VER, false );
 	}
 	wp_enqueue_style( 'user-avatar' );
 	wp_enqueue_style( 'bbconnectCSS' );
@@ -86,7 +86,7 @@ function bbconnectpanels_scripts(){
 	$bbconnectpanels_ajax_array['errMsg'] = sprintf( __( 'We found some errors -- please attend to the fields below marked with %1$s', 'bbconnect' ), '<span class="halt-example">&nbsp;</span>' );
 	$bbconnectpanels_ajax_array['reqMsg'] = sprintf( __( '%1$s indicates a required field %2$s', 'bbconnect' ), '<span class="required">*', '</span>' );
 	
-	// LOCALIZE THE PAUPANELS SCRIPT	
+	// LOCALIZE THE BBCPANELS SCRIPT	
 	wp_localize_script( 'bbconnectpanelsJS', 'bbconnectpanelsAjax', $bbconnectpanels_ajax_array );
 		
 }
@@ -94,13 +94,13 @@ function bbconnectpanels_scripts(){
 
 function bbconnectpanels_flush_permalinks( $flush, $post ) {
 	
-	if ( empty( $post['_pp_option']['bbconnectpanels_embed'] ) ) {
+	if ( empty( $post['_bbc_option']['bbconnectpanels_embed'] ) ) {
 		return $flush;
 	}
 	
 	// TEST THE UPDATE
 	$flush_option = get_option( 'bbconnectpanels_embed' );
-	if ( $flush_option != $post['_pp_option']['bbconnectpanels_embed'] ) {
+	if ( $flush_option != $post['_bbc_option']['bbconnectpanels_embed'] ) {
 		return true;		
 	}
 	
@@ -150,8 +150,8 @@ function bbconnectpanels_panels( $embed = false ) {
 	
 	
 	// FIRST PRIORITY: REDIRECT FOR PASSWORD RESET
-	if ( isset( $wp_query->query_vars['pp_wp_key'] ) && isset( $wp_query->query_vars['pp_wp_login'] ) ) {
-		$rel_array = array( 'key' => $wp_query->query_vars['pp_wp_key'], 'login' => $wp_query->query_vars['pp_wp_login'] );
+	if ( isset( $wp_query->query_vars['bbc_wp_key'] ) && isset( $wp_query->query_vars['bbc_wp_login'] ) ) {
+		$rel_array = array( 'key' => $wp_query->query_vars['bbc_wp_key'], 'login' => $wp_query->query_vars['bbc_wp_login'] );
 		$ref['title'] = 'reset';
 		$rel_array['rel'] = 'reset';
 		$ref['ref'] = urlencode( serialize( $rel_array ) );
@@ -226,7 +226,7 @@ function bbconnectpanels_forms_shortcode( $atts ) {
 	
 	$forms = get_option( '_bbconnect_user_forms' );
 	if ( isset( $forms[$id] ) ) {
-		$bbconnectref = urlencode( serialize( array( 'rel' => 'contact', 'pau_form' => $id ) ) );
+		$bbconnectref = urlencode( serialize( array( 'rel' => 'contact', 'bbc_form' => $id ) ) );
 		$ptitle = 'contact';
 	} else {
 		$bbconnectref = $id;
@@ -254,7 +254,7 @@ function bbconnectpanels_forms_shortcode( $atts ) {
  * @since 0.1.0
  */
 function bbconnectpanels_get_query_vars() {
-	return apply_filters( 'bbconnectpanels_okget', array( 'rel', 'tit', 'uid', 'view', 'pau_form', 'bbconnectref' ) );
+	return apply_filters( 'bbconnectpanels_okget', array( 'rel', 'tit', 'uid', 'view', 'bbc_form', 'bbconnectref' ) );
 }
 function bbconnectpanels_b_query_vars( $qvars ) {
 	$bbconnectpanels_okget = bbconnectpanels_get_query_vars();
@@ -359,11 +359,11 @@ function bbconnectpanels_submission( $embed = false ) {
 				$log_code = false;
 				$contact_title = '';
 				$form = false;
-				if ( isset( $_POST['pau_form'] ) ) {
-					$log_code = $_POST['pau_form'];
-					$pau_titles = get_option( '_bbconnect_user_forms' );
-					$contact_title = $pau_titles[$_POST['pau_form']] . ': ';
-					$form = get_option( '_bbconnect_form_' . $_POST['pau_form'] );
+				if ( isset( $_POST['bbc_form'] ) ) {
+					$log_code = $_POST['bbc_form'];
+					$bbc_titles = get_option( '_bbconnect_user_forms' );
+					$contact_title = $bbc_titles[$_POST['bbc_form']] . ': ';
+					$form = get_option( '_bbconnect_form_' . $_POST['bbc_form'] );
 					$form_notifications = true;
 					if ( !empty( $form['notify_enable'] ) && 'false' == $form['notify_enable'] ) {
 						$form_notifications = false;
@@ -375,16 +375,16 @@ function bbconnectpanels_submission( $embed = false ) {
 				if ( false != $form && isset( $form['subject'] ) ) {
 					$subject = $form['subject'];
 				}
-				if ( isset( $_POST['_pp_post']['_pp_form_subject'] ) ) {
-					$subject = $_POST['_pp_post']['_pp_form_subject'];
-					unset( $_POST['_pp_post']['_pp_form_subject'] );
+				if ( isset( $_POST['_bbc_post']['_bbc_form_subject'] ) ) {
+					$subject = $_POST['_bbc_post']['_bbc_form_subject'];
+					unset( $_POST['_bbc_post']['_bbc_form_subject'] );
 				} 
 				
 				// MESSAGE
 				$message = '';
-				if ( isset( $_POST['_pp_post']['_pp_form_message'] ) ) {
-					$message = $_POST['_pp_post']['_pp_form_message'];
-					unset( $_POST['_pp_post']['_pp_form_message'] );
+				if ( isset( $_POST['_bbc_post']['_bbc_form_message'] ) ) {
+					$message = $_POST['_bbc_post']['_bbc_form_message'];
+					unset( $_POST['_bbc_post']['_bbc_form_message'] );
 				}
 				
 				// APPEND ADDITIONAL FIELDS TO THE MESSAGE
@@ -398,9 +398,9 @@ function bbconnectpanels_submission( $embed = false ) {
 				
 				// CC
 				$cc_me = 'false';
-				if ( isset( $_POST['_pp_post']['_pp_form_cc'] ) ) {
-					$cc_me = $_POST['_pp_post']['_pp_form_cc'];
-					unset( $_POST['_pp_post']['_pp_form_cc'] );
+				if ( isset( $_POST['_bbc_post']['_bbc_form_cc'] ) ) {
+					$cc_me = $_POST['_bbc_post']['_bbc_form_cc'];
+					unset( $_POST['_bbc_post']['_bbc_form_cc'] );
 				}
 								
 				$sender = get_user_by( 'email', $email );
@@ -425,14 +425,14 @@ function bbconnectpanels_submission( $embed = false ) {
 					$postdata['post_content'] = $message;
 					$postdata['post_status'] = 'private';
 					$postdata['post_author'] = $sender->ID;
-					$postdata['post_type'] = 'pp_log';
+					$postdata['post_type'] = 'bbc_log';
 						
 					$post_id = wp_insert_post( $postdata, true );
 					
 					// UPDATE THE META
 					if ( intval( $post_id ) ) {
-						update_post_meta( $post_id, '_pp_log_type', 'contact_form' );
-						update_post_meta( $post_id, '_pp_log_code', $log_code );
+						update_post_meta( $post_id, '_bbc_log_type', 'contact_form' );
+						update_post_meta( $post_id, '_bbc_log_code', $log_code );
 					}
 					
 				}
@@ -505,9 +505,9 @@ function bbconnectpanels_submission( $embed = false ) {
 				
 				// THANK YOU
 				$thankyou = __( 'Thank you.', 'bbconnect' );
-				if ( isset( $_POST['pau_form'] ) ) {
-					$pau_form = get_option( '_bbconnect_form_' . $_POST['pau_form'] );
-					$thankyou = bbconnect_scrub( 'bbconnect_esc_html', $pau_form['confirm'] );
+				if ( isset( $_POST['bbc_form'] ) ) {
+					$bbc_form = get_option( '_bbconnect_form_' . $_POST['bbc_form'] );
+					$thankyou = bbconnect_scrub( 'bbconnect_esc_html', $bbc_form['confirm'] );
 				}
 				$signcount = 2 + round( str_word_count( strip_tags( $thankyou ) ) / 4 );
 				
@@ -550,8 +550,8 @@ function bbconnectpanels_submission( $embed = false ) {
 				$form_fields = bbconnect_form_api_fields();
 									
 				// USER-DEFINED REPLACEMENT
-				if ( isset( $_POST['pau_form'] ) )
-					$contact_arr = get_option( '_bbconnect_form_' . $_POST['pau_form'] );
+				if ( isset( $_POST['bbc_form'] ) )
+					$contact_arr = get_option( '_bbconnect_form_' . $_POST['bbc_form'] );
 				
 				// THE DEFAULT CONTACT FORM				
 				if ( !isset( $contact_arr ) || empty( $contact_arr ) )
@@ -561,7 +561,7 @@ function bbconnectpanels_submission( $embed = false ) {
 				if ( !isset( $contact_arr ) || empty( $contact_arr ) )
 					$contact_arr = array( 
 											'column_1' => array( 'first_name', 'last_name', 'email' ),
-											'column_2' => array( '_pp_form_subject', '_pp_form_message', '_pp_form_cc' ),
+											'column_2' => array( '_bbc_form_subject', '_bbc_form_message', '_bbc_form_cc' ),
 										);
 				
 				// DOUBLE-CHECK THAT WE HAVE AN EMAIL AND A MESSAGE
@@ -573,7 +573,7 @@ function bbconnectpanels_submission( $embed = false ) {
 						if ( in_array( 'email', $cval ) )
 							$c_email = true;
 							
-						if ( in_array( '_pp_form_message', $cval ) )
+						if ( in_array( '_bbc_form_message', $cval ) )
 							$c_msg = true;
 					
 					}
@@ -585,7 +585,7 @@ function bbconnectpanels_submission( $embed = false ) {
 				}
 				
 				//if ( false == $c_msg )
-					//array_push( $contact_arr['column_2'], '_pp_form_message' );
+					//array_push( $contact_arr['column_2'], '_bbc_form_message' );
 
 				if ( isset( $contact_arr['msg'] ) && !empty( $contact_arr['msg'] ) ) {
 					echo '<div id="form-msg">';
@@ -663,8 +663,8 @@ function bbconnectpanels_submission( $embed = false ) {
 							if ( isset( $_POST['uid'] ) )
 								echo '<input type="hidden" name="uid" value="'.$_POST['uid'].'" />';
 							
-							if ( isset( $_POST['pau_form'] ) )
-								echo '<input type="hidden" name="pau_form" value="'.$_POST['pau_form'].'" />';
+							if ( isset( $_POST['bbc_form'] ) )
+								echo '<input type="hidden" name="bbc_form" value="'.$_POST['bbc_form'].'" />';
 						?>
 						<input type="submit" name="_bbconnect[submission]" value="<?php _e( 'Submit', 'bbconnect' ); ?>" class="button" />
 						<?php 
@@ -918,7 +918,7 @@ function bbconnectpanels_do_whereto( $whereto = false, $redirect = false ) {
 	// PROCESS THE REDIRECT	
 	if ( false != $redirect ) {
 		
-		// IF THIS IS A PAUPANELS REDIRECT
+		// IF THIS IS A BBCPANELS REDIRECT
 		if ( false === strpos( $do_whereto, 'http' ) )
 			$do_whereto = bbconnectpanels_get_panel_link( array( 'raw' => $do_whereto ) );
 			
@@ -965,7 +965,7 @@ function bbconnectpanels_link_shortcode( $atts ) {
 	$master_ops = array( 'login', 'logout', 'signup', 'profile' );
 	$preop = '';
 	if ( !in_array( $id, $master_ops ) )
-		$preop = 'contact&pau_form=';
+		$preop = 'contact&bbc_form=';
 		
 	return '<a class="bbconnectpanels-toggle" title="' . $id . '" href="' . home_url() . '/bbconnect/?rel=' . $preop . $id . '">' . $text . '</a>';
 }

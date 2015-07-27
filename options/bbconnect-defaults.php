@@ -21,10 +21,10 @@ function bbconnect_activate() {
 	    $bbconnect_defaults = array(
 	    	'_bbconnect_version' => BBCONNECT_VER,
 	    	'_bbconnect_user_meta' => bbconnect_default_user_meta(),
-	    	'bbconnect_pp_public' => bbconnect_pp_public(),
-	    	'bbconnect_pp_primary' => bbconnect_pp_primary(),
-	    	'bbconnect_pp_billing' => bbconnect_pp_billing(),
-	    	'bbconnect_pp_shipping' => bbconnect_pp_shipping(),
+	    	'bbconnect_bbc_public' => bbconnect_bbc_public(),
+	    	'bbconnect_bbc_primary' => bbconnect_bbc_primary(),
+	    	'bbconnect_bbc_billing' => bbconnect_bbc_billing(),
+	    	'bbconnect_bbc_shipping' => bbconnect_bbc_shipping(),
 	    	'_bbconnect_user_forms' => bbconnect_form_create(),
 	    );
 
@@ -235,10 +235,10 @@ function bbconnect_preferences_fields() {
 		array( 'source' => 'wp', 'meta_key' => 'comment_shortcuts', 'tag' => '', 'name' => __( 'Keyboard Shortcuts', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => false, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ) ),
 
 		// EMAIL PREFERENCES -- WILL NOT BE SYNCED
-		array( 'source' => 'bbconnect', 'meta_key' => 'pp_subscription', 'tag' => '', 'name' => __( 'Subscribe to email updates', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
+		array( 'source' => 'bbconnect', 'meta_key' => 'bbc_subscription', 'tag' => '', 'name' => __( 'Subscribe to email updates', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
 
 		// CONTACT PREFERENCES -- WILL NOT BE SYNCED
-		array( 'source' => 'bbconnect', 'meta_key' => 'pp_contact', 'tag' => '', 'name' => __( 'Allow others to contact me', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
+		array( 'source' => 'bbconnect', 'meta_key' => 'bbc_contact', 'tag' => '', 'name' => __( 'Allow others to contact me', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
 
         // Special Work Queue search field
         array( 'source' => 'bbconnect', 'meta_key' => 'bb_work_queue', 'tag' => '', 'name' => __( 'Work Queue', 'bbconnect' ), 'options' => array( 'admin' => false, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_work_queue' ), 'help' => false ),
@@ -295,33 +295,33 @@ function bbconnect_default_address( $location ) {
 }
 
 
-function bbconnect_pp_public() {
+function bbconnect_bbc_public() {
 
-	return array( 'source' => 'bbconnect', 'meta_key' => 'pp_public', 'tag' => '', 'name' => __( 'Public Option', 'bbconnect' ), 'options' => array( 'admin' => false, 'user' => false, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'plugin', 'choices' => 'bbconnect_public_status' ), 'help' => __( 'Use this to toggle the public status of all available fields.', 'bbconnect' ) );
-
-}
-
-function bbconnect_pp_primary() {
-
-	return array( 'source' => 'bbconnect', 'meta_key' => 'pp_primary', 'tag' => '', 'name' => 'Primary', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'primary', 'value' => '' ) ) ), 'help' => '' );
+	return array( 'source' => 'bbconnect', 'meta_key' => 'bbc_public', 'tag' => '', 'name' => __( 'Public Option', 'bbconnect' ), 'options' => array( 'admin' => false, 'user' => false, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'plugin', 'choices' => 'bbconnect_public_status' ), 'help' => __( 'Use this to toggle the public status of all available fields.', 'bbconnect' ) );
 
 }
 
-function bbconnect_pp_billing() {
+function bbconnect_bbc_primary() {
 
-	return array( 'source' => 'bbconnect', 'meta_key' => 'pp_billing', 'tag' => '', 'name' => 'Billing', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'billing', 'value' => '' ) ) ), 'help' => '' );
+	return array( 'source' => 'bbconnect', 'meta_key' => 'bbc_primary', 'tag' => '', 'name' => 'Primary', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'primary', 'value' => '' ) ) ), 'help' => '' );
 
 }
 
-function bbconnect_pp_shipping() {
+function bbconnect_bbc_billing() {
 
-	return array( 'source' => 'bbconnect', 'meta_key' => 'pp_shipping', 'tag' => '', 'name' => 'Shipping', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'shipping', 'value' => '' ) ) ), 'help' => '' );
+	return array( 'source' => 'bbconnect', 'meta_key' => 'bbc_billing', 'tag' => '', 'name' => 'Billing', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'billing', 'value' => '' ) ) ), 'help' => '' );
+
+}
+
+function bbconnect_bbc_shipping() {
+
+	return array( 'source' => 'bbconnect', 'meta_key' => 'bbc_shipping', 'tag' => '', 'name' => 'Shipping', 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'radio', 'choices' => array( array( 'label' => 'shipping', 'value' => '' ) ) ), 'help' => '' );
 
 }
 
 function bbconnect_form_create() {
 
-	$contact_form = array( 'source' => 'bbconnect', 'msg' => '', 'confirm' => '', 'column_1' => array( 'first_name', 'last_name', 'email' ), 'column_2' => array( '_pp_form_subject', '_pp_form_message', '_pp_form_cc' ) );
+	$contact_form = array( 'source' => 'bbconnect', 'msg' => '', 'confirm' => '', 'column_1' => array( 'first_name', 'last_name', 'email' ), 'column_2' => array( '_bbc_form_subject', '_bbc_form_message', '_bbc_form_cc' ) );
 	add_option( '_bbconnect_form_contact_form', $contact_form );
 
 	return array( 'contact_form' => __( 'Contact Form', 'bbconnect' ) );

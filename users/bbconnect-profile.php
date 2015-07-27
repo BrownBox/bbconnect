@@ -626,7 +626,7 @@ function bbconnect_actions_editor( $args = null ) {
                                     <?php
                                         foreach ( $bbconnect_ae_launcher_right as $key => $val ) {
                                             if ( $pagenow == 'admin-ajax.php' ) {
-                                                echo '<option value="rel=pauContent&amp;pau_type=' . $key . '&amp;uid=' . $user_id. '">' . $val . '</option>';
+                                                echo '<option value="rel=bbcContent&amp;bbc_type=' . $key . '&amp;uid=' . $user_id. '">' . $val . '</option>';
                                             } else {
                                                 echo '<option value="' . $key . '">' . $val . '</option>';
                                             }
@@ -720,7 +720,7 @@ function bbconnect_profile_action_item( $args = null ) {
     ?>
         <div class="bbconnect-view" rel="<?php echo $act->ID; ?>">
         <span class="bbconnect-field">
-            <a style="display:inline-block;width:100%;" class="<?php echo implode( ' ', apply_filters( 'bbconnect_ai_class_filter', array( 'bbconnect-icon', $act->post_type ), $act ) ); ?>"><span class="bb_pp_date"><?php echo date( 'd F Y', strtotime( $act->post_date ) ); ?></span><?php echo $act->post_title; ?></a>
+            <a style="display:inline-block;width:100%;" class="<?php echo implode( ' ', apply_filters( 'bbconnect_ai_class_filter', array( 'bbconnect-icon', $act->post_type ), $act ) ); ?>"><span class="bb_bbc_date"><?php echo date( 'd F Y', strtotime( $act->post_date ) ); ?></span><?php echo $act->post_title; ?></a>
             <div style="display:inline-block;width:100%;" ><?php echo substr( apply_filters( 'the_content', stripslashes( $act->post_content ) ), 0, 255 ); if(strlen(apply_filters( 'the_content', stripslashes( $act->post_content ) ) ) > 255 ) echo '...'; ?></div>
         </span>
         </div>
@@ -770,7 +770,7 @@ function bbconnect_profile_action_item( $args = null ) {
                     $button = '<a class="button-primary profile-actions-edit '.$type.'" title="edit-'.$act->ID.'">'.$bt.'</a>';
                 }
             } else {
-                $button = '<a class="button bbconnectpanels-toggle" href="' . home_url( '/bbconnect/?rel=pauContent&amp;pau_type='.$act->post_type.'&amp;uid='.$act->post_author.'&amp;pid='.$act->ID ) . '">'.$bt.'</a>';
+                $button = '<a class="button bbconnectpanels-toggle" href="' . home_url( '/bbconnect/?rel=bbcContent&amp;bbc_type='.$act->post_type.'&amp;uid='.$act->post_author.'&amp;pid='.$act->ID ) . '">'.$bt.'</a>';
             }
 
             if ( false != $ok_edit ) {

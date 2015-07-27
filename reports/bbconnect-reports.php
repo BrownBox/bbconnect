@@ -156,7 +156,7 @@ function bbconnect_pagination( $ret_res, $display = false ) {
 }
 
 
-function pautheme_toggle_view( $views ) {
+function bbctheme_toggle_view( $views ) {
 
     // HARD-CODED ARRAY OF OPTIONS FOR NOW
     // $views = array( 'grid', 'list', 'calendar' );
@@ -465,7 +465,7 @@ function bbconnect_report_display( $ret_res = array() ) {
 
     // ALLOW OTHER PLUGINS TO ADD VIEWS AND DO STUFF
     if ( is_admin() ) {
-        $report_nav .= pautheme_toggle_view( apply_filters( 'bbconnect_dir_tabs', array( 'list' ) ) );
+        $report_nav .= bbctheme_toggle_view( apply_filters( 'bbconnect_dir_tabs', array( 'list' ) ) );
     }
     $report_nav .= '</span>';
     echo $report_nav;

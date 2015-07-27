@@ -463,11 +463,11 @@ add_filter( 'bbconnect_get_user_actions', 'bbconnect_push_user_actions' );
 add_filter( 'bbconnect_get_user_actions_meta', 'bbconnect_push_user_actions_meta' );
 
 // MODIFY USER HISTORY PANEL
-add_filter( 'bbconnect_ai_class_filter', 'pp_log_ai_class_filter', 10, 2 );
+add_filter( 'bbconnect_ai_class_filter', 'bbc_log_ai_class_filter', 10, 2 );
 
-// FILTER OUT PAUCONTENT
-add_filter( 'paucontent_exclude_accepted_post_types', 'bbconnect_exclude_accepted_post_types' );
-add_filter( 'paucontent_exclude_restricted_post_types', 'bbconnect_exclude_restricted_post_types' );
+// FILTER OUT BBCCONTENT
+add_filter( 'bbccontent_exclude_accepted_post_types', 'bbconnect_exclude_accepted_post_types' );
+add_filter( 'bbccontent_exclude_restricted_post_types', 'bbconnect_exclude_restricted_post_types' );
 
 // SAVES THE ACTION META DATA
 add_action( 'save_post', 'bbconnect_save_action_meta' ); // action_save_meta
@@ -533,7 +533,7 @@ add_filter( 'plugin_action_links_'.BBCONNECT_SLUG, 'bbconnect_actions_link' );
 add_action( 'bbconnect_options_pre', 'bbconnect_option_welcome' );
 add_action( 'bbconnect_options_post', 'bbconnect_option_goodbye' );
 
-// PAUPANELS SHORT CODES
+// BBCPANELS SHORT CODES
 add_shortcode( 'ppf_link', 'bbconnectpanels_link_shortcode' );
 
 // SETS THE MAIL DEFAULTS

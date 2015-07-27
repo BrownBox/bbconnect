@@ -12,8 +12,8 @@ if( !defined( 'ABSPATH' ) && !defined( 'WP_UNINSTALL_PLUGIN' ) )
 global $wpdb, $wp_roles;
  
 // REMOVE ROLES
-$pp_caps = get_option( '_bbconnect_capabilities' );
-foreach ( $pp_caps as $key => $val ) {
+$bbc_caps = get_option( '_bbconnect_capabilities' );
+foreach ( $bbc_caps as $key => $val ) {
 	if ( 'administrator' != $key ) {
 		$wp_roles->remove_cap( $key, 'list_users' );
 		$wp_roles->remove_cap( $key, 'add_users' );
@@ -25,10 +25,10 @@ foreach ( $pp_caps as $key => $val ) {
 // DELETE THE OPTIONS
 $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbconnect%';");
 //$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbconnectpanels%';");
-//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%paupay%';");
-//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%paumail%';");
-//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%paupro%';");
-//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%paugeo%';");
-//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%paucontent%';");
+//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbcpay%';");
+//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbcmail%';");
+//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbcpro%';");
+//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbcgeo%';");
+//$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%bbccontent%';");
         
 ?>

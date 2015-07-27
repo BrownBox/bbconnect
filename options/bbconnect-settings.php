@@ -69,7 +69,7 @@ function bbconnect_options() {
 
 function bbconnect_options_save() {	
 
-	if ( isset( $_POST['_pp_option'] ) ) { 
+	if ( isset( $_POST['_bbc_option'] ) ) { 
 		
 		// SECURITY CHECK
 		check_admin_referer( 'bbconnect-nonce' );
@@ -84,7 +84,7 @@ function bbconnect_options_save() {
 		$notice = array();
 		$bbconnect_flush = apply_filters( 'bbconnect_flush_permalinks', false, $_POST );
 
-		foreach( $_POST['_pp_option'] as $key => $value ) {
+		foreach( $_POST['_bbc_option'] as $key => $value ) {
 			if ( update_option( $key, $value ) )
 				$notice[] = $key;
 		}
@@ -304,7 +304,7 @@ function bbconnect_ffc( $args = null ) {
 			
 	<div id="<?php echo $context; ?>-sort" class="options-field">
 		<div class="inside t-panel" style="display: block;">
-			<input type="hidden" name="_pp_option[<?php echo $context; ?>][e]" value="1" />
+			<input type="hidden" name="_bbc_option[<?php echo $context; ?>][e]" value="1" />
 			<div class="column-holder<?php if ( (int) $columns == 1 ) echo ' full'; ?>">
 				<ul data-col="column_1" id="<?php echo $context; ?>-one" title="<?php echo $context; ?>" class="<?php echo $context; ?>-sortable connected-<?php echo $context; ?>-sortable primary-list column">
 				<?php 
@@ -336,7 +336,7 @@ function bbconnect_ffc( $args = null ) {
 								<a class="undo" title="<?php echo $undo; ?>">&nbsp;</a>
 							</span>
 							<div id="option-<?php echo $context.$v; ?>" class="inside t-panel" style="display: none;">
-								<input class="column-input" type="hidden" id="<?php echo $k; ?>" name="_pp_option[<?php echo $context; ?>][column_1][]" value="<?php echo $v; ?>" />
+								<input class="column-input" type="hidden" id="<?php echo $k; ?>" name="_bbc_option[<?php echo $context; ?>][column_1][]" value="<?php echo $v; ?>" />
 								<div id="option-<?php echo $context.$v; ?>-field">
 									<?php do_action( 'bbconnect_ffc_option', $context, $v, $c_array ); ?>
 								</div>
@@ -380,7 +380,7 @@ function bbconnect_ffc( $args = null ) {
 								<a class="undo" title="<?php echo $undo; ?>">&nbsp;</a>
 							</span>
 							<div id="option-<?php echo $context.$v; ?>" class="inside t-panel" style="display: none;">
-								<input class="column-input" type="hidden" id="<?php echo $k; ?>" name="_pp_option[<?php echo $context; ?>][column_2][]" value="<?php echo $v; ?>" />
+								<input class="column-input" type="hidden" id="<?php echo $k; ?>" name="_bbc_option[<?php echo $context; ?>][column_2][]" value="<?php echo $v; ?>" />
 								<div id="option-<?php echo $context.$v; ?>-field">
 									<?php do_action( 'bbconnect_ffc_option', $context, $v, $c_array ); ?>
 								</div>
@@ -417,7 +417,7 @@ function bbconnect_ffc( $args = null ) {
 						var cid = jQuery(this).data('col');
 						var oid = jQuery(this).attr('title');
 						var fid = ui.item.attr('id');
-						ui.item.find('.column-input').attr('name','_pp_option['+oid+']['+cid+'][]');
+						ui.item.find('.column-input').attr('name','_bbc_option['+oid+']['+cid+'][]');
 					}
 				}).disableSelection();
 			});
@@ -434,7 +434,7 @@ function bbconnect_ffc( $args = null ) {
 				jQuery('#<?php echo $context; ?>_select_field option:selected').attr('disabled','disabled');
 				jQuery('#<?php echo $context; ?>_select_field').closest('select').val('');
 				//alert('yeah');
-				jQuery('<li><div class="t-wrapper"><span><span class="handle"></span><span class="t-trigger open" title="option-<?php echo $context; ?>'+fid+'">'+fna+'</span></span><span class="right"><a class="delete" title="<?php echo $delete; ?>" rel="'+fid+'">&nbsp;</a><a class="undo" title="<?php echo $undo; ?>">&nbsp;</a></span><div id="option-<?php echo $context; ?>'+fid+'" class="inside t-panel" style="display: none;"><input class="column-input" type="hidden" id="'+fid+'" name="_pp_option[<?php echo $context; ?>][column_1][]" value="'+fid+'" /><div id="option-<?php echo $context; ?>'+fid+'-field"></div></div></div></li>').appendTo('#<?php echo $context; ?>-one');
+				jQuery('<li><div class="t-wrapper"><span><span class="handle"></span><span class="t-trigger open" title="option-<?php echo $context; ?>'+fid+'">'+fna+'</span></span><span class="right"><a class="delete" title="<?php echo $delete; ?>" rel="'+fid+'">&nbsp;</a><a class="undo" title="<?php echo $undo; ?>">&nbsp;</a></span><div id="option-<?php echo $context; ?>'+fid+'" class="inside t-panel" style="display: none;"><input class="column-input" type="hidden" id="'+fid+'" name="_bbc_option[<?php echo $context; ?>][column_1][]" value="'+fid+'" /><div id="option-<?php echo $context; ?>'+fid+'-field"></div></div></div></li>').appendTo('#<?php echo $context; ?>-one');
 				
 				jQuery('#option-<?php echo $context; ?>'+fid).each(function(){
 	
@@ -456,7 +456,7 @@ function bbconnect_ffc( $args = null ) {
 				});
 				
 				
-				//attr('name','_pp_option[<?php echo $context; ?>][ffc_opts]['+fid+']');
+				//attr('name','_bbc_option[<?php echo $context; ?>][ffc_opts]['+fid+']');
 				//jQuery('.temp').removeClass('temp'); // formerly had list with class of temp
 				return false;
 			});

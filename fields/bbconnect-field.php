@@ -69,7 +69,7 @@ function bbconnect_get_field( $args = '' ) {
     // MODIFY VALUES ON CONTEXT/TYPE
     $field['type'] = $type;
     if ( 'option' === $type ) {
-        $field_pre_name = '_pp_option';
+        $field_pre_name = '_bbc_option';
         if ( 'textarea' == $meta['options']['field_type'] ) {
             $field['value'] = bbconnect_scrub( 'bbconnect_esc_html', get_option( $key ) );
         } else {
@@ -80,7 +80,7 @@ function bbconnect_get_field( $args = '' ) {
         $public = false;
 
     } else if ( 'post' === $type ) {
-        $field_pre_name = '_pp_post';
+        $field_pre_name = '_bbc_post';
         if ( 'textarea' == $meta['options']['field_type'] ) {
             $field['value'] = bbconnect_scrub( 'bbconnect_esc_html', get_post_meta( $id, $key, true ) );
         } else {
@@ -119,7 +119,7 @@ function bbconnect_get_field( $args = '' ) {
 
         // ADDITIONAL PROCESSING FOR PUBLIC USER FIELDS
         // BY DEFAULT, PUBLIC DATA IS SET TO FALSE AND HAS TO BE OVERRIDDEN BY AN ADMIN
-        $user_opt = bbconnect_scrub( 'esc_attr', get_user_meta( $id, 'bbconnect_pp_public', true ) );
+        $user_opt = bbconnect_scrub( 'esc_attr', get_user_meta( $id, 'bbconnect_bbc_public', true ) );
         if ( false != $public ) {
 
             // SOMEONE HAS UPDATED THIS PROFILE AND SET A PREFERENCE
@@ -338,7 +338,7 @@ function bbconnect_get_field( $args = '' ) {
                 if ( $help || $public || $admin_only ) { if ( $label ) echo '<br />'; }
                 if ( $help && 'checkbox' != $meta['options']['field_type'] ) echo '<a class="help" title="' . $help . '">&nbsp;</a>';
                 if ( $admin_only ) echo '<a class="icon-admin" title="' . __( 'Only visible to admins.', 'bbconnect' ) . '">&nbsp;</a>';
-                if ( $public ) echo '<a class="pmt '. $pmt .'" rel="' . __( 'Public or Private', 'bbconnect' ) . '" title="public_'. $key .'"><input type="hidden" id="public_'. $key .'"  name="' . $field_pre_name . '[pp_public]['. $key .']" value="'. $pmv .'" />&nbsp;</a>';
+                if ( $public ) echo '<a class="pmt '. $pmt .'" rel="' . __( 'Public or Private', 'bbconnect' ) . '" title="public_'. $key .'"><input type="hidden" id="public_'. $key .'"  name="' . $field_pre_name . '[bbc_public]['. $key .']" value="'. $pmv .'" />&nbsp;</a>';
             if ( $label_wrap ) echo '</span>';
 
             if ( $label_wrap ) echo '<span class="bbconnect-field">';

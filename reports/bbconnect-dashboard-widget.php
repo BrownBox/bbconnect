@@ -50,7 +50,7 @@ function bbconnect_actions_dashboard_widget_function() {
                 'post_status' => 'publish',
                 'meta_query' => array(
                         array(
-                                'key' => '_pp_action_required',
+                                'key' => '_bbc_action_required',
                                 'value' => 'true',
                         ),
                 ),

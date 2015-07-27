@@ -170,7 +170,7 @@ function bbconnect_get_error_log( $args = null ) {
 			<tr id="log-actions">
 				<th colspan="5" style="text-align: right;">
 					<a id="clear-log" class="button sub"><?php _e( 'Clear Log', 'bbconnect' ); ?></a>
-					<input id="error-log-reset" type="hidden" name="_pp_option[_bbconnect_error_log]" value="" disabled="disabled" />
+					<input id="error-log-reset" type="hidden" name="_bbc_option[_bbconnect_error_log]" value="" disabled="disabled" />
 					<script type="text/javascript">
 					jQuery(document).ready(function(){
 						jQuery('#log-actions').on('click','#clear-log',function(){

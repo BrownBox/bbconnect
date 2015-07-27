@@ -85,8 +85,8 @@ function bbconnect_update_v_0_9_4() {
 					'bbconnect_user_exports' => '_bbconnect_user_exports', 
 					'bbconnect_reserved_fields' => '_bbconnect_reserved_fields', 
 					'bbconnect_wp_taxonomies' => '_bbconnect_wp_taxonomies', 
-					'bbconnect_default_paupay_optional_fields' => '_bbconnect_form_default_paupay_optional_fields', 
-					'bbconnect_default_paumail_signup_form' => '_bbconnect_form_default_paumail_signup', 
+					'bbconnect_default_bbcpay_optional_fields' => '_bbconnect_form_default_bbcpay_optional_fields', 
+					'bbconnect_default_bbcmail_signup_form' => '_bbconnect_form_default_bbcmail_signup', 
 	);
 	foreach ( $optcon as $k => $v ) {
 		
@@ -232,16 +232,16 @@ function bbconnect_update_v_0_9_4() {
 function bbconnect_update_v_1_0_0() {
 	
 	global $wpdb;
-	$q_query = $wpdb->get_col( "SELECT $wpdb->posts.ID from $wpdb->posts where post_type = 'pp_item'" );
+	$q_query = $wpdb->get_col( "SELECT $wpdb->posts.ID from $wpdb->posts where post_type = 'bbc_item'" );
 	$allct = 0;
 	$oldct = 0;
 	$newct = 0;
 	global $post;
 	foreach ( $q_query as $id ) {
 		$allct++;
-		if ( false == get_post_meta( $id, '_pp_item_quantity', true ) ) {
+		if ( false == get_post_meta( $id, '_bbc_item_quantity', true ) ) {
 			$oldct++;
-			if ( false != update_post_meta( $id, '_pp_item_quantity', (int) 1 ) )
+			if ( false != update_post_meta( $id, '_bbc_item_quantity', (int) 1 ) )
 				$newct++;
 		}
 	}

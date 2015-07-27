@@ -146,12 +146,12 @@ function remove_meta(){
 	var rvar = jQuery(this).attr('rel');
 	jQuery(this).closest('.t-wrapper').find('[name*="bbconnect_user_meta_options"]').each(function(i) {
 		var narr = jQuery(this).attr('name'); 
-		var newarr = narr.replace('['+rvar+']','[_paudel_'+rvar+']');
+		var newarr = narr.replace('['+rvar+']','[_bbcdel_'+rvar+']');
 		jQuery(this).attr('name',newarr);
 	});
 	jQuery(this).closest('.t-wrapper').find('[name*="bbconnect_user_taxonomy_options"]').each(function(i) {
 		var narr = jQuery(this).attr('name'); 
-		var newarr = narr.replace('['+rvar+']','[_paudel_'+rvar+']');
+		var newarr = narr.replace('['+rvar+']','[_bbcdel_'+rvar+']');
 		jQuery(this).attr('name',newarr);
 	});
 	jQuery(this).closest('.t-wrapper').find('.section-output').attr('disabled', 'disabled');
@@ -165,12 +165,12 @@ function restore_meta(){
 	var rvar = jQuery(this).attr('rel');
 	jQuery(this).closest('.t-wrapper').find('[name*="bbconnect_user_meta_options"]').each(function(i) {
 		var narr = jQuery(this).attr('name'); 
-		var newarr = narr.replace('[_paudel_'+rvar+']','['+rvar+']');
+		var newarr = narr.replace('[_bbcdel_'+rvar+']','['+rvar+']');
 		jQuery(this).attr('name',newarr);
 	});
 	jQuery(this).closest('.t-wrapper').find('[name*="bbconnect_user_taxonomy_options"]').each(function(i) {
 		var narr = jQuery(this).attr('name'); 
-		var newarr = narr.replace('[_paudel_'+rvar+']','['+rvar+']');
+		var newarr = narr.replace('[_bbcdel_'+rvar+']','['+rvar+']');
 		jQuery(this).attr('name',newarr);
 	});
 	jQuery(this).closest('.t-wrapper').removeClass('deleted');

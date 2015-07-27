@@ -500,18 +500,18 @@ span.hey {
 #bbconnectpanels-wrapper .handlediv {
 	display: none;
 }
-.paucontent-wrapper {
+.bbccontent-wrapper {
 	clear: both;
 	margin: 0 auto;
 	padding: 20px 0;
 	text-align: center;
 }
-.paucontent-wrapper h2 {
+.bbccontent-wrapper h2 {
 	font-size: 2em;
 	line-height: 3em;
 	text-align: center;
 }
-.paucontent-wrapper p {
+.bbccontent-wrapper p {
 	text-align: center;
 	line-height: 1.5em;
 }

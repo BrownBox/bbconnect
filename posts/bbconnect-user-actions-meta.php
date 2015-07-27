@@ -14,7 +14,7 @@ function bbconnect_user_actions_meta() {
     $bbconnect_user_actions_meta = array(
             		array( 'meta' => array(
                         			'source' => 'bbconnect',
-                        			'meta_key' => '_pp_author',
+                        			'meta_key' => '_bbc_author',
                         			'name' => '',
                         			'help' => '',
                         			'options' => array(
@@ -27,7 +27,7 @@ function bbconnect_user_actions_meta() {
 
             		array( 'meta' => array(
     								'source' => 'bbconnect',
-    								'meta_key' => '_pp_agent',
+    								'meta_key' => '_bbc_agent',
     								'name' => '',
     								'help' =>'',
     								'options' => array(
@@ -40,7 +40,7 @@ function bbconnect_user_actions_meta() {
 
             		array( 'meta' => array(
     								'source' => 'bbconnect',
-    								'meta_key' => '_pp_log',
+    								'meta_key' => '_bbc_log',
     								'name' => '',
     								'help' =>'',
     								'options' => array(
@@ -203,7 +203,7 @@ function bbconnect_get_action_author( $args = null ) {
 		}
 
 	}
-	echo '<input type="hidden" name="_pp_post[_pp_author]" value="' . $fvalue . '" />';
+	echo '<input type="hidden" name="_bbc_post[_bbc_author]" value="' . $fvalue . '" />';
 }
 
 /**
@@ -233,7 +233,7 @@ function bbconnect_get_action_agent( $args = null ) {
 	extract( $args, EXTR_SKIP );
 
 	global $current_user;
-	echo '<input type="hidden" name="_pp_post[_pp_agent]" value="' . $current_user->ID . '" />';
+	echo '<input type="hidden" name="_bbc_post[_bbc_agent]" value="' . $current_user->ID . '" />';
 }
 
 /**
@@ -283,7 +283,7 @@ function bbconnect_user_note_meta() {
 	return apply_filters( 'bbconnect_user_note_meta', array(
 		array( 'meta' => array(
 								'source' => 'bbconnect',
-								'meta_key' => '_pp_action_status',
+								'meta_key' => '_bbc_action_status',
 								'name' => '', //__( 'Current Status', 'bbconnect' ),
 								'help' => '',
 								'options' => array(
@@ -296,7 +296,7 @@ function bbconnect_user_note_meta() {
 		) ),
 		array( 'meta' => array(
 								'source' => 'bbconnect',
-								'meta_key' => '_pp_action_required',
+								'meta_key' => '_bbc_action_required',
 								'name' => __( 'Action Required', 'bbconnect' ),
 								'help' => '',
 								'options' => array(
@@ -316,11 +316,11 @@ function bbconnect_user_note_meta() {
  * *
  * @return array. An array of classes.
  */
-function pp_log_ai_class_filter( $class, $act ) {
+function bbc_log_ai_class_filter( $class, $act ) {
 
-	if ( 'pp_log' == $act->post_type ) {
-		$class[] = get_post_meta( $act->ID, '_pp_log_type', true );
-		$class[] = get_post_meta( $act->ID, '_pp_action_status', true );
+	if ( 'bbc_log' == $act->post_type ) {
+		$class[] = get_post_meta( $act->ID, '_bbc_log_type', true );
+		$class[] = get_post_meta( $act->ID, '_bbc_action_status', true );
 	}
 	return $class;
 
@@ -431,8 +431,8 @@ function bbconnect_save_action_meta( $args = null ) {
 	}
 
 	// ALLOW PLUGINS TO MODIFY THE POST DATA
-	if ( isset( $post_data['_pp_post'] ) ) {
-		$bbconnect_data = apply_filters( 'bbconnect_modify_action_meta', $post_data['_pp_post'], $id, $post_type, $post_data );
+	if ( isset( $post_data['_bbc_post'] ) ) {
+		$bbconnect_data = apply_filters( 'bbconnect_modify_action_meta', $post_data['_bbc_post'], $id, $post_type, $post_data );
 
 		// First grab the tax items out of the array
 		if (isset($bbconnect_data['bb_note_type_parent'])) {
@@ -479,7 +479,7 @@ function bbconnect_save_action_meta( $args = null ) {
 function bbconnect_log_user_action_meta( $data, $postarr ) {
 
 	// FIRST, MAKE SURE THAT A SUBMISSION HAS OCCURRED
-	if ( isset( $postarr['_pp_post']['_pp_author'] ) ) {
+	if ( isset( $postarr['_bbc_post']['_bbc_author'] ) ) {
 
 		$bbconnect_user_actions = bbconnect_get_user_actions();
 
@@ -492,24 +492,24 @@ function bbconnect_log_user_action_meta( $data, $postarr ) {
 		// CHECK TO SEE IF THIS IS A REGISTERED ACTION
 		if ( in_array_r( $data['post_type'], $bbconnect_user_action_types ) ) {
 
-			// IF THE POSTED _pp_author CONVERSION !MATCHES THE POST_AUTHOR UPDATE IT
-			if ( $data['post_author'] != $postarr['_pp_post']['_pp_author'] ) {
+			// IF THE POSTED _bbc_author CONVERSION !MATCHES THE POST_AUTHOR UPDATE IT
+			if ( $data['post_author'] != $postarr['_bbc_post']['_bbc_author'] ) {
 
-				$data['post_author'] = $postarr['_pp_post']['_pp_author'];
+				$data['post_author'] = $postarr['_bbc_post']['_bbc_author'];
 
 			}
 
 			// UPDATE THE LOG
-			if ( isset( $postarr['_pp_post']['_pp_agent'] ) ) {
+			if ( isset( $postarr['_bbc_post']['_bbc_agent'] ) ) {
 
-				$cur_user_arr = array( 'id' => $postarr['_pp_post']['_pp_agent'], 'date' => time() );
-				$cur_log = get_post_meta( $postarr['ID'], '_pp_log', true );
+				$cur_user_arr = array( 'id' => $postarr['_bbc_post']['_bbc_agent'], 'date' => time() );
+				$cur_log = get_post_meta( $postarr['ID'], '_bbc_log', true );
 
 				if ( empty( $cur_log ) )
 					$cur_log = array();
 
 				array_push( $cur_log, $cur_user_arr );
-				update_post_meta( $postarr['ID'], '_pp_log', $cur_log );
+				update_post_meta( $postarr['ID'], '_bbc_log', $cur_log );
 
 			}
 

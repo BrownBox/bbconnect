@@ -1,4 +1,4 @@
-=== EnvoyConnect - A CRM for WordPress ===
+=== BBConnect - A CRM for WordPress ===
 Author URI: http://havahula.org
 Plugin URI: http://bbconnect.com
 Contributors: havahula
@@ -15,11 +15,11 @@ Supercharge your user profiles. Simple, powerful contact relationship management
 
 == Description ==
 
-EnvoyConnect brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
+BBConnect brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
 
 Upon installation you can build user profiles by adding and arranging as many custom fields as you need and then search those fields to find commonalities or differences. Each user profile has a history tab where you can track detailed user activity using a built-in note system and which can be extended easily to include custom post-types attributable to each user. Lastly, you can create contact forms from your existing user fields that automatically add new contacts to your database and append the details to the user account even if the contact already exists. 
 
-These are the basics of any CRM (contact relationship management) application and EnvoyConnect does it all using only the core WordPress APIs.
+These are the basics of any CRM (contact relationship management) application and BBConnect does it all using only the core WordPress APIs.
 
 **Need to do more?** The pro version, adds additional core functionality integrated into the same application for a seamless user interface and we are releasing additional add-ons for additional functionality and workflows.
 
@@ -48,9 +48,9 @@ These are the basics of any CRM (contact relationship management) application an
 
 **Current Add-ons:**
 
-* Event Management: Display events on your site and allow users to register for free or by payment (purchase or donation). You can also allow users to submit events for publication and you are able to search all events and event registrations using the EnvoyConnect search engine for analysis and reporting.
+* Event Management: Display events on your site and allow users to register for free or by payment (purchase or donation). You can also allow users to submit events for publication and you are able to search all events and event registrations using the BBConnect search engine for analysis and reporting.
 
-More information is available at [EnvoyConnect.com](http://bbconnect.com/)
+More information is available at [BBConnect.com](http://bbconnect.com/)
  
 We also have a [getting started guide](http://bbconnect.com/support/documentation/bbconnect-plugin-documentation/getting-started/)
 
@@ -69,20 +69,20 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 1. Activate the plugin
 2. Go to **My Profile** to see the new layout
 3. Go to **Users** to try out the new search utility
-4. Go to **EnvoyConnect Options** to configure the options
-5. Go to **EnvoyConnect Options > Manage Fields** to add fields and modify the new layout
+4. Go to **BBConnect Options** to configure the options
+5. Go to **BBConnect Options > Manage Fields** to add fields and modify the new layout
 
-Documentation and tutorials can be found online at [EnvoyConnect.com](http://bbconnect.com/support/).
+Documentation and tutorials can be found online at [BBConnect.com](http://bbconnect.com/support/).
 
 == Frequently Asked Questions ==
 
 = What's this all about? =
 
-Since 2010 we've built out EnvoyConnect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release EnvoyConnect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
+Since 2010 we've built out BBConnect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release BBConnect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 = What's with the name? =
 
-The "Pau" in EnvoyConnect is a stylized acronym for "Perspectives on the Actions of Users." You can pronounce it "paw" or "pow" as you like -- it answers to either.
+The "Pau" in BBConnect is a stylized acronym for "Perspectives on the Actions of Users." You can pronounce it "paw" or "pow" as you like -- it answers to either.
 
 == Screenshots ==
 
@@ -125,9 +125,9 @@ The "Pau" in EnvoyConnect is a stylized acronym for "Perspectives on the Actions
 
 = 1.5 - December 12, 2013 =
 
-* Updated EnvoyConnect Admin UI to take advantage of the 3.8 upgrades
+* Updated BBConnect Admin UI to take advantage of the 3.8 upgrades
 * Moved help documentation online to bbconnect.com
-* Large feature release for Pro version [Details at EnvoyConnect.com](http://bbconnect.com/2013/12/12/bbconnect-1-5/)
+* Large feature release for Pro version [Details at BBConnect.com](http://bbconnect.com/2013/12/12/bbconnect-1-5/)
 
 = 1.4.4 - November 24, 2013 =
 
@@ -143,7 +143,7 @@ The "Pau" in EnvoyConnect is a stylized acronym for "Perspectives on the Actions
 * Contact forms no longer require a message
 * Option to set ranges for datepicker
 * Extensive updates to actions and filters
-* Large feature release for Pro version [Details at EnvoyConnect.com](http://bbconnect.com/2013/11/07/bbconnect-version-1-4-3/)
+* Large feature release for Pro version [Details at BBConnect.com](http://bbconnect.com/2013/11/07/bbconnect-version-1-4-3/)
 
 = 1.3 - October 7, 2013 =
 

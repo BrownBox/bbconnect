@@ -113,7 +113,7 @@ function bbconnect_get_merge_tag( $meta_key, $args = null ) {
 	need an action at the end of the switch to append to for plugins
 	*/
 
-	if ( !isset( $_POST['_pp_post']['_pp_mail_segment'] ) )
+	if ( !isset( $_POST['_bbc_post']['_bbc_mail_segment'] ) )
 		return false;
 
 	// SET THE DEFAULTS TO BE OVERRIDDEN AS DESIRED
@@ -131,10 +131,10 @@ function bbconnect_get_merge_tag( $meta_key, $args = null ) {
 		return false;
 
 	// FOR POST-PROCESSING & ACTION TAGS, EXPECT TO RETURN AN ADDITIONAL ARRAY ELEMENT "DATA"
-	$option = apply_filters( 'bbconnect_filter_merge_option', bbconnect_get_option( $meta_key ), $meta_key, $_POST['_pp_post']['_pp_mail_method'] );
+	$option = apply_filters( 'bbconnect_filter_merge_option', bbconnect_get_option( $meta_key ), $meta_key, $_POST['_bbc_post']['_bbc_mail_method'] );
 
 	// FOR A MAILCHIMP CAMPAIGN
-	if ( isset( $_POST['_pp_post']['_pp_mail_method'] ) && 'mc_html' == $_POST['_pp_post']['_pp_mail_method'] ) {
+	if ( isset( $_POST['_bbc_post']['_bbc_mail_method'] ) && 'mc_html' == $_POST['_bbc_post']['_bbc_mail_method'] ) {
 
 		if (
 			is_array( $option ) &&

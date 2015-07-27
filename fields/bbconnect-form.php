@@ -38,9 +38,9 @@ function bbconnect_form_manager( $args = null ) {
 	}
 				
 	if ( false != $show_menu ) {
-		if ( isset( $_POST['_pp_option'] ) ) {
-			reset( $_POST['_pp_option'] );
-			$first_key = key( $_POST['_pp_option'] );
+		if ( isset( $_POST['_bbc_option'] ) ) {
+			reset( $_POST['_bbc_option'] );
+			$first_key = key( $_POST['_bbc_option'] );
 			$default = str_replace( '_bbconnect_form_', '', $first_key );
 		} else {
 			$default = false;
@@ -289,10 +289,10 @@ function bbconnect_show_form( $args = null ) {
 		<div class="options-field">
 			<h3><?php _e( 'Messages', 'bbconnect' ); ?></h3>
 			<p><?php printf( __( 'Add a %1$sgreeting%2$s or instructions to the form.', 'bbconnect' ), '<strong>', '</strong>' ); ?></p>
-			<textarea style="height: 100px;" name="_pp_option[<?php echo $option; ?>][msg]"><?php if ( isset( $form['msg'] ) ) echo bbconnect_scrub( 'bbconnect_esc_html', $form['msg'] ); ?></textarea>
+			<textarea style="height: 100px;" name="_bbc_option[<?php echo $option; ?>][msg]"><?php if ( isset( $form['msg'] ) ) echo bbconnect_scrub( 'bbconnect_esc_html', $form['msg'] ); ?></textarea>
 			
 			<p><?php printf( __( 'Add a %1$sthank you%2$s or instructions to the form.', 'bbconnect' ), '<strong>', '</strong>' ); ?></p>
-			<textarea style="height: 100px;" name="_pp_option[<?php echo $option; ?>][confirm]"><?php if ( isset( $form['confirm'] ) ) echo bbconnect_scrub( 'bbconnect_esc_html', $form['confirm'] ); ?></textarea>
+			<textarea style="height: 100px;" name="_bbc_option[<?php echo $option; ?>][confirm]"><?php if ( isset( $form['confirm'] ) ) echo bbconnect_scrub( 'bbconnect_esc_html', $form['confirm'] ); ?></textarea>
 		</div>
 	<?php } ?>
 	
@@ -325,10 +325,10 @@ function bbconnect_show_form( $args = null ) {
 		<div class="options-field">
 			<h3><?php _e( 'Notifications', 'bbconnect' ); ?></h3>
 			<p><?php printf( __( 'Decide which email addresses should be %1$snotified%2$s after the form is submitted. Multiple emails should be separated by commas.', 'bbconnect' ), '<strong>', '</strong>' ); ?></p>
-			<p><input type="text" class="regular-text" name="_pp_option[<?php echo $option; ?>][notify]" value="<?php if ( isset( $form['notify'] ) ) { echo bbconnect_scrub( 'bbconnect_esc_html', $form['notify'] ); } else { echo get_option( 'admin_email' ); } ?>" /></p>
+			<p><input type="text" class="regular-text" name="_bbc_option[<?php echo $option; ?>][notify]" value="<?php if ( isset( $form['notify'] ) ) { echo bbconnect_scrub( 'bbconnect_esc_html', $form['notify'] ); } else { echo get_option( 'admin_email' ); } ?>" /></p>
 			
 			<p><?php printf( __( 'Set the default %1$ssubject%2$s', 'bbconnect' ), '<strong>', '</strong>.' ); ?></p>
-			<p><input type="text" class="regular-text" name="_pp_option[<?php echo $option; ?>][subject]" value="<?php if ( isset( $form['subject'] ) ) { echo bbconnect_scrub( 'bbconnect_esc_html', $form['subject'] ); } else { printf( __( '%1$s Submission', 'bbconnect' ), $form_name ); } ?>" /></p>
+			<p><input type="text" class="regular-text" name="_bbc_option[<?php echo $option; ?>][subject]" value="<?php if ( isset( $form['subject'] ) ) { echo bbconnect_scrub( 'bbconnect_esc_html', $form['subject'] ); } else { printf( __( '%1$s Submission', 'bbconnect' ), $form_name ); } ?>" /></p>
 		</div>
 	<?php } */
 	?>
@@ -345,9 +345,9 @@ function bbconnect_show_form( $args = null ) {
 			<?php
 				// IF IT'S A SYSTEM-GENERATED FORM
 				if ( 'bbconnect' == $form['source'] || false !== strpos( $pid, 'default' ) ) {
-					echo '<input type="hidden" name="_pp_option['.$option.'][source]" value="bbconnect" />';
+					echo '<input type="hidden" name="_bbc_option['.$option.'][source]" value="bbconnect" />';
 				} else {
-					echo '<input type="hidden" name="_pp_option['.$option.'][source]" value="user" /></div>';
+					echo '<input type="hidden" name="_bbc_option['.$option.'][source]" value="user" /></div>';
 				}
 
 				// PULL THE SPECIAL FORM FIELDS
@@ -379,7 +379,7 @@ function bbconnect_show_form( $args = null ) {
 										<a class="delete" rel="<?php echo $key; ?>" title="<?php echo $delete; ?>">&nbsp;</a>
 										<a class="undo" rel="<?php echo $key; ?>" title="<?php echo $undo; ?>">&nbsp;</a>
 									</span>
-									<input class="column-input" type="hidden" id="<?php echo $key; ?>" name="_pp_option[<?php echo $option; ?>][column_1][]" value="<?php echo $value; ?>" />
+									<input class="column-input" type="hidden" id="<?php echo $key; ?>" name="_bbc_option[<?php echo $option; ?>][column_1][]" value="<?php echo $value; ?>" />
 								</div>
 							</div>
 						</li>
@@ -411,7 +411,7 @@ function bbconnect_show_form( $args = null ) {
 										<a class="delete" rel="<?php echo $key; ?>" title="<?php echo $delete; ?>">&nbsp;</a>
 										<a class="undo" rel="<?php echo $key; ?>" title="<?php echo undo; ?>">&nbsp;</a>
 									</span>
-									<input class="column-input" type="hidden" id="<?php echo $key; ?>" name="_pp_option[<?php echo $option; ?>][column_2][]" value="<?php echo $value; ?>" />
+									<input class="column-input" type="hidden" id="<?php echo $key; ?>" name="_bbc_option[<?php echo $option; ?>][column_2][]" value="<?php echo $value; ?>" />
 								</div>
 							</div>
 						</li>
@@ -432,12 +432,12 @@ function bbconnect_show_form( $args = null ) {
 					echo '<p class="code-help"><strong>' . __( 'Embed Shortcode (embeds the form. make sure you have turned on form embedding on the panels tab)', 'bbconnect' ) . '</strong><br /><textarea readonly class="fin-btn">[bbconnectf id="' . $pid . '"]</textarea></p>';
 					
 					echo '<p class="code-help"><strong>' . __( 'Link Shortcode (generates a link)', 'bbconnect' ) . '</strong><br /><textarea readonly class="fin-btn">[ppf_link id="' . $pid . '" text="' . $form_name . '"]</textarea></p>';					
-					echo '<p class="code-help"><strong>' . __( 'Local Link', 'bbconnect' ) . '</strong><br /><textarea readonly class="fin-btn">' . htmlentities('<a class="bbconnectpanels-toggle" title="' . $pid . '" href="' . home_url() . '/bbconnect/?rel=contact&amp;pau_form='.$pid.'">') . $form_name . htmlentities('</a>') . '</textarea></p>';
+					echo '<p class="code-help"><strong>' . __( 'Local Link', 'bbconnect' ) . '</strong><br /><textarea readonly class="fin-btn">' . htmlentities('<a class="bbconnectpanels-toggle" title="' . $pid . '" href="' . home_url() . '/bbconnect/?rel=contact&amp;bbc_form='.$pid.'">') . $form_name . htmlentities('</a>') . '</textarea></p>';
 					
-					$bbconnectref = urlencode( serialize( array( 'rel' => 'contact', 'pau_form' => $pid ) ) );
+					$bbconnectref = urlencode( serialize( array( 'rel' => 'contact', 'bbc_form' => $pid ) ) );
 					echo '<p class="code-help"><strong>' . __( 'Direct Link', 'bbconnect' ) . '</strong><br /><textarea readonly class="fin-btn">' . home_url() . '?bbconnectref=' . $bbconnectref . '</textarea></p>';
 										
-					bbconnect_add_to_nav_menu( $form_name, $pid, '/bbconnect/?rel=contact&amp;pau_form='.$pid );
+					bbconnect_add_to_nav_menu( $form_name, $pid, '/bbconnect/?rel=contact&amp;bbc_form='.$pid );
 				?>		
 			</div>
 		<?php
@@ -482,7 +482,7 @@ function bbconnect_show_form( $args = null ) {
 						var cid = jQuery(this).attr('id');
 						var oid = jQuery(this).attr('title');
 						var fid = ui.item.attr('id');
-						ui.item.find('.column-input').attr('name','_pp_option['+oid+']['+cid+'][]');
+						ui.item.find('.column-input').attr('name','_bbc_option['+oid+']['+cid+'][]');
 					}
 				}).disableSelection();
 			});
@@ -490,7 +490,7 @@ function bbconnect_show_form( $args = null ) {
 				//var cref = jQuery(this).previous('select');
 				var fid = jQuery('#show-form select').val();
 				var fna = jQuery('#show-form select option:selected').text();
-				jQuery('<li><div class="t-wrapper"><div class="t-title">'+fna+'<span></span><span class="right"><a class="delete" rel="'+fid+'" title="<?php echo $delete; ?>">&nbsp;</a><a class="undo" rel="'+fid+'" title="<?php echo $undo; ?>">&nbsp;</a></span><input class="column-input" type="hidden" id="'+fid+'" name="_pp_option[<?php echo $option; ?>][column_1][]" value="'+fid+'" /></div></div></li>').appendTo('#column_1');
+				jQuery('<li><div class="t-wrapper"><div class="t-title">'+fna+'<span></span><span class="right"><a class="delete" rel="'+fid+'" title="<?php echo $delete; ?>">&nbsp;</a><a class="undo" rel="'+fid+'" title="<?php echo $undo; ?>">&nbsp;</a></span><input class="column-input" type="hidden" id="'+fid+'" name="_bbc_option[<?php echo $option; ?>][column_1][]" value="'+fid+'" /></div></div></li>').appendTo('#column_1');
 				return false;
 			});
 		});
@@ -504,9 +504,9 @@ function bbconnect_form_api_fields() {
 	
 	return apply_filters( 'bbconnect_form_api_fields', array(
 						
-		'_pp_form_subject' => array( 
+		'_bbc_form_subject' => array( 
 								'source' => 'bbconnect', 
-								'meta_key' => '_pp_form_subject', 
+								'meta_key' => '_bbc_form_subject', 
 								'name' => __( 'Subject', 'bbconnect' ), 
 								'help' => '', 
 								'options' => array( 
@@ -517,9 +517,9 @@ function bbconnect_form_api_fields() {
 								) 
 		),
 		
-		'_pp_form_message' => array( 
+		'_bbc_form_message' => array( 
 								'source' => 'bbconnect', 
-								'meta_key' => '_pp_form_message', 
+								'meta_key' => '_bbc_form_message', 
 								'name' => __( 'Message', 'bbconnect' ), 
 								'help' => '', 
 								'options' => array( 
@@ -530,9 +530,9 @@ function bbconnect_form_api_fields() {
 								) 
 		),
 		
-		'_pp_form_cc' => array( 
+		'_bbc_form_cc' => array( 
 								'source' => 'bbconnect', 
-								'meta_key' => '_pp_form_cc', 
+								'meta_key' => '_bbc_form_cc', 
 								'name' => __( 'Send me a copy', 'bbconnect' ), 
 								'help' => '', 
 								'options' => array( 
@@ -565,8 +565,8 @@ function bbconnect_add_to_nav_menu( $name, $title, $link ) {
 	
 		
 	echo '<p class="code-help"><a class="help" title="' . __( 'If you wish to remove this menu item, you must delete it from the actual menu instead of unchecking the box(es) below.', 'bbconnect' ) . '">&nbsp;</a><strong>' . __( 'Add to Menu', 'bbconnect' ) . '</strong><br />';
-	if ( isset( $_POST['wppp_menu'][$title] ) ) {
-		foreach( $_POST['wppp_menu'][$title] as $menu ) {
+	if ( isset( $_POST['wpbbc_menu'][$title] ) ) {
+		foreach( $_POST['wpbbc_menu'][$title] as $menu ) {
 			if ( is_nav_menu( $menu ) ) {
 				$items = wp_get_nav_menu_items( $menu );
 				$checked = false;
@@ -594,7 +594,7 @@ function bbconnect_add_to_nav_menu( $name, $title, $link ) {
 			if ( false !== strpos( $item->post_name, sanitize_title_with_dashes( $name ) ) )
 			$checked = ' checked="checked"';
 		}
-		echo '<li><input type="checkbox" name="wppp_menu['.$title.'][]" value="'.$menu->term_id.'"'.$checked.' /> '.$menu->name . '</li>';
+		echo '<li><input type="checkbox" name="wpbbc_menu['.$title.'][]" value="'.$menu->term_id.'"'.$checked.' /> '.$menu->name . '</li>';
 	}
 	echo '</ul>';
 	echo '</p>';

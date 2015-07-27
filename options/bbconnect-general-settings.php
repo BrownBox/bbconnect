@@ -47,7 +47,7 @@ function bbconnect_option_welcome( $active ) {
 			</div>
 		</div>
 		<div class="column_holder">
-			<?php if ( !is_plugin_active( 'paupro/paupro.php' ) ) { ?>
+			<?php if ( !is_plugin_active( 'bbcpro/bbcpro.php' ) ) { ?>
 			<h2><?php _e( 'looking for more? go pro!', 'bbconnect' ); ?></h2>
 			<p><?php printf( __( 'There\'s a lot more %1$sgreat stuff you can do with EnvoyConnect%2$s.', 'bbconnect' ), '<a href="http://bbconnect.com/">', '</a>' ); ?></p>
 			<div class="option-block">

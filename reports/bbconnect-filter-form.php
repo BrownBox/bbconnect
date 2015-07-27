@@ -524,7 +524,7 @@ function bbconnect_search_form( $args = '' ) {
 			<span class="multi-op">
 				<select data-placeholder="All" name="search[<?php echo $key; ?>][post_ops][]" multiple="multiple" class="chzn-select" style="width: 100px;">
 		<?php
-			$post_ops_arr = apply_filters( 'bbconnect_post_ops_arr', array( 'pp_primary' => __( 'Primary', 'bbconnect' ) ) );
+			$post_ops_arr = apply_filters( 'bbconnect_post_ops_arr', array( 'bbc_primary' => __( 'Primary', 'bbconnect' ) ) );
 			foreach ( $post_ops_arr as $pops => $pop ) {
 				echo '<option value="'.$pops.'"';
 				if ( isset( $query['post_ops'] ) && is_array( $query['post_ops'] ) && in_array( $pops, $query['post_ops'] ) ) echo ' selected';

@@ -245,7 +245,7 @@ function my_daily_function() {
  * @since 1.0.0
  */
 function bbconnect_query_vars( $qvars ) {
-	$bbconnect_okget = apply_filters( 'bbconnect_okget', array( 'bbconnect', 'pp_key', 'pp_ref', 'pp_action' ) );
+	$bbconnect_okget = apply_filters( 'bbconnect_okget', array( 'bbconnect', 'bbc_key', 'bbc_ref', 'bbc_action' ) );
 	foreach ( $bbconnect_okget as $okgets )
 		array_push( $qvars, $okgets );
 
@@ -262,7 +262,7 @@ function bbconnect_query_vars( $qvars ) {
 function bbconnect_rewrite_rules( $wp_rewrite ) {
 	$new_rules = array(
 						'bbconnect/([^/]*)?$' => 'index.php?bbconnect=$matches[1]',
-						'bbconnect/([^/]*)/([^/]*)/([^/]*)?$' => 'index.php?bbconnect=$matches[1]&pp_key=$matches[2]&pp_ref=$matches[3]',
+						'bbconnect/([^/]*)/([^/]*)/([^/]*)?$' => 'index.php?bbconnect=$matches[1]&bbc_key=$matches[2]&bbc_ref=$matches[3]',
 	);
 	$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 }
@@ -288,24 +288,24 @@ function bbconnect_flush_rules(){
 function bbconnect_parse_request( $wp ) {
 
 	// DO WE HAVE BBCONNECT AS AN EXPLICIT VALUE?
-	$pp_top = in_array_r( 'bbconnect', $wp->query_vars, true );
+	$bbc_top = in_array_r( 'bbconnect', $wp->query_vars, true );
 
 	// DO WE HAVE BBCONNECT AS AN INVISIBLE REFERENCE?
 	if ( isset( $wp->query_vars['bbconnectref'] ) ) {
-		if ( 'true' == get_option( 'bbconnectpanels_embed' ) && false == $pp_top ) {
-			$pp_top = 'pagename';
+		if ( 'true' == get_option( 'bbconnectpanels_embed' ) && false == $bbc_top ) {
+			$bbc_top = 'pagename';
 			$wp->query_vars['pagename'] = 'bbconnect';
 		}
 	}
 
 	// DO WE HAVE BBCONNECT AS A PROXY FOR WP RESETS?
 	if ( isset( $_GET['key'] ) && isset( $_GET['login'] ) ) {
-		if ( 'true' == get_option( 'bbconnectpanels_embed' ) && false == $pp_top ) {
-			$pp_top = 'pagename';
+		if ( 'true' == get_option( 'bbconnectpanels_embed' ) && false == $bbc_top ) {
+			$bbc_top = 'pagename';
 			$wp->query_vars['pagename'] = 'bbconnect';
 		}
-		$wp->query_vars['pp_wp_key'] = $_GET['key'];
-		$wp->query_vars['pp_wp_login'] = $_GET['login'];
+		$wp->query_vars['bbc_wp_key'] = $_GET['key'];
+		$wp->query_vars['bbc_wp_login'] = $_GET['login'];
 	}
 
     // HERE, WE ARE LOOKING FOR A SUBROUTINE OF BBCONNECT
@@ -321,8 +321,8 @@ function bbconnect_parse_request( $wp ) {
 
 	// HERE, WE ARE DEALING WITH BBCONNECT TOP-LEVEL FUNCTIONALITY
 	// PROCESS EMBEDS AND REDIRECTS
-	} else if ( false != $pp_top ) {
-		//if ( 'pagename' == $pp_top || 'name' == $pp_top ) {
+	} else if ( false != $bbc_top ) {
+		//if ( 'pagename' == $bbc_top || 'name' == $bbc_top ) {
 			//unset( $wp->query_vars['pagename'] );
 			add_filter( 'wp_title', 'bbconnect_page_title' );
 			do_action( 'bbconnect_system_page', $wp );

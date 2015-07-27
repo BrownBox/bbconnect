@@ -673,9 +673,9 @@ a.bbconnect-icon,
 
 .bbconnect-icon.post { background-image: url('../g/post.png'); }
 .bbconnect-icon.page { background-image: url('../g/page.png'); }
-.bbconnect-icon.pp_event { background-image: url('../g/event.png'); }
-.bbconnect-icon.pp_support { background-image: url('../g/support.png'); }
-.bbconnect-icon.pp_product { background-image: url('../g/store.png'); }
+.bbconnect-icon.bbc_event { background-image: url('../g/event.png'); }
+.bbconnect-icon.bbc_support { background-image: url('../g/support.png'); }
+.bbconnect-icon.bbc_product { background-image: url('../g/store.png'); }
 
 
 #bbconnect a.umt,
@@ -731,22 +731,22 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   background-repeat: no-repeat;
 }
-.pp_phone { background-image: url('../g/phone.png'); }
-.pp_email, .username a.c-email:hover { background-image: url('../g/email.png'); }
-.pp_tweet { background-image: url('../g/tweet.png'); }
-.pp_facebook { background-image: url('../g/facebook.png'); }
-.pp_d_ca { background-image: url('../g/donation_cash.png'); }
-.pp_d_ck { background-image: url('../g/donation_check.png'); }
-.pp_d_cd { background-image: url('../g/donation_card.png'); }
-.pp_p_ca { background-image: url('../g/purchase_cash.png'); }
-.pp_p_ck { background-image: url('../g/purchase_check.png'); }
-.pp_p_cd { background-image: url('../g/purchase_card.png'); }
-.pp_import { background-image: url('../g/upload.png'); }
-.pp_enews { background-image: url('../g/newsletters.png'); }
+.bbc_phone { background-image: url('../g/phone.png'); }
+.bbc_email, .username a.c-email:hover { background-image: url('../g/email.png'); }
+.bbc_tweet { background-image: url('../g/tweet.png'); }
+.bbc_facebook { background-image: url('../g/facebook.png'); }
+.bbc_d_ca { background-image: url('../g/donation_cash.png'); }
+.bbc_d_ck { background-image: url('../g/donation_check.png'); }
+.bbc_d_cd { background-image: url('../g/donation_card.png'); }
+.bbc_p_ca { background-image: url('../g/purchase_cash.png'); }
+.bbc_p_ck { background-image: url('../g/purchase_check.png'); }
+.bbc_p_cd { background-image: url('../g/purchase_card.png'); }
+.bbc_import { background-image: url('../g/upload.png'); }
+.bbc_enews { background-image: url('../g/newsletters.png'); }
 .c-billing { background-image: url('../g/purchase.png'); }
 .c-shipping { background-image: url('../g/in-person.png'); }
 
-.bb_pp_date {
+.bb_bbc_date {
   color: #555;
   display: inline-block;
   font-size: 0.85rem;
@@ -792,19 +792,19 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 .bbconnect-icon.txt,
 .bbconnect-icon.rtf { background-image: url('../g/txt.png'); }
 
-.bbconnect-icon.pp_log.download.jpg,
-.bbconnect-icon.pp_log.download.png,
-.bbconnect-icon.pp_log.download.gif { background-image: url('../g/down-img.png'); }
-.bbconnect-icon.pp_log.download.pdf { background-image: url('../g/down-pdf.png'); }
-.bbconnect-icon.pp_log.download.xls,
-.bbconnect-icon.pp_log.download.csv { background-image: url('../g/down-xls.png'); }
-.bbconnect-icon.pp_log.download.doc { background-image: url('../g/down-doc.png'); }
-.bbconnect-icon.pp_log.download.ppt { background-image: url('../g/down-ppt.png'); }
-.bbconnect-icon.pp_log.download.exe,
-.bbconnect-icon.pp_log.download.dmg { background-image: url('../g/down-code.png'); }
-.bbconnect-icon.pp_log.download.zip { background-image: url('../g/down-zip.png'); }
-.bbconnect-icon.pp_log.download.txt,
-.bbconnect-icon.pp_log.download.rtf { background-image: url('../g/down-txt.png'); }
+.bbconnect-icon.bbc_log.download.jpg,
+.bbconnect-icon.bbc_log.download.png,
+.bbconnect-icon.bbc_log.download.gif { background-image: url('../g/down-img.png'); }
+.bbconnect-icon.bbc_log.download.pdf { background-image: url('../g/down-pdf.png'); }
+.bbconnect-icon.bbc_log.download.xls,
+.bbconnect-icon.bbc_log.download.csv { background-image: url('../g/down-xls.png'); }
+.bbconnect-icon.bbc_log.download.doc { background-image: url('../g/down-doc.png'); }
+.bbconnect-icon.bbc_log.download.ppt { background-image: url('../g/down-ppt.png'); }
+.bbconnect-icon.bbc_log.download.exe,
+.bbconnect-icon.bbc_log.download.dmg { background-image: url('../g/down-code.png'); }
+.bbconnect-icon.bbc_log.download.zip { background-image: url('../g/down-zip.png'); }
+.bbconnect-icon.bbc_log.download.txt,
+.bbconnect-icon.bbc_log.download.rtf { background-image: url('../g/down-txt.png'); }
 
 /* DONATIONS */
 #bbconnect .bbconnect-icon.donation.pending,
@@ -864,7 +864,7 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 .ship-mismatch { color: #b94a48; }
 
 /* ALL PURPOSE */
-#bbconnect .bbconnect-icon.paupay-note { background-image: url('../g/note.png'); }
+#bbconnect .bbconnect-icon.bbcpay-note { background-image: url('../g/note.png'); }
 #bbconnect .bbconnect-icon.donation.delivered,
 #bbconnect .bbconnect-icon.purchase.delivered,
 #bbconnect .bbconnect-icon.variable_purchase.delivered { background-image: url('../g/ok.png'); }
@@ -1031,7 +1031,7 @@ a.list-view, a.grid-view, a.calendar-view, a.map-view, a.gmap-view, a.search-vie
 	float: left;
 }
 
-.pauhide {
+.bbchide {
 	display: none !important;
 }
 

@@ -8,14 +8,14 @@ function bbconnect_reports_actions( $display = '' ) {
 		<select id="action-select">
 			<option value=""><?php _e( 'Select an Action', 'bbconnect' ); ?></option>
 			<optgroup label="<?php _e( 'Actions', 'bbconnect' ); ?>">
-				<option value="pp_export"><?php _e( 'Export', 'bbconnect' ); ?></option>
+				<option value="bbc_export"><?php _e( 'Export', 'bbconnect' ); ?></option>
 				<?php do_action( 'bbconnect_call_select_actions' ); ?>
 			</optgroup>
 		</select>
 
 		<div id="action-form">
 			<?php 	
-				pp_export();
+				bbc_export();
 				do_action( 'bbconnect_show_selected_actions' );
 			?>
 		</div>
@@ -26,10 +26,10 @@ function bbconnect_reports_actions( $display = '' ) {
 }
 
 
-function pp_export() {
+function bbc_export() {
 ?>						
-	<div id="pp_export" class="action-holder">
-		<form id="pp_export_form" class="report-form" enctype="multipart/form-data" action="<?php echo admin_url( 'users.php?page=bbconnect_reports' ); ?>" method="POST">
+	<div id="bbc_export" class="action-holder">
+		<form id="bbc_export_form" class="report-form" enctype="multipart/form-data" action="<?php echo admin_url( 'users.php?page=bbconnect_reports' ); ?>" method="POST">
 			<div class="inside">
 				<div class="column_holder">
 				

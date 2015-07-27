@@ -364,7 +364,7 @@ jQuery(document).ready(function () {
 	//SET SUPPORT FOR CHOSEN
 	jQuery('.chzn-select').chosen({ allow_single_deselect: true });
 	
-	// THE PAUPRESSS ACTIONS LAUNCHER	
+	// THE BBCONNECT ACTIONS LAUNCHER	
 	jQuery('#a-launcher').change(function() {
 		jQuery('.a-button').hide();
 		var action = jQuery(this).val();

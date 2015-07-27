@@ -91,7 +91,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 		}
 
 		// MAKE SURE ALL ELEMENTS ARE PROPERLY SCOPED, OTHERWISE, DELETE THEM
-		if ( false == $key || strlen( $key ) <= 2 || false !== strpos( $key, '_paudel_' ) || !isset( $value['source'] ) ) {
+		if ( false == $key || strlen( $key ) <= 2 || false !== strpos( $key, '_bbcdel_' ) || !isset( $value['source'] ) ) {
 
 			if ( isset( $value['source'] ) && 'wpr' == $value['source'] ) {
 			} else {
@@ -167,7 +167,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 		if (
 			isset( $value['section'] ) &&
 			!empty( $value['section'] ) &&
-			!isset( $post_arr['_paudel_'.$value['section']] )
+			!isset( $post_arr['_bbcdel_'.$value['section']] )
 		) {
 			$exclude = true;
 		} else {
@@ -193,7 +193,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 
 		// UPDATE THE OPTION AND THE INDEX KEY
 		if ( update_option( bbconnect_get_option( $key, true ), $value ) ) {
-			$pp_update = true;
+			$bbc_update = true;
 		}
 
 		// ADD ACTION FOR PLUGINS TO OPERATE ON
@@ -202,7 +202,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 	}
 
 	// UPDATE THE INDEX
-	if ( update_option( '_bbconnect_user_meta', $new_bbconnect_user_meta ) || isset( $pp_update ) ) {
+	if ( update_option( '_bbconnect_user_meta', $new_bbconnect_user_meta ) || isset( $bbc_update ) ) {
 		_e( 'Fields updated!', 'bbconnect' );
 	} else {
 		_e( 'There were no fields to update.', 'bbconnect' );

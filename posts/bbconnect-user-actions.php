@@ -501,7 +501,7 @@ function bbconnect_save_new_post() {
 }
 
 /**
- * Excludes specific actions from PauContent consideration.
+ * Excludes specific actions from BBCContent consideration.
  *
  * @since 1.0.2
  *
@@ -510,24 +510,24 @@ function bbconnect_save_new_post() {
  * @return arr. The filtered Actions Array.
  */
 
-function bbconnect_exclude_accepted_post_types( $paucontent_accepted_post_types ) {
+function bbconnect_exclude_accepted_post_types( $bbccontent_accepted_post_types ) {
 
     $bbconnect_user_actions = bbconnect_user_actions();
 
     foreach ( $bbconnect_user_actions as $key => $value )
-        array_push( $paucontent_accepted_post_types, $value['type'] );
+        array_push( $bbccontent_accepted_post_types, $value['type'] );
 
-    return $paucontent_accepted_post_types;
+    return $bbccontent_accepted_post_types;
 }
 
-function bbconnect_exclude_restricted_post_types( $paucontent_restricted_post_types ) {
+function bbconnect_exclude_restricted_post_types( $bbccontent_restricted_post_types ) {
 
     $bbconnect_user_actions = bbconnect_user_actions();
 
     foreach ( $bbconnect_user_actions as $key => $value )
-        array_push( $paucontent_restricted_post_types, $value['type'] );
+        array_push( $bbccontent_restricted_post_types, $value['type'] );
 
-    return $paucontent_restricted_post_types;
+    return $bbccontent_restricted_post_types;
 }
 
 

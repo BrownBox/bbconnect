@@ -35,7 +35,7 @@ function bbconnect_filter_process( $post_data ) {
     // IF THERE'S A SORT BY REQUEST, PROCESS THAT
     if ( !empty( $post_data['order_by'] ) ) {
 
-        $order_by = apply_filters( 'paupres_filter_order_by', $post_data['order_by'] );
+        $order_by = apply_filters( 'bbcpres_filter_order_by', $post_data['order_by'] );
 
         // STANDARDIZE WORDPRESS INCONSISTENCIES FOR RESERVED FIELDS
         // EMAIL

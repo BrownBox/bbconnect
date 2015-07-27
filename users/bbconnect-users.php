@@ -214,18 +214,18 @@ function bbconnect_insert_user( $args = '' ) {
 		$postdata['post_content'] = $content;
 		$postdata['post_status'] = 'private';
 		$postdata['post_author'] = $user_id;
-		$postdata['post_type'] = 'pp_log';
+		$postdata['post_type'] = 'bbc_log';
 
 		$post_id = wp_insert_post( $postdata, true );
 
 		// UPDATE THE META
 		if ( intval( $post_id ) ) {
-			update_post_meta( $post_id, '_pp_log_code', $log_code );
-			update_post_meta( $post_id, '_pp_log_type', $log_type );
+			update_post_meta( $post_id, '_bbc_log_code', $log_code );
+			update_post_meta( $post_id, '_bbc_log_type', $log_type );
 			if ( 0 !== $agent ) {
-				update_post_meta( $post_id, '_pp_agent', $agent );
+				update_post_meta( $post_id, '_bbc_agent', $agent );
 				$ins_log = array( array( 'id' => $agent, 'date' => time() ) );
-				update_post_meta( $post_id, '_pp_log', $ins_log );
+				update_post_meta( $post_id, '_bbc_log', $ins_log );
 			}
 		}
 	}
@@ -707,7 +707,7 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 
 	if ( isset( $meta['group_type'] ) && 'address' == $meta['group_type'] ) {
 
-		$prim_test = get_user_meta( $user_id, 'bbconnect_pp_primary', true );
+		$prim_test = get_user_meta( $user_id, 'bbconnect_bbc_primary', true );
 
 		$key = $meta['meta_key'];
 
@@ -722,7 +722,7 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 
 		?>
 			<span class="bbconnect-qualifier">
-				<input type="radio" name="bbconnect_user_meta[pp_primary]" class="bbconnect-primary" value="<?php echo $key; ?>"<?php echo $p_check; ?> /> <span><?php _e( 'primary', 'bbconnect' ); ?></span>
+				<input type="radio" name="bbconnect_user_meta[bbc_primary]" class="bbconnect-primary" value="<?php echo $key; ?>"<?php echo $p_check; ?> /> <span><?php _e( 'primary', 'bbconnect' ); ?></span>
 			</span>
 		<?php
 	}
