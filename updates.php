@@ -18,13 +18,13 @@ if( !class_exists('PPPLUGINAPI') ) {
     		else $t2 = $plugin_path;
     		$this->plugin_slug = str_replace('.php', '', $t2);
     
-    		add_filter( 'pre_set_site_transient_update_plugins', array(&$this, 'envoyconnect_api_plugin_check') );
-    		add_filter( 'plugins_api', array(&$this, 'envoyconnect_api_plugin_information'), 10, 3);
-    		add_action( 'in_plugin_update_message-' . $this->plugin_path, array( $this, 'envoyconnect_api_plugin_update_row' ), 10, 2 );
+    		add_filter( 'pre_set_site_transient_update_plugins', array(&$this, 'bbconnect_api_plugin_check') );
+    		add_filter( 'plugins_api', array(&$this, 'bbconnect_api_plugin_information'), 10, 3);
+    		add_action( 'in_plugin_update_message-' . $this->plugin_path, array( $this, 'bbconnect_api_plugin_update_row' ), 10, 2 );
     		
     	}
     	
-    	function envoyconnect_api_plugin_check( $transient ) {
+    	function bbconnect_api_plugin_check( $transient ) {
     		
     		// CHECK IF THERE'S A LICENSE KEY
     		if ( false !== $this->plugin_key && !get_option( $this->plugin_slug.'_license_key' )  )
@@ -34,7 +34,7 @@ if( !class_exists('PPPLUGINAPI') ) {
     	        return $transient;
 
     	    $args = array(
-    	     	'envoyconnect' => 'wppu', 
+    	     	'bbconnect' => 'wppu', 
     	        'pp_action' => 'plugin-update',
     	        'pp_item' => $this->plugin_id,
      	        'pp_slug' => $this->plugin_slug,
@@ -43,7 +43,7 @@ if( !class_exists('PPPLUGINAPI') ) {
     	        'pp_site' => get_option( 'siteurl' ), 
     	    );
     	    
-			$response = $this->envoyconnect_api_plugin_request( $this->api_url, $args );
+			$response = $this->bbconnect_api_plugin_request( $this->api_url, $args );
 			if ( false !== $response )
     	        $transient->response[$this->plugin_path] = $response;
     	    
@@ -51,7 +51,7 @@ if( !class_exists('PPPLUGINAPI') ) {
     	    
     	}
     	
-    	function envoyconnect_api_plugin_information( $false, $action, $args ) {
+    	function bbconnect_api_plugin_information( $false, $action, $args ) {
 
 			// CHECK IF THERE'S A LICENSE KEY
 			if ( false !== $this->plugin_key && !get_option( $this->plugin_slug.'_license_key' )  )
@@ -63,7 +63,7 @@ if( !class_exists('PPPLUGINAPI') ) {
     	    $transient = get_site_transient( 'update_plugins' );
     	        
     	    $args = array(
-    	    	'envoyconnect' => 'wppu', 
+    	    	'bbconnect' => 'wppu', 
     	        'pp_action' => 'plugin-information',
     	        'pp_item' => $this->plugin_id,
     	        'pp_slug' => $this->plugin_slug,
@@ -72,13 +72,13 @@ if( !class_exists('PPPLUGINAPI') ) {
     	        'pp_site' => get_option( 'siteurl' ),  
     	    );
     	    
-    	    $response = $this->envoyconnect_api_plugin_request( $this->api_url, $args );
+    	    $response = $this->bbconnect_api_plugin_request( $this->api_url, $args );
     	    
     	    return $response;
     	    
     	}
     	
-    	function envoyconnect_api_plugin_request( $url, $args ) {
+    	function bbconnect_api_plugin_request( $url, $args ) {
 
     	    $request = wp_remote_post( $url, array( 'body' => $args ) );
     	    
@@ -93,10 +93,10 @@ if( !class_exists('PPPLUGINAPI') ) {
     	    
     	}
     	
-    	function envoyconnect_api_plugin_update_row( $plugin_data, $r ) {
+    	function bbconnect_api_plugin_update_row( $plugin_data, $r ) {
     		if ( empty( $r->package ) ) {
     			echo ' <a href="' . admin_url() . '/plugin-install.php?tab=plugin-information&plugin='. $this->plugin_path .'&section=notice&TB_iframe=true&width=640&height=419" class="thickbox">';
-    			echo __( ' find out why and how to fix it!', 'envoyconnect' );
+    			echo __( ' find out why and how to fix it!', 'bbconnect' );
     			echo '</a>';
     		}
     	}

@@ -1,0 +1,304 @@
+/* -------------------------------------------------------------- 
+   
+   grid.css
+   * Sets up an easy-to-use grid of 24 columns.
+      
+-------------------------------------------------------------- */
+
+/* A container should group all your columns. */
+#bbconnect .container, 
+#bbconnectpanels-wrapper .container, 
+.bbconnect .container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*	------------------------------------------------------- 
+	FIXED PERCENTAGE RESPONSIVE GRID FOR PANELS AND CART
+	------------------------------------------------------- */
+
+#bbconnect .column, #bbconnect div.span-1, #bbconnect div.span-2, #bbconnect div.span-3, #bbconnect div.span-4, #bbconnect div.span-5, #bbconnect div.span-6, #bbconnect div.span-7, #bbconnect div.span-8, #bbconnect div.span-9, #bbconnect div.span-10, #bbconnect div.span-11, #bbconnect div.span-12, #bbconnect div.span-13, #bbconnect div.span-14, #bbconnect div.span-15, #bbconnect div.span-16, #bbconnect div.span-17, #bbconnect div.span-18, #bbconnect div.span-19, #bbconnect div.span-20, #bbconnect div.span-21, #bbconnect div.span-22, #bbconnect div.span-23, #bbconnect div.span-24 {
+  float: left;
+  margin: 0 .166666666% 0 0; 
+}
+
+#bbconnect .span-1 {width:4%;}
+#bbconnect .span-2 {width:8%;}
+#bbconnect .span-3 {width:12%;}
+#bbconnect .span-4 {width:16%;}
+#bbconnect .span-5 {width:20%;}
+#bbconnect .span-6 {width:24%;}
+#bbconnect .span-7 {width:28%;}
+#bbconnect .span-8 {width:32%;}
+#bbconnect .span-9 {width:36%;}
+#bbconnect .span-10 {width:40%;}
+#bbconnect .span-11 {width:44%;}
+#bbconnect .span-12 {width:48%;}
+#bbconnect .span-13 {width:52%;}
+#bbconnect .span-14 {width:56%;}
+#bbconnect .span-15 {width:60%;}
+#bbconnect .span-16 {width:64%;}
+#bbconnect .span-17 {width:68%;}
+#bbconnect .span-18 {width:72%;}
+#bbconnect .span-19 {width:76%;}
+#bbconnect .span-20 {width:80%;}
+#bbconnect .span-21 {width:84%;}
+#bbconnect .span-22 {width:88%;}
+#bbconnect .span-23 {width:92%;}
+#bbconnect .span-24, #bbconnect div.span-24 {width:100%;margin:0;}
+
+#bbconnect .append-1  { padding-right: 4%; }
+#bbconnect .append-2  { padding-right: 8%; }
+#bbconnect .append-3  { padding-right: 12%; }
+#bbconnect .append-4  { padding-right: 16%; }
+#bbconnect .append-5  { padding-right: 20%; }
+#bbconnect .append-6  { padding-right: 24%; }
+#bbconnect .append-7  { padding-right: 28%; }
+#bbconnect .append-8  { padding-right: 32%; }
+#bbconnect .append-9  { padding-right: 36%; }
+#bbconnect .append-10 { padding-right: 40%; }
+#bbconnect .append-11 { padding-right: 44%; }
+#bbconnect .append-12 { padding-right: 48%; }
+#bbconnect .append-13 { padding-right: 52%; }
+#bbconnect .append-14 { padding-right: 56%; }
+#bbconnect .append-15 { padding-right: 60%; }
+#bbconnect .append-16 { padding-right: 64%; }
+#bbconnect .append-17 { padding-right: 68%; }
+#bbconnect .append-18 { padding-right: 72%; }
+#bbconnect .append-19 { padding-right: 76%; }
+#bbconnect .append-20 { padding-right: 80%; }
+#bbconnect .append-21 { padding-right: 84%; }
+#bbconnect .append-22 { padding-right: 88%; }
+#bbconnect .append-23 { padding-right: 92%; } 
+
+#bbconnect .prepend-1  { padding-left: 4%; }  
+#bbconnect .prepend-2  { padding-left: 8%; } 
+#bbconnect .prepend-3  { padding-left: 12%; } 
+#bbconnect .prepend-4  { padding-left: 16%; } 
+#bbconnect .prepend-5  { padding-left: 20%; } 
+#bbconnect .prepend-6  { padding-left: 24%; } 
+#bbconnect .prepend-7  { padding-left: 28%; } 
+#bbconnect .prepend-8  { padding-left: 32%; } 
+#bbconnect .prepend-9  { padding-left: 36%; } 
+#bbconnect .prepend-10 { padding-left: 40%; } 
+#bbconnect .prepend-11 { padding-left: 44%; } 
+#bbconnect .prepend-12 { padding-left: 48%; } 
+#bbconnect .prepend-13 { padding-left: 52%; } 
+#bbconnect .prepend-14 { padding-left: 56%; } 
+#bbconnect .prepend-15 { padding-left: 60%; } 
+#bbconnect .prepend-16 { padding-left: 64%; } 
+#bbconnect .prepend-17 { padding-left: 68%; } 
+#bbconnect .prepend-18 { padding-left: 72%; } 
+#bbconnect .prepend-19 { padding-left: 76%; } 
+#bbconnect .prepend-20 { padding-left: 80%; } 
+#bbconnect .prepend-21 { padding-left: 84%; } 
+#bbconnect .prepend-22 { padding-left: 88%; } 
+#bbconnect .prepend-23 { padding-left: 92%; } 
+
+
+/*	------------------------------------------------------- 
+	FLUID RESPONSIVE GRID FOR ALL PURPOSE USE
+	------------------------------------------------------- */
+
+.bbconnect .column, .bbconnect .span-1, .bbconnect .span-2, .bbconnect .span-3, .bbconnect .span-4, .bbconnect .span-5, .bbconnect .span-6, .bbconnect .span-7, .bbconnect .span-8, .bbconnect .span-9, .bbconnect .span-10, .bbconnect .span-11, .bbconnect .span-12, .bbconnect .span-13, .bbconnect .span-14, .bbconnect .span-15, .bbconnect .span-16, .bbconnect .span-17, .bbconnect .span-18, .bbconnect .span-19, .bbconnect .span-20, .bbconnect .span-21, .bbconnect .span-22, .bbconnect .span-23, .bbconnect .span-24 {
+	float: left;
+	margin: 0;
+	width: 100%; 
+}
+
+@media screen and (min-width: 950px) {
+
+.bbconnect .column, .bbconnect .span-1, .bbconnect .span-2, .bbconnect .span-3, .bbconnect .span-4, .bbconnect .span-5, .bbconnect .span-6, .bbconnect .span-7, .bbconnect .span-8, .bbconnect .span-9, .bbconnect .span-10, .bbconnect .span-11, .bbconnect .span-12, .bbconnect .span-13, .bbconnect .span-14, .bbconnect .span-15, .bbconnect .span-16, .bbconnect .span-17, .bbconnect .span-18, .bbconnect .span-19, .bbconnect .span-20, .bbconnect .span-21, .bbconnect .span-22, .bbconnect .span-23, .bbconnect .span-24 {
+	margin: 0 .166666666% 0 0;
+}
+
+.bbconnect .span-1 {width:4%;}
+.bbconnect .span-2 {width:8%;}
+.bbconnect .span-3 {width:12%;}
+.bbconnect .span-4 {width:16%;}
+.bbconnect .span-5 {width:20%;}
+.bbconnect .span-6 {width:24%;}
+.bbconnect .span-7 {width:28%;}
+.bbconnect .span-8 {width:32%;}
+.bbconnect .span-9 {width:36%;}
+.bbconnect .span-10 {width:40%;}
+.bbconnect .span-11 {width:44%;}
+.bbconnect .span-12 {width:48%;}
+.bbconnect .span-13 {width:52%;}
+.bbconnect .span-14 {width:56%;}
+.bbconnect .span-15 {width:60%;}
+.bbconnect .span-16 {width:64%;}
+.bbconnect .span-17 {width:68%;}
+.bbconnect .span-18 {width:72%;}
+.bbconnect .span-19 {width:76%;}
+.bbconnect .span-20 {width:80%;}
+.bbconnect .span-21 {width:84%;}
+.bbconnect .span-22 {width:88%;}
+.bbconnect .span-23 {width:92%;}
+.bbconnect .span-24, .bbconnect .span-24 {width:100%;margin:0;}
+/*
+	.bbconnect .span-1  {width:30px;}
+	.bbconnect .span-2  {width:70px;}
+	.bbconnect .span-3  {width:110px;}
+	.bbconnect .span-4  {width:150px;}
+	.bbconnect .span-5  {width:190px;}
+	.bbconnect .span-6  {width:230px;}
+	.bbconnect .span-7  {width:270px;}
+	.bbconnect .span-8  {width:310px;}
+	.bbconnect .span-9  {width:350px;}
+	.bbconnect .span-10 {width:390px;}
+	.bbconnect .span-11 {width:430px;}
+	.bbconnect .span-12 {width:470px;}
+	.bbconnect .span-13 {width:510px;}
+	.bbconnect .span-14 {width:550px;}
+	.bbconnect .span-15 {width:590px;}
+	.bbconnect .span-16 {width:630px;}
+	.bbconnect .span-17 {width:670px;}
+	.bbconnect .span-18 {width:710px;}
+	.bbconnect .span-19 {width:750px;}
+	.bbconnect .span-20 {width:790px;}
+	.bbconnect .span-21 {width:830px;}
+	.bbconnect .span-22 {width:870px;}
+	.bbconnect .span-23 {width:910px;}
+	.bbconnect .span-24, .bbconnect .span-24 {width:950px;margin:0;}
+*/
+/*	
+	.bbconnect .append-1 {padding-right:40px;}
+	.bbconnect .append-2 {padding-right:80px;}
+	.bbconnect .append-3 {padding-right:120px;}
+	.bbconnect .append-4 {padding-right:160px;}
+	.bbconnect .append-5 {padding-right:200px;}
+	.bbconnect .append-6 {padding-right:240px;}
+	.bbconnect .append-7 {padding-right:280px;}
+	.bbconnect .append-8 {padding-right:320px;}
+	.bbconnect .append-9 {padding-right:360px;}
+	.bbconnect .append-10 {padding-right:400px;}
+	.bbconnect .append-11 {padding-right:440px;}
+	.bbconnect .append-12 {padding-right:480px;}
+	.bbconnect .append-13 {padding-right:520px;}
+	.bbconnect .append-14 {padding-right:560px;}
+	.bbconnect .append-15 {padding-right:600px;}
+	.bbconnect .append-16 {padding-right:640px;}
+	.bbconnect .append-17 {padding-right:680px;}
+	.bbconnect .append-18 {padding-right:720px;}
+	.bbconnect .append-19 {padding-right:760px;}
+	.bbconnect .append-20 {padding-right:800px;}
+	.bbconnect .append-21 {padding-right:840px;}
+	.bbconnect .append-22 {padding-right:880px;}
+	.bbconnect .append-23 {padding-right:920px;}
+	
+	.bbconnect .prepend-1 {padding-left:40px;}
+	.bbconnect .prepend-2 {padding-left:80px;}
+	.bbconnect .prepend-3 {padding-left:120px;}
+	.bbconnect .prepend-4 {padding-left:160px;}
+	.bbconnect .prepend-5 {padding-left:200px;}
+	.bbconnect .prepend-6 {padding-left:240px;}
+	.bbconnect .prepend-7 {padding-left:280px;}
+	.bbconnect .prepend-8 {padding-left:320px;}
+	.bbconnect .prepend-9 {padding-left:360px;}
+	.bbconnect .prepend-10 {padding-left:400px;}
+	.bbconnect .prepend-11 {padding-left:440px;}
+	.bbconnect .prepend-12 {padding-left:480px;}
+	.bbconnect .prepend-13 {padding-left:520px;}
+	.bbconnect .prepend-14 {padding-left:560px;}
+	.bbconnect .prepend-15 {padding-left:600px;}
+	.bbconnect .prepend-16 {padding-left:640px;}
+	.bbconnect .prepend-17 {padding-left:680px;}
+	.bbconnect .prepend-18 {padding-left:720px;}
+	.bbconnect .prepend-19 {padding-left:760px;}
+	.bbconnect .prepend-20 {padding-left:800px;}
+	.bbconnect .prepend-21 {padding-left:840px;}
+	.bbconnect .prepend-22 {padding-left:880px;}
+	.bbconnect .prepend-23 {padding-left:920px;}
+*/
+}
+
+/*	------------------------------------------------------- 
+	SHARED RESPONIVE REQUISITES
+	------------------------------------------------------- */
+
+/* The last column in a row needs this class. */
+#bbconnect .last, 
+#bbconnect div.last,
+.bbconnect .last, 
+.bbconnect div.last { margin-right: 0; }
+
+/* Border on right hand side of a column. */
+#bbconnect div.border, .bbconnect div.border {
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #eee;
+}
+
+/* Border with more whitespace, spans one column. */
+#bbconnect div.colborder, .bbconnect div.colborder {
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #eee;
+}
+
+/*	------------------------------------------------------- 
+	SHARED RESPONIVE REQUISITES
+	------------------------------------------------------- */
+
+/* In case you need to add a gutter above/below an element */
+#bbconnect .prepend-top, .bbconnect .prepend-top { 
+	margin-top: 1.5em; 
+}
+#bbconnect .append-bottom, .bbconnect .append-bottom { 
+	margin-bottom: 1.5em; 
+}
+
+/* Use a .box to create a padded box inside a column.  */ 
+#bbconnect .box, .bbconnect .box { 
+  padding: 1.5em; 
+  margin-bottom: 1.5em; 
+  background: #E5ECF9; 
+}
+
+/* Use this to create a horizontal ruler across a column. */
+#bbconnect hr, 
+.bbconnect hr {
+  background: #ddd; 
+  color: #ddd;
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: .1em;
+  margin: 0 0 1.45em;
+  border: none; 
+}
+#bbconnect hr.space, 
+.bbconnect hr.space {
+  background: #fff;
+  color: #fff;
+}
+
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+
+#bbconnect .clearfix:after, 
+.bbconnect .clearfix:after, 
+#bbconnect .container:after, 
+.bbconnect .container:after {
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden; 
+    overflow:hidden; 
+}
+#bbconnect .clearfix, 
+.bbconnect .clearfix, 
+#bbconnect .container, 
+.bbconnect .container {
+	display: block;
+	background-color: transparent !important;
+}
+
+/* Regular clearing
+   apply to column that should drop below previous ones. */
+
+#bbconnect .clear, .bbconnect .clear { clear:both; }

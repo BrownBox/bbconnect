@@ -1,0 +1,543 @@
+/*	------------------------------------------------------- 
+	PANEL STRUCTURE
+	------------------------------------------------------- */
+
+.bbconnectf-frame, 
+.bbconnectf-frame #bbconnect, 
+.bbconnectf-frame #bbconnectpanels-tabs {
+	font-size: 14px !important;
+	font-family: Helvetica, Arial, sans-serif !important;
+}
+.bbconnectf-frame {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#bbconnectpanels-wrapper {
+	background: #DDDDDD url('../g/darkdenim3.png') top left repeat;
+	overflow: auto;
+	width: auto;
+	text-align: center;
+	color: #FFFFFF;
+}
+#bbconnectpanels-frame-embed #bbconnectpanels-wrapper, 
+.bbconnectf-page, 
+#bbconnectpanels-wrapper.bbconnectf-page {
+	background: transparent !important;
+	overflow: hidden;
+}
+#bbconnectpanels-wrapper h1, 
+#bbconnectpanels-wrapper h2, 
+#bbconnectpanels-wrapper h3, 
+#bbconnectpanels-wrapper h4, 
+#bbconnectpanels-wrapper h5, 
+#bbconnectpanels-wrapper h6 {
+	color: #FFFFFF !important;
+	text-shadow: none !important;
+}
+#bbconnectpanels-wrapper h2 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	margin-bottom: 10px;
+}
+#bbconnectpanels-wrapper p {
+	line-height: 1.5em;
+}
+#bbconnectpanels-wrapper a {
+	color: #6495ED;
+}
+#bbconnectpanels-wrapper a.button, 
+#bbconnectpanels-wrapper input[type="submit"].button,  
+#bbconnectpanels-wrapper .button, 
+#bbconnectpanels-wrapper .button-primary {
+	color: #FFFFFF;
+	background-color: #555;
+	background-image: none;
+	padding: 5px 10px;
+	margin: 2px;
+	-moz-border-radius: 12px; 
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+}
+#bbconnectpanels-wrapper a.button.disabled, 
+.bbconnectpanels-toggle.disabled {
+	cursor: default;
+}
+#bbconnectpanels-wrapper .inside {
+	padding: 10px;
+}
+#bbconnectpanels-wrapper .inside-vertical {
+	padding: 0 10px;
+}
+#bbconnectpanels-wrapper .container {
+	padding: 0 0 10px 0;
+	background-color: transparent !important;
+}
+#bbconnect {
+	height: auto !important;
+	padding: 0 5px;
+}
+#bbconnect .bbconnect-fields {
+	text-align: left;
+}
+#bbconnectpanel {
+	display: none;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL MENU SYSTEM
+	------------------------------------------------------- */
+
+#pp-title, #pp-notify {
+	cursor: pointer;
+}
+/*
+#pp-menu li:hover ul, #pp-menu li li:hover ul, #pp-menu li.sfhover ul, #pp-menu li li.sfhover ul {
+	left: auto;
+}
+*/
+
+#bbconnectpanels-tabs {
+	height: 28px;
+	padding: 0 30px 0 0;
+	font-size: .85em;
+	line-height: 1.5em;
+}
+#bbconnectpanels-tabs #bbconnectpanels-tabs-wrap {
+	float: right;
+}
+#bbconnectpanels-tabs #pp-menu {
+	width: 150px;
+	float: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#bbconnectpanels-tabs #pp-menu li {
+	display: block;
+	width: 150px;
+	float: right;
+	list-style-type: none;
+}
+#bbconnectpanels-tabs #pp-menu li a  {
+	display: block;
+	width: auto;
+	float: right;
+}
+#bbconnectpanels-tabs #pp-menu li ul {
+	position: absolute;
+	width: 150px;
+	margin: 2em 0 0 0;
+	background-color: #FFF;
+	float: right;
+	display: none;
+	z-index: 100;
+}
+#bbconnectpanels-tabs #pp-menu #pp-title, 
+#bbconnectpanels-tabs #pp-menu #pp-notify {
+	float: left;
+	display: block;
+	width: auto;
+}
+#bbconnectpanels-tabs #pp-menu #pp-title {
+	background: url('../g/gear.png') 0 0 no-repeat;
+	padding: 5px 0 5px 25px;
+}
+#bbconnectpanels-tabs #pp-menu li ul li {
+	display: block;
+	width: 150px;
+	float: right;
+}
+#bbconnectpanels-tabs #pp-menu:hover {
+	background-color: #FFF;
+}
+#bbconnectpanels-tabs #pp-menu .pp-sub-menu li a {
+	padding: 5px;
+	border: 1px solid #FFF;
+	display: block;
+	width: 138px;
+}
+#bbconnectpanels-tabs #pp-menu .pp-sub-menu li a:hover {
+	background-color: #555;
+	color: #FFF;
+}
+
+
+a.bbconnectpanels-toggle, 
+a.bbconnectpanels-toggle-wp-admin, 
+a.bbconnectpanels-close {
+	cursor: pointer;
+	text-decoration: none !important;
+}
+a.bbconnectpanels-close {
+	margin: 0 5px 0 0;
+	padding: 3px 10px 4px 25px;
+	background: transparent url('../g/x-white.png') 0 -3px no-repeat;
+	line-height: normal;
+	border: none;
+	text-decoration: none !important;
+}
+span.hey {
+	padding: 5px;
+	margin: 0 0 0 1px;
+	border: none;
+	float: right;
+}
+
+/*	------------------------------------------------------- 
+	PANEL LINKS
+	------------------------------------------------------- */
+
+.continue {
+	clear: both;
+	text-align: right;
+	margin: 15px 0;
+	float: right;
+	width: 100%;
+}
+.return {
+	cursor: pointer;
+}
+.login-lost {
+	color: #990000;
+	font-style: italic;
+	text-decoration: none;
+	border: none;
+	padding: 0 7px;
+}
+.login-lost:hover {
+	color: #000000;
+	border: none;
+	text-decoration: none;
+}
+#close-top, #close-bot {
+	text-align: right;
+}
+#close-top {
+	display: none;
+	padding: 1em 0 3em 0;
+}
+#close-bot {
+	clear: both;
+	padding: 3em 0 1em 0;
+}
+.close-panel {
+	padding: 3px 7px;
+	background-color: #333333;
+	color: #FFFFFF;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: none;
+	text-decoration: none;
+}
+.close-panel:hover {
+	background-color: #000000;
+	border: none;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL FORM SYSTEM
+	------------------------------------------------------- */
+
+.bbconnectpanels-forms {
+	background-color: #FFFFFF;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	text-align: left;
+	margin-bottom: 10px;
+	color: #777777;
+}
+
+#bbconnect form {
+	text-align: left;
+}
+#bbconnect .center { 
+	text-align: center;
+	margin: 0 25%;
+}
+#bbconnect .errors {
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px 0;
+	background: #FBE3E4;
+	color: #8a1f11;
+	border: 2px solid #8a1f11;
+	margin: 0 0 20px 0;
+}
+.bbconnect-center {
+	text-align: center;
+	width: 48%;
+}
+.bbconnect-left {
+	float: left;
+	width: 48%;
+}
+.bbconnect-right {
+	float: right;
+	width: 48%;
+}
+.bbconnectpanels-req-notify {
+	display: block;
+	clear: both;
+	padding-bottom: 10px;
+}
+.bbconnectpanels-req-notify .required {
+	color: #FFD324;
+}
+
+#bbconnect .required, 
+#bbconnect .asterix-required, 
+.bbconnect .required, 
+.bbconnect .asterix-required {
+	color: #FFD324 !important;
+}
+
+.bbconnectpanels-profile-label {
+	padding-right: 10px;
+	color: #999;
+}
+/*	------------------------------------------------------- 
+	CHECKBOXES
+	------------------------------------------------------- */
+
+#bbconnectpanel #bbconnect a.umt, 
+#bbconnectpanel #bbconnect a.upt, 
+#bbconnectpanel #bbconnect a.uwpt {
+	color: #FFFFFF;
+}
+
+/*	------------------------------------------------------- 
+	EXPANDABLE PANELS
+	------------------------------------------------------- */
+
+.t-wrapper {
+	background-color: #777777;
+	-moz-box-shadow: inset 0 0 10px #555555;
+	-webkit-box-shadow: inset 0 0 10px #555555;
+	box-shadow: inset 0 0 10px #555555;
+}
+.t-wrapper:hover, .t-wrapper.group:hover {
+	background-color: transparent;
+}
+.t-trigger {
+ 	padding: 10px 0;
+ }
+.t-wrapper.group {
+	padding: 5px 0;
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.t-trigger-wrapper.group {
+	float: left;
+	display: block;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #FFFFFF;
+}
+.t-wrapper.group .t-panel {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+}
+.t-wrapper.group .t-panel {
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background-color: #444444;
+	border-top: 1px dashed #000000;
+	padding: 10px;
+}
+.t-wrapper.group .t-panel li {
+	padding-left: 0;
+	color: #FFFFFF;
+}
+
+#bbconnectpanel .umt {
+	color: #FFFFFF;
+}
+#bbconnectpanel #bbconnect a.umt, 
+#bbconnectpanel #bbconnect a.upt, 
+#bbconnectpanel #bbconnect a.uwpt, 
+#bbconnectpanel #bbconnect a.rui, 
+#bbconnectpanel #bbconnect a.pmt, 
+#bbconnectpanel a.umt, 
+#bbconnectpanel a.upt, 
+#bbconnectpanel a.uwpt, 
+#bbconnectpanel a.rui, 
+#bbconnectpanel a.pmt, 
+#bbconnectpanel .icon-no  { 
+	background-image: url('../g/no-white.png');
+	
+}
+#bbconnectpanel #bbconnect a.pmt, 
+#bbconnectpanel a.pmt {
+	background-image: url('../g/private-white.png');
+}
+#bbconnectpanel #bbconnect a.help, 
+#bbconnectpanel a.help {
+	background-image: url('../g/help-white.png');
+}
+#bbconnectpanel #bbconnect a.add, 
+#bbconnectpanel a.add, 
+#bbconnectpanel #bbconnect a.query_add, 
+#bbconnectpanel a.query_add {
+	background-image: url('../g/add-white.png');
+}
+#bbconnectpanel #bbconnect a.sub, 
+#bbconnectpanel a.sub, 
+#bbconnectpanel #bbconnect a.query_sub, 
+#bbconnectpanel a.query_sub {
+	background-image: url('../g/sub-white.png');
+}
+
+#bbconnectpanel #bbconnect a.umt:hover, 
+#bbconnectpanel #bbconnect a.upt:hover, 
+#bbconnectpanel #bbconnect a.uwpt:hover, 
+#bbconnectpanel #bbconnect a.rui:hover, 
+#bbconnectpanel #bbconnect a.pmt:hover { 
+	/*-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #CCCCCC;*/
+	/*opacity: 100;*/
+}
+
+#bbconnectpanel #bbconnect a.umt.on, 
+#bbconnectpanel #bbconnect a.upt.on, 
+#bbconnectpanel #bbconnect a.uwpt.on, 
+#bbconnectpanel #bbconnect a.rui.on, 
+#bbconnectpanel a.umt.on, 
+#bbconnectpanel a.upt.on, 
+#bbconnectpanel a.uwpt.on, 
+#bbconnectpanel a.rui.on { 
+	background-image: url('../g/ok-white.png');
+	/*display: inline;*/
+}
+#bbconnectpanel #bbconnect a.pmt.on, 
+#bbconnectpanel a.pmt.on {
+	background-image: url('../g/public-white.png');
+}
+#bbconnect .photo {
+	float: none;
+	padding: 0;
+}
+#bbconnect .photo:hover {
+	background: none;
+}
+
+#profile-navigation {
+	overflow: auto;
+}
+#profile-nav-name {
+	text-align: left;
+}
+#profile-nav-links {
+	text-align: right;
+}
+#bbconnectpanel #bbconnect #profile-navigation a.button.on {
+	background-color: #6495ED;
+}
+#bbconnectpanel #bbconnect .tn-wrapper {
+	background: none;
+	border-bottom: 1px dashed #CCCCCC;
+	
+}
+.chzn-select, .chzn-container {
+	color: #333;
+}
+.halt {
+	background: url('../g/halt-white.png') top left no-repeat;
+	padding-top: 15px !important;
+}
+.halt-example {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding: 5px 15px;
+}
+
+#bbconnectpanel #form-msg,
+#bbconnectpanel #tschuss, 
+#bbconnectpanel .tschuss, 
+#bbconnectpanel #content-instructions {
+	padding: 10px 0;
+	margin: 10px 0;
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+}
+#tschuss-redirect {
+	text-align: center;
+	font: 18px/24px Georgia, serif;
+	font-style: italic;
+}
+#signcounter {
+	padding: 3px 9px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #000000;
+	color: #FFF;
+}
+
+#bbconnectpanels-wrapper #column_main, 
+#bbconnectpanels-wrapper #column_side {
+	width: 100%;
+	margin: 0;
+	padding: 3px;
+	float: left;
+}
+#bbconnectpanels-wrapper .handlediv {
+	display: none;
+}
+.paucontent-wrapper {
+	clear: both;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
+}
+.paucontent-wrapper h2 {
+	font-size: 2em;
+	line-height: 3em;
+	text-align: center;
+}
+.paucontent-wrapper p {
+	text-align: center;
+	line-height: 1.5em;
+}
+
+@media screen and (min-width: 600px) {
+
+	#bbconnectpanels-wrapper .container {
+		width: 100%;
+	}
+
+}
+@media screen and (min-width: 950px) {
+
+	#bbconnectpanels-wrapper .container {
+		width: 950px;
+	}
+	.bbconnectf-page .container {
+		width: 100% !important;
+	}
+	
+	#bbconnectpanels-wrapper #column_main {
+		width: 600px;
+		margin-right: 25px;
+	}
+	#bbconnectpanels-wrapper #column_side {
+		width: 300px;
+	}
+
+}

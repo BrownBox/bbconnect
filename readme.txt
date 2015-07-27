@@ -1,6 +1,6 @@
 === EnvoyConnect - A CRM for WordPress ===
 Author URI: http://havahula.org
-Plugin URI: http://envoyconnect.com
+Plugin URI: http://bbconnect.com
 Contributors: havahula
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G67DDF9GGREEG
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
@@ -50,9 +50,9 @@ These are the basics of any CRM (contact relationship management) application an
 
 * Event Management: Display events on your site and allow users to register for free or by payment (purchase or donation). You can also allow users to submit events for publication and you are able to search all events and event registrations using the EnvoyConnect search engine for analysis and reporting.
 
-More information is available at [EnvoyConnect.com](http://envoyconnect.com/)
+More information is available at [EnvoyConnect.com](http://bbconnect.com/)
  
-We also have a [getting started guide](http://envoyconnect.com/support/documentation/envoyconnect-plugin-documentation/getting-started/)
+We also have a [getting started guide](http://bbconnect.com/support/documentation/bbconnect-plugin-documentation/getting-started/)
 
 [youtube http://www.youtube.com/watch?v=RPQDVU-IUDg]
 
@@ -62,7 +62,7 @@ We also have a [getting started guide](http://envoyconnect.com/support/documenta
 * Russian
 * Slovenian
 
-Would you like to help translate the plugin into more languages? [Get in touch!](http://envoyconnect.com/join-in/).
+Would you like to help translate the plugin into more languages? [Get in touch!](http://bbconnect.com/join-in/).
 
 == Installation ==
 
@@ -72,7 +72,7 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 4. Go to **EnvoyConnect Options** to configure the options
 5. Go to **EnvoyConnect Options > Manage Fields** to add fields and modify the new layout
 
-Documentation and tutorials can be found online at [EnvoyConnect.com](http://envoyconnect.com/support/).
+Documentation and tutorials can be found online at [EnvoyConnect.com](http://bbconnect.com/support/).
 
 == Frequently Asked Questions ==
 
@@ -126,8 +126,8 @@ The "Pau" in EnvoyConnect is a stylized acronym for "Perspectives on the Actions
 = 1.5 - December 12, 2013 =
 
 * Updated EnvoyConnect Admin UI to take advantage of the 3.8 upgrades
-* Moved help documentation online to envoyconnect.com
-* Large feature release for Pro version [Details at EnvoyConnect.com](http://envoyconnect.com/2013/12/12/envoyconnect-1-5/)
+* Moved help documentation online to bbconnect.com
+* Large feature release for Pro version [Details at EnvoyConnect.com](http://bbconnect.com/2013/12/12/bbconnect-1-5/)
 
 = 1.4.4 - November 24, 2013 =
 
@@ -143,7 +143,7 @@ The "Pau" in EnvoyConnect is a stylized acronym for "Perspectives on the Actions
 * Contact forms no longer require a message
 * Option to set ranges for datepicker
 * Extensive updates to actions and filters
-* Large feature release for Pro version [Details at EnvoyConnect.com](http://envoyconnect.com/2013/11/07/envoyconnect-version-1-4-3/)
+* Large feature release for Pro version [Details at EnvoyConnect.com](http://bbconnect.com/2013/11/07/bbconnect-version-1-4-3/)
 
 = 1.3 - October 7, 2013 =
 

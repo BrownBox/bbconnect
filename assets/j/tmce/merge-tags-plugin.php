@@ -4,14 +4,14 @@ $js = <<<JS
 (function() {
     tinymce.create('tinymce.plugins.EnvoyConnectMergeTags', {
         init : function(ed, url) {
-            ed.addButton('envoyconnect_merge_tags_button', {
+            ed.addButton('bbconnect_merge_tags_button', {
                 title : 'Insert Tag',
-                cmd : 'envoyconnect_merge_tags_button',
+                cmd : 'bbconnect_merge_tags_button',
                 image : url + '/favicon.png'
             });
  
-            ed.addCommand('envoyconnect_merge_tags_button', function() {
-                tb_show(null,envoyconnectAdminAjax.mergeref+'&KeepThis=true&TB_iframe=true&height=400&width=600',null);
+            ed.addCommand('bbconnect_merge_tags_button', function() {
+                tb_show(null,bbconnectAdminAjax.mergeref+'&KeepThis=true&TB_iframe=true&height=400&width=600',null);
             });
             
         },

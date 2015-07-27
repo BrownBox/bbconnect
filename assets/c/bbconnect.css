@@ -1,0 +1,1078 @@
+/*	-------------------------------------------------------
+	ACTION STYLES
+	------------------------------------------------------- */
+	.actions-history-holder strong {
+  background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
+  padding: 0 4px;
+}
+#bbconnect img.avatar{display: none;}
+.t-wrapper.group p {
+  display: none;
+}
+.t-wrapper.group ul, .t-wrapper.group ul li, .t-wrapper.group ul li input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  display: block;
+  width: 100% !important;
+}
+.t-wrapper.group {
+  padding: 0;
+  width: 90%!important;
+}
+.report-tab .pagination {
+  line-height: 1.75rem;
+}
+#bbconnect .tn-wrapper {
+  padding: 8px 5px 4px;
+}
+.actions div.t-panel, .taxonomies div.t-panel, .t-panel {
+  background: #F1F1F1!important;
+}
+#bbconnect #report-display .widefat th, #bbconnect #report-display .widefat td {
+  overflow: visible;
+  text-align: right;
+  font-size: 12px;
+}
+.update-nag {display: none;}
+.a-button {display: none;}
+#TB_ajaxContent label {
+  background: #eee none repeat scroll 0 0;
+  display: inline-block;
+  margin-right: 0.25rem;
+  overflow: hidden;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-top: 4px;
+  text-align: right;
+  white-space: nowrap;
+  width: 25%;
+}
+.modal-row { margin-bottom: 0.25rem; width: 100%;}
+#bbconnect.wrap {position: relative; top: 2rem;}
+.modal-row > textarea {margin-top: 5px; width: 100%;}
+textarea:disabled, select:disabled, input:disabled {background: #ddd none repeat scroll 0 0 !important; border: 0 none !important; color: #444 !important;}
+.modal-row input[type="checkbox"], .modal-row input[type="color"], .modal-row input[type="date"], .modal-row input[type="datetime-local"], .modal-row input[type="datetime"], .modal-row input[type="email"], .modal-row input[type="month"], .modal-row input[type="number"], .modal-row input[type="password"], .modal-row input[type="radio"], .modal-row input[type="search"], .modal-row input[type="tel"], .modal-row input[type="text"], .modal-row input[type="time"], .modal-row input[type="url"], .modal-row input[type="week"], .modal-row select, .modal-row textarea {
+  vertical-align: middle;
+  min-width: 25%;
+}
+.full-width {width: 72.5%!important;text-align: left!important;}
+#TB_ajaxContent {height: auto !important;}
+.modal-row input[type="checkbox"], .modal-row input[type="radio"] {min-width: auto;}
+#TB_ajaxContent option:first-of-type {
+  background: #eee none repeat scroll 0 0;
+  font-weight: bold;
+}
+#TB_ajaxContent option {
+  font-size: 0.675rem;
+  height: 1.25rem;
+}
+#bbconnect #quicklinks-wrapper li {
+  display: inline;
+  float: none;
+  line-height: 2.5rem;
+  margin-right: 0.5rem;
+}
+#bbconnect div:not(.bbconnect_fields) > ul > li.meta-item {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#bbconnect .wp-core-ui > div {background: rgba(0,0,0,0); border: 0px;}
+#bbconnect .wp-core-ui > div > textarea {width: 100%;}
+#bbconnect .action-panel {background-color: rgba(0, 0, 0, 0);}
+/*	-------------------------------------------------------
+	GENERAL FORM ELEMENTS
+	------------------------------------------------------- */
+
+#bbconnect.wrap {position: relative;}
+#quicklinks-wrapper { background: #fff none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.2); display: block; margin-bottom: 0.5rem; min-height: 1.5rem; min-width: 100px; padding: 0.2rem 0.5rem 0; position: relative; right: 0;	top: 0; width: 98%;}
+
+#bbconnect input[type="text"],
+#bbconnect textarea,
+#bbconnect .regular-text.ui-autocomplete-input,
+#bbconnect .regular-text,
+#bbconnect .bbconnect-input,
+#bbconnect input[type="password"],
+#bbconnect select.regular-text,
+textarea {
+	width: 90%;
+	padding: .3em;
+	margin: .2em 0;
+	border: 1px solid #CCCCCC;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	font: 1em Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	color: #444;
+	height: auto;
+}
+#bbconnect .regular-text.regular-multi,
+.bbconnect .regular-text.regular-multi,
+#bbconnect input[type="password"].regular-text,
+.bbconnect input[type="password"].regular-text,
+.regular-multi {
+	width: 36%;
+}
+.regular-multi li {
+	width: auto !important;
+}
+#bbconnect select.regular-text {
+	width: auto;
+	max-width: 95%;
+}
+#bbconnect input[type="text"].input-short {
+	width: 3em;
+}
+#bbconnect span.bbconnect-label input[type="text"] {
+	width: 90%;
+}
+#bbconnect .required,
+#bbconnect .asterix-required,
+.bbconnect .required,
+.bbconnect .asterix-required {
+	color: #990000;
+}
+#bbconnect .asterix-required,
+.bbconnect .asterix-required {
+	font-size: 1.5em;
+	line-height: 1em;
+	padding: 0 2px;
+	font-weight: bold;
+}
+.bbconnect-label.required.halt {
+	font-weight: bolder;
+}
+#bbconnect .sortable li {
+	cursor: move;
+}
+.error-wash {
+	background-color:#FBE3E4!important;
+}
+.bbconnect_error,
+.bbconnect_notice,
+.bbconnect_success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.bbconnect_error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.bbconnect_notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.bbconnect_success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.bbconnect_error a {color:#8a1f11;}
+.bbconnect_notice a {color:#514721;}
+.bbconnect_success a {color:#264409;}
+.header-msg {
+	font: 11px/12px Helvetica, Arial, sans-serif;
+	margin: 0 0 5px 10px;
+	position: absolute;
+	float: left;
+}
+#bbconnect ul.item, #bbconnect ul.item:hover {
+	border: none;
+	background-color: transparent;
+	overflow: hidden;
+}
+
+/*	-------------------------------------------------------
+	EXPANDABLE PANELS
+	------------------------------------------------------- */
+
+/*	WRAPPERS ---------------------------------------------- */
+.t-wrapper, .tn-wrapper, .action-count {
+	background-color: #DDDDDD;
+	color: #000000;
+	cursor: pointer;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px;
+	margin: 2px;
+}
+.t-wrapper:hover, .tn-wrapper:hover {
+	background-color: #CCCCCC;
+	/* color: #CCCCCC; */
+}
+.t-wrapper:hover h2, .tn-wrapper:hover h2 {
+	background-color: #555555;
+	color: #CCCCCC;
+	text-shadow: #555555 1px 0 0
+}
+.t-wrapper:hover a:hover, .tn-wrapper:hover a, .tn-wrapper:hover a:hover {
+	/* color: #FFFFFF; */
+}
+.t-wrapper:hover .t-panel a:hover, .tn-wrapper:hover .t-panel a:hover {
+	color: #21759B;
+}
+.t-wrapper p, .tn-wrapper p { margin: 0; }
+.t-wrapper.group {
+	width: 95%;
+}
+#bbconnect ul.group-panel {
+	padding: 1%;
+}
+.t-wrapper.section {
+	background-color: transparent;
+	border-bottom: 2px dashed #CCC;
+}
+.t-wrapper.deleted {
+	background-color: transparent;
+	background-image: none;
+	border: 2px dashed #333333;
+	color: transparent;
+}
+
+
+/*	TRIGGERS ---------------------------------------------- */
+
+.t-trigger {
+	padding: 10px;
+	line-height: 100%;
+}
+.t-trigger-wrapper {
+	padding: 10px 0;
+	line-height: 100%;
+	overflow: auto;
+	width: 100%;
+}
+.t-trigger-faux { padding: 5px 10px; }
+span.t-trigger,
+p.t-trigger,
+div.t-trigger {
+	background-image: url('../g/aclose.png');
+	padding: 10px 25px;
+	background-position: 0 5px;
+	background-repeat: no-repeat;
+	margin: 0;
+	cursor: pointer;
+	line-height: 100%;
+	font-weight: 300;
+	overflow: auto;
+}
+h2 .t-trigger {
+	background-position: 0 10px;
+	font-size: 23px;
+	padding: 10px 5px 10px 25px;
+}
+span.t-trigger.open, p.t-trigger.open, div.t-trigger.open {
+	background-image: url('../g/aopen.png');
+}
+.left {
+	float: left;
+	text-align: left;
+}
+.right {
+	float: right;
+	text-align: right;
+}
+.tleft {
+	text-align: left;
+}
+.tright {
+	text-align: right;
+	float: left;
+	width: 100%;
+	padding: 5px 0;
+}
+.end-of-float {
+	clear: both;
+	padding: 5px 0;
+	border-top: 1px dashed #CCCCCC;
+}
+#bbconnect .delete,
+.bbconnect .delete,
+#bbconnect .delete_trigger,
+.bbconnect .delete_trigger,
+#bbconnect .undo,
+.bbconnect .undo,
+.visibility,
+.invisibility,
+.info,
+#bbconnect .visibility,
+.bbconnect .visibility,
+#bbconnect .invisibility,
+.bbconnect .invisibility,
+#bbconnect .act-sprite,
+.bbconnect .act-sprite,
+#bbconnect .icon-public,
+.bbconnect .icon-public,
+#manage-fields .icon-admin,
+.bbconnect .icon-admin,
+#manage-fields .icon-signup,
+.bbconnect .icon-signup {
+	padding: 10px;
+	background-position: 0 3px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+#bbconnect .delete,
+.bbconnect .delete,
+#bbconnect .delete_trigger,
+.bbconnect .delete_trigger { background-image: url('../g/cirx-black.png'); }
+.undo { background-image: url('../g/refresh.png'); display: none; }
+#manage-fields .icon-admin { background: url('../g/admin.png') 0 0 no-repeat; }
+#bbconnect .icon-signup,
+.bbconnect .icon-signup { background: url('../g/signup.png') 0 4px no-repeat; }
+.icon-public { background-image: url('../g/public-black.png'); }
+.visibility { background-image: url('../g/public-black.png'); margin-right: 20px; }
+.invisibility { background-image: url('../g/private-black.png'); margin-right: 20px; }
+.t-wrapper.deleted .t-trigger { background-image: none; }
+
+.trigger-action {
+	padding: 10px;
+	background-color: #efefef;
+	margin: 5px 0;
+	float: left;
+	width: 100%;
+}
+.trigger-action ul,
+.trigger-action li {
+	margin-left: 20px;
+}
+
+
+/*	PANELS ------------------------------------------------ */
+
+.t-panel {
+	display: none;
+	margin: 0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	overflow: auto;
+	clear: both;
+}
+
+.action-count {
+	background-color: #000000;
+	color: #FFFFFF;
+	cursor: pointer;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px 7px;
+}
+
+.actions div.t-panel, .taxonomies div.t-panel, .t-panel {
+	padding: 0;
+	margin: 7px 0 0 0;
+	background-color: #FFFFFF;
+	/* border: 1px dotted #777777; */
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: #000000;
+}
+.t-panel:hover, .action-panel:hover {
+	color: #000000;
+}
+.action-detail {
+	padding: 5px 28px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+.action-detail h3 {
+	padding: 0;
+	margin: 0;
+}
+.t-panel li, .action-select, .action-select-inline {
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#bbconnect .sortable .t-wrapper {
+	cursor: move;
+}
+.t-panel li { padding: 6px; }
+.t-panel li.action-select { padding: 5px 30px; }
+
+.help,
+.help-text {
+	font-size: 12px;
+	font-style: italic;
+	font-family: Georgia, serif;
+}
+
+/*	-------------------------------------------------------
+	SEARCH
+	------------------------------------------------------- */
+
+
+/*	-------------------------------------------------------
+	SECTIONS
+	------------------------------------------------------- */
+
+#bbconnect h3,
+.bbconnect h3 {
+	padding: 20px 0 5px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 1px dashed #999999;
+	background-color: transparent;
+	background: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	text-shadow: none;
+}
+
+
+/*	-------------------------------------------------------
+	PRIMARY LIST
+	------------------------------------------------------- */
+
+#bbconnect ul,
+ul.bbconnect,
+ul.bbconnect-list {
+	list-style-type: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	float: left;
+	width: 98%;
+}
+#bbconnect ul.column {
+	min-height: 20px;
+}
+#bbconnect li,
+ul.bbconnect li,
+ul.bbconnect-list li {
+	display: block;
+	clear: both;
+	overflow: visible;
+	float: left;
+	width: 98%;
+}
+#bbconnect .chosen-container li,
+ul.bbconnect .chosen-container li,
+ul.bbconnect-list .chosen-container li,
+ul.bbconnect-list .chzn-container li {
+	width: auto;
+}
+#bbconnect #manage-fields ul li {
+	float: none !important;
+}
+#bbconnect #manage-fields ul {
+	display: block;
+	min-height: 2em;
+}
+.pp-ui-highlight {
+	border: 2px dashed #333333;
+	background-color: #FFF;
+	height: 1.5em;
+	line-height: 1.2em;
+	padding: 0;
+	margin: 0;
+}
+.options-panel .t-panel li {
+/*
+	background: none !important;
+	border: none !important;
+*/
+}
+
+#bbconnect ul.no-float li {
+	display: block;
+	clear: both;
+	overflow: visible;
+}
+/* .SEARCH-LABLE IS DEPRECATED */
+.search-label, .bbconnect-label {
+	width: 100%;
+	float: left;
+	padding: 1px 0;
+}
+.bbconnect-field {
+	float: left;
+	width: 100%;
+	padding: 1px 0;
+}
+
+#column_1_holder,
+#column_2_holder,
+.column_holder,
+.column-holder {
+	/*width: 48%; */
+	float: left;
+	display: block;
+	padding: 5px;
+	margin: 3px;
+}
+.column-holder { margin: 0; }
+.options-panel #column_1_holder, .options-panel #column_2_holder {
+	border: 2px dashed #CCCCCC;
+	min-height: 50px;
+}
+li.meta-item {
+	padding: 0 0 5px 0;
+	text-align: left;
+	/* border-bottom: 1px dotted #CCCCCC; */
+}
+
+
+/*	-------------------------------------------------------
+	PROFILE
+	------------------------------------------------------- */
+
+#bbconnect #user-avatar-display {
+	position: relative;
+	top: 0;
+	right: 0;
+	left: 0;
+	text-align: center;
+	padding: 10px;
+	width: 170px;
+	background: #EEE;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	overflow: none;
+}
+#bbconnect #user-avatar-display h3 {
+	display: none;
+}
+.user-avatar-wrap {
+	text-align: center;
+}
+#user-avatar-display-image {
+	margin: 0 auto;
+}
+#bbconnect #avatar_profile_box {
+	position: relative !important;
+	top: 0 !important;
+}
+
+.column_holder.actions-history-holder ul { padding: 10px; }
+.column_holder.actions-editor ul { padding: 10px 0; }
+.column_holder.actions-history-holder ul.actions-history-list {
+	max-height: 250px;
+	overflow: auto;
+}
+#bbconnect .column_holder ul.actions-history-list li,
+.bbconnect .column_holder ul.actions-history-list li {
+	width: 95%;
+}
+
+
+/*	-------------------------------------------------------
+	OPTIONS LIST EXTENDS PRIMARY LIST
+	------------------------------------------------------- */
+
+#bbconnect ul.group, #bbconnect ul.taxonomy {
+	padding: 5px;
+	background-color: #EEEEEE;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+
+/*	-------------------------------------------------------
+	CHECKBOX UI
+	------------------------------------------------------- */
+
+#bbconnect a.umt,
+#bbconnect a.umtf,
+#bbconnect a.upt,
+#bbconnect a.uwpt,
+#bbconnect a.rui,
+#bbconnect a.pmt,
+#bbconnect a.help,
+#bbconnect a.add,
+#bbconnect a.query-add,
+#bbconnect a.sub,
+#bbconnect a.query-sub,
+#bbconnect a.icon-admin,
+a.umt,
+a.umtf,
+a.upt,
+a.uwpt,
+a.rui,
+a.pmt,
+a.help,
+a.add,
+a.query-add,
+a.sub,
+a.query-sub,
+.loader,
+.query-loader,
+a.icon-admin,
+a.bbconnect-icon,
+.bbconnect-icon {
+	margin: 0;
+	padding: 3px 0 4px 25px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: transparent;
+	background-position: 0 -3px;
+	background-repeat: no-repeat;
+	color: #000000;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline;
+	float: left;
+	line-height: normal;
+	border: none;
+	height: auto;
+}
+#bbconnect a.query-add,
+#bbconnect a.query-sub {
+	margin: 0;
+	padding: 3px 0 4px 25px;
+}
+#bbconnect a.pmt, a.pmt {
+	padding: 3px 10px 4px 7px;
+	background-image: url('../g/private-black.png');
+}
+#bbconnect a.help, a.help {
+	padding: 3px 10px 4px 7px;
+	background-image: url('../g/help.png');
+}
+#bbconnect a.query-add,
+#bbconnect a.query-sub,
+#bbconnect a.query-loader {
+	margin: 0;
+	padding: 3px 0 4px 25px;
+}
+#bbconnect a.query-loader {
+	background: transparent url('../g/inline-loader.gif') 0 1px no-repeat;
+	float: none;
+	display: none;
+}
+#bbconnect a.add, a.add, #bbconnect a.query-add, a.query-add {
+	background-image: url('../g/add-black.png');
+	float: none;
+}
+#bbconnect a.sub, a.sub, #bbconnect a.query-sub, a.query-sub {
+	background-image: url('../g/sub-black.png');
+	float: none;
+}
+
+#bbconnect a.pmt, a.pmt {
+	padding: 3px 10px 4px 7px;
+	background-image: url('../g/private-black.png');
+}
+
+#bbconnect a.icon-admin, a.icon-admin {
+  background-image: url("../g/admin.png");
+  float: left;
+  padding: 3px 19px 4px 7px;
+}
+#bbconnect a.umt:hover, #bbconnect a.upt:hover, #bbconnect a.uwpt:hover, #bbconnect a.rui:hover, #bbconnect a.pmt:hover {
+	/*-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #CCCCCC;*/
+	opacity: 100;
+}
+
+.meta-item .bbconnect-label {
+  max-width: 100%;
+  width: 100%;
+}
+
+.meta-item .bbconnect-label > br {
+  display: none;
+}
+
+.meta-item > .icon-admin {
+  display: none !important;
+}
+
+.bbconnect-icon.post { background-image: url('../g/post.png'); }
+.bbconnect-icon.page { background-image: url('../g/page.png'); }
+.bbconnect-icon.pp_event { background-image: url('../g/event.png'); }
+.bbconnect-icon.pp_support { background-image: url('../g/support.png'); }
+.bbconnect-icon.pp_product { background-image: url('../g/store.png'); }
+
+
+#bbconnect a.umt,
+#bbconnect a.umtf,
+#bbconnect a.upt,
+#bbconnect a.uwpt,
+#bbconnect a.rui,
+#bbconnect a.display,
+a.umt,
+a.umtf,
+a.upt,
+a.uwpt,
+a.rui {
+	background-image: url('../g/no.png');
+	/*display: inline;*/
+}
+
+#bbconnect a.umt.on,
+#bbconnect a.umtf.on,
+#bbconnect a.upt.on,
+#bbconnect a.uwpt.on,
+#bbconnect a.rui.on,
+#bbconnect a.display.on,
+a.umt.on,
+a.umtf.on,
+a.upt.on,
+a.uwpt.on,
+a.rui.on {
+	background-image: url('../g/ok.png');
+	/*display: inline;*/
+}
+#bbconnect a.pmt.on, a.pmt.on {
+	background-image: url('../g/public-black.png');
+}
+#bbconnect a.umtf.on,
+a.umtf.on,
+#bbconnect a.umtf.off,
+a.umtf.off {
+	opacity: .25;
+}
+
+.umd  { background-image: url('../g/off-grey.png'); }
+
+a:not(.nav-tab) .bbconnect-icon, .bbconnect-icon.bb_note { background-image: url("../g/in-person.png");
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  clear: both !important;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1rem;
+  padding: 0 0 0.5rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+.pp_phone { background-image: url('../g/phone.png'); }
+.pp_email, .username a.c-email:hover { background-image: url('../g/email.png'); }
+.pp_tweet { background-image: url('../g/tweet.png'); }
+.pp_facebook { background-image: url('../g/facebook.png'); }
+.pp_d_ca { background-image: url('../g/donation_cash.png'); }
+.pp_d_ck { background-image: url('../g/donation_check.png'); }
+.pp_d_cd { background-image: url('../g/donation_card.png'); }
+.pp_p_ca { background-image: url('../g/purchase_cash.png'); }
+.pp_p_ck { background-image: url('../g/purchase_check.png'); }
+.pp_p_cd { background-image: url('../g/purchase_card.png'); }
+.pp_import { background-image: url('../g/upload.png'); }
+.pp_enews { background-image: url('../g/newsletters.png'); }
+.c-billing { background-image: url('../g/purchase.png'); }
+.c-shipping { background-image: url('../g/in-person.png'); }
+
+.bb_pp_date {
+  color: #555;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: normal;
+  padding-right: 6px;
+}
+
+#report-nav {
+	line-height: 16px !important;
+}
+
+.bbconnect-icon-text,
+.bbconnect-icon-ghost {
+	padding: 0;
+	margin: 0;
+}
+.nav-tab-wrapper .bbconnect-icon { padding: 0 0 0 20px; background-position: 0 -1px; }
+.nav-tab-wrapper .bbconnect-icon-text { display: none; }
+.nav-tab-wrapper .bbconnect-icon-ghost { display: inline-block; }
+.nav-tab-wrapper .bbconnect-icon.query { background-image: url('../g/search-glass.png'); }
+.nav-tab-wrapper .bbconnect-icon.action { background-image: url('../g/action.png'); }
+.nav-tab-wrapper .bbconnect-icon.edit { background-image: url('../g/edit.png'); }
+.nav-tab-wrapper .bbconnect-icon.bookmark { background-image: url('../g/bookmark.png'); }
+
+.bbconnect-icon.list { background-image: url('../g/view_list.png'); }
+.bbconnect-icon.grid { background-image: url('../g/view_grid.png'); }
+.bbconnect-icon.calendar { background-image: url('../g/event.png'); }
+.bbconnect-icon.map { background-image: url('../g/view_map.png'); }
+.bbconnect-icon.search { background-image: url('../g/search.png'); }
+.bbconnect-icon.upcoming { background-image: url('../g/upcoming.png'); }
+
+.bbconnect-icon.jpg,
+.bbconnect-icon.png,
+.bbconnect-icon.gif { background-image: url('../g/img.png'); }
+.bbconnect-icon.pdf { background-image: url('../g/pdf.png'); }
+.bbconnect-icon.download.xls,
+.bbconnect-icon.csv { background-image: url('../g/xls.png'); }
+.bbconnect-icon.doc { background-image: url('../g/doc.png'); }
+.bbconnect-icon.ppt { background-image: url('../g/ppt.png'); }
+.bbconnect-icon.exe,
+.bbconnect-icon.dmg { background-image: url('../g/code.png'); }
+.bbconnect-icon.zip { background-image: url('../g/zip.png'); }
+.bbconnect-icon.txt,
+.bbconnect-icon.rtf { background-image: url('../g/txt.png'); }
+
+.bbconnect-icon.pp_log.download.jpg,
+.bbconnect-icon.pp_log.download.png,
+.bbconnect-icon.pp_log.download.gif { background-image: url('../g/down-img.png'); }
+.bbconnect-icon.pp_log.download.pdf { background-image: url('../g/down-pdf.png'); }
+.bbconnect-icon.pp_log.download.xls,
+.bbconnect-icon.pp_log.download.csv { background-image: url('../g/down-xls.png'); }
+.bbconnect-icon.pp_log.download.doc { background-image: url('../g/down-doc.png'); }
+.bbconnect-icon.pp_log.download.ppt { background-image: url('../g/down-ppt.png'); }
+.bbconnect-icon.pp_log.download.exe,
+.bbconnect-icon.pp_log.download.dmg { background-image: url('../g/down-code.png'); }
+.bbconnect-icon.pp_log.download.zip { background-image: url('../g/down-zip.png'); }
+.bbconnect-icon.pp_log.download.txt,
+.bbconnect-icon.pp_log.download.rtf { background-image: url('../g/down-txt.png'); }
+
+/* DONATIONS */
+#bbconnect .bbconnect-icon.donation.pending,
+#bbconnect .bbconnect-icon.variable_donation.pending { background-image: url('../g/donation-pending.png'); }
+#bbconnect .bbconnect-icon.donation.hold,
+#bbconnect .bbconnect-icon.variable_donation.hold { background-image: url('../g/donation-error.png'); }
+#bbconnect .bbconnect-icon.donation.refunded,
+#bbconnect .bbconnect-icon.variable_donation.refunded { background-image: url('../g/donation-refunded.png'); }
+#bbconnect .bbconnect-icon.donation.completed,
+#bbconnect .bbconnect-icon.variable_donation.completed { background-image: url('../g/donation.png'); }
+#bbconnect .bbconnect-icon.recurring_donation.completed,
+#bbconnect .bbconnect-icon.recurring_variable_donation.completed { background-image: url('../g/recurring-donation-active.png'); }
+
+/* CREDIT DONATIONS */
+#bbconnect .bbconnect-icon.recurring_donation.canceled,
+#bbconnect .bbconnect-icon.recurring_variable_donation.canceled { background-image: url('../g/recurring-donation-canceled.png'); }
+
+/* NON-SHIPPABLE PURCHASES */
+#bbconnect .bbconnect-icon.purchase.pending,
+#bbconnect .bbconnect-icon.variable_purchase.pending { background-image: url('../g/purchase-pending.png'); }
+#bbconnect .bbconnect-icon.purchase.failed,
+#bbconnect .bbconnect-icon.variable_purchase.failed { background-image: url('../g/purchase-error.png'); }
+#bbconnect .bbconnect-icon.purchase.refunded,
+#bbconnect .bbconnect-icon.variable_purchase.refunded { background-image: url('../g/purchase-refunded.png'); }
+#bbconnect .bbconnect-icon.purchase.credited,
+#bbconnect .bbconnect-icon.variable_purchase.credited { background-image: url('../g/credited.png'); }
+#bbconnect .bbconnect-icon.purchase.completed,
+#bbconnect .bbconnect-icon.variable_purchase.completed { background-image: url('../g/purchase.png'); }
+#bbconnect .bbconnect-icon.recurring_purchase.completed,
+#bbconnect .bbconnect-icon.recurring_variable_purchase.completed,
+#bbconnect .bbconnect-icon.recurring_purchase.active,
+#bbconnect .bbconnect-icon.recurring_variable_purchase.active { background-image: url('../g/recurring-purchase-active.png'); }
+
+/* CREDIT PURCHASES */
+#bbconnect .bbconnect-icon.credit.pending { background-image: url('../g/credit-pending.png'); }
+#bbconnect .bbconnect-icon.credit.failed { background-image: url('../g/credit-error.png'); }
+#bbconnect .bbconnect-icon.credit.refunded { background-image: url('../g/credited.png'); }
+#bbconnect .bbconnect-icon.credit.completed { background-image: url('../g/credit.png'); }
+#bbconnect .bbconnect-icon.recurring_purchase.canceled,
+#bbconnect .bbconnect-icon.recurring_variable_purchase.canceled { background-image: url('../g/recurring-purchase-canceled.png'); }
+
+/* SHIPPABLE PURCHASES */
+#bbconnect .bbconnect-icon.purchase.pending.ship,
+#bbconnect .bbconnect-icon.variable_purchase.pending.ship { background-image: url('../g/shipping-pending.png'); }
+#bbconnect .bbconnect-icon.purchase.hold,
+#bbconnect .bbconnect-icon.variable_purchase.hold { background-image: url('../g/shipping-error.png'); }
+#bbconnect .bbconnect-icon.purchase.returned,
+#bbconnect .bbconnect-icon.variable_purchase.returned,
+#bbconnect .bbconnect-icon.purchase.lost,
+#bbconnect .bbconnect-icon.variable_purchase.lost { background-image: url('../g/ship-returned.png'); }
+#bbconnect .bbconnect-icon.purchase.ready,
+#bbconnect .bbconnect-icon.variable_purchase.ready { background-image: url('../g/ship.png'); }
+#bbconnect .bbconnect-icon.purchase.shipped,
+#bbconnect .bbconnect-icon.variable_purchase.shipped { background-image: url('../g/shipped.png'); }
+#bbconnect .bbconnect-icon.purchase.delivered,
+#bbconnect .bbconnect-icon.variable_purchase.delivered { background-image: url('../g/shipped.png'); }
+.ship-mismatch { color: #b94a48; }
+
+/* ALL PURPOSE */
+#bbconnect .bbconnect-icon.paupay-note { background-image: url('../g/note.png'); }
+#bbconnect .bbconnect-icon.donation.delivered,
+#bbconnect .bbconnect-icon.purchase.delivered,
+#bbconnect .bbconnect-icon.variable_purchase.delivered { background-image: url('../g/ok.png'); }
+
+/*	-------------------------------------------------------
+	CHECKBOXES
+	------------------------------------------------------- */
+
+span.float-checkbox {
+	width: 150px;
+	display: block;
+	padding: 5px;
+	float: left;
+}
+#bbconnect textarea {
+	/* width: 97%; */
+	height: 200px;
+	background-color: #FFFFFF;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#bbconnect .tn-wrapper textarea, #bbconnect .t-wrapper textarea, #bbconnect li textarea {
+	/* width: 55%; */
+}
+
+
+/*	-------------------------------------------------------
+	MULTI-TEXT
+	------------------------------------------------------- */
+
+#bbconnect .multilist a.button.sub, #bbconnect .multilist a.button.add {
+	padding: 3px 0 4px 18px;
+	font-weight: bolder;
+	background-color: transparent;
+}
+
+
+/*	-------------------------------------------------------
+	VIEWS
+	------------------------------------------------------- */
+
+#loader {
+	text-align: center;
+	padding: 42px;
+	clear: both;
+}
+a.list-view, a.grid-view, a.calendar-view, a.map-view, a.gmap-view, a.search-view, a.upcoming-view {
+	padding: 15px;
+	margin: 0;
+	border: 0;
+	opacity: .25;
+}
+.list-view { background: url('../g/view_list.png') 5px 12px no-repeat; }
+.grid-view { background: url('../g/view_grid.png') 5px 12px no-repeat; }
+.calendar-view { background: url('../g/event.png') 5px 12px no-repeat; }
+.map-view, .gmap-view { background: url('../g/view_map.png') 5px 12px no-repeat; }
+.search-view { background: url('../g/search.png') 5px 12px no-repeat; }
+.upcoming-view { background: url('../g/upcoming.png') 5px 12px no-repeat; }
+.toggle-view a.list-view:hover,
+.toggle-view a.list-view.on,
+.toggle-view a.grid-view:hover,
+.toggle-view a.grid-view.on,
+.toggle-view a.calendar-view:hover,
+.toggle-view a.calendar-view.on,
+.toggle-view a.map-view:hover,
+.toggle-view a.map-view.on,
+.toggle-view a.upcoming-view:hover,
+.toggle-view a.upcoming-view.on,
+.toggle-view a.search-view:hover,
+.toggle-view a.search-view.on,
+.toggle-view a.gmap-view:hover,
+.toggle-view a.gmap-view.on {
+	opacity: 100;
+	display: inline;
+	cursor: pointer;
+}
+.pagination {
+	line-height:13px;
+	display: inline;
+}
+.result-navigation {
+	padding: 10px 0;
+}
+.report-result-tab {
+	background-color: #DDDDDD;
+	-moz-border-radius-bottomleft: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	padding: 10px;
+	margin: -1px 0 10px 0;
+}
+.report-result-tab .muted {
+	color: #333;
+	opacity: 100;
+}
+.report-tab a {
+	cursor: pointer;
+}
+.content-display, #content-loader {
+	display: none;
+}
+
+#bbconnect ul.chzn-choices li {
+	clear: none;
+	display: inline;
+	width: auto;
+	color: #333 !important;
+}
+.bbconnect-count {
+	padding: 2px 5px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #888;
+	color: #FFFFFF;
+	line-height: 10px;
+	font-size: 10px;
+}
+
+.pp-center {
+	text-align: center;
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px dashed #CCC;
+	width: 100%;
+	float: left;
+}
+.pp-center div,
+.pp-center p {
+	clear: both !important;
+	text-align: center !important;
+}
+.pp-center img {
+	border: none !important;
+	float: none !important;
+	padding: 1px;
+	border: 1px solid #555 !important;
+}
+#fin-btn,
+.fin-btn {
+/*
+	width: 400px !important;
+	height: 42px !important;
+	resize: none !important;
+*/
+	background-color: #EEE !important;
+	color: #000 !important;
+	border: 1px dashed #CCC !important;
+	overflow: hidden;
+	margin-bottom: 5px !important;
+	padding: 0 3px !important;
+	height: 50px !important;
+	overflow-y: scroll;
+}
+.fin-btn {
+	/*width: 100% !important;*/
+}
+
+.bbconnect-reports-user-avatar,
+.bbconnect-reports-user-info {
+	display: inline-block;
+	float: left;
+}
+
+.pauhide {
+	display: none !important;
+}
+
+@media screen and (min-width: 600px) {
+
+	.bbconnect-label, .bbconnect-field {
+		width: 100%;
+	}
+	#column_1_holder, #column_2_holder, .column_holder  {
+		width: 100%;
+	}
+	.column-holder {
+		width: 47%;
+	}
+	.column-holder.full {
+		width: 100%;
+	}
+
+	.column_holder.actions-history-holder ul.actions-history-list {
+		max-height: 1200px;
+	}
+	.nav-tab-wrapper .bbconnect-icon-text { display: inline-block; }
+	.nav-tab-wrapper .bbconnect-icon-ghost { display: none; }
+
+	#quicklinks-wrapper {position: absolute !important; top: 0 !important; width: auto !important;}
+
+}
+@media screen and (min-width: 800px) {
+
+	.bbconnect-label {
+		width: 30%;
+		max-width: 80px;
+	}
+	#column_1_holder, #column_2_holder, .column_holder, .column-holder  {
+		width: 47%;
+	}
+	.column-holder.full {
+		width: 100%;
+	}
+
+	.nav-tab-wrapper .bbconnect-icon-text { display: inline-block; }
+	.nav-tab-wrapper .bbconnect-icon-ghost { display: none; }
+
+}

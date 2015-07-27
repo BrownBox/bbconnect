@@ -1,0 +1,217 @@
+/*	------------------------------------------------------- 
+	PANEL STRUCTURE
+	------------------------------------------------------- */
+
+#bbconnectpanels-wrapper {
+	background: #DDDDDD url('../g/pw_maze_white.png') top left repeat;
+	color: #333;
+}
+#bbconnectpanels-wrapper h1, 
+#bbconnectpanels-wrapper h2, 
+#bbconnectpanels-wrapper h3, 
+#bbconnectpanels-wrapper h4, 
+#bbconnectpanels-wrapper h5, 
+#bbconnectpanels-wrapper h6 {
+	color: #333 !important;
+	text-shadow: none !important;
+}
+#bbconnectpanels-wrapper a {
+	color: #333;
+}
+#bbconnectpanels-wrapper a:hover {
+	border-bottom: 1px dotted #333;
+}
+#bbconnectpanels-wrapper a.button, 
+#bbconnectpanels-wrapper input[type="submit"].button,  
+#bbconnectpanels-wrapper .button, 
+#bbconnectpanels-wrapper .button-primary {
+	color: #FFFFFF;
+	background-color: #999;
+	background-image: none;
+	border: none;
+	text-shadow: none;
+	font-weight: normal;
+}
+#bbconnectpanels-wrapper a.button:hover, 
+#bbconnectpanels-wrapper input[type="submit"].button:hover,  
+#bbconnectpanels-wrapper .button:hover, 
+#bbconnectpanels-wrapper .button-primary:hover {
+	text-shadow: none;
+	font-weight: normal;
+	background-color: #777;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL LINKS
+	------------------------------------------------------- */
+
+a.bbconnectpanels-close {
+	background: transparent url('../g/x-black.png') 0 -3px no-repeat;
+}
+
+
+/*	------------------------------------------------------- 
+	PANEL FORM SYSTEM
+	------------------------------------------------------- */
+
+.bbconnectpanels-req-notify .required {
+	color: #990000;
+}
+
+#bbconnect .required, 
+#bbconnect .asterix-required {
+color: #990000 !important;
+}
+
+/*	------------------------------------------------------- 
+	CHECKBOXES
+	------------------------------------------------------- */
+
+#bbconnectpanel #bbconnect a.umt, 
+#bbconnectpanel #bbconnect a.upt, 
+#bbconnectpanel #bbconnect a.uwpt {
+	color: #333;
+}
+
+/*	------------------------------------------------------- 
+	EXPANDABLE PANELS
+	------------------------------------------------------- */
+
+.t-wrapper {
+	background-color: #777777;
+	-moz-box-shadow: inset 0 0 10px #555555;
+	-webkit-box-shadow: inset 0 0 10px #555555;
+	box-shadow: inset 0 0 10px #555555;
+}
+.t-wrapper:hover, .t-wrapper.group:hover {
+	background-color: transparent;
+}
+.t-trigger {
+ 	padding: 10px 0;
+ }
+.t-wrapper.group {
+	padding: 5px 0;
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.t-trigger-wrapper.group {
+	float: left;
+	display: block;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #333;
+}
+.t-wrapper.group .t-panel {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+}
+.t-wrapper.group .t-panel {
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background-color: #CCC;
+	border-top: 1px dashed #000000;
+	padding: 10px;
+}
+.t-wrapper.group .t-panel li {
+	padding-left: 0;
+	color: #333;
+}
+
+#bbconnectpanel .umt {
+	color: #333;
+}
+#bbconnectpanel #bbconnect a.umt, 
+#bbconnectpanel #bbconnect a.upt, 
+#bbconnectpanel #bbconnect a.uwpt, 
+#bbconnectpanel #bbconnect a.rui, 
+#bbconnectpanel #bbconnect a.pmt, 
+#bbconnectpanel a.umt, 
+#bbconnectpanel a.upt, 
+#bbconnectpanel a.uwpt, 
+#bbconnectpanel a.rui, 
+#bbconnectpanel a.pmt, 
+#bbconnectpanel .icon-no  { 
+	background-image: url('../g/no.png');
+	
+}
+#bbconnectpanel #bbconnect a.pmt, 
+#bbconnectpanel a.pmt {
+	background-image: url('../g/private-black.png');
+}
+#bbconnectpanel #bbconnect a.help, 
+#bbconnectpanel a.help {
+	background-image: url('../g/help.png');
+}
+#bbconnectpanel #bbconnect a.add, 
+#bbconnectpanel a.add, 
+#bbconnectpanel #bbconnect a.query_add, 
+#bbconnectpanel a.query_add {
+	background-image: url('../g/add-black.png');
+}
+#bbconnectpanel #bbconnect a.sub, 
+#bbconnectpanel a.sub, 
+#bbconnectpanel #bbconnect a.query_sub, 
+#bbconnectpanel a.query_sub {
+	background-image: url('../g/sub-black.png');
+}
+
+#bbconnectpanel #bbconnect a.umt:hover, 
+#bbconnectpanel #bbconnect a.upt:hover, 
+#bbconnectpanel #bbconnect a.uwpt:hover, 
+#bbconnectpanel #bbconnect a.rui:hover, 
+#bbconnectpanel #bbconnect a.pmt:hover { 
+	/*-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #CCCCCC;*/
+	/*opacity: 100;*/
+}
+
+#bbconnectpanel #bbconnect a.umt.on, 
+#bbconnectpanel #bbconnect a.upt.on, 
+#bbconnectpanel #bbconnect a.uwpt.on, 
+#bbconnectpanel #bbconnect a.rui.on, 
+#bbconnectpanel a.umt.on, 
+#bbconnectpanel a.upt.on, 
+#bbconnectpanel a.uwpt.on, 
+#bbconnectpanel a.rui.on { 
+	background-image: url('../g/ok.png');
+	/*display: inline;*/
+}
+#bbconnectpanel #bbconnect a.pmt.on, 
+#bbconnectpanel a.pmt.on {
+	background-image: url('../g/public-black.png');
+}
+#bbconnect .photo {
+	float: none;
+	padding: 0;
+}
+#bbconnect .photo:hover {
+	background: none;
+}
+
+#bbconnectpanel #bbconnect #profile-navigation a.button.on {
+	background-color: #333;
+}
+#bbconnectpanel #bbconnect .tn-wrapper {
+	background: none;
+	border-bottom: 1px dashed #CCCCCC;
+	
+}
+.chzn-select, .chzn-container {
+	color: #333;
+}
+.halt {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding-top: 15px !important;
+}
+.halt-example {
+	background: url('../g/halt-black.png') top left no-repeat;
+	padding: 5px 15px;
+}
+
