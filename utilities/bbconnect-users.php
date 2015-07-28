@@ -206,3 +206,148 @@ function bbconnect_admin_body_class( $admin_body_class ) {
 	}
 	return $admin_body_class;
 }
+
+function bbconnect_get_user($args, $other = null, &$is_new_contact = false) {
+    extract($args);
+
+    if (!isset($email)) {
+        return false;
+    }
+
+    if (empty($country) && !empty($other['country'])) {
+        $country = $other['country'];
+    }
+
+    if (email_exists($email)) { // Existing user
+        $user = get_user_by('email', $email);
+
+        if (function_exists('bbconnect_insert_action_item')) { // BBConnect Work Queues add-on
+            // Compare address details to those on record
+            $dirty = false;
+            $note_content = 'Submitted address details were different to those on file - please review'."\n\n";
+            $fields = array(
+                    'title' => 'title',
+                    'address1' => 'bbconnect_address_one_1',
+                    'address2' => 'bbconnect_address_two_1',
+                    'suburb' => 'bbconnect_address_city_1',
+                    'state' => 'bbconnect_address_state_1',
+                    'postcode' => 'bbconnect_address_postal_code_1',
+            );
+
+            foreach ($fields as $varname => $metaname) {
+                if(isset($$varname)) {
+                    $val = get_user_meta($user->ID, $metaname, true);
+                    if (!bbconnect_address_compare($$varname, $val)) {
+                        $note_content .= ucfirst($varname).':'."\n";
+                        $note_content .= 'Old Value: '.$val."\n";
+                        $note_content .= 'New Value: '.$$varname."\n\n";
+                        $dirty = true;
+                    }
+                }
+            }
+
+            // Phone and country are a bit special
+            if (!empty($phone)) {
+                $phone_data = get_user_meta($user->ID, 'telephone');
+                foreach ($phone_data as $phone_number) {
+                    if ($phone_number['type'] == 'home') {
+                        if (!bbconnect_address_compare($phone, $phone_number['value'])) {
+                            $note_content .= 'Phone:'."\n";
+                            $note_content .= 'Old Value: '.$phone_number['value']."\n";
+                            $note_content .= 'New Value: '.$phone."\n\n";
+                            $dirty = true;
+                        }
+                    }
+                }
+            }
+
+            if (!empty($country)) {
+                $country = bbconnect_process_country($country);
+                $val = get_user_meta($user->ID, 'bbconnect_address_country_1', true);
+                if (!bbconnect_address_compare($country, $val)) {
+                    $note_content .= 'Country:'."\n";
+                    $note_content .= 'Old Value: '.$country."\n";
+                    $note_content .= 'New Value: '.$val."\n\n";
+                    $dirty = true;
+                }
+            }
+
+            if ($dirty) {
+                bbconnect_insert_action_item($user->ID, 'Address Review', $note_content, 'address-review', '', true);
+            }
+        }
+
+        return $user->ID;
+    } else { // New user
+        $user_name = wp_generate_password(8, false);
+        $random_password = wp_generate_password(12, false);
+
+        if (!isset($firstname) || !isset($lastname)) {
+            return false;
+        }
+
+        $userdata = array(
+                'user_login' => $user_name,
+                'first_name' => $firstname,
+                'last_name' => $lastname,
+                'user_pass' => $random_password,
+                'user_email' => $email,
+                'user_nicename' => $firstname
+        );
+        $user_id = wp_insert_user($userdata);
+
+        //On fail
+        if (is_wp_error($user_id)) {
+            return false;
+        } else {
+            if(isset($title)) update_user_meta($user_id, 'title',$title);
+            if(isset($address1)) update_user_meta($user_id, 'bbconnect_address_one_1', $address1);
+            if(isset($address2)) update_user_meta($user_id, 'bbconnect_address_two_1', $address2);
+            if(isset($suburb)) update_user_meta($user_id, 'bbconnect_address_city_1', $suburb);
+            if(isset($state)) update_user_meta($user_id, 'bbconnect_address_state_1', $state);
+            if(isset($postcode)) update_user_meta($user_id, 'bbconnect_address_postal_code_1', $postcode);
+            update_user_meta($user_id, 'bbconnect_bbc_primary', 'address_1');
+
+            if (!empty($phone)) {
+                $phone_data = array(
+                        array(
+                                'value' => $phone,
+                                'type' => 'home',
+                        ),
+                );
+                update_user_meta($user_id, 'telephone', $phone_data);
+            }
+
+            if (!empty($country)) {
+                $country = bbconnect_process_country($country);
+                update_user_meta($user_id, 'bbconnect_address_country_1', $country);
+            }
+
+            if (function_exists('subscribe_to_mailchimp')) { // BBConnect MailChimp add-on
+                subscribe_to_mailchimp($user_id);
+            }
+            if (function_exists('bbconnect_insert_action_item')) { // BBConnect Work Queues add-on
+                bbconnect_insert_action_item($user_id, 'New Contact', 'New contact - please check and clean up data as needed', 'new-contact', '', true);
+            }
+            $is_new_contact = true;
+
+            return $user_id;
+        }
+    }
+
+    return false;
+}
+
+function bbconnect_process_country($country) {
+    $bbconnect_helper_country = bbconnect_helper_country();
+    if (strlen($country) > 3) {
+        $country = in_array_r($country, $bbconnect_helper_country, true);
+    } else {
+        $country = substr($country, 0, 2);
+    }
+    return $country;
+}
+
+function bbconnect_address_compare($val1, $val2) {
+    return preg_replace('/[^a-zA-Z0-9]/', '', strtolower($val1)) === preg_replace('/[^a-zA-Z0-9]/', '', strtolower($val2));
+}

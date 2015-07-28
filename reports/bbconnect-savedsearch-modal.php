@@ -8,18 +8,12 @@ function bbconnect_save_search() {
 	$modal_element.= '<h1>Save Search</h1>'."\n";
 	$modal_element.= '<div><label>Search Name:</label><br><input style ="width: 100%;" type="text" id="post_title" name="post_title"></div>'."\n";
 
-	//Check if user is a donor manager. If they are donor manager then don't show options and set defaults to be Private & the rest of the options unchecked.
-
-	$user_data = get_userdata(  get_current_user_id() );
-	if($user_data->roles[0] == 'donor_management') {
-		$modal_element.= '<div><input type="hidden" id="private" name="private" checked="checked"> <label></label></div>'."\n";
-		$modal_element.= '<div><input type="hidden" id="segment" name="segment"> <label></label></div>'."\n";
-		$modal_element.= '<div><input type="hidden" id="donor_category" name="donor_category"> <label></label></div>'."\n";
+	// Non-admins can only create basic saved searches for themselves
+	if(!user_can('manage_options')) {
+		$modal_element.= '<input type="hidden" id="private" name="private" checked="checked">'."\n";
 		}
 	else {
 		$modal_element.= '<div><input type="checkbox" id="private" name="private" checked="checked"> <label>Private</label></div>'."\n";
-		$modal_element.= '<div><input type="checkbox" id="segment" name="segment"> <label>Segment</label></div>'."\n";
-		$modal_element.= '<div><input type="checkbox" id="donor_category" name="donor_category"> <label>Donor Category</label></div>'."\n";
 	}
 	$modal_element.= '<div><input style="height: 2.5rem; padding: 0.25rem 2rem;margin-top:2rem;" type="submit" name="search-save-go" value="Save" class="button-primary save-go" /></div>'."\n";
 	$modal_element.= '</form>'."\n";
@@ -46,8 +40,6 @@ function bbconnect_create_search_post(){
 			$wp_error = wp_insert_post( $post, $wp_error );
 			if( !is_array( $wp_error ) ) {
 				add_post_meta($wp_error, 'private', $_POST['data']['privateV']);
-				add_post_meta($wp_error, 'segment', $_POST['data']['segment']);
-				add_post_meta($wp_error, 'donor_category', $_POST['data']['donorC']);
 				//echo '<div class="updated"><p>Search has been saved as <a href="/post.php?post=' . $wp_error . '&action=edit">savedsearch-' . $wp_error . '</a></p></div>'."\n";
 				if ( false === $recently_saved ) $recently_saved = array();
 				set_transient( 'bbconnect_'.$current_user->ID.'_last_saved', $wp_error, 3600 );

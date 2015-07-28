@@ -163,10 +163,6 @@ function bbconnect_account_information_fields() {
 		array( 'source' => 'wpr', 'meta_key' => 'display_name', 'tag' => '', 'name' => __( 'Display Name', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array() ), 'help' => '' ),
 		// PASSWORD -- WILL NOT BY SYNCED
 		array( 'source' => 'wpr', 'meta_key' => 'pass', 'tag' => '', 'name' => __( 'Password', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => true, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'password', 'choices' => array( '1', '2' ) ), 'help' => '' ),
-
-        // Donor Category and Segment fields
-        array( 'source' => 'bbconnect', 'meta_key' => 'donor_category_id', 'tag' => '', 'name' => __( 'Donor Category', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_category' ), 'help' => false ),
-        array( 'source' => 'bbconnect', 'meta_key' => 'segment_id', 'tag' => '', 'name' => __( 'Donor Segment', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_segment' ), 'help' => false ),
 	);
 
 }
@@ -239,9 +235,6 @@ function bbconnect_preferences_fields() {
 
 		// CONTACT PREFERENCES -- WILL NOT BE SYNCED
 		array( 'source' => 'bbconnect', 'meta_key' => 'bbc_contact', 'tag' => '', 'name' => __( 'Allow others to contact me', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
-
-        // Special Work Queue search field
-        array( 'source' => 'bbconnect', 'meta_key' => 'bb_work_queue', 'tag' => '', 'name' => __( 'Work Queue', 'bbconnect' ), 'options' => array( 'admin' => false, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_work_queue' ), 'help' => false ),
 
 	);
 

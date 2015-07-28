@@ -11,53 +11,6 @@ function bbconnect_helper_state() {
 
 }
 
-function bbconnect_helper_work_queue() {
-    $work_queues = array();
-    $all_notes = cw_get_action_items();
-    foreach ($all_notes as $note) {
-        $note_types = wp_get_post_terms($note->ID, 'bb_note_type');
-        foreach ($note_types as $note_type) {
-            if ($note_type->parent > 0) {
-                $work_queues[$note_type->term_id] = $note_type->name;
-                break;
-            }
-        }
-    }
-	return $work_queues;
-}
-
-function bbconnect_helper_segment() {
-    return bbconnect_get_helper_saved_searches('segment');
-}
-
-function bbconnect_helper_category() {
-    return bbconnect_get_helper_saved_searches('donor_category');
-}
-
-function bbconnect_get_helper_saved_searches($search_type) {
-    $args = array(
-            'post_type' => 'savedsearch',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'orderby' => 'post_title',
-            'order' => 'DESC',
-            'meta_query' => array(
-                    array(
-                            'key' => $search_type,
-                            'value' => 'true'
-                    )
-            )
-    );
-    $searches = get_posts($args);
-
-    $result = array();
-    foreach ($searches as $key => $search) {
-        $result[$search->ID] = $search->post_title;
-    }
-
-    return $result;
-}
-
 function bbconnect_merge_helper_locs() {
 	$states = apply_filters( 'bbconnect_merge_helper_states', bbconnect_get_helper_states() );
 	$countries = bbconnect_helper_country();

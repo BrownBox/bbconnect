@@ -74,6 +74,7 @@ include_once( 'utilities/bbconnect-general.php' );
 include_once( 'utilities/bbconnect-security.php' );
 include_once( 'utilities/bbconnect-users.php' );
 include_once( 'utilities/bbconnect-tax-meta.php' );
+include_once( 'utilities/bbconnect-forms.php' );
 
 include_once( 'reports/bbconnect-reports.php' );
 include_once( 'reports/bbconnect-filter-form.php' );
@@ -91,7 +92,6 @@ include_once( 'posts/bbconnect-user-actions.php' );
 include_once( 'posts/bbconnect-post-actions-meta.php' );
 include_once( 'posts/bbconnect-user-actions-meta.php' );
 include_once( 'posts/bbconnect-user-actions-tax.php' );
-include_once( 'posts/bbconnect-campaign-note-tax.php' );
 include_once( 'posts/bbconnect-post-notes-meta.php' );
 
 include_once( 'users/bbconnect-users.php' );
@@ -538,31 +538,3 @@ add_shortcode( 'ppf_link', 'bbconnectpanels_link_shortcode' );
 // SETS THE MAIL DEFAULTS
 add_filter( 'wp_mail_from', 'bbconnect_mail_from' );
 add_filter( 'wp_mail_from_name', 'bbconnect_mail_from_name' );
-
-if(is_admin()) add_action( 'add_admin_bar_menus', 'cw_title_bar', 999 );
-
-function cw_title_bar( $wp_admin_bar ) {
-	echo '<style>'."\n";
-	echo '#wp-admin-bar-site-name {display: none;}'."\n";
-	echo '.cw_title_bar {background: #FFCA08; padding: 0.5rem; position: relative; z-index: 100;}'."\n";
-	echo '.cw_title_bar img {max-width: 150px;}'."\n";
-	echo '</style>'."\n";
-	echo '<div class="cw_title_bar"><a href="'.site_url().'" target="_blank"><img src="http://cworkscrm.zeppelin.bbdev.net/wp-content/themes/Christianity%20Works/images/cwlogo2.png"></a></div>'."\n";
-}
-
-/*add_action( 'welcome_panel', 'bbconnect_welcome', 18 );
-function bbconnect_welcome() {
-?>
-</div>
-<div id="bbconnect-welcome-panel" class="welcome-panel">
-	<h3>BB Connect</h3>
-	<p class="about-description">hi there. we're glad you're here!</p>
-	<div class="welcome-panel-column-container">
-		<div class="welcome-panel-column"><h4>Howdy!</h4></div>
-		<div class="welcome-panel-column"><h4>Hej!</h4></div>
-		<div class="welcome-panel-column"><h4>Wilkomen!</h4></div>
-	</div>
-
-<?php
-}
-*/

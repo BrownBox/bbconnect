@@ -1,11 +1,10 @@
 === BBConnect - A CRM for WordPress ===
-Author URI: http://havahula.org
-Plugin URI: http://bbconnect.com
-Contributors: havahula
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G67DDF9GGREEG
+Author URI: http://brownbox.net.au
+Plugin URI: http://brownbox.net.au
+Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 3.9.1
+Tested up to: 4.1.6
 
 Stable Tag: 1.5.7
 License: GPLv2 or later
@@ -17,11 +16,13 @@ Supercharge your user profiles. Simple, powerful contact relationship management
 
 BBConnect brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
 
+BBConnect started as a fork of PauPress, but is rapidly evolving into something that is not only more powerful, but provides a better user experience.
+
 Upon installation you can build user profiles by adding and arranging as many custom fields as you need and then search those fields to find commonalities or differences. Each user profile has a history tab where you can track detailed user activity using a built-in note system and which can be extended easily to include custom post-types attributable to each user. Lastly, you can create contact forms from your existing user fields that automatically add new contacts to your database and append the details to the user account even if the contact already exists. 
 
 These are the basics of any CRM (contact relationship management) application and BBConnect does it all using only the core WordPress APIs.
 
-**Need to do more?** The pro version, adds additional core functionality integrated into the same application for a seamless user interface and we are releasing additional add-ons for additional functionality and workflows.
+**Need to do more?** We are releasing additional add-ons for additional functionality and workflows.
 
 **Features of the plugin include:**
 
@@ -30,31 +31,14 @@ These are the basics of any CRM (contact relationship management) application an
 * Create and use custom contact forms anywhere on your site
 * Search and segment your user database with an intuitive search engine
 * Export user data
-
-**The Pro version has these additional features:**
-
-* Search user histories & actions (including purchases and donations)		
-* Import users and financial transactions
-* Bulk editing of both user profiles and user actions
 * Saved searches
-* Google Maps integration
-* Front-end user registration, login and account management		
-* Accept user-generated content (Community Feature)
-* Restrict access to content (Membership Feature)
-* Display and search users from your site (Directory Feature)
-* Sell physical or digital products, accept donations or charge for services with a full-featured e-commerce engine		
-* Send e-mails through WordPress or MailChimp
-* Full end-to-end MailChimp synchronization
 
 **Current Add-ons:**
 
-* Event Management: Display events on your site and allow users to register for free or by payment (purchase or donation). You can also allow users to submit events for publication and you are able to search all events and event registrations using the BBConnect search engine for analysis and reporting.
-
-More information is available at [BBConnect.com](http://bbconnect.com/)
- 
-We also have a [getting started guide](http://bbconnect.com/support/documentation/bbconnect-plugin-documentation/getting-started/)
-
-[youtube http://www.youtube.com/watch?v=RPQDVU-IUDg]
+* Work Queues
+* MailChimp
+* KPIs
+* Quicklinks
 
 **Languages**
 * German
@@ -62,7 +46,7 @@ We also have a [getting started guide](http://bbconnect.com/support/documentatio
 * Russian
 * Slovenian
 
-Would you like to help translate the plugin into more languages? [Get in touch!](http://bbconnect.com/join-in/).
+Would you like to help translate the plugin into more languages? [Get in touch!](http://brownbox.net.au/contact/).
 
 == Installation ==
 
@@ -72,26 +56,21 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 4. Go to **BBConnect Options** to configure the options
 5. Go to **BBConnect Options > Manage Fields** to add fields and modify the new layout
 
-Documentation and tutorials can be found online at [BBConnect.com](http://bbconnect.com/support/).
-
 == Frequently Asked Questions ==
 
 = What's this all about? =
 
 Since 2010 we've built out BBConnect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release BBConnect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
-= What's with the name? =
-
-The "Pau" in BBConnect is a stylized acronym for "Perspectives on the Actions of Users." You can pronounce it "paw" or "pow" as you like -- it answers to either.
-
-== Screenshots ==
-
-1. Profile View
-2. History View
-3. Manage Fields
-4. Search Engine
-
 == Changelog ==
+
+= 2.0.0 - in progress =
+
+* Added Saved Searches
+* Started work on several new add-ons
+* Rework of user actions with a completely new, extensible architecture 
+
+== PauPress Changelog (pre-fork) ==
 
 = 1.5.7 - June 24, 2014 =
 

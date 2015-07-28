@@ -1379,7 +1379,7 @@ function bbconnect_field_disabled( $key ) {
     }
 
     $match = 0;
-    $disabled_fields = array( 'kpi', 'segment', 'campaigns', 'disabled', 'category' );
+    $disabled_fields = array( 'kpi', 'segment', 'disabled', 'category' );
     foreach ($disabled_fields as $field) {
         if( strpos( strtolower( $key ), strtolower( $field ) ) !== false ) {
             $match++;

@@ -7,17 +7,11 @@ function bbconnect_save_submit(){
 	// FOR PAGINATION, TAKE THE EXTRA ARGUMENTS FOR LOCATION AND RETURN
 	var fid = jQuery(this).closest('.save-form').attr('id');
 	var privateV = false;
-	var segment = false;
-	var donorC = false;
 	var query = <?php echo json_encode($last_search);?>;
 	// DISABLE THE FORM
     jQuery('#'+fid).submit( function() { return false; } );
     if(jQuery('#private').is(':checked'))  privateV = true;
-    if(jQuery('#segment').is(':checked'))  segment = true;
-    if(jQuery('#donor_category').is(':checked'))  donorC = true;
     query.privateV = privateV;
-    query.segment = segment;
-    query.donorC = donorC;
     query.postTitle = jQuery('#post_title').val();
 
     // SUBMIT THE FORM DATA
