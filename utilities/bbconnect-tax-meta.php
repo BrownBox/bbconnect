@@ -106,7 +106,7 @@ class Tax_Meta_Class {
     // Assign meta box values to local variables and add it's missed values.
     $this->_meta_box = $meta_box;
     $this->_prefix = (isset($meta_box['prefix'])) ? $meta_box['prefix'] : '';
-    $this->_fields = $this->_meta_box['fields'];
+    $this->_fields = (isset($meta_box['fields'])) ? $meta_box['fields'] : array();
     $this->_Local_images = (isset($meta_box['local_images'])) ? true : false;
     $this->add_missed_values();
     if (isset($meta_box['use_with_theme'])){

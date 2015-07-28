@@ -236,7 +236,7 @@ function bbconnect_filter_process( $post_data ) {
                 }
 
                 // PREP THE RESULTS TABLE && DISTINGUISH BETWEEN TAXONOMIES & META
-                if ( 'bbconnect' != substr( $fkey, 0, 12 ) ) {
+                if ( 'bbconnect' != substr( $fkey, 0, 9 ) ) {
                     $option_key = 'bbconnect_' . $fkey;
                 } else {
                     $option_key = $fkey;
@@ -382,7 +382,7 @@ function bbconnect_filter_process( $post_data ) {
                                 $q_val = strpos($subvalue, '.') !== false ? floatval($subvalue) : intval($subvalue);
                             }
                             else if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$subvalue) && $wp_col != 'user_registered'){
-                                if ( date( 'Y-m-d', strtotime( $subvalue ) ) == $subvalue ) { 
+                                if ( date( 'Y-m-d', strtotime( $subvalue ) ) == $subvalue ) {
                                         $temp_date_arr[] = "DATE('" . $subvalue . "')";
                                     }
 
@@ -416,12 +416,12 @@ function bbconnect_filter_process( $post_data ) {
                                     $reg_op = " BETWEEN ";
                                 }
                                 $mtquery[$mtc] = "(" . $wp_col . $reg_op . implode( ' AND ', $temp_arr ) . ")";
-                                
+
                             } else {
                                 $mtquery[$mtc] = "(" . implode( ' '.$sop.' ', $temp_arr ) . ")";
                             }
-                        } 
-                        
+                        }
+
                             else {
                         //if ( !isset( $wp_col ) )
                             $mtjoin[$mtc] = "INNER JOIN $wpdb->usermeta " . $mtc_as . "ON ($wpdb->users.ID = " . $mtc_dot . "user_id)";
@@ -446,14 +446,14 @@ function bbconnect_filter_process( $post_data ) {
                                     } else {
                                         $reg_op = " BETWEEN ";
                                     }
-                                    
+
                                     $mtquery[$mtc] = "(" . $mtc_dot . $mod_comp . " AND ".$mtc_dot."meta_value ".$reg_op . implode( ' AND ', $temp_date_arr ) . ")";
                                 }
                                 else{
                                     $mtquery[$mtc] = "(" . $mtc_dot . $mod_comp . " AND " . implode( ' '.$sop.' ', $temp_arr ) . ")";
                                 }
-                                
-                             
+
+
                             }
                         }
 
@@ -548,7 +548,7 @@ function bbconnect_filter_process( $post_data ) {
                                         $mod_comp = $wpdb->prepare( "meta_key = %s", $user_meta_col.$mod_key );
                                     }
                                     $mtquery[$mtc] = "(" . $mtc_dot . $mod_comp . " AND " . $mtc_dot . "meta_value " . $op . " " . $q_val . ")";
-                                    
+
                                 }
                             }
                         }

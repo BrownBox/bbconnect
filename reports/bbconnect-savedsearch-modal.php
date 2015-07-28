@@ -1,45 +1,18 @@
 <?php
 // PROCESS THE AJAX REQUEST TO SAVE SEARCH
 function bbconnect_save_search() {
-global $current_user;
-	
+    global $current_user;
 	$last_search = get_option( '_bbconnect_' . $current_user->ID . '_current' );
-	// $modal_element= '<div>'."\n";
-	// $modal_element.= '<table border="0" width="100%">'."\n";
-	// $modal_element.= '<thead>'."\n";
-	// $modal_element.= '<tr>'."\n";
-	// $modal_element.= '<th>Field</th>'."\n";
-	// $modal_element.= '<th>Operator</th>'."\n";
-	// $modal_element.= '<th>Query</th>'."\n";
-	// $modal_element.= '</tr>'."\n";
-	// $modal_element.= '</thead>'."\n";
-	// $modal_element.= '<tbody>'."\n";
-	// foreach ($last_search['search'] as $key => $value) {
-	// 	$modal_element.= '<tr>'."\n";
-	// 	$modal_element.= '<td>'.$value['field'].'</td>'."\n";
-	// 	$modal_element.= '<td>'.$value['operator'].'</td>'."\n";
-	// 	$modal_element.= '<td>'.$value['query'].'</td>'."\n";
-	// 	$modal_element.= '</tr>'."\n";
-	// }
-	
-	
-	// $modal_element.= '</tbody>'."\n";
-	// $modal_element.= '</table>'."\n";
-	// $modal_element.= '<p></p>'."\n";
-	// $modal_element.= '</div>'."\n";
 
-
-
-	$modal_element.= '<form id="save-search-form" class="save-form" enctype="multipart/form-data" action="#" method="POST" style="padding:2rem;">'."\n";
+	$modal_element = '<form id="save-search-form" class="save-form" enctype="multipart/form-data" action="#" method="POST" style="padding:2rem;">'."\n";
 	$modal_element.= '<h1>Save Search</h1>'."\n";
 	$modal_element.= '<div><label>Search Name:</label><br><input style ="width: 100%;" type="text" id="post_title" name="post_title"></div>'."\n";
-	
+
 	//Check if user is a donor manager. If they are donor manager then don't show options and set defaults to be Private & the rest of the options unchecked.
 
-
-	$user_data = get_userdata(  get_current_user_id() ); 	
+	$user_data = get_userdata(  get_current_user_id() );
 	if($user_data->roles[0] == 'donor_management') {
-		$modal_element.= '<div><input type="hidden" id="private" name="private" checked="checked"> <label></label></div>'."\n";		
+		$modal_element.= '<div><input type="hidden" id="private" name="private" checked="checked"> <label></label></div>'."\n";
 		$modal_element.= '<div><input type="hidden" id="segment" name="segment"> <label></label></div>'."\n";
 		$modal_element.= '<div><input type="hidden" id="donor_category" name="donor_category"> <label></label></div>'."\n";
 		}
@@ -50,11 +23,9 @@ global $current_user;
 	}
 	$modal_element.= '<div><input style="height: 2.5rem; padding: 0.25rem 2rem;margin-top:2rem;" type="submit" name="search-save-go" value="Save" class="button-primary save-go" /></div>'."\n";
 	$modal_element.= '</form>'."\n";
-	require_once('modal_script.php');
+	require_once('bbconnect-savedsearch-save.php');
 	echo $modal_element;
-die;
-
-
+    die;
 }
 
 //create entry in the search saved custom post
@@ -71,7 +42,7 @@ function bbconnect_create_search_post(){
 			  'post_status'    => 'publish',
 			  'post_type'      => 'savedsearch',
 			  'post_author'    => $current_user->ID,
-			); 
+			);
 			$wp_error = wp_insert_post( $post, $wp_error );
 			if( !is_array( $wp_error ) ) {
 				add_post_meta($wp_error, 'private', $_POST['data']['privateV']);

@@ -6,7 +6,7 @@ function save_search_loaded() {
 	echo '<div class="update-nag" style="width:95%; border-left: 4px solid #7ad03a;">Search criteria loaded for <strong>'. $savedsearch->post_title.' [id: '. $_GET['savedsearch'] .']</strong>. <em>Click search to see results</em></div>'."\n";
 	//echo '<script> jQuery(document).ready(function () {jQuery( ".report-go" ).trigger( "click" );}); </script>';
 }
-if( $_GET['savedsearch'] ){
+if( !empty($_GET['savedsearch']) ){
 	add_action( 'admin_notices', 'save_search_loaded' );
 }
 
@@ -64,7 +64,9 @@ function bbconnect_filter_profile( $args = '' ) {
 				}
 				else{
 					$last_search = get_option( '_bbconnect_' . $current_user->ID . '_current' );
-					$search = $last_search['search'];
+					if (!empty($last_search['search'])) {
+					    $search = $last_search['search'];
+				    }
 				}
 
 					$ac = count( $search );
@@ -234,6 +236,7 @@ function bbconnect_user_data_select( $args = '' ) {
 		<option value=""><?php _e( 'Make a selection', 'bbconnect' ); ?></option>
 		<optgroup label="<?php _e( 'Profile Fields', 'bbconnect' ); ?>">
 	<?php
+	$fput = array();
 			foreach ( $ppum as $ukey => $uvalue ) {
 
 				// RETRIEVE THE OPTION AND EVALUATE

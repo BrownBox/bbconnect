@@ -1,6 +1,6 @@
-<script>
+<script type="text/javascript">
 //AJAX FORM SUBMISSION FOR SAVE CRITERIA.
-function bbconnect_save_submit(){ 
+function bbconnect_save_submit(){
 	//DISABLE SUBMIT BUTTON TO AVOID DUPLICATION
 	jQuery(this).attr('disabled','disabled');
 	// GET THE ID OF CURRENT FORM
@@ -21,13 +21,13 @@ function bbconnect_save_submit(){
     query.postTitle = jQuery('#post_title').val();
 
     // SUBMIT THE FORM DATA
-        jQuery.ajax({ 
-    		type: 'POST', 
-	    	url: bbconnectReportAjax.ajaxurl, 
-	    	data: { 
-	    		action : 'bbconnect_create_search_post', 
-	    		data : query, 
-	    		bbconnect_report_nonce : bbconnectReportAjax.bbconnect_report_nonce 
+        jQuery.ajax({
+    		type: 'POST',
+	    	url: bbconnectReportAjax.ajaxurl,
+	    	data: {
+	    		action : 'bbconnect_create_search_post',
+	    		data : query,
+	    		bbconnect_report_nonce : bbconnectReportAjax.bbconnect_report_nonce
 	    	},
 	        success: function( response ) {
 	            jQuery('#saved-search-notice').html(response);
@@ -35,16 +35,13 @@ function bbconnect_save_submit(){
 	            jQuery('#TB_overlay').fadeOut();
 	            self.parent.tb_remove();
      			//e.preventDefault();
-	        }, 
+	        },
 	        timeout: 60000
 	    });
-    
+
 }
 // WHEN THE DOM IS READY...
 jQuery(document).ready(function () {
 	jQuery('.save-go').on('click',  bbconnect_save_submit);
-
-	
-
 });
 </script>

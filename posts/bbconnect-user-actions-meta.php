@@ -347,13 +347,13 @@ function bbconnect_action_status() {
 
 
 /**
- * Push the user actions meta to EnvoyConnect if this is a processed item.
+ * Push the user actions meta to BB Connect if this is a processed item.
  *
  * @since 1.0.0
  *
- * @param arr. The EnvoyConnect user actions meta array.
+ * @param arr. The BB Connect user actions meta array.
  *
- * @return arr. The filtered EnvoyConnect user actions meta array.
+ * @return arr. The filtered BB Connect user actions meta array.
  */
 function bbconnect_push_user_actions_meta( $bbconnect_get_user_actions_meta ) {
 	global $post;

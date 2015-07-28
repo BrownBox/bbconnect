@@ -184,7 +184,7 @@ function bbctheme_toggle_view( $views ) {
 
     // $display_views .= '</span>';
 
-    return $display_views;
+    return $views;
 
 }
 
@@ -261,7 +261,7 @@ function bbconnect_search() {
         $last_query = get_option( '_bbconnect_' . $current_user->ID . '_current' );
     }
 
-    if( $_GET['save'] = 'true' && $_GET['save'] != NULL ) {
+    if(!empty($_GET['save']) && $_GET['save'] == 'true') {
         if( $saved_search->post_content !== serialize( get_option( '_bbconnect_' . $current_user->ID . '_current' ) ) )  {
             $post = array(
               'post_content'   => serialize( get_option( '_bbconnect_' . $current_user->ID . '_current' ) ),
@@ -606,7 +606,7 @@ function bbconnect_report_display( $ret_res = array() ) {
                     </tbody>
                     <tfoot>
                         <?php
-                        if(count($totalValues) > 0){ 
+                        if(count($totalValues) > 0){
                         ?>
                         <tr>
                             <?php if ( is_admin() ) {
@@ -913,8 +913,8 @@ function bbconnect_rows( $args = null ) {
 
                 if ( !empty( $current_member->$key ) ) {
                     foreach ( $current_member->$key as $subkey => $subvalue ) {
-                        if ( 'bbconnect' == substr( $key, 0, 12 ) )
-                            $key = substr( $key, 13 );
+                        if ( 'bbconnect' == substr( $key, 0, 9 ) )
+                            $key = substr( $key, 10 );
 
                         $term_name = get_term_by( 'id', $subvalue, $key );
                         if ( in_array_r( $subvalue, $value ) ) {
@@ -925,7 +925,7 @@ function bbconnect_rows( $args = null ) {
                     }
                 } else if ( !empty( $current_member->$alt_key ) ) {
                     foreach ( $current_member->$alt_key as $subkey => $subvalue ) {
-                        $term_name = get_term_by( 'id', $subvalue, substr( $key, 13 ) );
+                        $term_name = get_term_by( 'id', $subvalue, substr( $key, 10 ) );
                         if ( in_array_r( $subvalue, $value ) ) {
                             $ret_arr[] = '<span class="highlight">' . $term_name->name . '</span>';
                         } else {

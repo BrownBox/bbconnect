@@ -9,9 +9,9 @@ function bbconnect_actions_settings() {
 		array( 'meta' => array(
 								'source' => 'bbconnect',
 								'meta_key' => '_bbconnect_actions_title',
-								'name' => __( 'EnvoyConnect Actions', 'bbconnect' ),
+								'name' => __( 'BB Connect Actions', 'bbconnect' ),
 								'help' => '',
-								'description' => __( 'EnvoyConnect actions are, essentially, WordPress post types that users can manipulate.', 'bbconnect' ),
+								'description' => __( 'BB Connect actions are, essentially, WordPress post types that users can manipulate.', 'bbconnect' ),
 								'options' => array(
 													'field_type' => 'title',
 													'req' => false,

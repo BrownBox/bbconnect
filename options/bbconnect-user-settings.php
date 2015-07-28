@@ -173,7 +173,7 @@ function bbconnect_user_settings() {
 								'source' => 'bbconnect', 
 								'meta_key' => '_bbconnect_compatability_mode', 
 								'name' => __( 'Enable WordPress Default User View', 'bbconnect' ), 
-								'help' => __( 'By default, EnvoyConnect replaces the WordPress default list view. You can re-enable it with this option.', 'bbconnect' ), 
+								'help' => __( 'By default, BB Connect replaces the WordPress default list view. You can re-enable it with this option.', 'bbconnect' ), 
 								'options' => array( 
 													'field_type' => 'checkbox',
 													'req' => false, 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is the wrapper function for the EnvoyConnect Options API. Your function might be called {prefix}_options.
+ * This is the wrapper function for the BB Connect Options API. Your function might be called {prefix}_options.
  *
  * @since 1.0.2
  *
@@ -52,13 +52,13 @@ function bbconnect_options() {
 							),
 	) );
 	
-	bbconnect_options_form( __( 'EnvoyConnect Options', 'bbconnect' ), $navigation );
+	bbconnect_options_form( __( 'BB Connect Options', 'bbconnect' ), $navigation );
 
 }
 
 
 /**
- * This function saves EnvoyConnect Options data at init to catch taxonomic options.
+ * This function saves BB Connect Options data at init to catch taxonomic options.
  *
  * @since 1.0.2
  *
@@ -95,7 +95,7 @@ function bbconnect_options_save() {
 
 
 /**
- * This is the main function for the EnvoyConnect Options API.
+ * This is the main function for the BB Connect Options API.
  *
  * @since 1.0.2
  *

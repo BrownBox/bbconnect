@@ -3,7 +3,7 @@
 function bbconnect_get_option( $key, $ret_key = false ) {
 
 	// DIFFERENTIATE WORDPRESS AND THIRD-PARTY DEFAULTS
-	if ( 'bbconnect' != substr( $key, 0, 12 ) ) {
+	if ( 'bbconnect' != substr( $key, 0, 9 ) ) {
 		$option_key = 'bbconnect_'.$key;
 	} else {
 		$option_key = $key;
@@ -78,7 +78,7 @@ function bbconnect_val( $data_arr, $val = true ) {
 function bbconnect_add_merge_tags_tinymce_plugin($plugin_array) {
 	//$merge_tags = urlencode( serialize( array( 'first_name' => 'First Name' ) ) );
 	// bbconnect_get_user_metadata( array( 'return_val' => true, 'include' => array( 'text' ) ) )
-	$plugin_array['EnvoyConnectMergeTags'] = BBCONNECT_URL . '/assets/j/tmce/merge-tags-plugin.php';
+	$plugin_array['BB ConnectMergeTags'] = BBCONNECT_URL . '/assets/j/tmce/merge-tags-plugin.php';
 	return $plugin_array;
 }
 

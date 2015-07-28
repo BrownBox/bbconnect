@@ -254,8 +254,8 @@ function bbconnect_query_vars( $qvars ) {
 
 
 /**
- * Basic rewrite rule that says, if we have a subset of EnvoyConnect, apply our matching and set bbconnect as a key.
- * If this is a top-level EnvoyConnect request, let the parse request take over and set bbconnect as the value.
+ * Basic rewrite rule that says, if we have a subset of BB Connect, apply our matching and set bbconnect as a key.
+ * If this is a top-level BB Connect request, let the parse request take over and set bbconnect as the value.
  *
  * @since 1.0.0
  */
