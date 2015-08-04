@@ -700,9 +700,6 @@ function bbconnect_get_user_metadata_val( $bbconnect_user_meta_arr, $val, $args 
 
 }
 
-
-
-
 function bbconnect_primary_marker( $meta, $user_id = '' ) {
 
 	if ( isset( $meta['group_type'] ) && 'address' == $meta['group_type'] ) {
@@ -726,7 +723,4 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 			</span>
 		<?php
 	}
-
 }
-
-?>

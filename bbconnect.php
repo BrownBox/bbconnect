@@ -3,7 +3,7 @@
 Plugin Name: BB Connect
 Plugin URI: http://brownbox.net.au/
 Description: A CRM framework for Wordpress
-Version: 2.0.0b1
+Version: 2.0.0b2
 Author: Brown Box
 Author URI: http://brownbox.net.au/
 Text Domain: bbconnect
@@ -82,7 +82,6 @@ include_once( 'reports/bbconnect-filter.php' );
 include_once( 'reports/bbconnect-edit.php' );
 include_once( 'reports/bbconnect-actions.php' );
 include_once( 'reports/bbconnect-queries.php' );
-include_once( 'reports/bbconnect-dashboard-widget.php' );
 include_once( 'reports/bbconnect-savedsearch.php' );
 include_once( 'reports/bbconnect-savedsearch-meta.php' );
 include_once( 'reports/bbconnect-savedsearch-modal.php' );

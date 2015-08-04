@@ -346,7 +346,7 @@ function bbconnect_filter_process( $post_data ) {
                                 $q_val = '\'%s:'.strlen($subvalue).':"'.$subvalue.'"%\'';
 
                             // Work Queues are rather special...
-                            } else if ('bb_work_queue' == $user_meta['meta_key']) {
+                            } else if ('bb_work_queue' == $user_meta['meta_key'] && function_exists('bbconnect_workqueues_get_action_items')) {
                                 $args = array(
                                         'tax_query' => array(
                                                 array(
@@ -356,7 +356,7 @@ function bbconnect_filter_process( $post_data ) {
                                                 ),
                                         ),
                                 );
-                                $notes = cw_get_action_items($args);
+                                $notes = bbconnect_workqueues_get_action_items($args);
                                 $note_users = array();
                                 foreach ($notes as $note) {
                                     $note_users[$note->post_author] = $note->post_author;

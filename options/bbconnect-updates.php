@@ -252,6 +252,9 @@ function bbconnect_update_v_1_0_0() {
 }
 
 function bbconnect_update_v_2_0_0() {
+    if (!taxonomy_exists('bb_note_type')) {
+        tax_bb_note_type();
+    }
     $interaction_term = wp_insert_term('Interaction', 'bb_note_type');
     $system_term = wp_insert_term('System', 'bb_note_type');
 

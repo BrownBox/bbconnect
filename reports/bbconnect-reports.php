@@ -157,34 +157,35 @@ function bbconnect_pagination( $ret_res, $display = false ) {
 
 
 function bbctheme_toggle_view( $views ) {
+    return '';
 
     // HARD-CODED ARRAY OF OPTIONS FOR NOW
-    // $views = array( 'grid', 'list', 'calendar' );
-    // $display_views = '<span class="toggle-view">';
+    $views = array( 'grid', 'list', 'calendar' );
+    $display_views = '<span class="toggle-view">';
 
-    // // CHECK FOR THE COOKIE TO REMEMBER THEIR SELECTION
-    // if ( isset( $_COOKIE['view'] ) && in_array( $_COOKIE['view'], $views ) ) {
-    //     $cookie_view = $_COOKIE['view'];
-    // } else {
-    //     $cookie_view = $views[0];
-    // }
+    // CHECK FOR THE COOKIE TO REMEMBER THEIR SELECTION
+    if ( isset( $_COOKIE['view'] ) && in_array( $_COOKIE['view'], $views ) ) {
+        $cookie_view = $_COOKIE['view'];
+    } else {
+        $cookie_view = $views[0];
+    }
 
-    // foreach ( $views as $key => $value ) {
+    foreach ( $views as $key => $value ) {
 
-    //     // SET THE DEFAULT SELECTION
-    //     if ( $value === $cookie_view ) {
-    //         $viewing = ' on';
-    //     } else {
-    //         $viewing = '';
-    //     }
+        // SET THE DEFAULT SELECTION
+        if ( $value === $cookie_view ) {
+            $viewing = ' on';
+        } else {
+            $viewing = '';
+        }
 
-    //     // ECHO THE LINK
-    //     $display_views .= '<a class="' . $value . '-view content-view' . $viewing . '" title="view as ' . $value . '" rev="' . $value . '">&nbsp;</a> ';
-    // }
+        // ECHO THE LINK
+        $display_views .= '<a class="' . $value . '-view content-view' . $viewing . '" title="view as ' . $value . '" rev="' . $value . '">&nbsp;</a> ';
+    }
 
-    // $display_views .= '</span>';
+    $display_views .= '</span>';
 
-    return $views;
+    return $display_views;
 
 }
 
@@ -580,7 +581,7 @@ function bbconnect_report_display( $ret_res = array() ) {
                     foreach( $member_search as $user_id) {
                         foreach ($ret_res['post_vars'] as $post_var) {
                             foreach ($post_var as $var_details) {
-                                if ($var_details['field'] == 'bb_work_queue' && $var_details['operator'] == 'is') {
+                                if ($var_details['field'] == 'bb_work_queue' && $var_details['operator'] == 'is' && function_exists('bbconnect_workqueues_get_action_items')) {
                                     $work_queues = $var_details['query'];
                                     $args = array(
                                             'author' => $user_id,
@@ -592,7 +593,7 @@ function bbconnect_report_display( $ret_res = array() ) {
                                                     ),
                                             ),
                                     );
-                                    $notes = cw_get_action_items($args);
+                                    $notes = bbconnect_workqueues_get_action_items($args);
                                     foreach ($notes as $note) {
                                         $note_ids[$note->ID] = $note->ID;
                                     }
@@ -1138,11 +1139,11 @@ function bbconnect_rows( $args = null ) {
                             $fieldInfo = get_option('bbconnect_'.$key);
                             $fieldInfos[$positionInarray] = $fieldInfo;
 
-                            if ($key == 'bbconnect_bb_work_queue') {
+                            if ($key == 'bbconnect_bb_work_queue' && function_exists('bbconnect_workqueues_get_action_items')) {
                                 $args = array(
                                         'author' => $current_member->ID,
                                 );
-                                $notes = cw_get_action_items($args);
+                                $notes = bbconnect_workqueues_get_action_items($args);
                                 $type_list = array();
                                 foreach ($notes as $note) {
                                     $note_types = wp_get_post_terms($note->ID, 'bb_note_type');
