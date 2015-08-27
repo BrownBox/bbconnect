@@ -18,7 +18,7 @@ function bbconnect_filter_profile( $args = '' ) {
 					'order_by' => 'ID',
 					'order' => 'DESC',
 					'mod_results' => 'AND',
-					'users_per_page' => 'All',
+					'users_per_page' => '5000',
 					'action' => array()
 				);
 
@@ -111,7 +111,7 @@ function bbconnect_filter_profile( $args = '' ) {
 								<option>500</option>
 								<option>750</option>
 								<option>1000</option>
-								<option>All</option>
+								<option>5000</option>
 							</select>
 				</span>
 				<?php /* <p><input class="input-short small-text" type="checkbox" name="view_all" value="1" /> View all records regardless of search criteria</p> */ ?>

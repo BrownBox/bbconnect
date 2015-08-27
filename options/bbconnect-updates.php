@@ -259,19 +259,21 @@ function bbconnect_update_v_2_0_0() {
     $system_term = wp_insert_term('System', 'bb_note_type');
 
     $interaction_children = array(
-           'Email',
-           'Face-to-Face',
-           'Letter',
-           'Phone Call',
+            'Email',
+            'Face-to-Face',
+            'Letter',
+            'Phone Call',
     );
     foreach ($interaction_children as $child) {
         wp_insert_term($child, 'bb_note_type', array('parent' => $interaction_term['term_id']));
     }
 
     $system_children = array(
-           'Donation',
-           'Miscellaneous',
-           'Purchase',
+            'Address Review',
+            'Donation',
+            'New Contact',
+            'Miscellaneous',
+            'Purchase',
     );
     foreach ($system_children as $child) {
         wp_insert_term($child, 'bb_note_type', array('parent' => $system_term['term_id']));

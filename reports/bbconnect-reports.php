@@ -600,9 +600,8 @@ function bbconnect_report_display( $ret_res = array() ) {
                                 }
                             }
                         }
-                        $user_rows .= bbconnect_rows( array( 'table_body' => $table_body, 'user_id' => $user_id, 'action_search' => $action_search, 'action_array' => $action_array, 'bbconnect_address_count' => $bbconnect_address_count, 'post_vars' => $ret_res['post_vars'], 'tdw' => $tdw ) );
+                        echo bbconnect_rows( array( 'table_body' => $table_body, 'user_id' => $user_id, 'action_search' => $action_search, 'action_array' => $action_array, 'bbconnect_address_count' => $bbconnect_address_count, 'post_vars' => $ret_res['post_vars'], 'tdw' => $tdw ) );
                     }
-                    echo $user_rows;
                 ?>
                     </tbody>
                     <tfoot>
