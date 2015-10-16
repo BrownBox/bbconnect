@@ -4,9 +4,9 @@ Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 4.1.6
+Tested up to: 4.1.8
 
-Stable Tag: 1.5.7
+Stable Tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

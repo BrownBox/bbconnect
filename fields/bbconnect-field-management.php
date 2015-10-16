@@ -132,7 +132,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 			'wp' == $value['source'] ||
 			isset( $value['group'] ) ||
 			'bb_work_queue' == $value['meta_key'] ||
-			'donor_category_id' == $value['meta_key'] ||
+			'category_id' == $value['meta_key'] ||
 			'segment_id' == $value['meta_key']
 			) {
 
@@ -159,7 +159,7 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 		}
 
 		// IF THESE FIELDS ARE NOT PART OF AN ADDRESS OR OTHER GROUP...
-		if ( isset( $value['group'] ) || 'bb_work_queue' == $value['meta_key'] || 'donor_category_id' == $value['meta_key'] || 'segment_id' == $value['meta_key'])
+		if ( isset( $value['group'] ) || 'bb_work_queue' == $value['meta_key'] || 'category_id' == $value['meta_key'] || 'segment_id' == $value['meta_key'])
 			$exclude = true;
 
 		// IF THE FIELD IS PART OF A SECTION, WE WANT TO EXCLUDE IT
@@ -593,7 +593,7 @@ function bbconnect_user_meta_list( $user_meta = null, $taxonomy = null ) {
 									$restricted_choices = true;
 								}
 
-								if ($meta_key == 'bb_work_queue' || $meta_key == 'donor_category_id' || $meta_key == 'segment_id') {
+								if ($meta_key == 'bb_work_queue' || $meta_key == 'category_id' || $meta_key == 'segment_id') {
                                     $restricted_field = true;
                                     $restricted_choices = true;
                                 }

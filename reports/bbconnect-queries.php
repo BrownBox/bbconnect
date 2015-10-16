@@ -4,7 +4,7 @@ function bbconnect_reports_queries() {
 
 	echo '	<div id="saved-queries" class="drawer"></div>'."\n";
 
-} 
+}
 //THIS FUNCTION IS CALLED BY AJAX TO RELOAD THE SEARCH TAB WITH THE RESULT
 function bbconnect_display_savedsearches(){
 
@@ -38,8 +38,8 @@ function bbconnect_display_savedsearches(){
 				            )
 				        ),
 	);
-	$private_savedsearches = get_posts( $args_private ); 
-	$public_savedsearches = get_posts( $args_public ); 
+	$private_savedsearches = get_posts( $args_private );
+	$public_savedsearches = get_posts( $args_public );
 
 
 	$merged_savedsearches = array_merge($private_savedsearches,$public_savedsearches);
@@ -59,51 +59,41 @@ function bbconnect_display_savedsearches(){
 	echo '		</tr>'."\n";
 	echo '	</thead>'."\n";
 	echo '	<tbody>'."\n";
-	$user_data = get_userdata( get_current_user_id() );
-	$has_rights = ($user_data->roles[0] == 'superuser' || $user_data->roles[0] == 'administrator') ? 'true' : 'false';
-		foreach ($merged_savedsearches as $merged_savedsearch) {
-			$meta = get_post_meta( $merged_savedsearch->ID );
-			if($has_rights == 'false' && ($meta['segment'][0] =='true' || $meta['donor_category'][0] == 'true')) {	
-				continue;
-			} else {
-				 // || $meta['donor_category'][0]== 'true' ) echo 'Going to skip';
-			// die;
-			echo '		<tr >'."\n";
-			echo '			<td width="3%" class="gredit-column">'."\n";
-			echo '				<span class="dashicons dashicons-trash" id="'.$merged_savedsearch->ID.'-delete" specialid="'.$merged_savedsearch->ID.'" ></span>'."\n";
-			echo '				<span class="dashicons dashicons-trash" id="'.$merged_savedsearch->ID.'-undelete" specialid="'.$merged_savedsearch->ID.'" style="display:none;color:#D54E21;"></span>'."\n";
-			echo '			</td>'."\n";
-			echo '			<td width="5%">'."\n";
-			echo '				<a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $merged_savedsearch->ID ) .'">' . $merged_savedsearch->ID .'</a>'."\n";
-			echo '			</td>'."\n";
-			echo '			<td>'."\n";
-			echo '				<a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $merged_savedsearch->ID ) .'">' . $merged_savedsearch->post_title .'</a>'."\n";
-			echo '			</td>'."\n";
-			if($meta['private'][0]=='true'){
-				echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
-			}
-			else{
-				echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
-			}
-
-			if($meta['segment'][0]=='true'){
-				echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
-			}
-			else{
-				echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
-			}
-
-			if($meta['donor_category'][0]=='true'){
-				echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
-			}
-			else{
-				echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
-			}
-			
-			
-			echo '		</tr>'."\n";
-			}
+	$user_data = get_userdata(get_current_user_id());
+	foreach ($merged_savedsearches as $merged_savedsearch) {
+		$meta = get_post_meta( $merged_savedsearch->ID );
+		echo '		<tr >'."\n";
+		echo '			<td width="3%" class="gredit-column">'."\n";
+		echo '				<span class="dashicons dashicons-trash" id="'.$merged_savedsearch->ID.'-delete" specialid="'.$merged_savedsearch->ID.'" ></span>'."\n";
+		echo '				<span class="dashicons dashicons-trash" id="'.$merged_savedsearch->ID.'-undelete" specialid="'.$merged_savedsearch->ID.'" style="display:none;color:#D54E21;"></span>'."\n";
+		echo '			</td>'."\n";
+		echo '			<td width="5%">'."\n";
+		echo '				<a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $merged_savedsearch->ID ) .'">' . $merged_savedsearch->ID .'</a>'."\n";
+		echo '			</td>'."\n";
+		echo '			<td>'."\n";
+		echo '				<a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $merged_savedsearch->ID ) .'">' . $merged_savedsearch->post_title .'</a>'."\n";
+		echo '			</td>'."\n";
+		if ($meta['private'][0]=='true') {
+			echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
+		} else {
+			echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
 		}
+
+		if ($meta['segment'][0]=='true') {
+			echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
+		} else {
+			echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
+		}
+
+		if ($meta['category'][0]=='true') {
+			echo '			<td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
+		} else {
+			echo '			<td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
+		}
+
+
+		echo '		</tr>'."\n";
+	}
 	echo '	</tbody>'."\n";
 	echo '	</table><br>'."\n";
 
@@ -111,7 +101,7 @@ function bbconnect_display_savedsearches(){
 	// 	$saved_searches_layout.= '<div><input type="checkbox" checkboxid="'.$private_savedsearch->ID.'"><a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $private_savedsearch->ID ) .'">' . $private_savedsearch->post_title .'-' . $private_savedsearch->ID .'</a></div>'."\n";
 	// }
 
-	// $public_savedsearches = get_posts( $args_public ); 
+	// $public_savedsearches = get_posts( $args_public );
 	// if(count($public_savedsearches) > 0) $saved_searches_layout.= '<h2>Search Archives saved as Public</h2><br>'."\n";
 	// foreach ($public_savedsearches as $public_savedsearch) {
 	// 	$saved_searches_layout.= '<div><span class="dashicons dashicons-trash" id="'.$public_savedsearch->ID.'"></span><input type="checkbox" checkboxid="'.$public_savedsearch->ID.'"><a href="' . admin_url( '/users.php?page=bbconnect_reports&savedsearch=' . $public_savedsearch->ID ) .'">' . $public_savedsearch->post_title .'-' . $public_savedsearch->ID .'</a></div>'."\n";

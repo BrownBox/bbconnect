@@ -362,32 +362,29 @@ function bbconnect_filter_process( $post_data ) {
                                     $note_users[$note->post_author] = $note->post_author;
                                 }
                                 $q_val = '('.implode(',', $note_users).')';
-//                             } elseif ($key == 'donor_category_id' || $key == 'segment_id') {
+//                             } elseif ($key == 'category_id' || $key == 'segment_id') {
 
                             // CONDITIONS FOR THE VALUE
                             } else if ( 'LIKE' === $op || 'NOT LIKE' === $op ) {
                                 $q_val = $wpdb->prepare( "%s", '%'.$subvalue.'%' );
-                            } else if ( 'IS NULL' === $op ||  'IS NOT NULL' === $op ) {
+                            } else if ( 'IS NULL' === $op || 'IS NOT NULL' === $op ) {
                                 $q_val = "";
                             } else if ('<' === $op || '>' === $op) {
-                                if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$value_query)){
+                                if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$value_query)) {
                                     $is_date= true;
-                                }else{
+                                } else {
                                     $is_date = false;
                                 }
-                                if($is_date){
+                                if ($is_date) {
                                     $q_val = "DATE('" . $value_query . "')";
                                 }
                                 else
                                 $q_val = strpos($subvalue, '.') !== false ? floatval($subvalue) : intval($subvalue);
-                            }
-                            else if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$subvalue) && $wp_col != 'user_registered'){
+                            } else if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$subvalue) && $wp_col != 'user_registered') {
                                 if ( date( 'Y-m-d', strtotime( $subvalue ) ) == $subvalue ) {
-                                        $temp_date_arr[] = "DATE('" . $subvalue . "')";
-                                    }
-
-                            }
-                             else {
+                                    $temp_date_arr[] = "DATE('" . $subvalue . "')";
+                                }
+                            } else {
                                 $q_val = $wpdb->prepare( "%s", $subvalue );
                             }
 

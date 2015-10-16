@@ -17,6 +17,8 @@ function savedsearch_metabox_content( $post ) {
 	// example #1 array_push( $post_fields, bb_new_meta( 'title=title2&name=name2&size=50%&type=text' ) );
 	// example #2 array_push( $post_fields, bb_new_meta( array( 'title' => 'title3', 'type' => 'text' ) ) );
 	array_push( $post_fields, bb_new_field( 'title=Private&field_name=private&size=50%&type=checkbox' ) );
+	array_push( $post_fields, bb_new_field( 'title=Segment&field_name=segment&size=50%&type=checkbox' ) );
+	array_push( $post_fields, bb_new_field( 'title=Category&field_name=category&size=50%&type=checkbox' ) );
 
 	set_transient( 'savedsearch_fields', serialize( $post_fields ), 3600 );
 }

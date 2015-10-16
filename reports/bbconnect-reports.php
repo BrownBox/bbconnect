@@ -1154,7 +1154,7 @@ function bbconnect_rows( $args = null ) {
                                     }
                                 }
                                 $return_html .= implode(', ', $type_list);
-                            } elseif ($key == 'bbconnect_donor_category_id' || $key == 'bbconnect_segment_id') {
+                            } elseif ($key == 'bbconnect_category_id' || $key == 'bbconnect_segment_id') {
                                 if (!empty($current_member->$key)) {
                                     $return_html .= get_the_title($current_member->$key);
                                 }
