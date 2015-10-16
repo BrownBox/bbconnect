@@ -78,7 +78,7 @@ function bbconnect_val( $data_arr, $val = true ) {
 function bbconnect_add_merge_tags_tinymce_plugin($plugin_array) {
 	//$merge_tags = urlencode( serialize( array( 'first_name' => 'First Name' ) ) );
 	// bbconnect_get_user_metadata( array( 'return_val' => true, 'include' => array( 'text' ) ) )
-	$plugin_array['BB ConnectMergeTags'] = BBCONNECT_URL . '/assets/j/tmce/merge-tags-plugin.php';
+	$plugin_array['BBConnectMergeTags'] = BBCONNECT_URL . '/assets/j/tmce/merge-tags-plugin.php';
 	return $plugin_array;
 }
 
