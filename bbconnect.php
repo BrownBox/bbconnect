@@ -164,14 +164,6 @@ function bbconnect_init_register(){
 
 	wp_register_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect.js', array( 'jquery' ), BBCONNECT_VER, false );
 	wp_localize_script( 'bbconnectJS', 'bbconnectAjax', $bbconnect_ajax_array );
-	/*
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	if (preg_match('/Firefox/i', $user_agent)) {
-	   wp_register_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect-ff.js', array( 'jquery' ), BBCONNECT_VER, false );
-	} else {
-	   wp_register_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect.js', array( 'jquery' ), BBCONNECT_VER, false );
-	}
-	*/
 
 	// BBCONNECT ADDITIONAL SCRIPTS
 	wp_register_script( 'bbconnectAdminJS', BBCONNECT_URL . 'assets/j/bbconnect-admin.js', array( 'jquery', 'wp-color-picker' ), BBCONNECT_VER, false );
@@ -181,6 +173,11 @@ function bbconnect_init_register(){
 	wp_register_script( 'tiptipJS', BBCONNECT_URL . 'assets/j/tiptip/jquery.tiptip.js', array( 'jquery' ), BBCONNECT_VER, false );
 	wp_register_script( 'chosenJS', BBCONNECT_URL . 'assets/j/chosen/chosen.jquery.js', array( 'jquery' ), BBCONNECT_VER, false );
 	wp_register_script( 'cookieJS', BBCONNECT_URL . 'assets/j/jquery.cookie.js', array( 'jquery' ), BBCONNECT_VER, false );
+
+	// TABLE EXPORT
+	wp_register_script( 'tableExportJS', BBCONNECT_URL . 'assets/j/export/tableExport.js', array( 'jquery' ), BBCONNECT_VER, false );
+	wp_register_script( 'fileSaverJS', BBCONNECT_URL . 'assets/j/export/FileSaver.min.js', array( 'jquery' ), BBCONNECT_VER, false );
+	wp_register_script( 'base64JS', BBCONNECT_URL . 'assets/j/export/jquery.base64.js', array( 'jquery' ), BBCONNECT_VER, false );
 
 	// REGISTER PLUGIN STYLES
 	wp_register_style( 'bbconnectCSS', BBCONNECT_URL . 'assets/c/bbconnect.css', array(), BBCONNECT_VER, 'screen' );
@@ -195,7 +192,6 @@ function bbconnect_init_register(){
 	// THIRD PARTY SUPPORT FILES
 	if ( defined( 'USER_AVATAR_UPLOAD_PATH' ) )
 		wp_register_style( 'user-avatar', plugins_url('/user-avatar/css/user-avatar.css') );
-
 }
 
 /**
@@ -204,19 +200,17 @@ function bbconnect_init_register(){
  * @since 1.0.0
  */
 function bbconnect_admin_scripts(){
-
 	// QUEUE PLUGIN SCRIPTS
 	wp_enqueue_script( 'bbconnectSearchJS' );
 	wp_enqueue_script( 'bbconnectViewsJS' );
-	//wp_enqueue_script( 'tiptipJS', BBCONNECT_URL . 'assets/j/tiptip/jquery.tiptip.js', array( 'jquery' ), BBCONNECT_VER, false );
-	//wp_enqueue_script( 'chosenJS', BBCONNECT_URL . 'assets/j/chosen/chosen.jquery.js', array( 'jquery' ), BBCONNECT_VER, false );
+	wp_enqueue_script( 'tableExportJS' );
+	wp_enqueue_script( 'fileSaverJS' );
+	wp_enqueue_script( 'base64JS' );
 
 	// QUEUE PLUGIN STYLES
 	wp_enqueue_style( 'bbconnectCSS' );
 	wp_enqueue_style( 'bbconnectAdminCSS' );
 	wp_enqueue_style( 'bbconnectPrintCSS' );
-	//wp_enqueue_style( 'tiptipCSS', BBCONNECT_URL . 'assets/j/tiptip/tiptip.css', array(), BBCONNECT_VER, 'screen' );
-	//wp_enqueue_style( 'chosenCSS', BBCONNECT_URL . 'assets/j/chosen/chosen.css', array(), BBCONNECT_VER, 'screen' );
 	wp_enqueue_style( 'jqueryuiCSS' );
 
 	// QUEUE WORDPRESS STYLES
@@ -238,56 +232,10 @@ function bbconnect_admin_scripts(){
 
 	// HOOK THE AJAX ENGINE FOR ELEMENT CHOICES
 	wp_localize_script( 'bbconnectAdminJS', 'bbconnectElemChoicesAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'bbconnect_element_choices_nonce' => wp_create_nonce( 'bbconnect-element-choices-nonce' ), 'ajaxload' => plugins_url('/assets/g/loading.gif', __FILE__) ) );
-
-
-	/* DEPRECATED */
-
-	/* QUEUE WORDPRESS SCRIPTS
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-ui-core' );
-	wp_enqueue_script( 'jquery-ui-sortable' );
-	wp_enqueue_script( 'jquery-ui-draggable' );
-	wp_enqueue_script( 'jquery-ui-datepicker' );
-	wp_enqueue_script( 'thickbox' );
-	*/
-
-
-	/* QUEUE PLUGIN SCRIPTS
-	//wp_enqueue_script( 'bbconnectJS' );
-	//wp_enqueue_script( 'bbconnectAdminJS', BBCONNECT_URL . 'assets/j/bbconnect-admin.js', array( 'jquery' ), BBCONNECT_VER, false );
-	//wp_enqueue_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect.js', array( 'jquery' ), BBCONNECT_VER, false );
-
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	if (preg_match('/Firefox/i', $user_agent)) {
-	   //wp_enqueue_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect-ff.js', array( 'jquery' ), BBCONNECT_VER, false );
-	} else {
-	   wp_enqueue_script( 'bbconnectJS', BBCONNECT_URL . 'assets/j/bbconnect.js', array( 'jquery' ), BBCONNECT_VER, false );
-	}
-	*/
-
-	/* HOOK THE AJAX ENGINE FOR GENERAL OPS
-	wp_localize_script( 'bbconnectJS', 'bbconnectAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'bbconnect_nonce' => wp_create_nonce( 'bbconnect-nonce' ), 'ajaxload' => plugins_url('/assets/g/loading.gif', __FILE__) ) );
-	*/
-
-	/* HOOK THE AJAX ENGINE FOR ADMIN ELEMENTS
-	$admin_ajax_array = array();
-	$admin_ajax_array['ajaxurl'] = admin_url( 'admin-ajax.php' );
-	$admin_ajax_array['bbconnect_admin_nonce'] = wp_create_nonce( 'bbconnect-admin-nonce' );
-	$admin_ajax_array['ajaxload'] = plugins_url('/assets/g/loading.gif', __FILE__);
-
-	// PASS A VALUE IF FIREFOX IS DETECTED
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	if ( preg_match( '/Firefox/i', $user_agent ) )
-		$admin_ajax_array['firefox'] = true;
-
-	wp_localize_script( 'bbconnectAdminJS', 'bbconnectAdminAjax', $admin_ajax_array);
-	*/
-
 }
 
 
 function bbconnect_admin_globals() {
-
 	// QUEUE WORDPRESS SCRIPTS
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-ui-core' );
@@ -301,9 +249,6 @@ function bbconnect_admin_globals() {
 	wp_enqueue_script( 'chosenJS' );
 	wp_enqueue_script( 'bbconnectJS' );
 	wp_enqueue_script( 'bbconnectAdminJS' );
-
-	// QUEUE PLUGIN SCRIPTS
-	//wp_enqueue_script( 'bbconnectAdminJS', BBCONNECT_URL . 'assets/j/bbconnect-admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-datepicker', 'thickbox', 'chosenJS' ), BBCONNECT_VER, false );
 
 	// SET UP VARIABLES FOR ADMIN SCREENS
 	$get_merge_tags = bbconnect_get_user_metadata( array( 'return_val' => true, 'include' => array( 'text' ) ) );
@@ -339,18 +284,6 @@ function bbconnect_admin_globals() {
 	//wp_enqueue_style( 'chosenCSS', BBCONNECT_URL . 'assets/j/chosen/chosen.css', array(), BBCONNECT_VER, false );
 	wp_enqueue_style( 'chosenCSS' );
 	wp_enqueue_style( 'tiptipCSS' );
-
-	/*
-	wp_localize_script( 'bbconnectAdminJS', 'bbconnectAdminAjax', array(
-		'ajaxurl' 						=> admin_url( 'admin-ajax.php' ),
-		'bbconnect_admin_nonce' 			=> wp_create_nonce( 'bbconnect-admin-nonce' ),
-		'ajaxload' 						=> plugins_url( '/assets/g/loading.gif', __FILE__ ),
-		'metaKeyTaken'					=> __( 'duplicate key!', 'bbconnect' ),
-		'oneMoment'						=> __( 'One Moment Please...', 'bbconnect' ),
-		'mergeref'						=> plugins_url( '/assets/j/tmce/merge-ref.php?tags='.$merged_tags, __FILE__ ),
-		'errMsg' 						=> sprintf( __( 'We found some errors -- please attend to the fields below marked with %1$s', 'bbconnect' ), '<span class="halt-example">&nbsp;</span>' ),
-	) );
-	*/
 }
 
 
