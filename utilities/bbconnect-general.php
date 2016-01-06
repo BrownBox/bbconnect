@@ -13,7 +13,7 @@
  */
 function in_array_r($needle, $haystack, $retval = false) {
     foreach ($haystack as $key => $value) {
-        if ($value === $needle || (is_array($value) && in_array_r($needle, $value))) {
+        if ($value == $needle || (is_array($value) && in_array_r($needle, $value))) {
             if ($retval === false) {
             	return true;
             } else {

@@ -105,6 +105,9 @@ function bbconnect_update_user() {
                 $_POST['email'] = $temp_user->user_login . '@noreply.invalid';
             }
 
+            // Get the nickname into the right place in $_POST otherwise WP will complain
+            $_POST['nickname'] = $_POST['bbconnect_user_meta']['nickname'];
+
             // UPDATE THE WORDPRESS PROFILE DEFAULTS
             $errors = edit_user($user_id);
 

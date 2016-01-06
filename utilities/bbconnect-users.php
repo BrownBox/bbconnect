@@ -10,8 +10,8 @@ function bbconnect_init_roles() {
 			$action = $value['type'];
 			$wp_roles->add_cap( 'administrator', 'manage_'.$action );
 		}
+    	$wp_roles->add_cap('administrator', 'manage_padlock_fields');
 	}
-
 }
 
 
