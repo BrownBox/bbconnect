@@ -327,7 +327,7 @@ function bbconnect_get_field( $args = '' ) {
         $public = false;
     }
 
-    if ( ($admin_only == true && current_user_can('manage_options')) || $admin_only == false ) {
+    if ( ($admin_only == true && current_user_can('manage_padlock_fields')) || $admin_only == false ) {
         if ( $wrap ) echo '<li class="meta-item">';
 
             if ( $label_wrap ) echo '<span class="bbconnect-label'.$required.'">'.$mayberequired;
