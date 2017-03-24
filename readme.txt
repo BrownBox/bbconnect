@@ -4,9 +4,9 @@ Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 4.4.0
+Tested up to: 4.6.3
 
-Stable Tag: 2.1.1
+Stable Tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,12 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 Since 2010 we've built out BBConnect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release BBConnect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 == Changelog ==
+= 2.2.0 =
+* Major Gravity Forms integration - any form containing an email address will now automatically locate/create a user and record the submission as a note. Also supports custom mapping of form fields to user meta
+* Set default nickname if not specified since WP now requires it
+* Added support for Multiple Roles plugin
+* Bug fixes
+
 = 2.1.1 =
 * Fixes for WP 4.4
 
