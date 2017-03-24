@@ -638,16 +638,17 @@ function bbconnect_field( $meta, $args = array() ) {
 
                 // LET'S HANDLE ROLES
                 if ( 'wpr' == $meta['source'] && 'role' == $key ) {
-
+                    if (defined('MDMR_PATH')) { // Multiple Roles plugin in use
+                        $name = 'md_multiple_roles[]';
+                        $multiple = ' multiple="multiple"';
+                        wp_nonce_field( 'update-md-multiple-roles', 'md_multiple_roles_nonce' );
+                    }
                     echo '<select '.$disabled.' name="' . $name . '" id="' . $id . '" class="regular-text' . $class . $autocomp . '"' . $multiple . '>';
 
                     if ( is_array( $value ) ) {
                         $user_role = $value;
                     } else {
-                        //$user_roles = array_keys( $value->wp_capabilities );
-                        //$user_role = array_shift( $user_roles );
-                        $user_roles = array_intersect( array_values( $value->roles ), array_keys( get_editable_roles() ) );
-                        $user_role  = array_shift( $user_roles );
+                        $user_role = array_intersect( array_values( $value->roles ), array_keys( get_editable_roles() ) );
                     }
 
                     // print the full list of roles with the primary one selected.
