@@ -106,7 +106,15 @@ function bbconnect_update_user() {
             }
 
             // Get the nickname into the right place in $_POST otherwise WP will complain
-            $_POST['nickname'] = $_POST['bbconnect_user_meta']['nickname'];
+            if (empty($_POST['nickname'])) {
+                if (!empty($_POST['bbconnect_user_meta']['nickname'])) {
+                    $_POST['nickname'] = $_POST['bbconnect_user_meta']['nickname'];
+                } elseif (!empty($_POST['bbconnect_user_meta']['first_name'])) {
+                    $_POST['nickname'] = $_POST['bbconnect_user_meta']['first_name'];
+                } else {
+                    $_POST['nickname'] = 'N/A';
+                }
+            }
 
             // UPDATE THE WORDPRESS PROFILE DEFAULTS
             $errors = edit_user($user_id);
