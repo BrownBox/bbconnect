@@ -421,7 +421,7 @@ function bbconnect_dropdown_roles( $selected = false ) {
 				$r .= "\n\t<option value='" . esc_attr($role) . "'>$name</option>";
 		} else {
 			if ( $selected == $role ) // preselect specified role
-				$p = "\n\t<option selected='selected' value='" . esc_attr($role) . "'>$name</option>";
+				$p .= "\n\t<option selected='selected' value='" . esc_attr($role) . "'>$name</option>";
 			else
 				$r .= "\n\t<option value='" . esc_attr($role) . "'>$name</option>";
 		}
