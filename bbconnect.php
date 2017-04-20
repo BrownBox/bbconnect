@@ -68,6 +68,7 @@ include_once( 'options/bbconnect-forms-settings.php' );
 include_once( 'options/bbconnect-panel-settings.php' );
 include_once( 'options/bbconnect-pro-settings.php' );
 
+include_once( 'utilities/bbconnect-time.php' );
 include_once( 'utilities/bbconnect-fields.php' );
 include_once( 'utilities/bbconnect-help.php' );
 include_once( 'utilities/bbconnect-general.php' );
