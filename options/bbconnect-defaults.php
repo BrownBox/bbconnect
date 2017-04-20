@@ -201,8 +201,8 @@ function bbconnect_account_information_fields() {
         // PASSWORD -- WILL NOT BY SYNCED
         array( 'source' => 'wpr', 'meta_key' => 'pass', 'tag' => '', 'name' => __( 'Password', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => true, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'password', 'choices' => array( '1', '2' ) ), 'help' => '' ),
 
-        // Donor Category and Segment fields
-        array( 'source' => 'bbconnect', 'meta_key' => 'category_id', 'tag' => '', 'name' => __( 'Donor Category', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_category' ), 'help' => false ),
+            // Donor Segment
+            array( 'source' => 'bbconnect', 'meta_key' => 'segment_id', 'tag' => '', 'name' => __( 'Donor Segment', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_segment' ), 'help' => false ),
 
         // Default KPIs
         array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_amount', 'tag' => '', 'name' => __('Total Transactions ($)', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),

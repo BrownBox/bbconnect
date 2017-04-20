@@ -62,6 +62,10 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 Since 2010 we've built out BB Connect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release BB Connect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 == Changelog ==
+= 2.2.2 =
+* Added cron to update days since last transaction KPI each day
+* Auto-calculate current KPI figures when update is loaded
+
 = 2.2.1 =
 * Added 4 KPI fields to default user meta, auto-populated from BB Cart
 * Better handling of date and time

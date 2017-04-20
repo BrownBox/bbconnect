@@ -226,19 +226,6 @@ function is_assoc( $array ) {
   return (bool)count( array_filter( array_keys( $array ), 'is_string' ) );
 }
 
-
-/*
-if (!wp_next_scheduled('my_daily_function_hook')) {
-	wp_schedule_event( time(), 'daily', 'my_daily_function_hook' );
-}
-add_action( 'my_daily_function_hook', 'my_daily_function' );
-
-
-function my_daily_function() {
-
-}
-*/
-
 /**
  * Setup query variables for the webhook listener.
  *
