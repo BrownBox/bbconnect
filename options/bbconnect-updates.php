@@ -357,3 +357,53 @@ function bbconnect_update_v_2_2_1() {
         delete_option('bbconnect_category_id');
     }
 }
+
+function bbconnect_update_v_2_2_2() {
+    // Calculate base figures for default KPIs
+    global $blog_id;
+    $args = array(
+            'blog_id' => $blog_id,
+    );
+    $users = get_users($args);
+
+    $today = bbconnect_get_current_datetime();
+    foreach ($users as $userkey => $user) {
+        $transaction_amount = '';
+        $transaction_count = '';
+        $last_transaction_date = $days_since_last_transaction = '';
+
+        $args = array(
+                'posts_per_page' => -1,
+                'post_type'      => 'transaction',
+                'author'         => $user->ID,
+        );
+        $transactions = get_posts($args);
+
+        foreach ($transactions as $transactionkey => $transaction) {
+            $transaction_metadata = get_post_meta($transaction->ID);
+            $amount = isset($transaction_metadata['donation_amount'][0]) ? $transaction_metadata['donation_amount'][0] : 0;
+            if ($amount <= 0) {
+                continue;
+            }
+
+            $date = bbconnect_get_datetime($transaction->post_date);
+
+            // Now check if this is latest donation
+            if (empty($last_transaction_date)) {
+                $last_transaction_date = $date->format('Y-m-d');
+            }
+
+            $transaction_amount += $amount;
+            $transaction_count++;
+        }
+
+        update_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', $transaction_amount);
+        update_user_meta($user->ID, 'bbconnect_kpi_transaction_count', $transaction_count);
+        update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', $last_transaction_date);
+        if (!empty($last_transaction_date)) {
+            $date_last_transaction = bbconnect_get_datetime($last_transaction_date);
+            $days_since_last_transaction = $date_last_transaction->diff($today, true)->days;
+            update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', $days_since_last_transaction);
+        }
+    }
+}
