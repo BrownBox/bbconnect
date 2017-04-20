@@ -76,6 +76,7 @@ include_once( 'utilities/bbconnect-security.php' );
 include_once( 'utilities/bbconnect-users.php' );
 include_once( 'utilities/bbconnect-tax-meta.php' );
 include_once( 'utilities/bbconnect-forms.php' );
+include_once( 'utilities/bbconnect-bb-cart.php' );
 
 include_once( 'reports/bbconnect-reports.php' );
 include_once( 'reports/bbconnect-filter-form.php' );
