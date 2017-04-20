@@ -115,6 +115,9 @@ function bb_crm_create_update_user($entry, $form) {
         }
 
         if ($user instanceof WP_User) { // Update
+            if (is_multisite() && !is_user_member_of_blog($user->ID, $blog_id)) {
+                add_existing_user_to_blog(array('user_id' => $user->ID, 'role' => 'subscriber'));
+            }
             if (!empty($phone_number)) {
                 $phone_data = maybe_unserialize(get_user_meta($user->ID, 'telephone', true));
                 $phone_exists = false;
