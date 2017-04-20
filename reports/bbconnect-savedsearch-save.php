@@ -8,16 +8,13 @@ function bbconnect_save_submit(){
 	var fid = jQuery(this).closest('.save-form').attr('id');
 	var privateV = false;
 	var segment = false;
-	var category = false;
 	var query = <?php echo json_encode($last_search);?>;
 	// DISABLE THE FORM
     jQuery('#'+fid).submit( function() { return false; } );
     if(jQuery('#private').is(':checked')) privateV = true;
     if(jQuery('#segment').is(':checked')) segment = true;
-    if(jQuery('#category').is(':checked')) category = true;
     query.privateV = privateV;
     query.segment = segment;
-    query.category = category;
     query.postTitle = jQuery('#post_title').val();
 
     // SUBMIT THE FORM DATA

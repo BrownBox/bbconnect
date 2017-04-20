@@ -166,7 +166,6 @@ function bbconnect_account_information_fields() {
 
         // Donor Category and Segment fields
         array( 'source' => 'bbconnect', 'meta_key' => 'category_id', 'tag' => '', 'name' => __( 'Donor Category', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_category' ), 'help' => false ),
-        array( 'source' => 'bbconnect', 'meta_key' => 'segment_id', 'tag' => '', 'name' => __( 'Donor Segment', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_segment' ), 'help' => false ),
 
 	    // Default KPIs
         array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_amount', 'tag' => '', 'name' => __('Total Transactions ($)', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),

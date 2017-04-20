@@ -12,11 +12,9 @@ function bbconnect_save_search() {
 	if (!user_can(get_current_user_id(), 'manage_options')) {
 		$modal_element .= '<input type="hidden" id="private" name="private" checked="checked">'."\n";
 		$modal_element .= '<div><input type="hidden" id="segment" name="segment"> <label></label></div>'."\n";
-		$modal_element .= '<div><input type="hidden" id="category" name="category"> <label></label></div>'."\n";
 	} else {
 		$modal_element .= '<div><input type="checkbox" id="private" name="private" checked="checked"> <label>Private</label></div>'."\n";
 		$modal_element .= '<div><input type="checkbox" id="segment" name="segment"> <label>Segment</label></div>'."\n";
-		$modal_element .= '<div><input type="checkbox" id="category" name="category"> <label>Category</label></div>'."\n";
 	}
 	$modal_element .= '<div><input style="height: 2.5rem; padding: 0.25rem 2rem;margin-top:2rem;" type="submit" name="search-save-go" value="Save" class="button-primary save-go" /></div>'."\n";
 	$modal_element .= '</form>'."\n";
@@ -44,7 +42,6 @@ function bbconnect_create_search_post(){
 			if( !is_array( $wp_error ) ) {
 				add_post_meta($wp_error, 'private', $_POST['data']['privateV']);
 				add_post_meta($wp_error, 'segment', $_POST['data']['segment']);
-				add_post_meta($wp_error, 'category', $_POST['data']['category']);
 				if ( false === $recently_saved ) $recently_saved = array();
 				set_transient( 'bbconnect_'.$current_user->ID.'_last_saved', $wp_error, 3600 );
 				echo '<div class="updated update-nag"  style="width:95%; border-left: 4px solid #7ad03a;"><p>Search has been saved as <a href="/post.php?post=' . $wp_error . '&action=edit">savedsearch-' . $wp_error . '</a></p></div>'."\n";

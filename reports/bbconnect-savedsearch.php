@@ -59,5 +59,3 @@ function cpt_savedsearch_messages( $messages ) {
   return $messages;
 }
 add_filter( 'post_updated_messages', 'cpt_savedsearch_messages' );
-
-?>
