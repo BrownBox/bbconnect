@@ -13,6 +13,7 @@ function bbconnect_versions() {
             '1.0.0' => 'bbconnect_update_v_1_0_0',
             '2.0.0' => 'bbconnect_update_v_2_0_0',
             '2.2.1' => 'bbconnect_update_v_2_2_1',
+            '2.2.2' => 'bbconnect_update_v_2_2_2',
     );
 
     return $bbconnect_versions;
