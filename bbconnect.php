@@ -3,7 +3,7 @@
 Plugin Name: BB Connect
 Plugin URI: http://brownbox.net.au/
 Description: A CRM framework for Wordpress
-Version: 2.2.2
+Version: 2.3.0
 Author: Brown Box
 Author URI: http://brownbox.net.au/
 Text Domain: bbconnect
@@ -39,7 +39,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'BBCONNECT_VER', '2.2.2' );
+define( 'BBCONNECT_VER', '2.3.0' );
 define( 'BBCONNECT_URL', plugin_dir_url( __FILE__ ) );
 define( 'BBCONNECT_DIR', plugin_dir_path(__FILE__) );
 define( 'BBCONNECT_SLUG', plugin_basename( __FILE__ ) );
@@ -53,6 +53,16 @@ define( 'BBCONNECT_SLUG', plugin_basename( __FILE__ ) );
 register_activation_hook( __FILE__, 'bbconnect_activate' );
 
 register_deactivation_hook(__FILE__, 'bbconnect_deactivate');
+
+/**
+ * Add support for automatic updates
+ *
+ * @since 2.3.0
+ */
+require_once('utilities/bbconnect-updates.php');
+if (is_admin()) {
+    new BbConnectUpdates(__FILE__, 'BrownBox', 'bbconnect');
+}
 
 /**
  * Include the necessary supporting scripts.
