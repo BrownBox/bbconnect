@@ -52,9 +52,9 @@ function bb_crm_create_update_user($entry, $form) {
                 case 'name':
                     foreach ($field->inputs as $input) {
                         if ($input['id'] == $field->id.'.3') {
-                            $firstname = $entry[$input['id']];
+                            $firstname = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.6') {
-                            $lastname = $entry[$input['id']];
+                            $lastname = $entry[(string)$input['id']];
                         }
                     }
                     $usermeta['first_name'] = $firstname;
@@ -65,17 +65,17 @@ function bb_crm_create_update_user($entry, $form) {
                     $countries = bbconnect_helper_country();
                     foreach ($field->inputs as $input) {
                         if ($input['id'] == $field->id.'.1') {
-                            $usermeta['bbconnect_address_one_1'] = $entry[$input['id']];
+                            $usermeta['bbconnect_address_one_1'] = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.2') {
-                            $usermeta['bbconnect_address_two_1'] = $entry[$input['id']];
+                            $usermeta['bbconnect_address_two_1'] = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.3') {
-                            $usermeta['bbconnect_address_city_1'] = $entry[$input['id']];
+                            $usermeta['bbconnect_address_city_1'] = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.4') {
-                            $usermeta['bbconnect_address_state_1'] = $entry[$input['id']];
+                            $usermeta['bbconnect_address_state_1'] = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.5') {
-                            $usermeta['bbconnect_address_postal_code_1'] = $entry[$input['id']];
+                            $usermeta['bbconnect_address_postal_code_1'] = $entry[(string)$input['id']];
                         } elseif ($input['id'] == $field->id.'.6') {
-                            $country = $entry[$input['id']];
+                            $country = $entry[(string)$input['id']];
                             if (in_array($country, $countries)) {
                                 $countries = array_flip($countries);
                                 $usermeta['bbconnect_address_country_1'] = $countries[$country];
