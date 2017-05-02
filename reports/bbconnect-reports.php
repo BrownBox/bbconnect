@@ -1135,7 +1135,11 @@ function bbconnect_rows( $args = null ) {
 
                     } else {
                         if ( false == $return ) {
-                            $fieldInfo = get_option('bbconnect_'.$key);
+                            $option_name = $key;
+                            if (strpos($key, 'bbconnect') === false) {
+                                $option_name = 'bbconnect_'.$option_name;
+                            }
+                            $fieldInfo = get_option($option_name);
                             $fieldInfos[$positionInarray] = $fieldInfo;
 
                             if ($key == 'bbconnect_bb_work_queue' && function_exists('bbconnect_workqueues_get_action_items')) {
@@ -1175,11 +1179,12 @@ function bbconnect_rows( $args = null ) {
                             } else {
                                 $tempTotals[$positionInarray] = (!empty($totalValues[$positionInarray])) ? $totalValues[$positionInarray] : 0;
                             }
-                            //$positionInarray++;
-                             //if reached the max position in array, then go back to zero
+
+                            //if reached the max position in array, then go back to zero
                             if ($positionInarray == count($table_body)) {
                                 foreach ($tempTotals as $keytemp => $valuetemp) {
                                     if ($valuetemp) {
+                                        //insert into totals array if tempvalues not empty
                                         $totalValues = $tempTotals;
                                         break;
                                     }
@@ -1188,8 +1193,6 @@ function bbconnect_rows( $args = null ) {
                                 $positionInarray = 0;
                                 $tempTotals = array();
                             }
-
-                            //insert into totals array if tempvalues not empty
 
                             //$return_html .= bbconnect_grex_input( array( 'u_key' => $current_member->ID, 'g_key' => $key, 'g_val' => $current_member->$key ) );
                         } else {
