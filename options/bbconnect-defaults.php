@@ -208,7 +208,7 @@ function bbconnect_account_information_fields() {
         array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_amount', 'tag' => '', 'name' => __('Total Transactions ($)', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),
         array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_count', 'tag' => '', 'name' => __('Transaction Count', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array()), 'help' => ''),
         array('source' => 'bbconnect', 'meta_key' => 'kpi_last_transaction_date', 'tag' => '', 'name' => __('Last Transaction Date', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'text', 'choices' => array()), 'help' => ''),
-        array('source' => 'bbconnect', 'meta_key' => 'kpi_days_since_last_transaction', 'tag' => '', 'name' => __('Total Transactions ($)', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array()), 'help' => ''),
+        array('source' => 'bbconnect', 'meta_key' => 'kpi_days_since_last_transaction', 'tag' => '', 'name' => __('Days Since Last Transaction', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array()), 'help' => ''),
     );
 }
 
