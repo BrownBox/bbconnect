@@ -45,7 +45,7 @@ function bbconnect_restrict_redirect(){
     	}
 
     	// IF THEY'RE TRYING TO ACCESS THE ORIGINAL PROFILE PAGE, REDIRECT THEM
-    	if ( $pagenow == 'profile.php' || $pagenow == 'user-edit.php' ) {
+    	if ($pagenow == 'profile.php' || $pagenow == 'user-edit.php' && !is_network_admin()) {
         	wp_redirect( admin_url( 'admin.php?page=bbconnect_edit_user_profile&user_id=' . $_GET['user_id'] ) );
         	die();
         }
