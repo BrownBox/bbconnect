@@ -28,13 +28,13 @@ function bbconnect_esc_html( $text ) {
 
 // RESTRICT ACCESS TO THE ADMIN AREA TO ONLY ADMINS
 function bbconnect_restrict_redirect(){
-    
+
     // FIND OUT WHAT PAGE THEY'RE REQUESTING
     global $pagenow;
-    
+
     // IF IT'S AN ADMIN REQUEST
     if ( is_admin() ) {
-    
+
     	if ( 'true' === get_option( '_bbconnect_access' ) ) {
     		if ( is_user_logged_in() && !current_user_can( 'edit_posts' ) ) {
     			if ( $pagenow == 'profile.php' || $pagenow == 'index.php'  || $pagenow == 'admin.php' ) {
@@ -43,27 +43,27 @@ function bbconnect_restrict_redirect(){
     			}
     		}
     	}
-    	
+
     	// IF THEY'RE TRYING TO ACCESS THE ORIGINAL PROFILE PAGE, REDIRECT THEM
     	if ( $pagenow == 'profile.php' || $pagenow == 'user-edit.php' ) {
         	wp_redirect( admin_url( 'admin.php?page=bbconnect_edit_user_profile&user_id=' . $_GET['user_id'] ) );
         	die();
         }
-        
+
         // IF THEY'RE TRYING TO ACCESS THE ORIGINAL CREATE PROFILE PAGE, REDIRECT THEM
         if ( $pagenow == 'user-new.php' ) {
         	wp_redirect( admin_url( 'admin.php?page=bbconnect_new_user' ) );
         	die();
         }
-        
+
         // IF THEY'RE TRYING TO ACCESS THE ORIGINAL ALL USERS PAGE, REDIRECT THEM
-        if ( $pagenow == 'users.php' && !isset( $_GET['page'] ) ) {
+        if ($pagenow == 'users.php' && !isset($_GET['page']) && !is_network_admin()) {
         	if ( 'true' != get_option( '_bbconnect_compatability_mode' ) ) {
 	        	wp_redirect( admin_url( 'users.php?page=bbconnect_reports' ) );
 	        	die();
 	        }
         }
-        	
+
     }
 }
 
