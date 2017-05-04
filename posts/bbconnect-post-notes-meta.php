@@ -15,7 +15,7 @@ function note_metabox_content( $post ) {
 
 	// custom fields here! new line for each field
 	// array_push( $note_fields, bb_new_field( 'title=entry_id&field_name=entry_id&size=100%&type=text' ) );
-	array_push( $note_fields, bbcart_new_note_metafield( 'title=Receipt Number&field_name=note_receipt_number&size=100%&type=text' ) );
+	array_push( $note_fields, bbconnect_new_note_metafield( 'title=Receipt Number&field_name=note_receipt_number&size=100%&type=text' ) );
 
 	set_transient( 'note_fields', serialize( $note_fields ), 3600 );
 }
@@ -29,7 +29,7 @@ function note_metabox_save( $post_id ) {
 }
 add_action( 'save_post', 'note_metabox_save' );
 
-function bbcart_new_note_metafield( $args ){
+function bbconnect_new_note_metafield( $args ){
 	// last updated 19/07/2014
 
 	is_array( $args ) ? extract( $args ) : parse_str( $args );
