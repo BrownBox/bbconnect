@@ -454,6 +454,6 @@ jQuery(document).ready(function () {
 	}
 	
 	// PROFILE ACTIONS
-	jQuery('#bbconnect').on('change', '.actions-launcher', bbconnectpanels_process);
+//	jQuery('#bbconnect').on('change', '.actions-launcher', bbconnectpanels_process);
 		
 });
