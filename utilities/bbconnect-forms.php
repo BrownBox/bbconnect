@@ -163,6 +163,7 @@ function bb_crm_create_update_user($entry, $form) {
                         )
                 );
             }
+            $usermeta['bbconnect_source'] = 'form';
             foreach ($usermeta as $meta_key => $meta_value) {
                 update_user_meta($user_id, $meta_key, $meta_value);
             }

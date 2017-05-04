@@ -14,6 +14,7 @@ function bbconnect_versions() {
             '2.0.0' => 'bbconnect_update_v_2_0_0',
             '2.2.1' => 'bbconnect_update_v_2_2_1',
             '2.2.2' => 'bbconnect_update_v_2_2_2',
+            '2.3.2' => 'bbconnect_update_v_2_3_2',
     );
 
     return $bbconnect_versions;
@@ -405,6 +406,48 @@ function bbconnect_update_v_2_2_2() {
             $date_last_transaction = bbconnect_get_datetime($last_transaction_date);
             $days_since_last_transaction = $date_last_transaction->diff($today, true)->days;
             update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', $days_since_last_transaction);
+        }
+    }
+}
+
+function bbconnect_update_v_2_3_2() {
+    // Add new user source field
+    $field = array(
+            array('source' => 'bbconnect', 'meta_key' => 'source', 'tag' => '', 'name' => __('User Source', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array('manual' => __('Manually Created', 'bbconnected'), 'form' => __('Form Submission', 'bbconnect'), '' => __('Unknown', 'bbconnect'))), 'help' => ''),
+    );
+    $field_keys = array();
+
+    foreach ($field as $key => $value) {
+        if (false != get_option('bbconnect_'.$value['meta_key'])) {
+            continue;
+        }
+
+        $field_keys[] = $value['meta_key'];
+        add_option('bbconnect_'.$value['meta_key'], $value);
+    }
+
+    $umo = get_option('_bbconnect_user_meta');
+    if (!empty($field_keys)) {
+        foreach ($umo as $uk => $uv) {
+            // Add to the account info section
+            foreach ($uv as $suk => $suv) {
+                if ('bbconnect_account_information' == $suv) {
+                    $acct = get_option($suv);
+                    foreach ($field_keys as $fk => $fv) {
+                        $acct['options']['choices'][] = $fv;
+                    }
+                    update_option($suv, $acct);
+                    $aok = true;
+                }
+            }
+        }
+        // If we couldn't find the account info section just add to column 3
+        if (!isset($aok)) {
+            foreach ($field_keys as $fk => $fv) {
+                $umo['column_3'][] = 'bbconnect_' . $fv;
+            }
+
+            update_option('_bbconnect_user_meta', $umo);
         }
     }
 }
