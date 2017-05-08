@@ -200,7 +200,7 @@ function bbconnect_push_user_actions( $bbconnect_get_user_actions ) {
 function bbconnect_get_post_to_edit() {
 
     if ( ! wp_verify_nonce( $_POST['bbconnect_admin_nonce'], 'bbconnect-admin-nonce' ) )
-        die (  __( 'Terribly sorry.', 'bbconnect' ) );
+        die (  __( 'There was an issue loading the data you requested. Please refresh the page and try again.', 'bbconnect' ) );
 
     if ( isset( $_POST['data'] ) ) {
 
@@ -588,4 +588,58 @@ function bbconnect_action_minify() {
         echo "</style>\r\n";
     }
 
+}
+
+
+function bbconnect_insert_user_note($author_id, $title, $description, $note_type = array('type' => 'system', 'subtype' => 'miscellaneous'), $receipt_number = '') {
+    $terms = bbconnect_get_note_types($note_type);
+
+    $post = array(
+            'post_title'    => $title,
+            'post_status'   => 'publish',
+            'post_type'     => 'bb_note',
+            'post_content'  => $description,
+            'post_author'   => $author_id,
+    );
+
+    $post_id = wp_insert_post($post);
+    wp_set_object_terms($post_id, array($terms['type']->term_id, $terms['subtype']->term_id), 'bb_note_type');
+
+    if ($post_id) {
+        if ($receipt_number) {
+            add_post_meta($post_id, 'note_receipt_number', $receipt_number);
+        }
+        if (is_user_logged_in()) {
+            add_post_meta($post_id, '_bbc_agent', get_current_user_id());
+        }
+    }
+
+    return $post_id;
+}
+
+function bbconnect_get_note_types($note_type) {
+    if (!is_array($note_type)) {
+        $note_type = array('subtype' => $note_type);
+    }
+    if (empty($note_type['subtype'])) {
+        return false;
+    }
+
+    $terms = array();
+
+    if (is_numeric($note_type['subtype'])) {
+        $terms['subtype'] = get_term_by('id', $note_type['subtype'], 'bb_note_type');
+    } else {
+        $terms['subtype'] = get_term_by('slug', $note_type['subtype'], 'bb_note_type');
+    }
+
+    if (empty($note_type['type'])) {
+        $terms['type'] = get_term_by('id', $terms['subtype']->parent, 'bb_note_type');
+    } elseif (is_numeric($note_type['type'])) {
+        $terms['type'] = get_term_by('id', $note_type['type'], 'bb_note_type');
+    } else {
+        $terms['type'] = get_term_by('slug', $note_type['type'], 'bb_note_type');
+    }
+
+    return $terms;
 }

@@ -1,6 +1,6 @@
 <?php
 add_action('bb_cart_post_purchase', 'bbconnect_bb_cart_post_purchase', 10, 4);
-function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transaction) {
+function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transaction_id) {
     $user = null;
     if (is_user_logged_in()) {
         $user = wp_get_current_user();
@@ -26,21 +26,13 @@ function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transactio
         update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', 0);
 
         // Add note to user record
-        $post = array(
-                'post_title'    => 'Transaction - '.$form['title'],
-                'post_status'   => 'publish',
-                'post_type'     => 'bb_note',
-                'post_content'  => 'Transaction for $'.$total.' processed successfully. <a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>',
-                'post_author'   => $user->ID,
-        );
-
-        $post_id = wp_insert_post($post);
-        wp_set_object_terms($post_id, array('system', 'transaction'), 'bb_note_type');
+        $description = 'Transaction for $'.$total.' processed successfully. <a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>';
+        bbconnect_insert_user_note($user->ID, 'Transaction - '.$form['title'], $description, array('type' => 'system', 'subtype' => 'transaction'), $transaction_id);
     }
 }
 
-add_action('bb_cart_webhook_paydock_recurring_success', 'bbconnect_bb_cart_webhook_paydock_recurring_success', 10, 2);
-function bbconnect_bb_cart_webhook_paydock_recurring_success($user, $amount) {
+add_action('bb_cart_webhook_paydock_recurring_success', 'bbconnect_bb_cart_webhook_paydock_recurring_success', 10, 3);
+function bbconnect_bb_cart_webhook_paydock_recurring_success($user, $amount, $transaction_id = null) {
     if ($user instanceof WP_User) {
         $previous_total = (float)get_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', true);
         $previous_count = (int)get_user_meta($user->ID, 'bbconnect_kpi_transaction_count', true);
@@ -51,15 +43,7 @@ function bbconnect_bb_cart_webhook_paydock_recurring_success($user, $amount) {
         update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', 0);
 
         // Add note to user record
-        $post = array(
-                'post_title'    => 'Automated Recurring Transaction Success',
-                'post_status'   => 'publish',
-                'post_type'     => 'bb_note',
-                'post_content'  => 'Transaction for $'.$amount.' processed successfully via PayDock.',
-                'post_author'   => $user->ID,
-        );
-
-        $post_id = wp_insert_post($post);
-        wp_set_object_terms($post_id, array('system', 'transaction'), 'bb_note_type');
+        $description = 'Transaction for $'.$amount.' processed successfully via PayDock.';
+        bbconnect_insert_user_note($user->ID, 'Automated Recurring Transaction Success', $description, array('type' => 'system', 'subtype' => 'transaction'), $transaction_id);
     }
 }
