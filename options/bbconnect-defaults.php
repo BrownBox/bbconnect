@@ -33,6 +33,7 @@ function bbconnect_activate() {
         }
 
         bbconnect_insert_default_saved_searches();
+        bbconnect_insert_default_note_types();
 
     // ALTERNATIVELY, COMPARE THE DATABASE AND SCRIPT VERSION OF THE PLUGIN
     } else if ( $dbv != BBCONNECT_VER ) {
@@ -330,6 +331,10 @@ function bbconnect_form_create() {
     return array( 'contact_form' => __( 'Contact Form', 'bbconnect' ) );
 }
 
+/**
+ * Creates default saved searches
+ * @since 2.3.2
+ */
 function bbconnect_insert_default_saved_searches() {
     // Name search
     $post = array(
@@ -353,5 +358,39 @@ function bbconnect_insert_default_saved_searches() {
     if ($post_id) {
         add_post_meta($post_id, 'private', 'false');
         add_post_meta($post_id, 'segment', '');
+    }
+}
+
+/**
+ * Creates default note types
+ * @since 2.3.2
+ */
+function bbconnect_insert_default_note_types() {
+    $tax = 'bb_note_type';
+    if (!taxonomy_exists($tax)) {
+        tax_bb_note_type();
+    }
+    $terms = array(
+            'Interaction' => array(
+                    'Email',
+                    'Face-to-Face',
+                    'Letter',
+                    'Phone Call',
+            ),
+            'System' => array(
+                    'Address Review',
+                    'Donation',
+                    'Form Submission',
+                    'New Contact',
+                    'Miscellaneous',
+                    'Purchase',
+                    'Transaction',
+            ),
+    );
+    foreach ($terms as $term => $children) {
+        $new_term = wp_insert_term($term, $tax);
+        foreach ($children as $child) {
+            wp_insert_term($child, $tax, array('parent' => $new_term['term_id']));
+        }
     }
 }
