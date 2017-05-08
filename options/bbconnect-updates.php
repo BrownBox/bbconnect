@@ -450,4 +450,17 @@ function bbconnect_update_v_2_3_2() {
             update_option('_bbconnect_user_meta', $umo);
         }
     }
+
+    // Add new note type
+    if (!taxonomy_exists('bb_note_type')) {
+        tax_bb_note_type();
+    }
+    $system_term = get_term_by('slug', 'system', 'bb_note_type');
+
+    $system_children = array(
+            'Transaction',
+    );
+    foreach ($system_children as $child) {
+        wp_insert_term($child, 'bb_note_type', array('parent' => $system_term->term_id));
+    }
 }
