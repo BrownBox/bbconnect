@@ -32,6 +32,8 @@ function bbconnect_activate() {
             add_option( $key, $value );
         }
 
+        bbconnect_insert_default_saved_searches();
+
     // ALTERNATIVELY, COMPARE THE DATABASE AND SCRIPT VERSION OF THE PLUGIN
     } else if ( $dbv != BBCONNECT_VER ) {
 
@@ -326,4 +328,30 @@ function bbconnect_form_create() {
     add_option( '_bbconnect_form_contact_form', $contact_form );
 
     return array( 'contact_form' => __( 'Contact Form', 'bbconnect' ) );
+}
+
+function bbconnect_insert_default_saved_searches() {
+    // Name search
+    $post = array(
+            'post_title'    => '1 - Name Search',
+            'post_status'   => 'publish',
+            'post_type'     => 'savedsearch',
+            'post_content'  => 'a:5:{i:1;a:4:{s:4:"type";s:4:"user";s:5:"field";s:10:"first_name";s:8:"operator";s:4:"like";s:5:"query";s:0:"";}i:2;a:4:{s:4:"type";s:4:"user";s:5:"field";s:9:"last_name";s:8:"operator";s:4:"like";s:5:"query";s:0:"";}i:3;a:4:{s:4:"type";s:4:"user";s:5:"field";s:14:"address_city_1";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:4;a:4:{s:4:"type";s:4:"user";s:5:"field";s:9:"telephone";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:5;a:4:{s:4:"type";s:4:"user";s:5:"field";s:5:"email";s:8:"operator";s:0:"";s:5:"query";s:0:"";}}',
+    );
+    $post_id = wp_insert_post($post);
+
+    if ($post_id) {
+        add_post_meta($post_id, 'private', 'false');
+        add_post_meta($post_id, 'segment', '');
+    }
+
+    // General search
+    $post['post_title'] = '2 - General Search';
+    $post['post_content'] = 'a:10:{i:1;a:4:{s:4:"type";s:4:"user";s:5:"field";s:10:"first_name";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:2;a:4:{s:4:"type";s:4:"user";s:5:"field";s:9:"last_name";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:3;a:4:{s:4:"type";s:4:"user";s:5:"field";s:14:"address_city_1";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:4;a:4:{s:4:"type";s:4:"user";s:5:"field";s:5:"email";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:5;a:4:{s:4:"type";s:4:"user";s:5:"field";s:13:"address_one_1";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:6;a:4:{s:4:"type";s:4:"user";s:5:"field";s:13:"address_two_1";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:7;a:3:{s:4:"type";s:4:"user";s:5:"field";s:15:"address_state_1";s:8:"operator";s:0:"";}i:8;a:4:{s:4:"type";s:4:"user";s:5:"field";s:17:"address_country_1";s:8:"operator";s:2:"is";s:5:"query";a:1:{i:0;s:2:"AU";}}i:9;a:4:{s:4:"type";s:4:"user";s:5:"field";s:9:"telephone";s:8:"operator";s:0:"";s:5:"query";s:0:"";}i:10;a:4:{s:4:"type";s:4:"user";s:5:"field";s:21:"address_postal_code_1";s:8:"operator";s:2:"is";s:5:"query";s:0:"";}}';
+    $post_id = wp_insert_post($post);
+
+    if ($post_id) {
+        add_post_meta($post_id, 'private', 'false');
+        add_post_meta($post_id, 'segment', '');
+    }
 }
