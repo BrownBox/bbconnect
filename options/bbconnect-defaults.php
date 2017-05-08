@@ -101,7 +101,7 @@ function bbconnect_update_days_since_kpi() {
 }
 
 /**
- * Define the default User Meta Fields. This will include a reference to the default WordPress fields as well as the default BB Connect fields. Doesn't really have parameters but there is a reference for the array below.
+ * Define the default User Meta Fields. This will include a reference to the default WordPress fields as well as the default Connexions fields. Doesn't really have parameters but there is a reference for the array below.
  *
  * @since 0.0.0
  *

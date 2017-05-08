@@ -156,10 +156,10 @@ function bbconnect_init_user_actions() {
 
 
 /**
- * Generic nonce field for all BB Connect data.
+ * Generic nonce field for all Connexions data.
  *
  * @since 1.0.2
- * @param arr. The BB Connect User Actions Array.
+ * @param arr. The Connexions User Actions Array.
  * @return arr. The filtered Actions Array.
  */
 
@@ -170,10 +170,10 @@ function bbconnect_user_actions_nonce_field() {
 
 
 /**
- * Pushes the user actions to BB Connect.
+ * Pushes the user actions to Connexions.
  *
  * @since 1.0.2
- * @param arr. The BB Connect User Actions Array.
+ * @param arr. The Connexions User Actions Array.
  * @return arr. The filtered Actions Array.
  */
 
@@ -505,7 +505,7 @@ function bbconnect_save_new_post() {
  *
  * @since 1.0.2
  *
- * @param arr. The BB Connect User Actions Array.
+ * @param arr. The Connexions User Actions Array.
  *
  * @return arr. The filtered Actions Array.
  */
@@ -557,7 +557,7 @@ function bbconnect_add_nodes( $wp_admin_bar ) {
     $args = array(
           'id' => 'new-action',
           'parent' => 'new-content',
-          'title' => __( 'BB Connect Action', 'bbconnect' ),
+          'title' => __( 'Connexions Action', 'bbconnect' ),
           'href' => admin_url( '/users.php?page=bbconnect_modal_action&amp;action=&amp;ID='.$current_user->ID.'&amp;TB_iframe=true&amp;height=300&amp;width=900' ),
           'meta' => array( 'html' => "<script>jQuery('#wp-admin-bar-new-action a').addClass('thickbox');</script>" )
     );

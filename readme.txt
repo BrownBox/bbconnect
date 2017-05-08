@@ -1,4 +1,4 @@
-=== BB Connect - A CRM for WordPress ===
+=== Connexions - A CRM for WordPress ===
 Author URI: http://brownbox.net.au
 Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
@@ -13,13 +13,13 @@ Supercharge your user profiles. Simple, powerful contact relationship management
 
 == Description ==
 
-BB Connect brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
+Connexions brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
 
-BB Connect started as a fork of PauPress, but is rapidly evolving into something that is not only more powerful, but provides a better user experience.
+Connexions started as a fork of PauPress, but is rapidly evolving into something that is not only more powerful, but provides a better user experience.
 
 Upon installation you can build user profiles by adding and arranging as many custom fields as you need and then search those fields to find commonalities or differences. Each user profile has a history tab where you can track detailed user activity using a built-in note system and which can be extended easily to include custom post-types attributable to each user. Lastly, you can create contact forms from your existing user fields that automatically add new contacts to your database and append the details to the user account even if the contact already exists. 
 
-These are the basics of any CRM (contact relationship management) application and BB Connect does it all using only the core WordPress APIs.
+These are the basics of any CRM (contact relationship management) application and Connexions does it all using only the core WordPress APIs.
 
 **Need to do more?** We are releasing additional add-ons for additional functionality and workflows.
 
@@ -52,14 +52,14 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 1. Activate the plugin
 2. Go to **My Profile** to see the new layout
 3. Go to **Users** to try out the new search utility
-4. Go to **BB Connect Options** to configure the options
-5. Go to **BB Connect Options > Manage Fields** to add fields and modify the new layout
+4. Go to **Connexions Options** to configure the options
+5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Frequently Asked Questions ==
 
 = What's this all about? =
 
-Since 2010 we've built out BB Connect to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release BB Connect as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
+Since 2010 we've built out Connexions to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release Connexions as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 == Changelog ==
 = 2.3.2 =
@@ -137,7 +137,7 @@ Since 2010 we've built out BB Connect to meet the needs of clients in both the f
 
 = 1.5 - December 12, 2013 =
 
-* Updated BB Connect Admin UI to take advantage of the 3.8 upgrades
+* Updated Admin UI to take advantage of the 3.8 upgrades
 * Moved help documentation online
 * Large feature release for Pro version
 

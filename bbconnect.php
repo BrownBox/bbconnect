@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: BB Connect
+Plugin Name: Connexions
 Plugin URI: http://brownbox.net.au/
 Description: A CRM framework for Wordpress
 Version: 2.3.2
@@ -9,18 +9,18 @@ Author URI: http://brownbox.net.au/
 Text Domain: bbconnect
 Domain Path: languages
 
-BB Connect is free software: you can redistribute it and/or modify
+Connexions is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
 
-BB Connect is distributed in the hope that it will be useful,
+Connexions is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with BB Connect. If not, see <http://www.gnu.org/licenses/>.
+along with Connexions. If not, see <http://www.gnu.org/licenses/>.
 */
 
 
@@ -313,21 +313,21 @@ function bbconnect_menu() {
 
 	// REMOVE THE DEFAULT EDIT USER MENU OPTION AND REPLACE IT
 	remove_submenu_page( 'users.php', 'profile.php' );
-	$bbconnect_menu['bbconnect_edit_user'] = add_submenu_page( 'users.php', 'BB Connect User', 'My Profile', 'add_users', 'bbconnect_edit_user', 'bbconnect_edit_user');
+	$bbconnect_menu['bbconnect_edit_user'] = add_submenu_page( 'users.php', 'Connexions User', 'My Profile', 'add_users', 'bbconnect_edit_user', 'bbconnect_edit_user');
 
 	// REMOVE THE DEFAULT EDIT USER MENU OPTION FOR NON-ADMINS AND REPLACE IT
 	remove_menu_page( 'profile.php' );
-	$bbconnect_menu['bbconnect_edit_user_profile'] = add_menu_page( __( 'BB Connect User', 'bbconnect' ), __( 'My Profile', 'bbconnect' ), 'read', 'bbconnect_edit_user_profile', 'bbconnect_edit_user');
+	$bbconnect_menu['bbconnect_edit_user_profile'] = add_menu_page( __( 'Connexions User', 'bbconnect' ), __( 'My Profile', 'bbconnect' ), 'read', 'bbconnect_edit_user_profile', 'bbconnect_edit_user');
 
 	// REMOVE THE DEFAULT ADD USER MENU OPTION AND REPLACE IT
 	remove_submenu_page( 'users.php', 'user-new.php' );
-	$bbconnect_menu['bbconnect_new_user'] = add_submenu_page( 'users.php', __( 'BB Connect User', 'bbconnect' ), __( 'Add New User', 'bbconnect' ), 'add_users', 'bbconnect_new_user', 'bbconnect_new_user');
+	$bbconnect_menu['bbconnect_new_user'] = add_submenu_page( 'users.php', __( 'Connexions User', 'bbconnect' ), __( 'Add New User', 'bbconnect' ), 'add_users', 'bbconnect_new_user', 'bbconnect_new_user');
 
 	// ADD THE SEARCH UTILITY TO THE WORDPRESS SYSTEM
-	$bbconnect_menu['bbconnect_reports'] = add_submenu_page( 'users.php', __( 'BB Connect Reports', 'bbconnect' ), __( 'User Reports', 'bbconnect' ), 'add_users', 'bbconnect_reports', 'bbconnect_search');
+	$bbconnect_menu['bbconnect_reports'] = add_submenu_page( 'users.php', __( 'Connexions Reports', 'bbconnect' ), __( 'User Reports', 'bbconnect' ), 'add_users', 'bbconnect_reports', 'bbconnect_search');
 
 	// CREATE THE ADMINISTRATIVE MENU
-	$bbconnect_menu['bbconnect_caps_options'] = add_menu_page( __( 'BB Connect', 'bbconnect' ), __( 'BB Connect', 'bbconnect' ), 'list_users', 'bbconnect_options', 'bbconnect_options', BBCONNECT_URL.'/assets/g/bbconnect.png', '70.1' );
+	$bbconnect_menu['bbconnect_caps_options'] = add_menu_page( __( 'Connexions', 'bbconnect' ), __( 'Connexions', 'bbconnect' ), 'list_users', 'bbconnect_options', 'bbconnect_options', BBCONNECT_URL.'/assets/g/bbconnect.png', '70.1' );
 
 	// ADD THE USER OPTIONS PAGES TO THE WORDPRESS SYSTEM
 	$bbconnect_menu['bbconnect_meta_options'] = add_submenu_page( 'bbconnect_options', __( 'Manage Fields', 'bbconnect' ), __( 'Manage Fields', 'bbconnect' ), 'activate_plugins', 'bbconnect_meta_options', 'bbconnect_meta_options_form' );

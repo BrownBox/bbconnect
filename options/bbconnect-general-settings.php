@@ -1,11 +1,11 @@
 <?php
 
 function bbconnect_general_settings() {
-	
+
 	return apply_filters( 'bbconnect_general_settings', array(
-			
+
 	));
-	
+
 }
 
 
@@ -17,7 +17,7 @@ function bbconnect_option_welcome( $active ) {
 		<div class="column_holder">
 			<h2><?php _e( 'hi there. we\'re really glad you\'re here.', 'bbconnect' ); ?></h2>
 			<p><?php _e( 'We hope this plugin makes what you do in life a little better. To that end, here\'s a few helpful resources.', 'bbconnect' ); ?></p>
-			
+
 			<div id="setup" class="option-block">
 				<h3><?php _e( 'Setup', 'bbconnect' ); ?></h3>
 				<ol>
@@ -29,7 +29,7 @@ function bbconnect_option_welcome( $active ) {
 					<li><?php printf( __( 'Lastly, there\'s a %1$sGetting Started Guide%2$s on our website that walks you through the above steps.', 'bbconnect' ), '<a href="http://bbconnect.com/support/documentation/bbconnect-plugin-documentation/getting-started/">', '</a>' ); ?></li>
 				</ol>
 			</div>
-			
+
 			<div id="help" class="option-block">
 				<h3><?php _e( 'Help', 'bbconnect' ); ?></h3>
 				<ol>
@@ -38,7 +38,7 @@ function bbconnect_option_welcome( $active ) {
 					<li><?php printf( __( '%1$sStandard Online%2$s: If you are not a pro subscriber, you can still visit our site %3$sbbconnect.com%4$s OR our plugin page support forums. While we do give preference to pro users of the application (see above) we are actively monitoring the plugin page forums.', 'bbconnect' ), '<strong>', '</strong>', '<a href="http://bbconnect.com/support">', '</a>'  ); ?></li>
 				</ol>
 			</div>
-			
+
 			<div id="suggestions" class="option-block">
 				<h3><?php _e( 'Suggestions', 'bbconnect' ); ?></h3>
 				<ol>
@@ -49,7 +49,7 @@ function bbconnect_option_welcome( $active ) {
 		<div class="column_holder">
 			<?php if ( !is_plugin_active( 'bbcpro/bbcpro.php' ) ) { ?>
 			<h2><?php _e( 'looking for more? go pro!', 'bbconnect' ); ?></h2>
-			<p><?php printf( __( 'There\'s a lot more %1$sgreat stuff you can do with BB Connect%2$s.', 'bbconnect' ), '<a href="http://bbconnect.com/">', '</a>' ); ?></p>
+			<p><?php printf( __( 'There\'s a lot more %1$sgreat stuff you can do with Connexions%2$s.', 'bbconnect' ), '<a href="http://bbconnect.com/">', '</a>' ); ?></p>
 			<div class="option-block">
 				<h3><?php _e( 'Just a few reasons', 'bbconnect' ); ?></h3>
 				<ol>
@@ -74,7 +74,7 @@ function bbconnect_option_welcome( $active ) {
 
 function bbconnect_option_goodbye( $active ) {
 	if ( 'bbconnect_general_settings' == $active ) {
-		
+
 ?>
 		</div>
 	</div>
