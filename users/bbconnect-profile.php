@@ -754,6 +754,15 @@ function bbconnect_profile_action_item( $args = null ) {
             $date = '<div class="action-date">'.date( 'd F Y', strtotime( $act->post_date ) ).'</div>';
             $content = apply_filters( 'the_content', stripslashes( $act->post_content ) );
 
+            $createdby = '';
+            $creator_id = get_post_meta($act->ID, '_bbc_agent', true);
+            if (!empty($creator_id)) {
+                $creator = new WP_User($creator_id);
+                $createdby = $creator->display_name;
+            } else {
+                $createdby = 'System';
+            }
+
             $title = apply_filters( 'bbconnect_title_filter', $title, $act );
             $date = apply_filters( 'bbconnect_date_filter', $date, $act );
             $content = apply_filters( 'bbconnect_content_filter', $content, $act );
@@ -769,6 +778,7 @@ function bbconnect_profile_action_item( $args = null ) {
                 }*/
             echo $title;
             echo $date;
+            printf(__('Note Added By: %s', 'bbconnect'), $createdby);
             echo $content;
 
             $bt = __( 'Edit', 'bbconnect' );
