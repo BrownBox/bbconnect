@@ -420,6 +420,9 @@ add_filter( 'attachment_fields_to_save', 'bbconnect_attachment_save', 10, 2);
 // MODIFIES DEFAULT USER COLUMNS
 //add_action('manage_users_custom_column', 'bbconnect_manage_users_custom_column', 15, 3);
 
+// ONLY SHOW USERS FROM CURRENT SITE
+add_filter('bbconnect_search_results', 'bbconnect_filter_users_current_blog', 1, 1);
+
 // MODIFY THE LOGIN FORM FOR EMAIL LABELS
 add_action( 'login_form', 'bbconnect_email_login' );
 

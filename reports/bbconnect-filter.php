@@ -804,6 +804,8 @@ function bbconnect_filter_process( $post_data ) {
         $all_search = $post_data['all_search'];
     }
 
+    $all_search = apply_filters('bbconnect_search_results', $all_search);
+
     // CONTINUE ON WITH THE PAGINATION AND SORTING ACTIVITY...
     if ( !empty( $all_search ) ) {
         $users_count = count( $all_search );
@@ -855,6 +857,18 @@ function bbconnect_filter_process( $post_data ) {
     return $ret_arr;
 }
 
+function bbconnect_filter_users_current_blog($all_search) {
+    if (is_multisite()) {
+        $blog_id = get_current_blog_id();
+        $args = array(
+                'blog_id' => $blog_id,
+                'fields' => 'ID',
+        );
+        $blog_users = get_users($args);
+        $all_search = array_intersect($all_search, $blog_users);
+    }
+    return $all_search;
+}
 
 function insensitive_uksort($a,$b) {
     return strtolower($a)<strtolower($b);
