@@ -106,6 +106,7 @@ include_once( 'posts/bbconnect-user-actions-meta.php' );
 include_once( 'posts/bbconnect-user-actions-tax.php' );
 include_once( 'posts/bbconnect-post-notes-meta.php' );
 
+include_once( 'users/bbconnect-activity-log.php' );
 include_once( 'users/bbconnect-users.php' );
 include_once( 'users/bbconnect-profile.php' );
 include_once( 'users/bbconnect-user-plugins.php' );
@@ -326,6 +327,9 @@ function bbconnect_menu() {
 	// ADD THE SEARCH UTILITY TO THE WORDPRESS SYSTEM
 	$bbconnect_menu['bbconnect_reports'] = add_submenu_page( 'users.php', __( 'Connexions Reports', 'bbconnect' ), __( 'User Reports', 'bbconnect' ), 'add_users', 'bbconnect_reports', 'bbconnect_search');
 
+	// ACTIVITY LOG
+	$bbconnect_menu['bbconnect_activity_log'] = add_submenu_page( 'users.php', __( 'Connexions Activity Log', 'bbconnect' ), __( 'Activity Log', 'bbconnect' ), 'add_users', 'bbconnect_activity_log', 'bbconnect_activity_log');
+
 	// CREATE THE ADMINISTRATIVE MENU
 	$bbconnect_menu['bbconnect_caps_options'] = add_menu_page( __( 'Connexions', 'bbconnect' ), __( 'Connexions', 'bbconnect' ), 'list_users', 'bbconnect_options', 'bbconnect_options', BBCONNECT_URL.'/assets/g/bbconnect.png', '70.1' );
 
@@ -405,6 +409,9 @@ add_action( 'parse_request', 'bbconnect_parse_request' );
 // HOOK INTO THE USER ACTIONS META API
 add_filter( 'bbconnect_get_user_actions', 'bbconnect_push_user_actions' );
 add_filter( 'bbconnect_get_user_actions_meta', 'bbconnect_push_user_actions_meta' );
+
+// ACTIVITY LOG
+add_filter('bbconnect_activity_icon', 'bbconnect_activity_icon');
 
 // MODIFY USER HISTORY PANEL
 add_filter( 'bbconnect_ai_class_filter', 'bbc_log_ai_class_filter', 10, 2 );

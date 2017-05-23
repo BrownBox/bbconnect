@@ -713,6 +713,13 @@ ul.bbconnect li .chzn-choices {
 .nav-tab-wrapper.non-responsive { display: none; }
 .nav-tab-wrapper.responsive { display: block; background-color: #EFEFEF; padding: 10px; }
 
+/*  ------------------------------------------------------- 
+    ACTIVITY LOG
+    ------------------------------------------------------- */
+
+#bbconnect table.activity-log td {padding-top: 1rem;}
+#bbconnect table.activity-log td h2, #bbconnect table.activity-log td h3 {margin-top: 0; padding-top: 0; border-bottom: none;}
+
 @media screen and (min-width: 600px) {
 
 	.content-display {

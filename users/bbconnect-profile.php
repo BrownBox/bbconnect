@@ -226,6 +226,11 @@ function bbconnect_edit_user( $user_id = '' ) {
                                     'subs' => false,
                             ),
 
+        'activity' => array(
+                                    'title' => __( 'Activity Log', 'bbconnect' ),
+                                    'subs' => false,
+                            ),
+
     ) );
     if ( isset( $_GET['tab'] ) ) {
         $active = $_GET['tab'];
