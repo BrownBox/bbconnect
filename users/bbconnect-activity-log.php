@@ -29,9 +29,13 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                 <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
 <?php
         if (empty($user_id)) {
+            $user_display = $activity['user'];
+            if (!empty($activity['user_id'])) {
+                $user_display = '<a href="?page=bbconnect_edit_user&user_id='.$activity['user_id'].'&tab=activity">'.$user_display.'</a>';
+            }
 ?>
                 <td>
-                    <h3><a href="?page=bbconnect_edit_user&user_id=<?php echo $activity['user_id']; ?>&tab=activity"><?php echo $activity['user']; ?></a></h3>
+                    <h3><?php echo $user_display; ?></h3>
                 </td>
 <?php
         }
@@ -71,7 +75,7 @@ function bbconnect_get_recent_activity($user_id = null) {
     // Notes
     $args = array(
             'post_type' => 'bb_note',
-            'posts_per_page' => -1,
+            'posts_per_page' => 100,
             'post_status' => array('publish', 'private'),
     );
     if ($user_id) {
@@ -88,7 +92,33 @@ function bbconnect_get_recent_activity($user_id = null) {
                 'type' => 'note',
         );
     }
+
+    // Form Entries
+    if (class_exists('GFAPI')) { // Gravity Forms
+        $search_criteria = array();
+        if ($user_id) {
+            $search_criteria['field_filters'][] = array('key' => 'created_by', 'value' => $user_id);
+        }
+        $paging = array('offset' => 0, 'page_size' => 100);
+        $entries = GFAPI::get_entries(0, $search_criteria, array(), $paging);
+        foreach ($entries as $entry) {
+            if (!isset($forms[$entry['form_id']])) {
+                $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
+            }
+            $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
+            $activities[] = array(
+                    'date' => $entry['date_created'],
+                    'user' => $user_name,
+                    'user_id' => $entry['created_by'],
+                    'title' => $forms[$entry['form_id']]['title'],
+                    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
+                    'type' => 'form',
+            );
+        }
+    }
+
     $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id);
+
     usort($activities, 'bbconnect_sort_activities');
 
     return $activities;
