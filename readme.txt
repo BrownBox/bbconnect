@@ -62,6 +62,10 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 Since 2010 we've built out Connexions to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release Connexions as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 == Changelog ==
+= 2.4.2 =
+* Form submissions in activity log now require BB Express
+* Styling updates for activity log 
+
 = 2.4.1 =
 * Added Gravity Forms submissions to activity log
 
