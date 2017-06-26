@@ -100,17 +100,19 @@ function bbconnect_get_recent_activity($user_id = null) {
             $search_criteria['field_filters'][] = array('key' => 'created_by', 'value' => $user_id);
         }
         $paging = array('offset' => 0, 'page_size' => 100);
-        $entries = GFAPI::get_entries(0, $search_criteria, array(), $paging);
+        $entries = GFAPI::get_entries(0, $search_criteria, null, $paging);
         foreach ($entries as $entry) {
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
+            $created = bbconnect_get_datetime($entry['date_created'], bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
+            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
             $activities[] = array(
-                    'date' => $entry['date_created'],
+                    'date' => $created->format('Y-m-d H:i:s'),
                     'user' => $user_name,
                     'user_id' => $entry['created_by'],
-                    'title' => $forms[$entry['form_id']]['title'],
+                    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'],
                     'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
                     'type' => 'form',
             );
@@ -142,6 +144,7 @@ function bbconnect_activity_icon($activity_type) {
         case 'note':
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/note.png';
             break;
+        case 'form':
         case 'activity':
         default:
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/activity.png';
