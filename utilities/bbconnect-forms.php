@@ -173,35 +173,6 @@ function bb_crm_create_update_user($entry, $form) {
     }
 }
 
-add_action('gform_after_submission', 'bb_crm_track_form_submission', 20, 2); // Needs to happen after create/update user logic above
-/**
- * Add note to user record to track form submission
- * @param array $entry
- * @param array $form
- */
-function bb_crm_track_form_submission($entry, $form) {
-    foreach ($form['fields'] as $field) {
-        // First look for an email address so we can locate the user
-        if ($field->type == 'email') {
-            $user = get_user_by('email', $entry[$field->id]);
-
-            // We have a matching user - add the note
-            $post = array(
-                    'post_title'    => 'Form Submission - '.$form['title'],
-                    'post_status'   => 'publish',
-                    'post_type'     => 'bb_note',
-                    'post_content'  => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>',
-                    'post_author'   => $user->ID,
-            );
-
-            $post_id = wp_insert_post($post);
-            wp_set_object_terms($post_id, array('system', 'form-submission'), 'bb_note_type');
-            break;
-        }
-    }
-
-}
-
 add_action('gform_field_advanced_settings', 'bb_crm_field_settings', 10, 2);
 /**
  * Add setting to fields for custom user meta mapping
