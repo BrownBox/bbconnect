@@ -157,8 +157,8 @@ function bbconnect_user_settings() {
 		*/
 		array( 'meta' => array(
 								'source' => 'bbconnect',
-								'meta_key' => '_bbconnect_compatability_title',
-								'name' => __( 'WordPress Compatability Mode', 'bbconnect' ),
+								'meta_key' => '_bbconnect_compatibility_title',
+								'name' => __( 'WordPress Compatibility Mode', 'bbconnect' ),
 								'help' => '',
 								'description' => __( 'Preferences to ease the transition.', 'bbconnect' ),
 								'options' => array(

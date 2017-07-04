@@ -21,30 +21,25 @@ function bbconnect_options() {
 									'subs' => false,
 							),
 
-		'bbconnect_pro_settings' => array(
-									'title' => __( 'Pro', 'bbconnect' ),
-									'subs' => false,
-							),
-
 		'bbconnect_user_settings' => array(
 									'title' => __( 'Users', 'bbconnect' ),
 									'subs' => false,
 							),
 
-		'bbconnect_actions_settings' => array(
-									'title' => __( 'Actions', 'bbconnect' ),
-									'subs' => false,
-							),
+// 		'bbconnect_actions_settings' => array(
+// 									'title' => __( 'Actions', 'bbconnect' ),
+// 									'subs' => false,
+// 							),
 
 		'bbconnect_system_settings' => array(
 									'title' => __( 'System', 'bbconnect' ),
 									'subs' => false,
 							),
 
-		'bbconnect_forms_settings' => array(
-									'title' => __( 'Forms', 'bbconnect' ),
-									'subs' => false,
-							),
+// 		'bbconnect_forms_settings' => array(
+// 									'title' => __( 'Forms', 'bbconnect' ),
+// 									'subs' => false,
+// 							),
 
 		'bbconnect_panel_settings_trans' => array(
 									'title' => __( 'Panels', 'bbconnect' ),

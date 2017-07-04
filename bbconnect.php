@@ -77,7 +77,6 @@ include_once( 'options/bbconnect-actions-settings.php' );
 include_once( 'options/bbconnect-system-settings.php' );
 include_once( 'options/bbconnect-forms-settings.php' );
 include_once( 'options/bbconnect-panel-settings.php' );
-include_once( 'options/bbconnect-pro-settings.php' );
 
 include_once( 'utilities/bbconnect-time.php' );
 include_once( 'utilities/bbconnect-fields.php' );
@@ -119,7 +118,6 @@ include_once( 'fields/bbconnect-field-helpers.php' );
 include_once( 'fields/bbconnect-form.php' );
 
 include_once( 'theme/bbconnectpanels.php' );
-include_once( 'theme/bbconnectpanels-incoming.php' );
 
 // SETS TRANSLATION SOURCES
 function bbconnect_textdomain() {
@@ -338,9 +336,6 @@ function bbconnect_menu() {
 
 	// ADD THE USER OPTIONS PAGES TO THE WORDPRESS SYSTEM
 	$bbconnect_menu['bbconnect_meta_options'] = add_submenu_page( 'bbconnect_options', __( 'Manage Fields', 'bbconnect' ), __( 'Manage Fields', 'bbconnect' ), 'activate_plugins', 'bbconnect_meta_options', 'bbconnect_meta_options_form' );
-
-	// ADD THE INBOUND COMMUNICATION DASHBOARD
-	$bbconnect_menu['bbconnect_inbound'] = add_submenu_page( 'bbconnect_options', __( 'Inbound Activity', 'bbconnect' ), __( 'Inbound Activity', 'bbconnect' ), 'add_users', 'bbconnect_inbounds', 'bbconnect_inbounds' );
 
 	// ADD THE MODAL WINDOW
 	$bbconnect_menu['bbconnect_modal'] = add_submenu_page( NULL, __( 'Actions', 'bbconnect' ), '', 'add_users', 'bbconnect_modal_action', 'bbconnect_modal_action' );
