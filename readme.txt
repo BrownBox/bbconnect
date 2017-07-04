@@ -4,7 +4,7 @@ Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 4.6.3
+Tested up to: 4.8
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,39 +13,28 @@ Supercharge your user profiles. Simple, powerful contact relationship management
 
 == Description ==
 
-Connexions brings core CRM functionality to WordPress that is infinitely extensible. Leveraging a flexible user profile, an extensible user history and a searchable user database, you can create virtually any application that involves users and your interactions with them.
+Connexions is the latest in simplified, effective CRM solutions.
 
-Connexions started as a fork of PauPress, but is rapidly evolving into something that is not only more powerful, but provides a better user experience.
+Built specifically for WordPress, it captures and communicates data in a way like never before - enabling you to build deeper relationships and expand your impact.
 
-Upon installation you can build user profiles by adding and arranging as many custom fields as you need and then search those fields to find commonalities or differences. Each user profile has a history tab where you can track detailed user activity using a built-in note system and which can be extended easily to include custom post-types attributable to each user. Lastly, you can create contact forms from your existing user fields that automatically add new contacts to your database and append the details to the user account even if the contact already exists. 
+Connexions works to passively build profiles, allowing you to build up your data and capture detailed user profiles.
 
-These are the basics of any CRM (contact relationship management) application and Connexions does it all using only the core WordPress APIs.
+It has an amazing ability to connect with a wide range of additional web products, meaning it's able to grow and expand as you do.
+
+Connexions will expand your understanding of user behaviour and allow you to better interact and communicate with your audience, to build deeper and long-lasting digital relationships.
 
 **Need to do more?** We are releasing additional add-ons for additional functionality and workflows.
 
-**Features of the plugin include:**
-
-* Build advanced profiles with custom fields using drag-and-drop
-* Easily track and annotate user history
-* Create and use custom contact forms anywhere on your site
-* Search and segment your user database with an intuitive search engine
-* Export user data
-* Saved searches
-
 **Current Add-ons:**
 
-* Work Queues
+* Activity View
 * MailChimp
-* KPIs
-* Quicklinks
-
-**Languages**
-* German
-* Italian
-* Russian
-* Slovenian
-
-Would you like to help translate the plugin into more languages? [Get in touch!](http://brownbox.net.au/contact/).
+* Action Notes & Workqueues
+* Mailgun
+* Relationships & Groups
+* Postie
+* Rolling KPIs & Segment Status
+* Personalisation
 
 == Installation ==
 
@@ -62,6 +51,11 @@ Would you like to help translate the plugin into more languages? [Get in touch!]
 Since 2010 we've built out Connexions to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release Connexions as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
 
 == Changelog ==
+= 2.5.0 =
+* Major overhaul of quicklinks space - functionality is now built in to core plugin with hooks to allow addons to easily add more
+* Significant cleanup of options and help
+* Bug fixes
+
 = 2.4.2 =
 * Form submissions in activity log now require BB Express
 * Styling updates for activity log 
