@@ -253,13 +253,7 @@ function bbconnect_edit_user( $user_id = '' ) {
     <div id="icon-users" class="icon32"><br /></div>
         <h2><?php echo bbconnect_get_username( $user_id ); ?></h2>
         <h2 class="nav-tab-wrapper"><?php echo $tab_nav; ?></h2>
-        <?php
-            if (function_exists( 'bbconnect_profile_quicklinks')) {
-                bbconnect_profile_quicklinks($user_id);
-            } else {
-                echo '<div id="quicklinks-wrapper">You should get the quicklinks addon!</div>';
-            }
-        ?>
+        <?php bbconnect_profile_quicklinks($user_id); ?>
         <form id="user-form" class="bbconnect-form" enctype="multipart/form-data" action="<?php echo $formdes . '&tab=' . $active; ?>" autocomplete="off" method="POST">
 
         <?php wp_nonce_field( 'bbconnect-edit-user-nonce' ); ?>

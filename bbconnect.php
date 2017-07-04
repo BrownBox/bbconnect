@@ -88,6 +88,7 @@ include_once( 'utilities/bbconnect-users.php' );
 include_once( 'utilities/bbconnect-tax-meta.php' );
 include_once( 'utilities/bbconnect-forms.php' );
 include_once( 'utilities/bbconnect-bb-cart.php' );
+include_once( 'utilities/bbconnect-quicklinks.php' );
 
 include_once( 'reports/bbconnect-reports.php' );
 include_once( 'reports/bbconnect-filter-form.php' );
@@ -189,9 +190,10 @@ function bbconnect_init_register(){
 	wp_register_script( 'cookieJS', BBCONNECT_URL . 'assets/j/jquery.cookie.js', array( 'jquery' ), BBCONNECT_VER, false );
 
 	// TABLE EXPORT
-	wp_register_script( 'tableExportJS', BBCONNECT_URL . 'assets/j/export/tableExport.js', array( 'jquery' ), BBCONNECT_VER, false );
-	wp_register_script( 'fileSaverJS', BBCONNECT_URL . 'assets/j/export/FileSaver.min.js', array( 'jquery' ), BBCONNECT_VER, false );
-	wp_register_script( 'base64JS', BBCONNECT_URL . 'assets/j/export/jquery.base64.js', array( 'jquery' ), BBCONNECT_VER, false );
+    wp_register_script('Blob', BBCONNECT_URL . 'assets/j/export/Blob.js', array('jquery'), '1.1.1', false);
+    wp_register_script('FileSaver', BBCONNECT_URL . 'assets/j/export/FileSaver.min.js', array('jquery', 'Blob'), '1.3.6', false);
+    wp_register_script('tableExport', BBCONNECT_URL . 'assets/j/export/tableExport.js', array('jquery', 'Blob', 'FileSaver'), '4.0.2', false);
+    wp_register_script('tableExportBase64', BBCONNECT_URL . 'assets/j/export/jquery.base64.js', array('jquery'), BBCONNECT_VER, false);
 
 	// REGISTER PLUGIN STYLES
 	wp_register_style( 'bbconnectCSS', BBCONNECT_URL . 'assets/c/bbconnect.css', array(), BBCONNECT_VER, 'screen' );
@@ -217,9 +219,10 @@ function bbconnect_admin_scripts(){
 	// QUEUE PLUGIN SCRIPTS
 	wp_enqueue_script( 'bbconnectSearchJS' );
 	wp_enqueue_script( 'bbconnectViewsJS' );
-	wp_enqueue_script( 'tableExportJS' );
-	wp_enqueue_script( 'fileSaverJS' );
-	wp_enqueue_script( 'base64JS' );
+	wp_enqueue_script('Blob');
+    wp_enqueue_script('FileSaver');
+	wp_enqueue_script('tableExport');
+	wp_enqueue_script('tableExportBase64');
 
 	// QUEUE PLUGIN STYLES
 	wp_enqueue_style( 'bbconnectCSS' );
@@ -496,3 +499,6 @@ add_filter( 'wp_mail_from_name', 'bbconnect_mail_from_name' );
 
 // DON'T NOTIFY USERS WHEN EMAIL IS CHANGED
 add_filter('send_email_change_email', '__return_false', 999);
+
+// LOAD QUICKLINKS
+add_action('plugins_loaded', 'bbconnect_quicklinks_init');

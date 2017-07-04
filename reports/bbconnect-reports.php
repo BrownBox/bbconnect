@@ -674,15 +674,11 @@ function bbconnect_report_display( $ret_res = array() ) {
         </form>
 
 <?php
-    if (function_exists( 'bbconnect_report_quicklinks')) {
-        $args = array();
-        if (!empty($note_ids)) {
-            $args['note_ids'] = $note_ids;
-        }
-        bbconnect_report_quicklinks($member_search, $args);
-    } else {
-        echo '<div id="quicklinks-wrapper">You should get the quicklinks addon!</div>';
+    $args = array();
+    if (!empty($note_ids)) {
+        $args['note_ids'] = $note_ids;
     }
+    bbconnect_report_quicklinks($member_search, $args);
 
     unset( $ret_res );
     unset( $table_head );
