@@ -119,6 +119,21 @@ function bbconnect_get_recent_activity($user_id = null) {
         }
     }
 
+    // CRM Activities
+    global $wpdb;
+    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking ORDER BY created_at DESC LIMIT 100;');
+    foreach ($results as $result) {
+        $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
+        $activities[] = array(
+                'date' => $result->created_at,
+                'user' => $user_name,
+                'user_id' => $result->user_id,
+                'title' => $result->title,
+                'details' => $result->description,
+                'type' => $result->activity_type,
+        );
+    }
+
     $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id);
 
     usort($activities, 'bbconnect_sort_activities');
