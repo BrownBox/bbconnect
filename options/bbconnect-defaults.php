@@ -6,16 +6,15 @@
  * @since 0.0.0
  */
 function bbconnect_activate() {
-
     // SET LOCAL VARIABLES
     $dbv = get_option( '_bbconnect_version' );
 
-    if ( false === $dbv )
+    if ( false === $dbv ) {
         $dbv = get_option( 'bbconnect_version' );
+    }
 
     // FIRST, CHECK TO SEE IF THIS IS A FIRST INSTALL
     if ( false === $dbv ) {
-
         include_once( 'bbconnect-updates.php' );
 
         $bbconnect_defaults = array(
@@ -37,7 +36,6 @@ function bbconnect_activate() {
 
     // ALTERNATIVELY, COMPARE THE DATABASE AND SCRIPT VERSION OF THE PLUGIN
     } else if ( $dbv != BBCONNECT_VER ) {
-
         include_once( 'bbconnect-updates.php' );
         $bbconnect_versions = bbconnect_versions();
         $update_log = array();
@@ -56,8 +54,9 @@ function bbconnect_activate() {
         // VERIFY THAT WE'RE ON THE CURRENT VERSION AS DB UPDATES ARE INFREQUENT
         $udbv = get_option( '_bbconnect_version' );
 
-        if ( $udbv != BBCONNECT_VER )
+        if ( $udbv != BBCONNECT_VER ) {
             update_option( '_bbconnect_version', BBCONNECT_VER );
+        }
     }
 
     if (!wp_next_scheduled('bbconnect_do_daily_updates')) {

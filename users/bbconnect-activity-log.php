@@ -151,3 +151,64 @@ function bbconnect_activity_icon($activity_type) {
             break;
     }
 }
+
+/**
+ * Add an activity to the log
+ * @param array|string $args Either an array or querystring-style list of parameters
+ *     string $type Optional. Type of activity. Default is 'activity'
+ *     string $source Optional. Entry source (e.g. plugin slug). Default is 'bbconnect'
+ *     string $date Optional. Date of activity. Default is current timestamp
+ *     string $user_id Optional if email specified. User that performed the activity
+ *     string $email Optional if user ID specified. Email address for user that performed the activity
+ *     string $title Activity name
+ *     string $description Optional. Details of the activity. May contain HTML.
+ * @return int|false ID of new log entry or false on failure
+ */
+function bbconnect_track_activity($args) {
+    is_array($args) ? extract($args) : parse_str($args);
+    // Some basic validation
+    if ((empty($user_id) && empty($email)) || empty($description)) {
+        return false;
+    }
+
+    // Set some defaults
+    if (empty($user_id)) {
+        $user = get_user_by('email');
+        $user_id = $user->ID;
+    } elseif (empty($email)) {
+        $user = new WP_User($user_id);
+        $email = $user->user_email;
+    }
+
+    if (empty($type)) {
+        $type = 'activity';
+    }
+
+    if (empty($source)) {
+        $source = 'bbconnect';
+    }
+
+    if (empty($date)) {
+        $date = bbconnect_get_current_datetime()->format('Y-m-d H:i:s');
+    }
+
+    // Now store it
+    global $wpdb;
+    $data = array(
+            'activity_type' => $type,
+            'source' => $source,
+            'created_at' => $date,
+            'user_id' => $user_id,
+            'email' => $email,
+            'description' => $description,
+    );
+    $format = array(
+            '%s',
+            '%s',
+            '%s',
+            '%d',
+            '%s',
+            '%s',
+    );
+    return $wpdb->insert($wpdb->prefix.'bbconnect_activity_tracking', $data, $format);
+}

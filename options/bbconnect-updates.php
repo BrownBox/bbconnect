@@ -15,6 +15,7 @@ function bbconnect_versions() {
             '2.2.1' => 'bbconnect_update_v_2_2_1',
             '2.2.2' => 'bbconnect_update_v_2_2_2',
             '2.3.2' => 'bbconnect_update_v_2_3_2',
+            '2.5.1' => 'bbconnect_update_v_2_5_1',
     );
 
     return $bbconnect_versions;
@@ -463,4 +464,22 @@ function bbconnect_update_v_2_3_2() {
     foreach ($system_children as $child) {
         wp_insert_term($child, 'bb_note_type', array('parent' => $system_term->term_id));
     }
+}
+
+function bbconnect_update_v_2_5_1() {
+    global $wpdb;
+    $new_table = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix."bbconnect_activity_tracking (
+                    id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+                    activity_type VARCHAR(32) NOT NULL,
+                    source VARCHAR(32) NOT NULL,
+                    created_at DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                    user_id BIGINT(20),
+                    email VARCHAR(256),
+                    title VARCHAR(256),
+                    description TEXT,
+                    PRIMARY KEY (id),
+                    KEY (created_at),
+                    KEY (user_id)
+                ) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+    $wpdb->query($new_table);
 }
