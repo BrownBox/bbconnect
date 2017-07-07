@@ -121,7 +121,11 @@ function bbconnect_get_recent_activity($user_id = null) {
 
     // CRM Activities
     global $wpdb;
-    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking ORDER BY created_at DESC LIMIT 100;');
+    $where = '';
+    if ($user_id) {
+        $where .= ' AND user_id = '.$user_id;
+    }
+    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC LIMIT 100;');
     foreach ($results as $result) {
         $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
         $activities[] = array(
@@ -182,7 +186,7 @@ function bbconnect_activity_icon($activity_type) {
 function bbconnect_track_activity($args) {
     is_array($args) ? extract($args) : parse_str($args);
     // Some basic validation
-    if ((empty($user_id) && empty($email)) || empty($description)) {
+    if ((empty($user_id) && empty($email)) || empty($title)) {
         return false;
     }
 
@@ -215,6 +219,7 @@ function bbconnect_track_activity($args) {
             'created_at' => $date,
             'user_id' => $user_id,
             'email' => $email,
+            'title' => $title,
             'description' => $description,
     );
     $format = array(
@@ -222,6 +227,7 @@ function bbconnect_track_activity($args) {
             '%s',
             '%s',
             '%d',
+            '%s',
             '%s',
             '%s',
     );
