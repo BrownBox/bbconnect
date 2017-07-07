@@ -158,7 +158,7 @@ function bbconnect_activity_icon($activity_type) {
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/transaction.png';
             break;
         case 'email':
-            return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/email.png';
+            return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/subscription.png';
             break;
         case 'note':
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/note.png';
