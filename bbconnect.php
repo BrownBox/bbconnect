@@ -410,7 +410,7 @@ add_filter( 'bbconnect_get_user_actions', 'bbconnect_push_user_actions' );
 add_filter( 'bbconnect_get_user_actions_meta', 'bbconnect_push_user_actions_meta' );
 
 // ACTIVITY LOG
-add_filter('bbconnect_activity_icon', 'bbconnect_activity_icon');
+add_filter('bbconnect_activity_icon', 'bbconnect_activity_icon', 0, 2);
 
 // MODIFY USER HISTORY PANEL
 add_filter( 'bbconnect_ai_class_filter', 'bbc_log_ai_class_filter', 10, 2 );

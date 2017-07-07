@@ -26,7 +26,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
         }
 ?>
             <tr>
-                <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
+                <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', '', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
 <?php
         if (empty($user_id)) {
             $user_display = $activity['user'];
@@ -152,7 +152,7 @@ function bbconnect_sort_activities($a, $b) {
     return $a_date > $b_date ? -1 : 1;
 }
 
-function bbconnect_activity_icon($activity_type) {
+function bbconnect_activity_icon($icon, $activity_type) {
     switch ($activity_type) {
         case 'transaction':
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/transaction.png';
