@@ -77,6 +77,7 @@ include_once( 'options/bbconnect-actions-settings.php' );
 include_once( 'options/bbconnect-system-settings.php' );
 include_once( 'options/bbconnect-forms-settings.php' );
 include_once( 'options/bbconnect-panel-settings.php' );
+include_once( 'options/bbconnect-create-forms.php' );
 
 include_once( 'utilities/bbconnect-time.php' );
 include_once( 'utilities/bbconnect-fields.php' );
