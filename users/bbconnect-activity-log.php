@@ -108,11 +108,12 @@ function bbconnect_get_recent_activity($user_id = null) {
             $created = bbconnect_get_datetime($entry['date_created'], bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
+            $agent_details = !empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by'] ? ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')' : '';
             $activities[] = array(
                     'date' => $created->format('Y-m-d H:i:s'),
                     'user' => $user_name,
                     'user_id' => $entry['created_by'],
-                    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'],
+                    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
                     'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
                     'type' => 'form',
             );

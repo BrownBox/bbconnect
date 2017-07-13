@@ -139,8 +139,7 @@ if (class_exists('GFAPI')) {
                 foreach ($usermeta as $meta_key => $meta_value) {
                     update_user_meta($user->ID, $meta_key, $meta_value);
                 }
-                GFAPI::update_entry_property($entry['id'], 'created_by', $user->ID);
-                $entry['created_by'] = $user->ID;
+                $user_id = $user->ID;
             } else { // Create
                 do {
                     $username = wp_generate_password(12, false);
@@ -168,9 +167,17 @@ if (class_exists('GFAPI')) {
                 foreach ($usermeta as $meta_key => $meta_value) {
                     update_user_meta($user_id, $meta_key, $meta_value);
                 }
-                GFAPI::update_entry_property($entry['id'], 'created_by', $user_id);
-                $entry['created_by'] = $user_id;
             }
+            if (is_user_logged_in()) {
+                $agent_id = get_current_user_id();
+            } elseif (!empty($entry['created_by'])) {
+                $agent_id = $entry['created_by'];
+            } else {
+                $agent_id = $user_id;
+            }
+            $entry['agent_id'] = $agent_id;
+            $entry['created_by'] = $user_id;
+            GFAPI::update_entry($entry, $entry['id']);
         }
     }
 
@@ -266,4 +273,113 @@ if (class_exists('GFAPI')) {
        $tooltips['form_field_bbconnect_usermeta_key'] = "<h6>User Meta Key</h6> To save the value of a field into user meta enter the meta key you want to save it to (requires an email field to be present in the form).";
        return $tooltips;
     }
+}
+
+// @todo move the rest of the integration (above) into addon class
+add_action('gform_loaded', 'bbconnect_gf_addon_launch');
+function bbconnect_gf_addon_launch() {
+    if (!method_exists('GFForms', 'include_addon_framework')) {
+        return;
+    }
+
+    GFForms::include_addon_framework();
+    class GFBBConnect extends GFAddOn {
+        protected $_version = '1.0';
+        protected $_min_gravityforms_version = '1.9';
+        protected $_slug = 'bbconnect';
+        protected $_path = 'bbconnect/utilities/bbconnect-forms.php';
+        protected $_full_path = __FILE__;
+        protected $_title = 'Gravity Forms Connexions Integrations';
+        protected $_short_title = 'Connexions';
+        private static $_instance = null;
+
+        public function init() {
+            add_filter('gform_entries_field_value', array($this, 'filter_field_values'), 10, 4);
+            add_action('gform_entry_info', array($this, 'meta_box_entry_info'), 10, 2);
+            parent::init();
+        }
+
+        /**
+         * Returns an instance of this class, and stores it in the $_instance property.
+         *
+         * @return object $_instance An instance of this class.
+         */
+        public static function get_instance() {
+            if (self::$_instance == null) {
+                self::$_instance = new self();
+            }
+
+            return self::$_instance;
+        }
+
+        public function get_entry_meta($entry_meta, $form_id) {
+            $entry_meta['agent_id'] = array(
+                    'label' => 'Submitter',
+                    'is_numeric' => false,
+                    'is_default_column' => false,
+                    'filter' => array(
+                            'operators' => array(
+                                    'is',
+                                    'isnot'
+                            ),
+                            'choices' => $this->get_agent_list(),
+                    ),
+            );
+
+            return $entry_meta;
+        }
+
+        /**
+         * Customise display of our custom meta
+         * @param mixed $value
+         * @param integer $form_id
+         * @param mixed $field_id
+         * @param array $entry
+         * @return mixed
+         */
+        public function filter_field_values($value, $form_id, $field_id, $entry) {
+            switch ($field_id) {
+                case 'agent_id':
+                    if (!empty($value)) {
+                        $userdata = get_userdata($value);
+                        if (!empty($userdata)) {
+                            $value = $userdata->user_login;
+                        }
+                    }
+                    break;
+            }
+            return $value;
+        }
+
+        /**
+         * Add our custom meta to Entry meta box on entry details
+         * @param integer $form_id
+         * @param array $entry
+         */
+        public function meta_box_entry_info($form_id, $entry) {
+            if (!empty($entry['agent_id']) && $usermeta = get_userdata($entry['agent_id'])) {
+?>
+                Submitter:
+                <a href="user-edit.php?user_id=<?php echo absint($entry['agent_id']); ?>" alt="<?php esc_attr_e('View user profile', 'gravityforms'); ?>" title="<?php esc_attr_e('View user profile', 'gravityforms'); ?>"><?php echo esc_html($usermeta->user_login); ?></a>
+                <br><br>
+<?php
+            }
+        }
+
+        private function get_agent_list() {
+            $account_choices = array();
+            $args = apply_filters('gform_filters_get_users', array(
+                    'number' => 200,
+                    'fields' => array('ID', 'user_login'),
+            ));
+            $accounts = get_users($args);
+            $account_choices = array();
+            foreach ($accounts as $account) {
+                $account_choices[] = array('text' => $account->user_login, 'value' => $account->ID);
+            }
+            return $account_choices;
+        }
+    }
+
+    GFAddOn::register('GFBBConnect');
 }
