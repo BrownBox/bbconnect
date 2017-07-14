@@ -171,6 +171,8 @@ function bbconnect_form_locking() {
 
                 $this->_redirect_url = admin_url( 'admin.php?page=gf_edit_forms' );
 
+                add_action('gform_form_list_column_title', array($this, 'form_list_form_title'));
+                add_filter('gform_form_actions', array($this, 'form_list_lock_message'), 999, 2);
                 parent::__construct();
             }
 
@@ -181,19 +183,19 @@ function bbconnect_form_locking() {
                 return parent::check_lock($object_id);
             }
 
-        	public function get_strings() {
+            public function get_strings() {
                 if (in_array($this->get_object_id(), $this->bbconnect_forms)) {
-            		$strings = array(
-            			'currently_locked'  => __( 'This form is managed by Connexions. You cannot edit this form.', 'gravityforms' ),
-            			'currently_editing' => 'This form is managed by Connexions. You cannot edit this form.',
-            		);
+                    $strings = array(
+                        'currently_locked'  => __('This form is managed by Connexions. You cannot edit this form.', 'bbconnect'),
+                        'currently_editing' => __('This form is managed by Connexions. You cannot edit this form.', 'bbconnect'),
+                    );
 
-            		return array_merge(parent::get_strings(), $strings);
+                    return array_merge(parent::get_strings(), $strings);
                 }
                 return parent::get_strings();
-        	}
+            }
 
-        	public function get_lock_ui($user_id) {
+            public function get_lock_ui($user_id) {
                 if (in_array($this->get_object_id(), $this->bbconnect_forms)) {
                     $html = '<div id="gform-lock-dialog" class="notification-dialog-wrap">
                             <div class="notification-dialog-background"></div>
@@ -208,7 +210,23 @@ function bbconnect_form_locking() {
                     return $html;
                 }
                 return parent::get_lock_ui($user_id);
-        	}
+            }
+
+            public function form_list_form_title($form) {
+                if (in_array($form->id, $this->bbconnect_forms)) {
+                    echo '<strong>'.esc_html($form->title).'</strong>';
+                } else {
+                    echo '<strong><a href="?page=gf_edit_forms&id='.absint($form->id).'">'.esc_html($form->title).'</a></strong>';
+                }
+            }
+
+            public function form_list_lock_message($form_actions, $form_id) {
+                if (in_array($form_id, $this->bbconnect_forms)) {
+                    echo __('This form is managed by Connexions. You cannot edit this form.<br>', 'bbconnect');
+                    unset($form_actions['edit'], $form_actions['settings'], $form_actions['trash']);
+                }
+                return $form_actions;
+            }
         }
 
         class BBConnectGFFormSettingsLocking extends GFFormSettingsLocking {
@@ -223,30 +241,30 @@ function bbconnect_form_locking() {
             }
 
             protected function check_lock($object_id) {
-        	    list($subview, $form_id) = explode('-', $object_id);
+                list($subview, $form_id) = explode('-', $object_id);
                 if (in_array($form_id, $this->bbconnect_forms)) {
                     return bbconnect_get_crm_user()->ID;
                 }
                 return parent::check_lock($object_id);
             }
 
-        	public function get_strings() {
-        	    $object_id = $this->get_object_id();
-        	    list($subview, $form_id) = explode('-', $object_id);
+            public function get_strings() {
+                $object_id = $this->get_object_id();
+                list($subview, $form_id) = explode('-', $object_id);
                 if (in_array($form_id, $this->bbconnect_forms)) {
-            		$strings = array(
-            			'currently_locked'  => __( 'This form is managed by Connexions. You cannot edit this form.', 'gravityforms' ),
-            			'currently_editing' => 'This form is managed by Connexions. You cannot edit this form.',
-            		);
+                    $strings = array(
+                        'currently_locked'  => __( 'This form is managed by Connexions. You cannot edit this form.', 'gravityforms' ),
+                        'currently_editing' => 'This form is managed by Connexions. You cannot edit this form.',
+                    );
 
-            		return array_merge(parent::get_strings(), $strings);
+                    return array_merge(parent::get_strings(), $strings);
                 }
                 return parent::get_strings();
-        	}
+            }
 
-        	public function get_lock_ui($user_id) {
-        	    $object_id = $this->get_object_id();
-        	    list($subview, $form_id) = explode('-', $object_id);
+            public function get_lock_ui($user_id) {
+                $object_id = $this->get_object_id();
+                list($subview, $form_id) = explode('-', $object_id);
                 if (in_array($form_id, $this->bbconnect_forms)) {
                     $html = '<div id="gform-lock-dialog" class="notification-dialog-wrap">
                             <div class="notification-dialog-background"></div>
@@ -261,7 +279,7 @@ function bbconnect_form_locking() {
                     return $html;
                 }
                 return parent::get_lock_ui($user_id);
-        	}
+            }
         }
         $form_lock = new BBConnectGFFormLocking();
         $form_settings_lock = new BBConnectGFFormSettingsLocking();
