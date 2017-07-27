@@ -95,7 +95,14 @@ function bbconnect_get_recent_activity($user_id = null) {
 
     // Form Entries
     if (class_exists('GFAPI')) { // Gravity Forms
-        $search_criteria = array();
+        $search_criteria = array(
+                'field_filters' => array(
+                        array(
+                                'key' => 'status',
+                                'value' => 'active',
+                        ),
+                ),
+        );
         if ($user_id) {
             $search_criteria['field_filters'][] = array('key' => 'created_by', 'value' => $user_id);
         }
@@ -108,14 +115,26 @@ function bbconnect_get_recent_activity($user_id = null) {
             $created = bbconnect_get_datetime($entry['date_created'], bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
-            $agent_details = !empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by'] ? ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')' : '';
+            $agent_details = '';
+            if (!empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by']) {
+                if (!array_key_exists($entry['agent_id'], $userlist)) {
+                    $userlist[$entry['agent_id']] = new WP_User($entry['agent_id']);
+                }
+                $agent_details = ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')';
+            }
+            $activity_type = 'form';
+            foreach ($forms[$entry['form_id']]['fields'] as $field) {
+                if ($field->uniqueName == 'bb_activity_type') {
+                    $activity_type = $entry[$field->id];
+                }
+            }
             $activities[] = array(
                     'date' => $created->format('Y-m-d H:i:s'),
                     'user' => $user_name,
                     'user_id' => $entry['created_by'],
                     'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
                     'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
-                    'type' => 'form',
+                    'type' => $activity_type,
             );
         }
     }
