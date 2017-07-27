@@ -27,7 +27,6 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 
 == Current Add-ons ==
 
-* Activity View
 * MailChimp
 * Action Notes & Workqueues
 * Mailgun
@@ -44,13 +43,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 4. Go to **Connexions Options** to configure the options
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
-== Frequently Asked Questions ==
-
-= What's this all about? =
-
-Since 2010 we've built out Connexions to meet the needs of clients in both the for-profit and non-profit sectors who were managing thousands of user profiles and financial transactions. Most of our clients wanted an integrated approach to relationship management that simply couldn't be found with hosted solutions and the constant juggling between several different applications was too cumbersome. In 2012 we decided to release Connexions as a plugin everyone could use but we took a year to ensure that we had a mature and stable product to offer before releasing it. We hope you find it useful.
-
 == Changelog ==
+= 2.5.4 =
+* Added support for tracking user who submitted a form separately from the user the form entry was about
+* Show form locked message on forms list page for Connexions forms
+* Added internal and external reference fields to send email form
+* Bug fixes
+        
 = 2.5.3 =
 * Added ability for Connexions to create and manage its own Gravity Forms
 * Created first form for tracking sent emails
