@@ -132,6 +132,33 @@ function bbconnect_get_send_email_form() {
                             'defaultValue' => 'bbconnect',
                             'class' => 'readonly',
                     ),
+                    5 => array(
+                            'type' => 'hidden',
+                            'id' => 7,
+                            'label' => 'Activity Type',
+                            'isRequired' => false,
+                            'defaultValue' => 'email',
+                            'class' => 'readonly',
+                            'uniqueName' => 'bb_activity_type',
+                    ),
+                    6 => array(
+                            'type' => 'hidden',
+                            'id' => 8,
+                            'label' => 'Internal Reference',
+                            'isRequired' => false,
+                            'defaultValue' => '',
+                            'class' => 'readonly',
+                            'uniqueName' => 'bb_internal_reference',
+                    ),
+                    7 => array(
+                            'type' => 'hidden',
+                            'id' => 9,
+                            'label' => 'External Reference',
+                            'isRequired' => false,
+                            'defaultValue' => '',
+                            'class' => 'readonly',
+                            'uniqueName' => 'bb_external_reference',
+                    ),
             ),
     );
 
