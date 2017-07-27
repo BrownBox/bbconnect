@@ -16,7 +16,7 @@ function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transactio
     }
 
     if ($user instanceof WP_User) {
-        $total = bb_cart_total_price();
+        $total = get_post_meta($transaction_id, 'total_amount', true);
         $previous_total = (float)get_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', true);
         $previous_count = (int)get_user_meta($user->ID, 'bbconnect_kpi_transaction_count', true);
 
