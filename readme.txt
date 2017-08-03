@@ -44,6 +44,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.5.5 =
+* Added new filter for disabled fields on user profile
+* Bug fixes
+
 = 2.5.4 =
 * Added support for tracking user who submitted a form separately from the user the form entry was about
 * Show form locked message on forms list page for Connexions forms
