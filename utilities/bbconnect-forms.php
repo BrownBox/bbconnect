@@ -92,13 +92,13 @@ if (class_exists('GFAPI')) {
                 }
                 if (!empty($field->inputs)) {
                     foreach ($field->inputs as $input) {
-                        if (!empty($input->usermeta_key)) {
-                            switch ($input->usermeta_key) {
+                        if (!empty($input['usermeta_key'])) {
+                            switch ($input['usermeta_key']) {
                                 case 'telephone':
                                     $phone_number = $entry[$input['id']];
                                     break;
                                 default:
-                                    $usermeta[$input->usermeta_key] = $entry[$input['id']];
+                                    $usermeta[$input['usermeta_key']] = $entry[$input['id']];
                                     break;
                             }
                         }
