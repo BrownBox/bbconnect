@@ -109,6 +109,7 @@ function bbconnect_get_recent_activity($user_id = null) {
         $paging = array('offset' => 0, 'page_size' => 100);
         $entries = GFAPI::get_entries(0, $search_criteria, null, $paging);
         foreach ($entries as $entry) {
+            // @todo treat Connexions forms differently to regular forms
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
