@@ -1369,7 +1369,7 @@ function bbconnect_field( $meta, $args = array() ) {
 
 }
 
-function bbconnect_field_disabled( $key ) {
+function bbconnect_field_disabled($key) {
     $current_screen = get_current_screen();
     $valid_pages = array(
             'users_page_bbconnect_new_user',
@@ -1380,13 +1380,15 @@ function bbconnect_field_disabled( $key ) {
     }
 
     $match = 0;
-    $disabled_fields = array( 'kpi', 'segment', 'disabled', 'category' );
+    $disabled_fields = array('kpi', 'segment', 'disabled', 'category');
     foreach ($disabled_fields as $field) {
-        if( strpos( strtolower( $key ), strtolower( $field ) ) !== false ) {
+        if (strpos(strtolower($key), strtolower($field)) !== false) {
             $match++;
         }
     }
 
-    $disabled = ( $match > 0 ) ? ' disabled' : '';
-    return $disabled;
+    $disabled = $match > 0;
+    $disabled = apply_filters('bbconnect_field_disabled', $disabled, $key);
+
+    return $disabled ? ' disabled' : '';
 }
