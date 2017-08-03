@@ -188,7 +188,7 @@ function bbconnect_account_information_fields() {
             // PASSWORD -- WILL NOT BY SYNCED
             array( 'source' => 'wpr', 'meta_key' => 'pass', 'tag' => '', 'name' => __( 'Password', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => true, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'password', 'choices' => array( '1', '2' ) ), 'help' => '' ),
             // User Source
-            array('source' => 'bbconnect', 'meta_key' => 'source', 'tag' => '', 'name' => __('User Source', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array('manual' => __('Manually Created', 'bbconnected'), 'form' => __('Form Submission', 'bbconnect'), '' => __('Unknown', 'bbconnect'))), 'help' => ''),
+            array('source' => 'bbconnect', 'meta_key' => 'source', 'tag' => '', 'name' => __('User Source', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array('manual' => __('Manually Created', 'bbconnect'), 'form' => __('Form Submission', 'bbconnect'), '' => __('Unknown', 'bbconnect'))), 'help' => ''),
 
             // Donor Segment
             array( 'source' => 'bbconnect', 'meta_key' => 'segment_id', 'tag' => '', 'name' => __( 'Donor Segment', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => 'bbconnect_helper_segment' ), 'help' => false ),

@@ -414,7 +414,7 @@ function bbconnect_update_v_2_2_2() {
 function bbconnect_update_v_2_3_2() {
     // Add new user source field
     $field = array(
-            array('source' => 'bbconnect', 'meta_key' => 'source', 'tag' => '', 'name' => __('User Source', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array('manual' => __('Manually Created', 'bbconnected'), 'form' => __('Form Submission', 'bbconnect'), '' => __('Unknown', 'bbconnect'))), 'help' => ''),
+            array('source' => 'bbconnect', 'meta_key' => 'source', 'tag' => '', 'name' => __('User Source', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'select', 'choices' => array('manual' => __('Manually Created', 'bbconnect'), 'form' => __('Form Submission', 'bbconnect'), '' => __('Unknown', 'bbconnect'))), 'help' => ''),
     );
     $field_keys = array();
 
