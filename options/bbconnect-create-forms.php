@@ -2,8 +2,8 @@
 function bbconnect_get_send_email_form() {
     $send_email_form_id = get_option('bbconnect_send_email_form_id');
     $send_email_form = array(
-            'title' => 'Send Email',
-            'description' => 'Connexions form for email sending',
+            'title' => 'Send Message',
+            'description' => 'Connexions form for sending emails and SMS messages',
             'is_active' => true,
             'cssClass' => 'bbconnect',
             'button' => array(
@@ -17,7 +17,7 @@ function bbconnect_get_send_email_form() {
                             'name' => 'Default Confirmation',
                             'isDefault' => true,
                             'type' => 'message',
-                            'message' => 'Your email has been sent.',
+                            'message' => 'Your message has been sent.',
                     ),
             ),
             'fields' => array(
@@ -112,12 +112,19 @@ function bbconnect_get_send_email_form() {
                             'class' => 'readonly',
                     ),
                     2 => array(
+                            'type' => 'text ',
+                            'id' => 10,
+                            'label' => 'To:Number',
+                            'isRequired' => false,
+                            'cssClass' => 'readonly',
+                    ),
+                    3 => array(
                             'type' => 'text',
                             'id' => 4,
                             'label' => 'Subject',
                             'isRequired' => false,
                     ),
-                    3 => array(
+                    4 => array(
                             'type' => 'textarea',
                             'id' => 5,
                             'label' => 'Message',
