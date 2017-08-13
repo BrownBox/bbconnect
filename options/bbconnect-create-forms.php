@@ -27,7 +27,7 @@ function bbconnect_get_send_email_form() {
                             'label' => 'To: Name',
                             'isRequired' => false,
                             'nameFormat' => 'advanced',
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                             'inputs' => array(
                                     0 => array(
                                             'id' => '2.2',
@@ -109,12 +109,12 @@ function bbconnect_get_send_email_form() {
                             'id' => 3,
                             'label' => 'To: Email',
                             'isRequired' => false,
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                     ),
                     2 => array(
                             'type' => 'text ',
                             'id' => 10,
-                            'label' => 'To:Number',
+                            'label' => 'To: Number',
                             'isRequired' => false,
                             'cssClass' => 'readonly',
                     ),
@@ -131,39 +131,39 @@ function bbconnect_get_send_email_form() {
                             'isRequired' => false,
                             'useRichTextEditor' => true,
                     ),
-                    4 => array(
+                    5 => array(
                             'type' => 'hidden',
                             'id' => 6,
                             'label' => 'Source',
                             'isRequired' => false,
                             'defaultValue' => 'bbconnect',
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                     ),
-                    5 => array(
+                    6 => array(
                             'type' => 'hidden',
                             'id' => 7,
                             'label' => 'Activity Type',
                             'isRequired' => false,
                             'defaultValue' => 'email',
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                             'uniqueName' => 'bb_activity_type',
                     ),
-                    6 => array(
+                    7 => array(
                             'type' => 'hidden',
                             'id' => 8,
                             'label' => 'Internal Reference',
                             'isRequired' => false,
                             'defaultValue' => '',
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                             'uniqueName' => 'bb_internal_reference',
                     ),
-                    7 => array(
+                    8 => array(
                             'type' => 'hidden',
                             'id' => 9,
                             'label' => 'External Reference',
                             'isRequired' => false,
                             'defaultValue' => '',
-                            'class' => 'readonly',
+                            'cssClass' => 'readonly',
                             'uniqueName' => 'bb_external_reference',
                     ),
             ),
