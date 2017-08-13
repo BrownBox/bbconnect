@@ -194,6 +194,12 @@ function bbconnect_get_crm_user() {
     return $user;
 }
 
+add_filter('bbconnect_get_crm_forms', 'bbconnect_get_crm_forms', 0);
+function bbconnect_get_crm_forms(array $forms) {
+    $forms[] = bbconnect_get_send_email_form();
+    return $forms;
+}
+
 add_action('init', 'bbconnect_form_locking', 999); // Run as late as possible to make sure GF has inited first
 function bbconnect_form_locking() {
     if (class_exists('GFFormLocking')) {
@@ -201,7 +207,7 @@ function bbconnect_form_locking() {
             private $bbconnect_forms = array();
 
             public function __construct() {
-                $this->bbconnect_forms[] = bbconnect_get_send_email_form();
+                $this->bbconnect_forms = apply_filters('bbconnect_get_crm_forms', array());
 
                 $this->_redirect_url = admin_url( 'admin.php?page=gf_edit_forms' );
 
@@ -267,7 +273,7 @@ function bbconnect_form_locking() {
             private $bbconnect_forms = array();
 
             public function __construct() {
-                $this->bbconnect_forms[] = bbconnect_get_send_email_form();
+                $this->bbconnect_forms = apply_filters('bbconnect_get_crm_forms', array());
 
                 $this->_redirect_url = admin_url( 'admin.php?page=gf_edit_forms' );
 
