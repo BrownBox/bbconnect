@@ -9,15 +9,6 @@ function bbconnect_profile_quicklinks($user_id) {
 
 function bbconnect_show_quicklinks($location, array $user_ids, array $args = array()) {
 ?>
-<style>
-/* Quicklinks */
-#quicklinks-wrapper { background: #fff none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.2); display: block; margin-bottom: 0.5rem; min-height: 1.5rem; min-width: 100px; padding: 1.375rem 0.375rem 0.25rem; position: relative; right: 0;	top: 0; width: 98%;}
-#quicklinks-wrapper > strong { box-sizing: border-box; float: left; font-size: 8px; left: 0; padding-left: 5px; position: absolute; top: 0; width: 100%;}
-#bbconnect #quicklinks-wrapper ul {white-space: nowrap;}
-#bbconnect #quicklinks-wrapper li a { background: #eee none repeat scroll 0 0; color: #222; font-size: 0.675rem !important; font-weight: bold; margin: 0.25rem 0; padding: 0.125rem 0.25rem; text-decoration: none; width: auto;}
-#bbconnect #quicklinks-wrapper li { display: inline; float: none;}
-#bbconnect #quicklinks-wrapper li a.s-quicklinks:hover { background: #ccc none repeat scroll 0 0;}
-</style>
 <div id="quicklinks-wrapper"><strong>QUICKLINKS</strong>
 <?php
     $quicklinks = array();
