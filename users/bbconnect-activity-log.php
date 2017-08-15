@@ -109,7 +109,6 @@ function bbconnect_get_recent_activity($user_id = null) {
         $paging = array('offset' => 0, 'page_size' => 100);
         $entries = GFAPI::get_entries(0, $search_criteria, null, $paging);
         foreach ($entries as $entry) {
-            // @todo treat Connexions forms differently to regular forms
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
@@ -117,11 +116,15 @@ function bbconnect_get_recent_activity($user_id = null) {
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
             $agent_details = '';
+            $agent = null;
             if (!empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by']) {
                 if (!array_key_exists($entry['agent_id'], $userlist)) {
                     $userlist[$entry['agent_id']] = new WP_User($entry['agent_id']);
                 }
+                $agent = $userlist[$entry['agent_id']];
                 $agent_details = ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')';
+            } else {
+                $agent = $userlist[$entry['created_by']];
             }
             $activity_type = 'form';
             foreach ($forms[$entry['form_id']]['fields'] as $field) {
@@ -129,7 +132,7 @@ function bbconnect_get_recent_activity($user_id = null) {
                     $activity_type = $entry[$field->id];
                 }
             }
-            $activities[] = array(
+            $activity = array(
                     'date' => $created->format('Y-m-d H:i:s'),
                     'user' => $user_name,
                     'user_id' => $entry['created_by'],
@@ -137,6 +140,8 @@ function bbconnect_get_recent_activity($user_id = null) {
                     'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
                     'type' => $activity_type,
             );
+            $activity = apply_filters('bbconnect_form_activity_details', $activity, $forms[$entry['form_id']], $entry, $agent);
+            $activities[] = $activity;
         }
     }
 
@@ -171,6 +176,34 @@ function bbconnect_sort_activities($a, $b) {
     $b_date = bbconnect_get_datetime($b['date']);
 
     return $a_date > $b_date ? -1 : 1;
+}
+
+/*
+    'date' => $created->format('Y-m-d H:i:s'),
+    'user' => $user_name,
+    'user_id' => $entry['created_by'],
+    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
+    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
+    'type' => $activity_type,
+ */
+add_filter('bbconnect_form_activity_details', 'bbconnect_form_activity_details', 1, 4);
+function bbconnect_form_activity_details($activity, $form, $entry, $agent) {
+    switch ($form['id']) {
+        case bbconnect_get_send_email_form():
+            if (!empty($entry[10])) { // To: Number
+                $activity['title'] = 'SMS sent by '.$agent->display_name;
+            } else {
+                $activity['title'] = 'Email sent by '.$agent->display_name.': "'.$entry[4].'"'; // Subject
+            }
+            $activity['details'] = $entry[5].'<br>'.$activity['details']; // Message
+            break;
+        case bbconnect_get_action_form():
+            $activity['title'] = 'Action Recorded: '.$entry[1]; // Action type
+            $activity['details'] = $entry[8].'<br>'.$activity['details']; // Details
+            $activity['type'] = 'action';
+            break;
+    }
+    return $activity;
 }
 
 function bbconnect_activity_icon($icon, $activity_type) {
