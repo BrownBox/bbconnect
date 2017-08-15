@@ -44,6 +44,16 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.5.6 =
+* Extended Send Email form to also support SMS messages
+* Added filter so that addons can add to the list of forms owned by the CRM
+* Moved quicklink styles to CSS file
+* Added support for modal quicklinks which do not contain forms - NOT BACKWARDS COMPATIBLE! Any classes which previously extended bb_modal_quicklink will need to be updated to extend bb_form_quicklink
+* Added quicklink to submit a form on behalf of a user
+* Added pre-render of user details for Gravity Forms
+* Added new Action Notes form
+* Bug fixes
+
 = 2.5.5 =
 * Added new filter for disabled fields on user profile
 * Bug fixes
