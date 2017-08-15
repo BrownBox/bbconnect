@@ -178,14 +178,6 @@ function bbconnect_sort_activities($a, $b) {
     return $a_date > $b_date ? -1 : 1;
 }
 
-/*
-    'date' => $created->format('Y-m-d H:i:s'),
-    'user' => $user_name,
-    'user_id' => $entry['created_by'],
-    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
-    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
-    'type' => $activity_type,
- */
 add_filter('bbconnect_form_activity_details', 'bbconnect_form_activity_details', 1, 4);
 function bbconnect_form_activity_details($activity, $form, $entry, $agent) {
     switch ($form['id']) {
