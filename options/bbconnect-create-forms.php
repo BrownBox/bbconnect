@@ -2,8 +2,8 @@
 function bbconnect_get_send_email_form() {
     $send_email_form_id = get_option('bbconnect_send_email_form_id');
     $send_email_form = array(
-            'title' => 'Send Message',
-            'description' => 'Connexions form for sending emails and SMS messages',
+            'title' => '[Connexions] Sent Messages',
+            'description' => 'Connexions form for tracking sent emails and SMS messages',
             'is_active' => true,
             'cssClass' => 'bbconnect',
             'button' => array(
@@ -180,6 +180,269 @@ function bbconnect_get_send_email_form() {
     return $send_email_form_id;
 }
 
+function bbconnect_get_action_form() {
+    $action_form_id = get_option('bbconnect_action_form_id');
+    $action_form = array(
+            'title' => '[Connexions] Action Notes',
+            'description' => 'Connexions form for tracking actions',
+            'is_active' => true,
+            'cssClass' => 'bbconnect',
+            'button' => array(
+                    'type' => 'text',
+                    'text' => 'Save',
+                    'imageUrl' => '',
+            ),
+            'confirmations' => array(
+                    0 => array(
+                            'id' => '59767b01c4d04',
+                            'name' => 'Default Confirmation',
+                            'isDefault' => true,
+                            'type' => 'message',
+                            'message' => 'Action note saved successfully.',
+                    )
+            ),
+            'fields' => array(
+                    0 => array(
+                            'type' => 'email',
+                            'id' => 18,
+                            'label' => 'User email',
+                            'isRequired' => true,
+                            'cssClass' => 'hidden',
+                    ),
+                    1 => array(
+                            'type' => 'section',
+                            'id' => 2,
+                            'label' => 'Note Definition',
+                            'isRequired' => false,
+                            'visibility' => 'administrative',
+                    ),
+                    2 => array(
+                            'type' => 'radio',
+                            'id' => 1,
+                            'label' => 'Note type',
+                            'isRequired' => false,
+                            'choices' => array(
+                                    0 => array(
+                                            'text' => 'observation/comment',
+                                            'value' => 'note',
+                                            'isSelected' => false,
+                                            'price' => ''
+                                    ),
+                                    1 => array(
+                                            'text' => 'communication/conversation/correspondence',
+                                            'value' => 'comms',
+                                            'isSelected' => false,
+                                            'price' => ''
+                                    ),
+                                    2 => array(
+                                            'text' => 'did/do work',
+                                            'value' => 'work',
+                                            'isSelected' => false,
+                                            'price' => ''
+                                    )
+                            ),
+                    ),
+                    3 => array(
+                            'type' => 'radio',
+                            'id' => 3,
+                            'label' => 'Comms type',
+                            'isRequired' => false,
+                            'choices' => array(
+                                    0 => array(
+                                            'text' => 'meeting',
+                                            'value' => 'meeting',
+                                            'isSelected' => false,
+                                    ),
+                                    1 => array(
+                                            'text' => 'phone',
+                                            'value' => 'phone',
+                                            'isSelected' => false,
+                                    ),
+                                    2 => array(
+                                            'text' => 'email',
+                                            'value' => 'email',
+                                            'isSelected' => false,
+                                    ),
+                                    3 => array(
+                                            'text' => 'other',
+                                            'value' => 'other',
+                                            'isSelected' => false,
+                                    ),
+                            ),
+                            'cssClass' => 'horizontal',
+                            'conditionalLogic' => array(
+                                    'actionType' => 'show',
+                                    'logicType' => 'all',
+                                    'rules' => array(
+                                            0 => array(
+                                                    'fieldId' => '1',
+                                                    'operator' => 'is',
+                                                    'value' => 'comms',
+                                            ),
+                                    ),
+                            ),
+                    ),
+                    4 => array(
+                            'type' => 'radio',
+                            'id' => 4,
+                            'label' => 'Work type',
+                            'isRequired' => false,
+                            'choices' => array(
+                                    0 => array(
+                                            'text' => 'progressed application',
+                                            'value' => 'progressed application',
+                                            'isSelected' => false,
+                                    ),
+                                    1 => array(
+                                            'text' => 'other',
+                                            'value' => 'other',
+                                            'isSelected' => false,
+                                    ),
+                            ),
+                            'cssClass' => 'horizontal',
+                            'conditionalLogic' => array(
+                                    'actionType' => 'show',
+                                    'logicType' => 'all',
+                                    'rules' => array(
+                                            0 => array(
+                                                    'fieldId' => '1',
+                                                    'operator' => 'is',
+                                                    'value' => 'work'
+                                            )
+                                    )
+                            ),
+                    ),
+                    5 => array(
+                            'type' => 'text',
+                            'id' => 5,
+                            'label' => 'Work Queue',
+                            'isRequired' => false,
+                            'visibility' => 'administrative',
+                    ),
+                    6 => array(
+                            'type' => 'section',
+                            'id' => 6,
+                            'label' => 'Note Details',
+                            'isRequired' => false,
+                            'visibility' => 'administrative',
+                    ),
+                    7 => array(
+                            'type' => 'text',
+                            'id' => 7,
+                            'label' => 'Headline',
+                            'isRequired' => false,
+                            'size' => 'large',
+                    ),
+                    8 => array(
+                            'type' => 'textarea',
+                            'id' => 8,
+                            'label' => 'Details',
+                            'isRequired' => false,
+                            'useRichTextEditor' => true,
+                    ),
+                    9 => array(
+                            'type' => 'fileupload',
+                            'id' => 17,
+                            'label' => 'Attachment',
+                            'isRequired' => false,
+                            'multipleFiles' => true,
+                            'allowedExtensions' => 'jpg, png, pdf',
+                    ),
+                    10 => array(
+                            'type' => 'section',
+                            'id' => 13,
+                            'label' => 'Follow Up Details',
+                            'isRequired' => false,
+                            'visibility' => 'administrative',
+                    ),
+                    11 => array(
+                            'type' => 'checkbox',
+                            'id' => 9,
+                            'label' => '',
+                            'isRequired' => false,
+                            'choices' => array(
+                                    0 => array(
+                                            'text' => 'Follow up required',
+                                            'value' => 'Follow up required',
+                                            'isSelected' => false,
+                                    ),
+                            ),
+                            'inputs' => array(
+                                    0 => array(
+                                            'id' => '9.1',
+                                            'label' => 'Follow up required',
+                                            'name' => '',
+                                    ),
+                            ),
+                    ),
+                    12 => array(
+                            'type' => 'date',
+                            'id' => 11,
+                            'label' => 'Follow up date',
+                            'isRequired' => false,
+                            'dateType' => 'datepicker',
+                            'calendarIconType' => 'none',
+                            'conditionalLogic' => array(
+                                    'actionType' => 'show',
+                                    'logicType' => 'all',
+                                    'rules' => array(
+                                            0 => array(
+                                                    'fieldId' => '9',
+                                                    'operator' => 'is',
+                                                    'value' => 'Follow up required'
+                                            )
+                                    )
+                            ),
+                    ),
+                    13 => array(
+                            'type' => 'textarea',
+                            'id' => 14,
+                            'label' => 'Follow up instructions',
+                            'isRequired' => false,
+                            'conditionalLogic' => array(
+                                    'actionType' => 'show',
+                                    'logicType' => 'all',
+                                    'rules' => array(
+                                            0 => array(
+                                                    'fieldId' => '9',
+                                                    'operator' => 'is',
+                                                    'value' => 'Follow up required',
+                                            ),
+                                    ),
+                            ),
+                            'useRichTextEditor' => true,
+                    ),
+                    14 => array(
+                            'type' => 'email',
+                            'id' => 12,
+                            'label' => 'Follow up notification email',
+                            'isRequired' => false,
+                            'conditionalLogic' => array(
+                                    'actionType' => 'show',
+                                    'logicType' => 'all',
+                                    'rules' => array(
+                                            0 => array(
+                                                    'fieldId' => '9',
+                                                    'operator' => 'is',
+                                                    'value' => 'Follow up required',
+                                            ),
+                                    ),
+                            ),
+                    ),
+            ),
+    );
+
+    if (!$action_form_id || !GFAPI::form_id_exists($action_form_id)) { // If form doesn't exist, create it
+        $action_form_id = GFAPI::add_form($action_form);
+        update_option('bbconnect_action_form_id', $action_form_id);
+    } else { // Otherwise if we've created it previously, just update it to make sure it hasn't been modified and is the latest version
+        $action_form['id'] = $action_form_id;
+        GFAPI::update_form($action_form);
+    }
+
+    return $action_form_id;
+}
+
 function bbconnect_get_crm_user() {
     $user = get_user_by('login', 'connexions');
     if (!$user) {
@@ -197,6 +460,7 @@ function bbconnect_get_crm_user() {
 add_filter('bbconnect_get_crm_forms', 'bbconnect_get_crm_forms', 0);
 function bbconnect_get_crm_forms(array $forms) {
     $forms[] = bbconnect_get_send_email_form();
+    $forms[] = bbconnect_get_action_form();
     return $forms;
 }
 
