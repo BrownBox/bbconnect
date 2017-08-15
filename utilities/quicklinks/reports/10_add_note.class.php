@@ -4,7 +4,7 @@
  * @author markparnell
  *
  */
-class reports_10_add_note_quicklink extends bb_modal_quicklink {
+class reports_10_add_note_quicklink extends bb_form_quicklink {
     public function __construct() {
         parent::__construct();
         $this->title = 'Add Note';

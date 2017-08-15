@@ -3,7 +3,7 @@
  * Export quicklink
  * @author markparnell
  */
-class reports_40_export_quicklink extends bb_modal_quicklink {
+class reports_40_export_quicklink extends bb_form_quicklink {
     var $trigger_export = true;
 
     public function __construct() {

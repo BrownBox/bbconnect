@@ -3,7 +3,7 @@
  * Export without note quicklink
  * @author markparnell
  */
-class reports_30_export_without_note_quicklink extends bb_modal_quicklink {
+class reports_30_export_without_note_quicklink extends bb_form_quicklink {
     var $trigger_export = true;
 
     public function __construct() {

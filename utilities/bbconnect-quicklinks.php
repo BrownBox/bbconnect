@@ -78,13 +78,54 @@ abstract class bb_quicklink {
  */
 abstract class bb_modal_quicklink extends bb_quicklink {
     var $modal_id;
+    var $modal_width = 600;
+    var $modal_height = 550;
+
+    abstract protected function modal_contents(array $user_ids = array(), array $args = array());
+
+    public function __construct() {
+        $this->modal_id = wp_generate_password(6, false);
+    }
+
+    /**
+     * Outputs the quicklink button
+     */
+    public function show_link(array $user_ids, array $args = array()) {
+        $url = '#TB_inline?width='.$this->modal_width.'&height='.$this->modal_height.'&inlineId='.$this->modal_id;
+        printf($this->link_template, 'thickbox', $url, $attrs, $this->title);
+
+        $this->output_modal($user_ids, $args);
+    }
+
+    /**
+     * Outputs the thickbox modal and the required javascript
+     */
+    protected function output_modal(array $user_ids, array $args = array()) {
+        add_thickbox(); // Make sure modal library is loaded
+?>
+<div id="<?php echo $this->modal_id; ?>" style="display: none;">
+    <div style="overflow: scroll;">
+        <h2><?php echo $this->title; ?></h2>
+        <?php $this->modal_contents($user_ids, $args); ?>
+    </div>
+</div>
+<?php
+    }
+}
+
+/**
+ * Base class for custom form quicklinks
+ * @author markparnell
+ * @since 2.5.6
+ */
+abstract class bb_form_quicklink extends bb_modal_quicklink {
     var $trigger_export = false;
 
     abstract protected function form_contents(array $user_ids = array(), array $args = array());
     abstract static public function post_submission();
 
     public function __construct() {
-        $this->modal_id = wp_generate_password(6, false);
+        parent::__construct();
         add_action('wp_ajax_'.get_class($this).'_submit', array(get_class($this), 'post_submission'));
     }
 
@@ -98,29 +139,29 @@ abstract class bb_modal_quicklink extends bb_quicklink {
         $this->output_modal($user_ids, $args);
     }
 
+    protected function modal_contents(array $user_ids = array(), array $args = array()) {
+?>
+        <form action="" method="post">
+            <?php $this->form_contents($user_ids, $args); ?>
+            <br> <input type="submit" class="button action" onclick="jQuery(this).val('Processing, please wait...').prop('disabled', true); return <?php echo $function_name; ?>(this);" value="Submit">
+        </form>
+<?php
+    }
+
     /**
      * Outputs the thickbox modal and the required javascript
      * @see self::form_contents()
      */
     protected function output_modal(array $user_ids, array $args = array()) {
-        add_thickbox(); // Make sure modal library is loaded
+        parent::output_modal($user_ids, $args);
         $function_name = get_class($this).'_action_submit';
-        ?>
-<div id="<?php echo $this->modal_id; ?>" style="display: none;">
-    <div>
-        <h2><?php echo $this->title; ?></h2>
-        <form action="" method="post">
-                    <?php $this->form_contents($user_ids, $args); ?>
-                    <br> <input type="submit" class="button action" onclick="jQuery(this).val('Processing, please wait...').prop('disabled', true); return <?php echo $function_name; ?>(this);" value="Submit">
-        </form>
-    </div>
-</div>
+?>
 <script type="text/javascript">
-            function <?php echo $function_name; ?>(e) {
-                var tableName = '<?php echo $this->title; ?>';
-                var data = {
-                        'action': '<?php echo get_class($this); ?>_submit',
-                        'user_ids': '<?php echo implode(',', $user_ids); ?>'
+    function <?php echo $function_name; ?>(e) {
+        var tableName = '<?php echo $this->title; ?>';
+        var data = {
+                'action': '<?php echo get_class($this); ?>_submit',
+                'user_ids': '<?php echo implode(',', $user_ids); ?>'
 <?php
         foreach ($args as $key => $data) {
             if (is_array($data)) {
@@ -131,55 +172,55 @@ abstract class bb_modal_quicklink extends bb_quicklink {
 <?php
         }
 ?>
-                };
-                jQuery('#TB_ajaxContent form').find('textarea, input, select').each(function() {
-                    var element = jQuery(this);
-                    var fieldName = element.attr('name');
-                    if (typeof fieldName !== 'undefined') {
-                        if (element.hasClass('wp-editor-area') && tinymce.get(fieldName) !== null) {
-                            data[fieldName] = tinymce.get(fieldName).getContent();
-                        } else if (element.attr('type') == 'checkbox' || element.attr('type') == 'radio') {
-                            if (element.prop('checked')) {
-                                data[fieldName] = element.val();
-                            }
-                        } else {
-                            data[fieldName] = element.val();
-                        }
+        };
+        jQuery('#TB_ajaxContent form').find('textarea, input, select').each(function() {
+            var element = jQuery(this);
+            var fieldName = element.attr('name');
+            if (typeof fieldName !== 'undefined') {
+                if (element.hasClass('wp-editor-area') && tinymce.get(fieldName) !== null) {
+                    data[fieldName] = tinymce.get(fieldName).getContent();
+                } else if (element.attr('type') == 'checkbox' || element.attr('type') == 'radio') {
+                    if (element.prop('checked')) {
+                        data[fieldName] = element.val();
                     }
-                });
-                jQuery.post(ajaxurl, data, function(response) {
-                    if (response == 0) {
-                        var appendTableName = jQuery('#TB_ajaxContent form').find('select.append_table_name').first().children(':selected').text();
-                        if (appendTableName != '') {
-                            tableName += ' - '+appendTableName;
-                        }
-                        jQuery(e).val('Submit').prop('disabled', false);
-                        tb_remove();
+                } else {
+                    data[fieldName] = element.val();
+                }
+            }
+        });
+        jQuery.post(ajaxurl, data, function(response) {
+            if (response == 0) {
+                var appendTableName = jQuery('#TB_ajaxContent form').find('select.append_table_name').first().children(':selected').text();
+                if (appendTableName != '') {
+                    tableName += ' - '+appendTableName;
+                }
+                jQuery(e).val('Submit').prop('disabled', false);
+                tb_remove();
 <?php
         if ($this->trigger_export) {
 ?>
-                        tableExport = jQuery('.wp-list-table').tableExport({
-                                formats: ['csv'],
-                                filename: tableName,
-                                exportButtons: false
-                        });
-                        exportData = tableExport.getExportData()[jQuery('.wp-list-table').attr('id')]['csv'];
-                        tableExport.export2file(exportData.data, exportData.mimeType, exportData.filename, exportData.fileExtension);
+                tableExport = jQuery('.wp-list-table').tableExport({
+                        formats: ['csv'],
+                        filename: tableName,
+                        exportButtons: false
+                });
+                exportData = tableExport.getExportData()[jQuery('.wp-list-table').attr('id')]['csv'];
+                tableExport.export2file(exportData.data, exportData.mimeType, exportData.filename, exportData.fileExtension);
 <?php
         } else {
 ?>
-                        window.location.reload();
+                window.location.reload();
 <?php
         }
 ?>
-                    } else {
-                        alert(response);
-                        jQuery(e).val('Submit').prop('disabled', false);
-                    }
-                });
-                return false;
+            } else {
+                alert(response);
+                jQuery(e).val('Submit').prop('disabled', false);
             }
-        </script>
+        });
+        return false;
+    }
+</script>
 <?php
     }
 
