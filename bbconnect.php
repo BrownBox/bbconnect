@@ -342,6 +342,11 @@ function bbconnect_menu() {
 	// ADD THE MODAL WINDOW
 	$bbconnect_menu['bbconnect_modal'] = add_submenu_page( NULL, __( 'Actions', 'bbconnect' ), '', 'add_users', 'bbconnect_modal_action', 'bbconnect_modal_action' );
 
+	// ADD THE FORM PAGE
+	// By adding and then removing the submenu we can register the page without it appearing in the menu, while keeping Users highlighted when on the page. Nice!
+	$bbconnect_menu['bbconnect_gravity_form'] = add_submenu_page( 'users.php', __( 'Submit Form', 'bbconnect' ), '', 'add_users', 'bbconnect_submit_gravity_form', 'bbconnect_submit_gravity_form' );
+	remove_submenu_page('users.php', 'bbconnect_submit_gravity_form');
+
 	$bbconnect_menu['users'] = 'users.php';
 
 	$bbconnect_menu = apply_filters( 'bbconnect_push_menu', $bbconnect_menu );
