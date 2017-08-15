@@ -112,7 +112,7 @@ function bbconnect_get_send_email_form() {
                             'cssClass' => 'readonly',
                     ),
                     2 => array(
-                            'type' => 'text ',
+                            'type' => 'text',
                             'id' => 10,
                             'label' => 'To: Number',
                             'isRequired' => false,
