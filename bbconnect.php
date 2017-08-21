@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Connexions
-Plugin URI: http://brownbox.net.au/
+Plugin URI: http://connexionscrm.com/
 Description: A CRM framework for Wordpress
 Version: 2.5.6
 Author: Brown Box
