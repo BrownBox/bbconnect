@@ -44,6 +44,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.5.7 =
+* Added custom display in activity log for entries from CRM-owned forms
+* Updated Plugin URI
+* Update user profile logic to only include form on tabs that require it
+* Submit form page now supports editing existing entry
+* Bug fixes
+
 = 2.5.6 =
 * Extended Send Email form to also support SMS messages
 * Added filter so that addons can add to the list of forms owned by the CRM
