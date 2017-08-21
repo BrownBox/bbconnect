@@ -269,11 +269,94 @@ if (class_exists('GFAPI')) {
                 echo '<h1>'.$user->display_name.' ('.$user->user_email.')</h1>'."\n";
                 echo '<p>When you are done just close this tab to return to the user profile.</p>'."\n";
                 gravity_form($form_id);
-                return;
+            }
+        } else {
+            echo '<p>Invalid request. Please try again.</p>';
+        }
+        echo '</div>'."\n";
+    }
+
+    // Add support for updating existing entry
+    if ($_GET['page'] == 'bbconnect_submit_gravity_form' && is_numeric($_GET['entry_id'])) {
+        $entry = GFAPI::get_entry($_GET['entry_id']);
+        if ($entry['form_id'] == $_GET['form_id']) {
+            add_filter('gform_pre_render_'.$_GET['form_id'], 'bbconnect_populate_form_with_existing_entry');
+            function bbconnect_populate_form_with_existing_entry($form) {
+                $entry = GFAPI::get_entry($_GET['entry_id']);
+                foreach ($form['fields'] as &$field) {
+                    if (!empty($field->inputs)) {
+                        foreach ($field->inputs as &$input) {
+                            $input['defaultValue'] = $entry[$field->id.'.'.$input['id']];
+                        }
+                    } else {
+                        $field['defaultValue'] = $entry[$field->id];
+                    }
+                }
+?>
+            <script type="text/javascript">
+                function DeleteFile(fieldId, deleteButton){
+                    if (confirm(<?php _e("'Would you like to delete this file? \'Cancel\' to stop. \'OK\' to delete'", "gravityforms"); ?>)) {
+                        jQuery(deleteButton).parent().find('input[type=hidden]').val(fieldId);
+                        jQuery(deleteButton).parent().hide('slow');
+                        return true;
+                    }
+                }
+            </script>
+<?php
+                return $form;
+            }
+
+            add_filter('gform_field_content', 'bbconnect_field_content', 10, 5);
+            function bbconnect_field_content($content, $field, $value, $lead_id, $form_id) {
+                if ('fileupload' == $field['type']) {
+                    $id 			= $field['id'];
+                    $multiple_files	= $field['multipleFiles'];
+                    $file_list_id 	= "gform_preview_" . $form_id . "_". $id;
+                    $file_urls = $multiple_files ? json_decode($value) : array($value);
+                    $preview .= sprintf("<div id='preview_existing_files_%d' data-formid='%d' class='ginput_preview'>", $id, $form_id);
+                    if ($file_urls) {
+                        foreach ($file_urls as $file_index => $file_url) {
+                            // remove url protocol?
+                            $file_url = esc_attr($file_url);
+                            $preview .= sprintf("<div id='preview_file_%d'><input type='hidden' name='delete_file_%d' /><a href='%s' target='_blank' alt='%s' title='%s'>%s</a><a href='%s' target='_blank' alt='" . __("Download file", "gravityforms") . "' title='" . __("Download file", "gravityforms") . "'><img src='%s' style='margin-left:10px;'/></a><a href='javascript:void(0);' alt='" . __("Delete file", "gravityforms") . "' title='" . __("Delete file", "gravityforms") . "' onclick='DeleteFile(%d, this);' ><img src='%s' style='margin-left:10px;'/></a></div>", $file_index, $id, $file_url, $file_url, $file_url, GFCommon::truncate_url($file_url), $file_url, GFCommon::get_base_url() . "/images/download.png", $id, GFCommon::get_base_url() . "/images/delete.png");
+                        }
+                        $preview .="</div>";
+                        return $content . $preview;
+                    }
+                }
+                return $content;
+            }
+
+            add_action("gform_pre_submission_".$_GET['form_id'], "bbconnect_pre_submission_handler");
+            function bbconnect_pre_submission_handler($form) {
+                $entry = GFAPI::get_entry($_GET['entry_id']);
+                foreach ($form['fields'] as $field) {
+                    if ($field->type == 'fileupload') {
+                        if ($_POST['delete_file_' . $field['id']] == $field['id']) {
+                            $_POST['input_'.$field->id] = '';
+                        } elseif (empty($_POST['input_'.$field->id])) {
+                            $_POST['input_'.$field->id] = $entry[$field->id];
+                        }
+                    }
+                }
+            }
+
+            add_filter('gform_save_field_value_'.$_GET['form_id'], 'bbconnect_file_upload_fix', 10, 5);
+            function bbconnect_file_upload_fix($value, $lead, $field, $form, $input_id) {
+                if ($field->type == 'fileupload') {
+                    if (empty($_POST['delete_file_'.$field['id']]) && empty($value)) {
+                        $entry = GFAPI::get_entry($_GET['entry_id']);
+                        return $entry[$field->id];
+                    }
+                }
+                return $value;
+            }
+
+            add_action('gform_entry_id_pre_save_lead_'.$_GET['form_id'], "bbconnect_pre_save_lead", 10, 2);
+            function bbconnect_pre_save_lead($entry_id, $form) {
+                return $_GET['entry_id'];
             }
         }
-        echo '<p>Invalid request. Please try again.</p>';
-        echo '</div>'."\n";
     }
 
     add_action('gform_field_advanced_settings', 'bb_crm_field_settings', 10, 2);
