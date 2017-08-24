@@ -3,7 +3,8 @@
  * Gravity Forms integrations
  */
 
-if (class_exists('GFAPI')) {
+add_action('gform_loaded', 'bbconnect_gf_addon_launch');
+function bbconnect_gf_addon_launch() {
     add_filter('gform_pre_render', 'bbconnect_populate_form_with_user_details');
     /**
      * Pre-render form with user data based on key
@@ -42,6 +43,29 @@ if (class_exists('GFAPI')) {
                                 $input['defaultValue'] = $user->user_firstname;
                             } elseif ($input['id'] == $field->id.'.6') {
                                 $input['defaultValue'] = $user->user_lastname;
+                            }
+                        }
+                        break;
+                    case 'address':
+                        foreach ($field->inputs as &$input) {
+                            if ($input['id'] == $field->id.'.1') {
+                                $input['defaultValue'] = $usermeta['bbconnect_address_one_1'][0];
+                            } elseif ($input['id'] == $field->id.'.2') {
+                                $input['defaultValue'] = $usermeta['bbconnect_address_two_1'][0];
+                            } elseif ($input['id'] == $field->id.'.3') {
+                                $input['defaultValue'] = $usermeta['bbconnect_address_city_1'][0];
+                            } elseif ($input['id'] == $field->id.'.4') {
+                                $input['defaultValue'] = $usermeta['bbconnect_address_state_1'][0];
+                            } elseif ($input['id'] == $field->id.'.5') {
+                                $input['defaultValue'] = $usermeta['bbconnect_address_postal_code_1'][0];
+                            } elseif ($input['id'] == $field->id.'.6') {
+                                $countries = bbconnect_helper_country();
+                                $country = $usermeta['bbconnect_address_country_1'][0];
+                                if (array_key_exists($country, $countries)) {
+                                    $input['defaultValue'] = $countries[$country];
+                                } else {
+                                    $input['defaultValue'] = $country;
+                                }
                             }
                         }
                         break;
@@ -292,7 +316,7 @@ if (class_exists('GFAPI')) {
                         $field['defaultValue'] = $entry[$field->id];
                     }
                 }
-?>
+                ?>
             <script type="text/javascript">
                 function DeleteFile(fieldId, deleteButton){
                     if (confirm(<?php _e("'Would you like to delete this file? \'Cancel\' to stop. \'OK\' to delete'", "gravityforms"); ?>)) {
@@ -389,55 +413,55 @@ if (class_exists('GFAPI')) {
      */
     function bb_crm_gf_editor_script() {
 ?>
-    <script>
-        // Add setting to all field types
-        for (var t in fieldSettings) {
-            fieldSettings[t] += ", .bbconnect_usermeta_setting";
-        }
-
-        // Bind to the load field settings event to initialize the value
-        jQuery(document).bind("gform_load_field_settings", function(event, field, form){
-            var field_str, usermeta_key, inputName, inputId, id, inputs;
-            if (!field['inputs']) {
-                field_str = "<label for='field_bbconnect_usermeta_key' class='inline'>" + <?php echo json_encode(esc_html__('User Meta Key', 'gravityforms')); ?> + "&nbsp;</label>";
-                usermeta_key = typeof field["usermeta_key"] != 'undefined' ? field["usermeta_key"] : '';
-                field_str += "<input type='text' value='" + usermeta_key + "' id='field_bbconnect_usermeta_key' onblur='SetFieldProperty(\"usermeta_key\", this.value);'>";
-            } else {
-                field_str = "<table class='usermeta_keys'><tr><td><strong>Field</strong></td><td><strong>" + <?php echo json_encode( esc_html__( 'User Meta Key', 'gravityforms' ) ); ?> + "</strong></td></tr>";
-                for (var i = 0; i < field["inputs"].length; i++) {
-                    id = field["inputs"][i]["id"];
-                    inputName = 'input_' + id.toString();
-                    inputId = inputName.replace('.', '_');
-                    if (!document.getElementById(inputId) && jQuery('[name="' + inputName + '"]').length == 0) {
-                        continue;
-                    }
-                    field_str += "<tr class='bbconnect_usermeta_key_row' data-input_id='" + id + "' id='input_bbconnect_usermeta_key_" + inputId + "'><td><label for='field_bbconnect_usermeta_key_" + id + "' class='inline'>" + field["inputs"][i]["label"] + "</label></td>";
-                    usermeta_key = typeof field["inputs"][i]["usermeta_key"] != 'undefined' ? field["inputs"][i]["usermeta_key"] : '';
-                    field_str += "<td><input class='bbconnect_usermeta_key_value' type='text' value='" + usermeta_key + "' id='field_bbconnect_usermeta_key_" + id + "' onblur='SetInputProperty(\"usermeta_key\", this.value, " + id + ");'></td></tr>";
-                }
-            }
-            jQuery("#field_bbconnect_usermeta_keys_container").html(field_str);
-        });
-
-        function SetInputProperty(property, value, inputId){
-            var field = GetSelectedField();
-
-            if (value) {
-                value = value.trim();
+        <script>
+            // Add setting to all field types
+            for (var t in fieldSettings) {
+                fieldSettings[t] += ", .bbconnect_usermeta_setting";
             }
 
-            if (!inputId) {
-                field[property] = value;
-            } else {
-                for(var i=0; i<field["inputs"].length; i++) {
-                    if (field["inputs"][i]["id"] == inputId) {
-                        field["inputs"][i][property] = value;
-                        return;
+            // Bind to the load field settings event to initialize the value
+            jQuery(document).bind("gform_load_field_settings", function(event, field, form){
+                var field_str, usermeta_key, inputName, inputId, id, inputs;
+                if (!field['inputs']) {
+                    field_str = "<label for='field_bbconnect_usermeta_key' class='inline'>" + <?php echo json_encode(esc_html__('User Meta Key', 'gravityforms')); ?> + "&nbsp;</label>";
+                    usermeta_key = typeof field["usermeta_key"] != 'undefined' ? field["usermeta_key"] : '';
+                    field_str += "<input type='text' value='" + usermeta_key + "' id='field_bbconnect_usermeta_key' onblur='SetFieldProperty(\"usermeta_key\", this.value);'>";
+                } else {
+                    field_str = "<table class='usermeta_keys'><tr><td><strong>Field</strong></td><td><strong>" + <?php echo json_encode( esc_html__( 'User Meta Key', 'gravityforms' ) ); ?> + "</strong></td></tr>";
+                    for (var i = 0; i < field["inputs"].length; i++) {
+                        id = field["inputs"][i]["id"];
+                        inputName = 'input_' + id.toString();
+                        inputId = inputName.replace('.', '_');
+                        if (!document.getElementById(inputId) && jQuery('[name="' + inputName + '"]').length == 0) {
+                            continue;
+                        }
+                        field_str += "<tr class='bbconnect_usermeta_key_row' data-input_id='" + id + "' id='input_bbconnect_usermeta_key_" + inputId + "'><td><label for='field_bbconnect_usermeta_key_" + id + "' class='inline'>" + field["inputs"][i]["label"] + "</label></td>";
+                        usermeta_key = typeof field["inputs"][i]["usermeta_key"] != 'undefined' ? field["inputs"][i]["usermeta_key"] : '';
+                        field_str += "<td><input class='bbconnect_usermeta_key_value' type='text' value='" + usermeta_key + "' id='field_bbconnect_usermeta_key_" + id + "' onblur='SetInputProperty(\"usermeta_key\", this.value, " + id + ");'></td></tr>";
                     }
                 }
+                jQuery("#field_bbconnect_usermeta_keys_container").html(field_str);
+            });
+
+            function SetInputProperty(property, value, inputId){
+                var field = GetSelectedField();
+
+                if (value) {
+                    value = value.trim();
+                }
+
+                if (!inputId) {
+                    field[property] = value;
+                } else {
+                    for(var i=0; i<field["inputs"].length; i++) {
+                        if (field["inputs"][i]["id"] == inputId) {
+                            field["inputs"][i][property] = value;
+                            return;
+                        }
+                    }
+                }
             }
-        }
-    </script>
+        </script>
 <?php
     }
 
@@ -451,11 +475,6 @@ if (class_exists('GFAPI')) {
        $tooltips['form_field_bbconnect_usermeta_key'] = "<h6>User Meta Key</h6> To save the value of a field into user meta enter the meta key you want to save it to (requires an email field to be present in the form).";
        return $tooltips;
     }
-}
-
-// @todo move the rest of the integration (above) into addon class
-add_action('gform_loaded', 'bbconnect_gf_addon_launch');
-function bbconnect_gf_addon_launch() {
     if (!method_exists('GFForms', 'include_addon_framework')) {
         return;
     }
