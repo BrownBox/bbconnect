@@ -120,12 +120,14 @@ abstract class bb_modal_quicklink extends bb_quicklink {
  */
 abstract class bb_form_quicklink extends bb_modal_quicklink {
     var $trigger_export = false;
+    var $function_name = '';
 
     abstract protected function form_contents(array $user_ids = array(), array $args = array());
     abstract static public function post_submission();
 
     public function __construct() {
         parent::__construct();
+        $this->function_name = get_class($this).'_action_submit';
         add_action('wp_ajax_'.get_class($this).'_submit', array(get_class($this), 'post_submission'));
     }
 
@@ -143,7 +145,7 @@ abstract class bb_form_quicklink extends bb_modal_quicklink {
 ?>
         <form action="" method="post">
             <?php $this->form_contents($user_ids, $args); ?>
-            <br> <input type="submit" class="button action" onclick="jQuery(this).val('Processing, please wait...').prop('disabled', true); return <?php echo $function_name; ?>(this);" value="Submit">
+            <br> <input type="submit" class="button action" onclick="jQuery(this).val('Processing, please wait...').prop('disabled', true); return <?php echo $this->function_name; ?>(this);" value="Submit">
         </form>
 <?php
     }
@@ -154,10 +156,9 @@ abstract class bb_form_quicklink extends bb_modal_quicklink {
      */
     protected function output_modal(array $user_ids, array $args = array()) {
         parent::output_modal($user_ids, $args);
-        $function_name = get_class($this).'_action_submit';
 ?>
 <script type="text/javascript">
-    function <?php echo $function_name; ?>(e) {
+    function <?php echo $this->function_name; ?>(e) {
         var tableName = '<?php echo $this->title; ?>';
         var data = {
                 'action': '<?php echo get_class($this); ?>_submit',
