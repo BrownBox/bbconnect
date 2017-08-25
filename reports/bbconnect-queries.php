@@ -53,7 +53,6 @@ function bbconnect_display_savedsearches(){
     echo '            <th>Search Title</th>'."\n";
     echo '            <th>Private</th>'."\n";
     echo '            <th>Segment</th>'."\n";
-    echo '            <th>Category</th>'."\n";
     echo '        </tr>'."\n";
     echo '    </thead>'."\n";
     echo '    <tbody>'."\n";
@@ -82,14 +81,6 @@ function bbconnect_display_savedsearches(){
         } else {
             echo '            <td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
         }
-
-        if ($meta['category'][0]=='true') {
-            echo '            <td width="5%"><span class="dashicons dashicons-yes"></span></td>'."\n";
-        } else {
-            echo '            <td width="5%"><span class="dashicons dashicons-no" style="color:#aaa;"></span></td>'."\n";
-        }
-
-
         echo '        </tr>'."\n";
     }
     echo '    </tbody>'."\n";
