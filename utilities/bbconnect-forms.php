@@ -324,7 +324,7 @@ function bbconnect_gf_addon_launch() {
             if (!empty($email)) {
                 $args = array(
                         'email' => $email,
-                        'title' => 'submitted get to knoe you form',
+                        'title' => 'submitted get to know you form',
                 );
                 bbconnect_track_activity($args);
             }
