@@ -443,6 +443,87 @@ function bbconnect_get_action_form() {
     return $action_form_id;
 }
 
+function bbconnect_get_question_form(){
+    $question_form_id = get_option('bbconnect_question_form_id');
+    $id = 2;
+    $question_lists = bbconnect_retrieve_question_data();
+
+    $question_form = array(
+            'title' => '[Connexions] Question Form',
+            'description' => 'Connexions form for get to know you questions',
+            'is_active' => true,
+            'cssClass' => 'bbconnect',
+            'button' => array(
+                    'type' => 'text',
+                    'text' => 'Submit',
+                    'imageUrl' => '',
+            ),
+            'confirmations' => array(
+                    0 => array(
+                            'id' => '59727b81c1f09',
+                            'name' => 'Default Confirmation',
+                            'isDefault' => true,
+                            'type' => 'message',
+                            'message' => 'Thanks!',
+                    )
+            ),
+            'fields' => array(
+                    0 => array(
+                            'type' => 'email',
+                            'id' => 1,
+                            'label' => 'User email',
+                            'isRequired' => true,
+                            'cssClass' => '',
+                            'visibility' => 'hidden',
+                    ),
+            ),
+    );
+
+    foreach ($question_lists as $type => $questions) {
+        foreach ($questions as $question) {
+            switch ($question['options']['field_type']) {
+                case 'radio':
+                case 'select':
+                    $field_type = 'radio';
+                    break;
+                default:
+                    $field_type = $question['options']['field_type'];
+                    break;
+            }
+            $choices = array();
+            if (!empty($question['options']['choices'])) {
+                foreach ($question['options']['choices'] as $value => $text) {
+                    $choices[] = array(
+                            'text' => $text,
+                            'value' => $value,
+                            'isSelected' => false,
+                    );
+                }
+            }
+            $question_form['fields'][] = array(
+                    'type' => $field_type,
+                    'id' => $id++,
+                    'label' => $question['name'],
+                    'isRequired' => false,
+                    'cssClass' => '',
+                    'bbQuestionType' => $type,
+                    'choices' => $choices,
+                    'usermeta_key' => $question['meta_key'],
+            );
+        }
+    }
+
+    if (!$question_form_id || !GFAPI::form_id_exists($question_form_id)) { // If form doesn't exist, create it
+        $question_form_id = GFAPI::add_form($question_form);
+        update_option('bbconnect_question_form_id', $question_form_id);
+    } else { // Otherwise if we've created it previously, just update it to make sure it hasn't been modified and is the latest version
+        $question_form['id'] = $question_form_id;
+        GFAPI::update_form($question_form);
+    }
+
+    return $question_form_id;
+}
+
 function bbconnect_get_crm_user() {
     $user = get_user_by('login', 'connexions');
     if (!$user) {
@@ -461,6 +542,7 @@ add_filter('bbconnect_get_crm_forms', 'bbconnect_get_crm_forms', 0);
 function bbconnect_get_crm_forms(array $forms) {
     $forms[] = bbconnect_get_send_email_form();
     $forms[] = bbconnect_get_action_form();
+    $forms[] = bbconnect_get_question_form();
     return $forms;
 }
 
