@@ -710,6 +710,30 @@ function bbconnect_user_meta_list( $user_meta = null, $taxonomy = null ) {
 <?php
 }
 
+function bbconnect_retrieve_question_data(){
+    $questions = array(
+            'fun' => array(),
+            'fact' => array(),
+    );
+    $umo = get_option('_bbconnect_user_meta');
+    foreach ($umo as $uk => $uv) {
+        foreach ($uv as $suk => $suv) {
+            $maybe_section = get_option($suv);
+            if (!empty($maybe_section['options']['question_type'])) {
+                $questions[$maybe_section['options']['question_type']][] = $maybe_section;
+                continue;
+            }
+
+            foreach ($maybe_section['options']['choices'] as $ck => $cv) {
+                $field = get_option('bbconnect_'.$cv);
+                if (!empty($field['options']['question_type'])) {
+                    $questions[$field['options']['question_type']][] = $field;
+                }
+            }
+        }
+    }
+    return $questions;
+}
 
 function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 
@@ -737,6 +761,12 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 		$no_tax = true;
 		$field_type = $user_meta['options']['field_type'];
 	}
+
+	$question_choices = '
+            <p>Use this as a get to know you question?</p>
+			<label><input type="radio" name="bbconnect_user_meta_options['.$meta_key.'][options][question_type]" value="" '.checked($user_meta['options']['question_type'], '', false).'> No</label>
+			<label><input type="radio" name="bbconnect_user_meta_options['.$meta_key.'][options][question_type]" value="fun" '.checked($user_meta['options']['question_type'], 'fun', false).'> Fun Question</label>
+			<label><input type="radio" name="bbconnect_user_meta_options['.$meta_key.'][options][question_type]" value="fact" '.checked($user_meta['options']['question_type'], 'fact', false).'> Fact Question</label>';
 
 	switch( $field_type ) :
 
@@ -808,6 +838,7 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 
 		case 'select' :
 		case 'radio' :
+		    echo $question_choices;
 		case 'multitext' :
 
 			if ( !isset( $user_meta['options']['choices'] ) || !is_array( $user_meta['options']['choices'] ) || empty( $user_meta['options']['choices'] ) )
@@ -889,6 +920,7 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 ?>
             <input type="checkbox" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][is_currency]" value="1" <?php if (isset($user_meta['options']['is_currency'])) { checked($user_meta['options']['is_currency'], 1); } ?>> Format as Currency?
 <?php
+            echo $question_choices;
             break;
 
 		case '' :
@@ -901,9 +933,11 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 
 		case 'text' :
 		case 'textarea' :
+	    case 'date' :
+		    echo $question_choices;
+		    break;
 		case 'group' :
 		case 'password' :
-		case 'date' :
 		default :
 			printf( __( '%1$s There are no choices for this field type %2$s', 'bbconnect' ), '<div>', '</div>' );
 			if ( isset( $user_meta['options']['choices'] ) ) {
