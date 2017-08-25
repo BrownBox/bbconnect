@@ -281,6 +281,59 @@ function bbconnect_gf_addon_launch() {
         }
     }
 
+    //Pre render user meta value and set the field visibilty to administrative
+    add_filter('gform_pre_render', 'bb_crm_prerender_question_meta', 99); // Make sure it happens after our main pre_render above
+    function bb_crm_prerender_question_meta($form) {
+        if ($form['id'] == bbconnect_get_question_form()) {
+            $fun = 0;
+            foreach ($form['fields'] as &$field) {
+                if (!empty($field->usermeta_key) && !empty($field->defaultValue)) {
+                    $field->visibility = 'hidden';
+                } elseif ($field->bbQuestionType == 'fun') {
+                    $fun++;
+                }
+            }
+            if ($fun == 0) {
+                return null;
+            }
+        }
+        return $form;
+    }
+
+    function bbconnect_get_to_know_you() {
+        $form_id = bbconnect_get_question_form();
+        $form = gravity_form($form_id, false, false, false, null, false, 300, false);
+        if ($form) {
+            echo '<p>We\'d like to get to know you a little better.</p>';
+            echo $form;
+        }
+    }
+
+    // Pre submission to delete the entry and track the submission
+    add_action('gform_after_submission', 'bb_delete_question_form_entry', 20, 2);
+    function bb_delete_question_form_entry($entry, $form){
+        if ($form['id'] == bbconnect_get_question_form()) {
+            $email = null;
+            foreach ($form['fields'] as $field) {
+                if ($field->type == 'email') {
+                    $email = $entry[$field->id];
+                    break;
+                }
+            }
+
+            if (!empty($email)) {
+                $args = array(
+                        'email' => $email,
+                        'title' => 'submitted get to knoe you form',
+                );
+                bbconnect_track_activity($args);
+            }
+
+            GFAPI::delete_entry( $entry['id'] );
+        }
+        exit();
+    }
+
     // Output page for GF completion in admin
     function bbconnect_submit_gravity_form() {
         echo '<div class="wrap">'."\n";
