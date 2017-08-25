@@ -238,7 +238,7 @@ function bbconnect_track_activity($args) {
 
     // Set some defaults
     if (empty($user_id)) {
-        $user = get_user_by('email');
+        $user = get_user_by('email', $email);
         $user_id = $user->ID;
     } elseif (empty($email)) {
         $user = new WP_User($user_id);
