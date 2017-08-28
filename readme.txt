@@ -44,6 +44,11 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.5.8 =
+* Better GF integration including pre-rendering address fields
+* Added new Getting to Know You function
+* Bug fixes
+
 = 2.5.7 =
 * Added custom display in activity log for entries from CRM-owned forms
 * Updated Plugin URI
