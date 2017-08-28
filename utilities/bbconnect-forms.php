@@ -534,7 +534,7 @@ function bbconnect_gf_addon_launch() {
 
     GFForms::include_addon_framework();
     class GFBBConnect extends GFAddOn {
-        protected $_version = '1.0';
+        protected $_version = BBCONNECT_VER;
         protected $_min_gravityforms_version = '1.9';
         protected $_slug = 'bbconnect';
         protected $_path = 'bbconnect/utilities/bbconnect-forms.php';
