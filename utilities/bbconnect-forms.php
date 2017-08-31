@@ -310,8 +310,8 @@ function bbconnect_gf_addon_launch() {
     }
 
     // Pre submission to delete the entry and track the submission
-    add_action('gform_after_submission', 'bb_delete_question_form_entry', 20, 2);
-    function bb_delete_question_form_entry($entry, $form){
+    add_action('gform_after_submission', 'bbconnect_delete_question_form_entry', 20, 2);
+    function bbconnect_delete_question_form_entry($entry, $form) {
         if ($form['id'] == bbconnect_get_question_form()) {
             $email = null;
             foreach ($form['fields'] as $field) {
@@ -324,14 +324,13 @@ function bbconnect_gf_addon_launch() {
             if (!empty($email)) {
                 $args = array(
                         'email' => $email,
-                        'title' => 'submitted get to know you form',
+                        'title' => 'Submitted get to know you form',
                 );
                 bbconnect_track_activity($args);
             }
 
-            GFAPI::delete_entry( $entry['id'] );
+            GFAPI::delete_entry($entry['id']);
         }
-        exit();
     }
 
     // Output page for GF completion in admin
