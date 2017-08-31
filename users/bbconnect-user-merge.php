@@ -64,6 +64,10 @@ function bb_merge_users_generate_select($name, $users, $selected) {
 
 function bb_merge_users_process($from_user, $to_user, $return = false) {
     global $wpdb;
+
+    $old_user = new WP_User($from_user);
+    do_action('bbconnect_merge_users', $to_user, $old_user); // Same parameters as profile_update so we can hook the same methods into it
+
     // GF doesn't hook into delete_user so we need to change leads manually
     $wpdb->query('UPDATE '.GFFormsModel::get_lead_table_name().' SET created_by = '.$to_user.' WHERE created_by = '.$from_user);
     // But WP handles the rest of it for us :-)
