@@ -3,7 +3,7 @@
 Plugin Name: Connexions
 Plugin URI: http://connexionscrm.com/
 Description: A CRM framework for Wordpress
-Version: 2.5.8
+Version: 2.5.9
 Author: Brown Box
 Author URI: http://brownbox.net.au/
 Text Domain: bbconnect
@@ -39,7 +39,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'BBCONNECT_VER', '2.5.8' );
+define( 'BBCONNECT_VER', '2.5.9' );
 define( 'BBCONNECT_URL', plugin_dir_url( __FILE__ ) );
 define( 'BBCONNECT_DIR', plugin_dir_path(__FILE__) );
 define( 'BBCONNECT_SLUG', plugin_basename( __FILE__ ) );
