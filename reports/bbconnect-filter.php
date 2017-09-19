@@ -290,16 +290,6 @@ function bbconnect_filter_process( $post_data ) {
                     }
                 }
 
-                // Even special-er case for Work Queues etc
-                if ('bb_work_queue' == $user_meta['meta_key']) {
-                    $wp_col = 'ID';
-                    if ( '=' == $op && isset( $value['query'] ) ) {
-                        $op = 'IN';
-                    } else if ( '!=' == $op && isset( $value['query'] ) ) {
-                        $op = 'NOT IN';
-                    }
-                }
-
                 // STANDARDIZE WORDPRESS META FIELDS
                 if ( isset( $user_meta['source'] ) ) {
                     if ( 'wp' == $user_meta['source'] && 'taxonomy' != $user_meta['options']['field_type'] ) {
@@ -344,26 +334,6 @@ function bbconnect_filter_process( $post_data ) {
                             if ( 'taxonomy' == $user_meta['options']['field_type'] || 'role' == $user_meta['meta_key'] ) {
                                 $subvalue = substr( $wpdb->prepare( "%s", $subvalue ), 1, -1 );
                                 $q_val = '\'%s:'.strlen($subvalue).':"'.$subvalue.'"%\'';
-
-                            // Work Queues are rather special...
-                            } else if ('bb_work_queue' == $user_meta['meta_key'] && function_exists('bbconnect_workqueues_get_action_items')) {
-                                $args = array(
-                                        'tax_query' => array(
-                                                array(
-                                                        'taxonomy' => 'bb_note_type',
-                                                        'field' => 'term_id',
-                                                        'terms' => array($subvalue),
-                                                ),
-                                        ),
-                                );
-                                $notes = bbconnect_workqueues_get_action_items($args);
-                                $note_users = array();
-                                foreach ($notes as $note) {
-                                    $note_users[$note->post_author] = $note->post_author;
-                                }
-                                $q_val = '('.implode(',', $note_users).')';
-//                             } elseif ($key == 'category_id' || $key == 'segment_id') {
-
                             // CONDITIONS FOR THE VALUE
                             } else if ( 'LIKE' === $op || 'NOT LIKE' === $op ) {
                                 $q_val = $wpdb->prepare( "%s", '%'.$subvalue.'%' );

@@ -234,61 +234,7 @@ function bbconnect_get_user($args, $other = null, &$is_new_contact = false) {
             update_user_meta($user->ID, 'active', 'true');
         }
 
-        if (function_exists('bbconnect_workqueues_insert_action_item')) {
-            // Compare address details to those on record
-            $dirty = false;
-            $note_content = 'Submitted address details were different to those on file - please review'."\n\n";
-            $fields = array(
-                    'title' => 'title',
-                    'address1' => 'bbconnect_address_one_1',
-                    'address2' => 'bbconnect_address_two_1',
-                    'suburb' => 'bbconnect_address_city_1',
-                    'state' => 'bbconnect_address_state_1',
-                    'postcode' => 'bbconnect_address_postal_code_1',
-            );
-
-            foreach ($fields as $varname => $metaname) {
-                if(isset($$varname)) {
-                    $val = get_user_meta($user->ID, $metaname, true);
-                    if (!bbconnect_address_compare($$varname, $val)) {
-                        $note_content .= ucfirst($varname).':'."\n";
-                        $note_content .= 'Old Value: '.$val."\n";
-                        $note_content .= 'New Value: '.$$varname."\n\n";
-                        $dirty = true;
-                    }
-                }
-            }
-
-            // Phone and country are a bit special
-            if (!empty($phone)) {
-                $phone_data = get_user_meta($user->ID, 'telephone');
-                foreach ($phone_data as $phone_number) {
-                    if ($phone_number['type'] == 'home') {
-                        if (!bbconnect_address_compare($phone, $phone_number['value'])) {
-                            $note_content .= 'Phone:'."\n";
-                            $note_content .= 'Old Value: '.$phone_number['value']."\n";
-                            $note_content .= 'New Value: '.$phone."\n\n";
-                            $dirty = true;
-                        }
-                    }
-                }
-            }
-
-            if (!empty($country)) {
-                $country = bbconnect_address_compare($country);
-                $val = get_user_meta($user->ID, 'bbconnect_address_country_1', true);
-                if (!bbconnect_address_compare($country, $val)) {
-                    $note_content .= 'Country:'."\n";
-                    $note_content .= 'Old Value: '.$val."\n";
-                    $note_content .= 'New Value: '.$country."\n\n";
-                    $dirty = true;
-                }
-            }
-
-            if ($dirty) {
-                bbconnect_workqueues_insert_action_item($user->ID, 'Address Review', $note_content, 'address-review', '', true);
-            }
-        }
+        do_action('bbconnect_update_user', $user, $args, $other);
 
         return $user->ID;
     } else { // New user
@@ -317,12 +263,24 @@ function bbconnect_get_user($args, $other = null, &$is_new_contact = false) {
             update_user_meta($user_id, 'receives_letters', 'true');
             update_user_meta($user_id, 'receives_newsletters', 'true');
 
-            if(isset($title)) update_user_meta($user_id, 'title',$title);
-            if(isset($address1)) update_user_meta($user_id, 'bbconnect_address_one_1', $address1);
-            if(isset($address2)) update_user_meta($user_id, 'bbconnect_address_two_1', $address2);
-            if(isset($suburb)) update_user_meta($user_id, 'bbconnect_address_city_1', $suburb);
-            if(isset($state)) update_user_meta($user_id, 'bbconnect_address_state_1', $state);
-            if(isset($postcode)) update_user_meta($user_id, 'bbconnect_address_postal_code_1', $postcode);
+            if (isset($title)) {
+                update_user_meta($user_id, 'title',$title);
+            }
+            if (isset($address1)) {
+                update_user_meta($user_id, 'bbconnect_address_one_1', $address1);
+            }
+            if (isset($address2)) {
+                update_user_meta($user_id, 'bbconnect_address_two_1', $address2);
+            }
+            if (isset($suburb)) {
+                update_user_meta($user_id, 'bbconnect_address_city_1', $suburb);
+            }
+            if (isset($state)) {
+                update_user_meta($user_id, 'bbconnect_address_state_1', $state);
+            }
+            if (isset($postcode)) {
+                update_user_meta($user_id, 'bbconnect_address_postal_code_1', $postcode);
+            }
             if (!empty($country)) {
                 $country = bbconnect_process_country($country);
                 update_user_meta($user_id, 'bbconnect_address_country_1', $country);
@@ -340,9 +298,8 @@ function bbconnect_get_user($args, $other = null, &$is_new_contact = false) {
                 update_user_meta($user_id, 'telephone', $phone_data);
             }
 
-            if (function_exists('bbconnect_workqueues_insert_action_item')) {
-                bbconnect_workqueues_insert_action_item($user_id, 'New Contact', 'New contact - please check and clean up data as needed', 'new-contact', '', true);
-            }
+            do_action('bbconnect_create_user', $user_id);
+
             $is_new_contact = true;
 
             return $user_id;

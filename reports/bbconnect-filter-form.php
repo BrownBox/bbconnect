@@ -509,9 +509,9 @@ function bbconnect_search_form( $args = '' ) {
 		</span>
 
 <?php
-
-		if ('taxonomy' == $user_meta['options']['field_type'] || 'bb_work_queue' == $user_meta['meta_key']) {
-		//  || isset( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' )
+        $multi_op = 'taxonomy' == $user_meta['options']['field_type'];
+        $multi_op = apply_filters('bbconnect_meta_multi_op', $multi_op, $user_meta);
+        if ($multi_op) {
 ?>
 			<span class="multi-op">
 				<select name="search[<?php echo $key; ?>][sub_operator]">

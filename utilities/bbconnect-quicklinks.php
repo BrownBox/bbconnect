@@ -17,12 +17,12 @@ function bbconnect_show_quicklinks($location, array $user_ids, array $args = arr
     if (count($quicklinks) == 0) {
         echo '<p>No quicklinks found.</p>'."\n";
     } else {
-    	echo '    <ul>'."\n";
+        echo '    <ul>'."\n";
         foreach ($quicklinks as $quicklink) {
             $quicklink_name = get_class($quicklink);
             $quicklink->show_link($user_ids, $args);
         }
-    	echo '    </ul>'."\n";
+        echo '    </ul>'."\n";
     }
 ?>
 </div>
@@ -234,69 +234,22 @@ abstract class bb_form_quicklink extends bb_modal_quicklink {
      * @param array $user_ids List of user IDs to add note to
      * @param boolean $action_required Whether the note should be marked as requiring action
      */
-    public static function add_note($title, $contents, $type, $subtype, array $user_ids, array $args = array(), $action_required = false) {
-        // Some performance changes
-//         global $wpdb;
-//         $wpdb->query('SET autocommit = 0;');
-        wp_suspend_cache_addition(true);
-        wp_defer_term_counting(true);
-        wp_defer_comment_counting(true);
-
-        $data = array(
-                'post_type' => 'bb_note',
-                'post_title' => $title,
-                'post_content' => $contents,
-                'post_status' => 'publish',
-                'tax_input' => array(
-                        'bb_note_type' => array(
-                                $type,
-                                $subtype,
-                        ),
-                ),
-        );
-        $data = array_merge_recursive($data, $args);
-        unset($title, $contents, $type, $subtype, $args);
+    public static function add_note($title, $contents, array $user_ids) {
+        $action_form_id = bbconnect_get_action_form();
 
         foreach ($user_ids as $user_id) {
-            $start = microtime(true);
-
-            $data['post_author'] = $user_id;
-
-            $new_post = wp_insert_post($data);
-            add_post_meta($new_post, '_bbc_agent', get_current_user_id());
-            if ($action_required) {
-                add_post_meta($new_post, '_bbc_action_required', 'true');
-            }
-            unset($new_post);
+            $user = new WP_User($user_id);
+            $_POST = array(); // Hack to allow multiple form submissions via API in single process
+            $entry = array(
+                    'input_18' => $user->user_email,
+                    'input_1' => 'note',
+                    'input_7' => $title,
+                    'input_8' => $contents,
+            );
+            GFAPI::submit_form($action_form_id, $entry);
         }
-
-        // Set performance settings back to defaults
-//         $wpdb->query('COMMIT;');
-//         $wpdb->query('SET autocommit = 1;');
-        wp_defer_term_counting(false);
-        wp_defer_comment_counting(false);
 
         return true;
-    }
-
-    /**
-     * Replace the defautl WP _save_post_hook to reduce memory usage when inserting multiple posts
-     * @param integer $post_id
-     * @param WP_Post $post
-     */
-    public static function bb_save_post_hook($post_id, $post) {
-        if ($post->post_type == 'page') {
-            if (!empty($post->page_template)) {
-                if (!update_post_meta($post_id, '_wp_page_template', $post->page_template)) {
-                    add_post_meta($post_id, '_wp_page_template', $post->page_template, true);
-                }
-            }
-            clean_page_cache($post_id);
-            //global $wp_rewrite;
-            //$wp_rewrite->flush_rules();
-        } else {
-            clean_post_cache($post_id);
-        }
     }
 
     /**

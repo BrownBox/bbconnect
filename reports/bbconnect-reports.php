@@ -579,27 +579,6 @@ function bbconnect_report_display( $ret_res = array() ) {
                     $note_ids = array();
                     // FOR THE REST... PAGINATE!
                     foreach( $member_search as $user_id) {
-                        foreach ($ret_res['post_vars'] as $post_var) {
-                            foreach ($post_var as $var_details) {
-                                if ($var_details['field'] == 'bb_work_queue' && $var_details['operator'] == 'is' && function_exists('bbconnect_workqueues_get_action_items')) {
-                                    $work_queues = $var_details['query'];
-                                    $args = array(
-                                            'author' => $user_id,
-                                            'tax_query' => array(
-                                                    array(
-                                                            'taxonomy' => 'bb_note_type',
-                                                            'field' => 'term_id',
-                                                            'terms' => $work_queues,
-                                                    ),
-                                            ),
-                                    );
-                                    $notes = bbconnect_workqueues_get_action_items($args);
-                                    foreach ($notes as $note) {
-                                        $note_ids[$note->ID] = $note->ID;
-                                    }
-                                }
-                            }
-                        }
                         echo bbconnect_rows( array( 'table_body' => $table_body, 'user_id' => $user_id, 'action_search' => $action_search, 'action_array' => $action_array, 'bbconnect_address_count' => $bbconnect_address_count, 'post_vars' => $ret_res['post_vars'], 'tdw' => $tdw ) );
                     }
                 ?>
@@ -674,10 +653,7 @@ function bbconnect_report_display( $ret_res = array() ) {
         </form>
 
 <?php
-    $args = array();
-    if (!empty($note_ids)) {
-        $args['note_ids'] = $note_ids;
-    }
+    $args = apply_filters('bbconnect_report_quicklink_args', array(), $member_search);
     bbconnect_report_quicklinks($member_search, $args);
 
     unset( $ret_res );
@@ -1138,23 +1114,7 @@ function bbconnect_rows( $args = null ) {
                             $fieldInfo = get_option($option_name);
                             $fieldInfos[$positionInarray] = $fieldInfo;
 
-                            if ($key == 'bbconnect_bb_work_queue' && function_exists('bbconnect_workqueues_get_action_items')) {
-                                $args = array(
-                                        'author' => $current_member->ID,
-                                );
-                                $notes = bbconnect_workqueues_get_action_items($args);
-                                $type_list = array();
-                                foreach ($notes as $note) {
-                                    $note_types = wp_get_post_terms($note->ID, 'bb_note_type');
-                                    foreach ($note_types as $note_type) {
-                                        if ($note_type->parent > 0) {
-                                            $type_list[$note_type->name] = $note_type->name;
-                                            break;
-                                        }
-                                    }
-                                }
-                                $return_html .= implode(', ', $type_list);
-                            } elseif ($key == 'bbconnect_category_id' || $key == 'bbconnect_segment_id') {
+                            if ($key == 'bbconnect_segment_id') {
                                 if (!empty($current_member->$key)) {
                                     $return_html .= get_the_title($current_member->$key);
                                 }
@@ -1164,8 +1124,9 @@ function bbconnect_rows( $args = null ) {
                             } elseif ($fieldInfo['options']['field_type'] == 'number' && $fieldInfo['options']['is_currency'] && $current_member->$key != '') {
                                 $return_html .= '$'.number_format($current_member->$key, 2);
                             } else {
-                                if (is_string($current_member->$key)) {
-                                    $return_html .= $current_member->$key;
+                                $field_val = apply_filters('bbconnect_field_value', $current_member->$key, $key, $current_member);
+                                if (is_string($field_val)) {
+                                    $return_html .= $field_val;
                                 }
                             }
 

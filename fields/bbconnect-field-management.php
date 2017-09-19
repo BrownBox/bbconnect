@@ -131,8 +131,6 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 			'wpr' == $value['source'] ||
 			'wp' == $value['source'] ||
 			isset( $value['group'] ) ||
-			'bb_work_queue' == $value['meta_key'] ||
-			'category_id' == $value['meta_key'] ||
 			'segment_id' == $value['meta_key']
 			) {
 
@@ -159,8 +157,9 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 		}
 
 		// IF THESE FIELDS ARE NOT PART OF AN ADDRESS OR OTHER GROUP...
-		if ( isset( $value['group'] ) || 'bb_work_queue' == $value['meta_key'] || 'category_id' == $value['meta_key'] || 'segment_id' == $value['meta_key'])
+		if ( isset( $value['group'] ) || 'segment_id' == $value['meta_key']) {
 			$exclude = true;
+		}
 
 		// IF THE FIELD IS PART OF A SECTION, WE WANT TO EXCLUDE IT
 		// OTHERWISE, WE WANT TO REMOVE THE REFERENCE
@@ -173,6 +172,8 @@ function bbconnect_meta_options_form_save( $post_arr ) {
 		} else {
 			unset( $value['section'] );
 		}
+
+		$exclude = apply_filters('bbconnect_meta_options_exclude', $exclude, $value);
 
 		if ( !isset( $exclude ) ) {
 
@@ -593,11 +594,13 @@ function bbconnect_user_meta_list( $user_meta = null, $taxonomy = null ) {
 									$restricted_choices = true;
 								}
 
-								if ($meta_key == 'bb_work_queue' || $meta_key == 'category_id' || $meta_key == 'segment_id') {
+								if ($meta_key == 'segment_id') {
                                     $restricted_field = true;
                                     $restricted_choices = true;
                                 }
 
+                                $restricted_field = apply_filters('bbconnect_restricted_field', $restricted_field, $meta_key, $field_type);
+                                $restricted_choices = apply_filters('bbconnect_restricted_choices', $restricted_choices, $meta_key, $field_type);
 							?>
 							<span class="field-header"><?php _e( 'Field Type', 'bbconnect' ); ?></span><br />
 
