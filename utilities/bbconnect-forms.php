@@ -25,10 +25,12 @@ function bbconnect_gf_addon_launch() {
             // Phone numbers are a special case
             $phone_number = '';
             $phone_data = maybe_unserialize($usermeta['telephone'][0]);
-            foreach ($phone_data as $existing_phone) {
-                if (!empty($existing_phone['value'])) {
-                    $phone_number = $existing_phone['value'];
-                    break;
+            if (is_array($phone_data)) {
+                foreach ($phone_data as $existing_phone) {
+                    if (!empty($existing_phone['value'])) {
+                        $phone_number = $existing_phone['value'];
+                        break;
+                    }
                 }
             }
             foreach ($form['fields'] as &$field) {
@@ -222,10 +224,12 @@ function bbconnect_gf_addon_launch() {
                 if (!empty($phone_number)) {
                     $phone_data = maybe_unserialize(get_user_meta($user->ID, 'telephone', true));
                     $phone_exists = false;
-                    foreach ($phone_data as $existing_phone) {
-                        if (isset($existing_phone['value']) && $existing_phone['value'] == $phone) {
-                            $phone_exists = true;
-                            break;
+                    if (is_array($phone_data)) {
+                        foreach ($phone_data as $existing_phone) {
+                            if (isset($existing_phone['value']) && $existing_phone['value'] == $phone) {
+                                $phone_exists = true;
+                                break;
+                            }
                         }
                     }
                     if (!$phone_exists) {
