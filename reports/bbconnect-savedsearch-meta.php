@@ -16,8 +16,8 @@ function savedsearch_metabox_content( $post ) {
 	// custom fields here! new line for each field
 	// example #1 array_push( $post_fields, bb_new_meta( 'title=title2&name=name2&size=50%&type=text' ) );
 	// example #2 array_push( $post_fields, bb_new_meta( array( 'title' => 'title3', 'type' => 'text' ) ) );
-	array_push( $post_fields, bb_new_field( 'title=Private&field_name=private&size=50%&type=checkbox' ) );
-	array_push( $post_fields, bb_new_field( 'title=Segment&field_name=segment&size=50%&type=checkbox' ) );
+	array_push( $post_fields, bbconnect_new_field( 'title=Private&field_name=private&size=50%&type=checkbox' ) );
+	array_push( $post_fields, bbconnect_new_field( 'title=Segment&field_name=segment&size=50%&type=checkbox' ) );
 
 	set_transient( 'savedsearch_fields', serialize( $post_fields ), 3600 );
 }
@@ -31,8 +31,8 @@ function savedsearch_metabox_save( $post_id ) {
 }
 add_action( 'save_post', 'savedsearch_metabox_save' );
 
-if (!function_exists('bb_new_field')) {
-    function bb_new_field( $args ){
+if (!function_exists('bbconnect_new_field')) {
+    function bbconnect_new_field( $args ){
     	// last updated 19/07/2014
 
     	is_array( $args ) ? extract( $args ) : parse_str( $args );
