@@ -15,6 +15,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 <?php
     $cols = empty($user_id) ? 4 : 3;
     $last_date = null;
+    $datetime_format = get_option('date_format').' '.get_option('time_format');
     foreach ($activities as $activity) {
         $activity_datetime = bbconnect_get_datetime($activity['date']);
         if ($activity_datetime->format('Y-m-d') != $last_date) {
@@ -44,7 +45,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                     <h3><?php echo $activity['title']; ?></h3>
                     <?php echo $activity['details']; ?>
                 </td>
-                <td class="right"><p><?php echo $activity_datetime->format('j/m/Y h:ia'); ?></p></td>
+                <td class="right"><p><?php echo $activity_datetime->format($datetime_format); ?></p></td>
             </tr>
 <?php
         $last_date = $activity_datetime->format('Y-m-d');
