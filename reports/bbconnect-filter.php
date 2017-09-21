@@ -303,6 +303,9 @@ function bbconnect_filter_process( $post_data ) {
                     }
                 }
 
+                $wp_col = apply_filters('bbconnect_filter_process_wp_col', $wp_col, $user_meta, $value);
+                $op = apply_filters('bbconnect_filter_process_op', $op, $user_meta, $value);
+
                 // IF WE'RE JUST DISPLAYING RESULTS, SIT THIS PART OUT
                 if ( 'skip' != $op ) {
 
@@ -357,6 +360,8 @@ function bbconnect_filter_process( $post_data ) {
                             } else {
                                 $q_val = $wpdb->prepare( "%s", $subvalue );
                             }
+
+                            $q_val = apply_filters('bbconnect_filter_process_q_val', $q_val, $user_meta, $subvalue);
 
                             // THIS IS A WORDPRESS USER FIELD
                             if ( isset( $wp_col ) ) {

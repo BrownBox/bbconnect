@@ -653,7 +653,7 @@ function bbconnect_report_display( $ret_res = array() ) {
         </form>
 
 <?php
-    $args = apply_filters('bbconnect_report_quicklink_args', array(), $member_search);
+    $args = apply_filters('bbconnect_report_quicklink_args', array(), $member_search, $ret_res['post_vars']);
     bbconnect_report_quicklinks($member_search, $args);
 
     unset( $ret_res );
