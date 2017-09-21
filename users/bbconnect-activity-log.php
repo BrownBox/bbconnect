@@ -37,6 +37,13 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
                 <td>
                     <h3><?php echo $user_display; ?></h3>
+<?php
+            if (!empty($activity['user_info'])) {
+?>
+                    <span class="secondary"><?php echo $activity['user_info']; ?></span>
+<?php
+            }
+?>
                 </td>
 <?php
         }
