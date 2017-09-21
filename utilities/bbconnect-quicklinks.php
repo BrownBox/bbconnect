@@ -14,6 +14,7 @@ function bbconnect_show_quicklinks($location, array $user_ids, array $args = arr
     $quicklinks = array();
     $quicklinks = apply_filters('bbconnect_quicklinks', $quicklinks, $location);
     $quicklinks = apply_filters('bbconnect_quicklinks_'.$location, $quicklinks);
+    ksort($quicklinks);
     if (count($quicklinks) == 0) {
         echo '<p>No quicklinks found.</p>'."\n";
     } else {
@@ -47,7 +48,7 @@ function bbconnect_quicklinks_recursive_include($dir_name, $parent_dir = '', $st
             include_once($dir_name.$filename);
             $quicklink_prefix = !empty($dir_name) ? str_replace('/', '_', str_replace($starting_dir, '', $dir_name)) : '';
             $quicklink_name = $quicklink_prefix.array_shift(explode('.', $filename)).'_quicklink';
-            $quicklinks[] = new $quicklink_name();
+            $quicklinks[$quicklink_name] = new $quicklink_name();
         }
     }
     add_filter('bbconnect_quicklinks_'.basename($dir_name), function($all_quicklinks) use ($quicklinks) {return array_merge($all_quicklinks, $quicklinks);});
