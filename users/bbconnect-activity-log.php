@@ -13,7 +13,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         <table class="wp-list-table striped widefat activity-log">
 <?php
-    $cols = empty($user_id) ? 4 : 3;
+    $cols = empty($user_id) ? 5 : 4;
     $last_date = null;
     $datetime_format = get_option('date_format').' '.get_option('time_format');
     foreach ($activities as $activity) {
@@ -45,6 +45,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                     <h3><?php echo $activity['title']; ?></h3>
                     <?php echo $activity['details']; ?>
                 </td>
+                <td><?php echo !empty($activity['extra']) ? $activity['extra'] : '&nbsp;'; ?></td>
                 <td class="right"><p><?php echo $activity_datetime->format($datetime_format); ?></p></td>
             </tr>
 <?php
