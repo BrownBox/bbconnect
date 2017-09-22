@@ -381,6 +381,7 @@ function bbconnect_get_action_form() {
                             'label' => 'Follow up date',
                             'isRequired' => false,
                             'dateType' => 'datepicker',
+                            'dateFormat' => 'dmy',
                             'calendarIconType' => 'none',
                             'conditionalLogic' => array(
                                     'actionType' => 'show',

@@ -75,6 +75,7 @@ function bbconnect_deactivate() {
 add_action('bbconnect_do_daily_updates', 'bbconnect_daily_updates');
 function bbconnect_daily_updates() {
     bbconnect_update_days_since_kpi();
+    bbconnect_send_activity_note_reminders();
 }
 
 /**
@@ -95,6 +96,42 @@ function bbconnect_update_days_since_kpi() {
             $date_last_transaction = bbconnect_get_datetime($last_transaction_date);
             $days_since_last_transaction = $date_last_transaction->diff($today, true);
             update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', $days_since_last_transaction->days);
+        }
+    }
+}
+
+/**
+ * Send Activity Note form reminders
+ * Intended to be run as a daily cron - shouldn't ever be called directly!
+ */
+function bbconnect_send_activity_note_reminders() {
+    if (class_exists('GFAPI')) {
+        $search_criteria = array(
+                'field_filters' => array(
+                        array(
+                                'key' => 9,
+                                'value' => 'Follow up required',
+                        ),
+                        array(
+                                'key' => 11,
+                                'value' => bbconnect_get_current_datetime()->format('Y-m-d'),
+                        ),
+                ),
+        );
+
+        $offset = 0;
+        $page_size = 100;
+        $entries = array();
+        do {
+            $paging = array('offset' => $offset, 'page_size' => $page_size);
+            $entries = array_merge($entries, GFAPI::get_entries(bbconnect_get_action_form(), $search_criteria, null, $paging, $total_count));
+            $offset += $page_size;
+        } while ($offset < $total_count);
+
+        foreach ($entries as $entry) {
+            $recipient = $entry[12];
+            $details = $entry[14];
+            wp_mail($recipient, '[Connexions] Follow Up Reminder', $details);
         }
     }
 }
