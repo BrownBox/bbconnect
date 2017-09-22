@@ -16,7 +16,9 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
     $cols = empty($user_id) ? 5 : 4;
     $last_date = null;
     $datetime_format = get_option('date_format').' '.get_option('time_format');
+    $types = array();
     foreach ($activities as $activity) {
+        $types[$activity['type']] = $activity['type'];
         $activity_datetime = bbconnect_get_datetime($activity['date']);
         if ($activity_datetime->format('Y-m-d') != $last_date) {
 ?>
@@ -61,6 +63,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         </table>
 <?php
+var_dump($types);
 }
 
 add_action('bbconnect_admin_profile_activity', 'bbconnect_user_activity_log');
@@ -71,6 +74,8 @@ function bbconnect_user_activity_log() {
 }
 
 function bbconnect_get_recent_activity($user_id = null) {
+    global $wpdb;
+
     $activities = $userlist = array();
     if ($user_id) {
         $userlist[$user_id] = get_user_by('id', $user_id);
@@ -146,16 +151,34 @@ function bbconnect_get_recent_activity($user_id = null) {
                     'user' => $user_name,
                     'user_id' => $entry['created_by'],
                     'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
-                    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry</a>',
+                    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry #'.$entry['id'].'</a>',
                     'type' => $activity_type,
             );
             $activity = apply_filters('bbconnect_form_activity_details', $activity, $forms[$entry['form_id']], $entry, $agent);
             $activities[] = $activity;
         }
+
+        // Form Notes
+        $where = '';
+        if ($user_id) {
+            $where .= ' AND user_id = '.$user_id;
+        }
+        $results = $wpdb->get_results('SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY date_created DESC LIMIT 100;');
+        foreach ($results as $result) {
+            $created = bbconnect_get_datetime($result->date_created, bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
+            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
+            $activities[] = array(
+                    'date' => $created->format('Y-m-d H:i:s'),
+                    'user' => $result->user_name,
+                    'user_id' => $result->user_id,
+                    'title' => 'Form Note Added',
+                    'details' => $result->value.'<br><a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$result->form_id.'&lid='.$result->lead_id.'" target="_blank">View Entry #'.$result->lead_id.'</a>',
+                    'type' => 'form',
+            );
+        }
     }
 
     // CRM Activities
-    global $wpdb;
     $where = '';
     if ($user_id) {
         $where .= ' AND user_id = '.$user_id;
