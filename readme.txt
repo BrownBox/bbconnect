@@ -44,6 +44,16 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.5.10 =
+* Major decoupling of Work Queues from core
+* Better sorting of quicklinks
+* Activity log now uses WP global date/time format
+* Added support for additional column in activity log
+* Added support for additional info on user in activity log
+* Show GF entry notes in activity log
+* Send follow up emails for Action Notes form
+* Bug fixes
+
 = 2.5.9 =
 * New action hook in user merge
 * Bug fixes

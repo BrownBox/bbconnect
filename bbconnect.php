@@ -3,7 +3,7 @@
 Plugin Name: Connexions
 Plugin URI: http://connexionscrm.com/
 Description: A CRM framework for Wordpress
-Version: 2.5.9
+Version: 2.5.10
 Author: Brown Box
 Author URI: http://brownbox.net.au/
 Text Domain: bbconnect
@@ -23,8 +23,6 @@ You should have received a copy of the GNU General Public License
 along with Connexions. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-
 /* -----------------------------------------------------------
 	SETUP, OPTIONS & ACTIONS
    ----------------------------------------------------------- */
@@ -34,16 +32,15 @@ along with Connexions. If not, see <http://www.gnu.org/licenses/>.
  *
  * @since 1.0.0
  */
-if ( !function_exists( 'add_action' ) ) {
+if (!function_exists( 'add_action')) {
 	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
 	exit;
 }
 
-define( 'BBCONNECT_VER', '2.5.9' );
-define( 'BBCONNECT_URL', plugin_dir_url( __FILE__ ) );
-define( 'BBCONNECT_DIR', plugin_dir_path(__FILE__) );
-define( 'BBCONNECT_SLUG', plugin_basename( __FILE__ ) );
-
+define('BBCONNECT_VER', '2.5.10');
+define('BBCONNECT_URL', plugin_dir_url(__FILE__));
+define('BBCONNECT_DIR', plugin_dir_path(__FILE__));
+define('BBCONNECT_SLUG', plugin_basename(__FILE__));
 
 /**
  * Register the activation and deactivation hooks to keep things tidy.
