@@ -13,12 +13,10 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         <table class="wp-list-table striped widefat activity-log">
 <?php
-    $cols = empty($user_id) ? 5 : 4;
+    $cols = 5;
     $last_date = null;
     $datetime_format = get_option('date_format').' '.get_option('time_format');
-    $types = array();
     foreach ($activities as $activity) {
-        $types[$activity['type']] = $activity['type'];
         $activity_datetime = bbconnect_get_datetime($activity['date']);
         if ($activity_datetime->format('Y-m-d') != $last_date) {
 ?>
@@ -31,9 +29,8 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
             <tr>
                 <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', '', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
 <?php
-        if (empty($user_id)) {
             $user_display = $activity['user'];
-            if (!empty($activity['user_id'])) {
+            if (!empty($activity['user_id']) && (empty($user_id) || $user_id != $activity['user_id'])) {
                 $user_display = '<a href="?page=bbconnect_edit_user&user_id='.$activity['user_id'].'&tab=activity">'.$user_display.'</a>';
             }
 ?>
@@ -47,9 +44,6 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
             }
 ?>
                 </td>
-<?php
-        }
-?>
                 <td>
                     <h3><?php echo $activity['title']; ?></h3>
                     <?php echo $activity['details']; ?>
@@ -63,7 +57,6 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         </table>
 <?php
-var_dump($types);
 }
 
 add_action('bbconnect_admin_profile_activity', 'bbconnect_user_activity_log');
@@ -161,7 +154,7 @@ function bbconnect_get_recent_activity($user_id = null) {
         // Form Notes
         $where = '';
         if ($user_id) {
-            $where .= ' AND user_id = '.$user_id;
+            $where .= ' AND (user_id = '.$user_id.' OR l.created_by = '.$user_id.') ';
         }
         $results = $wpdb->get_results('SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY date_created DESC LIMIT 100;');
         foreach ($results as $result) {
