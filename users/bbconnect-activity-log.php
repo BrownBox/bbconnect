@@ -9,22 +9,84 @@ function bbconnect_activity_log() {
 <?php
 }
 
+add_action('bbconnect_admin_profile_activity', 'bbconnect_user_activity_log');
+function bbconnect_user_activity_log() {
+    global $user_id;
+    $activities = bbconnect_get_recent_activity($user_id);
+    bbconnect_output_activity_log($activities, $user_id);
+}
+
+add_action('wp_ajax_bbconnect_activity_log_load_page', 'bbconnect_activity_log_load_page');
+function bbconnect_activity_log_load_page() {
+    extract($_POST);
+    if (!isset($user_id) || !isset($from_date) || !isset($to_date)) {
+        die('Missing or invalid parameters');
+    }
+    $activities = bbconnect_get_recent_activity($user_id, $from_date, $to_date);
+    bbconnect_output_activity_log_page($activities, $user_id);
+    die();
+}
+
 function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         <table class="wp-list-table striped widefat activity-log">
+            <tbody id="bbconnect_activity_log_items">
 <?php
-    $cols = 5;
-    $last_date = null;
-    $datetime_format = get_option('date_format').' '.get_option('time_format');
-    foreach ($activities as $activity) {
-        $activity_datetime = bbconnect_get_datetime($activity['date']);
-        if ($activity_datetime->format('Y-m-d') != $last_date) {
+        bbconnect_output_activity_log_page($activities, $user_id);
+?>
+            </tbody>
+            <tr id="bbconnect_activity_loadmore_wrapper">
+                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
+            </tr>
+        </table>
+        <script>
+            jQuery(document).ready(function() {
+                var processing = false;
+                var to_date = new Date();
+                var from_date = new Date();
+                to_date.setDate(from_date.getDate() - 7);
+                from_date.setDate(to_date.getDate() - 6);
+                jQuery('#bbconnect_activity_loadmore').click(function() {
+                    if (processing) {
+                        return;
+                    }
+                    processing = true;
+                    var the_button = jQuery(this);
+                    the_button.html('<i class="dashicons dashicons-update bbspin"></i>');
+                    jQuery.post(ajaxurl,
+                            {
+                                action: 'bbconnect_activity_log_load_page',
+                                from_date: jQuery.datepicker.formatDate('yy-mm-dd', from_date),
+                                to_date: jQuery.datepicker.formatDate('yy-mm-dd', to_date),
+                                user_id: '<?php echo $user_id; ?>'
+                            },
+                            function(data) {
+                                jQuery('table.activity-log tbody#bbconnect_activity_log_items').append(data);
+                                from_date.setDate(from_date.getDate() - 7);
+                                to_date.setDate(to_date.getDate() - 7);
+                                the_button.html('Load More');
+                                processing = false;
+                            }
+                    );
+                });
+            });
+        </script>
+<?php
+}
+
+function bbconnect_output_activity_log_page($activities, $user_id) {
+    if (count($activities) > 0) {
+        $last_date = null;
+        $datetime_format = get_option('date_format').' '.get_option('time_format');
+        foreach ($activities as $activity) {
+            $activity_datetime = bbconnect_get_datetime($activity['date']);
+            if ($activity_datetime->format('Y-m-d') != $last_date) {
 ?>
             <tr>
-                <th colspan="<?php echo $cols; ?>"><h2><?php echo $activity_datetime->format('jS F'); ?></h2></th>
+                <th colspan="5"><h2><?php echo $activity_datetime->format('jS F'); ?></h2></th>
             </tr>
 <?php
-        }
+            }
 ?>
             <tr>
                 <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', '', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
@@ -52,21 +114,23 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                 <td class="right"><p><?php echo $activity_datetime->format($datetime_format); ?></p></td>
             </tr>
 <?php
-        $last_date = $activity_datetime->format('Y-m-d');
-    }
+            $last_date = $activity_datetime->format('Y-m-d');
+        }
+    } else {
 ?>
-        </table>
+            <tr>
+                <td colspan="5">
+                    <p style="text-align: center;">No more activities to display</p>
+                    <script>
+                        jQuery('#bbconnect_activity_loadmore_wrapper').remove();
+                    </script>
+                </td>
+            </tr>
 <?php
+    }
 }
 
-add_action('bbconnect_admin_profile_activity', 'bbconnect_user_activity_log');
-function bbconnect_user_activity_log() {
-    $user_id = $_GET['user_id']; // @todo does BBConnect have a nicer way of getting the ID of the user we're looking at?
-    $activities = bbconnect_get_recent_activity($user_id);
-    bbconnect_output_activity_log($activities, $user_id);
-}
-
-function bbconnect_get_recent_activity($user_id = null) {
+function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_date = null) {
     global $wpdb;
 
     $activities = $userlist = array();
@@ -79,11 +143,37 @@ function bbconnect_get_recent_activity($user_id = null) {
         }
     }
 
+    // Get everything from last 7 days by default
+    if (empty($from_date)) {
+        $from_date = strtotime('-6 days');
+    }
+    $from_datetime = bbconnect_get_datetime($from_date);
+
+    if (empty($to_date)) {
+        $to_date = time();
+    }
+    $to_datetime = bbconnect_get_datetime($to_date);
+
     // Notes
     $args = array(
             'post_type' => 'bb_note',
-            'posts_per_page' => 100,
+            'posts_per_page' => -1,
             'post_status' => array('publish', 'private'),
+            'date_query' => array(
+                    array(
+                            'after' => array(
+                                    'year'  => $from_datetime->format('Y'),
+                                    'month' => $from_datetime->format('m'),
+                                    'day'   => $from_datetime->format('d'),
+                            ),
+                            'before' => array(
+                                    'year'  => $to_datetime->format('Y'),
+                                    'month' => $to_datetime->format('m'),
+                                    'day'   => $to_datetime->format('d'),
+                            ),
+                            'inclusive' => true,
+                    ),
+            ),
     );
     if ($user_id) {
         $args['author'] = $user_id;
@@ -102,7 +192,16 @@ function bbconnect_get_recent_activity($user_id = null) {
 
     // Form Entries
     if (class_exists('GFAPI')) { // Gravity Forms
+        // GF stores entries in DB timezone not WP timezone, so we're working on the assumption that's UTC
+        $utc = bbconnect_get_timezone('UTC');
+        $gf_from_datetime = clone($from_datetime);
+        $gf_from_datetime->setTimezone($utc);
+        $gf_to_datetime = clone($to_datetime);
+        $gf_to_datetime->setTimezone($utc);
+
         $search_criteria = array(
+                'start_date' => $gf_from_datetime->format('Y-m-d'),
+                'end_date' => $gf_to_datetime->format('Y-m-d'),
                 'field_filters' => array(
                         array(
                                 'key' => 'status',
@@ -113,13 +212,21 @@ function bbconnect_get_recent_activity($user_id = null) {
         if ($user_id) {
             $search_criteria['field_filters'][] = array('key' => 'created_by', 'value' => $user_id);
         }
-        $paging = array('offset' => 0, 'page_size' => 100);
-        $entries = GFAPI::get_entries(0, $search_criteria, null, $paging);
+
+        $offset = 0;
+        $page_size = 100;
+        $entries = array();
+        do {
+            $paging = array('offset' => $offset, 'page_size' => $page_size);
+            $entries = array_merge($entries, GFAPI::get_entries(0, $search_criteria, null, $paging, $total_count));
+            $offset += $page_size;
+        } while ($offset < $total_count);
+
         foreach ($entries as $entry) {
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
-            $created = bbconnect_get_datetime($entry['date_created'], bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
+            $created = bbconnect_get_datetime($entry['date_created'], $utc); // Again we're assuming DB is configured to use UTC...
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
             $agent_details = '';
@@ -152,11 +259,11 @@ function bbconnect_get_recent_activity($user_id = null) {
         }
 
         // Form Notes
-        $where = '';
+        $where = ' AND n.date_created BETWEEN "'.$gf_from_datetime->format('Y-m-d').'" AND "'.$gf_to_datetime->format('Y-m-d').' 23:59:59" ';
         if ($user_id) {
             $where .= ' AND (user_id = '.$user_id.' OR l.created_by = '.$user_id.') ';
         }
-        $results = $wpdb->get_results('SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY date_created DESC LIMIT 100;');
+        $results = $wpdb->get_results('SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY n.date_created DESC;');
         foreach ($results as $result) {
             $created = bbconnect_get_datetime($result->date_created, bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
@@ -172,11 +279,11 @@ function bbconnect_get_recent_activity($user_id = null) {
     }
 
     // CRM Activities
-    $where = '';
+    $where = ' AND created_at BETWEEN "'.$from_datetime->format('Y-m-d').'" AND "'.$to_datetime->format('Y-m-d').' 23:59:59" ';
     if ($user_id) {
         $where .= ' AND user_id = '.$user_id;
     }
-    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC LIMIT 100;');
+    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC;');
     foreach ($results as $result) {
         $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
         $activities[] = array(
@@ -189,7 +296,7 @@ function bbconnect_get_recent_activity($user_id = null) {
         );
     }
 
-    $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id);
+    $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id, $from_datetime, $to_datetime);
 
     usort($activities, 'bbconnect_sort_activities');
 
