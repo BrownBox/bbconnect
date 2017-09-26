@@ -724,3 +724,56 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 		<?php
 	}
 }
+
+// Track user meta changes in activity log
+add_filter('update_user_metadata', 'bbconnect_user_meta_update', 9999, 5);
+function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $prev_value) {
+    if (empty($prev_value)) { // Sometimes WP doesn't give us the old value
+        $prev_value = get_user_meta($object_id, $meta_key, true);
+    }
+
+    if (is_null($null) && $meta_value != $prev_value) {
+        bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
+    }
+
+    return $null;
+}
+
+add_filter('delete_user_metadata', 'bbconnect_user_meta_delete', 9999, 5);
+function bbconnect_user_meta_delete($null, $object_id, $meta_key, $meta_value, $delete_all) {
+    $prev_value = get_user_meta($object_id, $meta_key, true);
+
+    if (is_null($null) && !empty($prev_value)) {
+        bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, '');
+    }
+
+    return $null;
+}
+
+function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_value) {
+    // Indicate empty values
+    if (empty($old_value)) {
+        $old_value = '(empty)';
+    }
+    if (empty($new_value)) {
+        $new_value = '(empty)';
+    }
+
+    // It's not pretty, but better than just showing "Array"
+    if (is_array($old_value)) {
+        $old_value = print_r($old_value, true);
+    }
+    if (is_array($new_value)) {
+        $new_value = print_r($new_value, true);
+    }
+    $args = array(
+            'user_id' => $user_id,
+            'title' => 'User Meta Updated - '.$meta_key,
+            'description' => 'Old Value: '.$old_value.'<br>New Value: '.$new_value,
+    );
+    if (is_user_logged_in() && get_current_user_id() != $user_id) {
+        $user = wp_get_current_user();
+        $args['title'] .= ' (changed by '.$user->display_name.')';
+    }
+    bbconnect_track_activity($args);
+}
