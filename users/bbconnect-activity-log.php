@@ -28,49 +28,51 @@ function bbconnect_activity_log_load_page() {
 }
 
 function bbconnect_output_activity_log($activities, $user_id = null) {
+    $to_datetime = bbconnect_get_datetime();
+    $to_datetime->sub(new DateInterval('P7D'));
+    $from_datetime = clone($to_datetime);
+    $from_datetime->sub(new DateInterval('P6D'));
 ?>
-        <table class="wp-list-table striped widefat activity-log">
-            <tbody id="bbconnect_activity_log_items">
+    <table class="wp-list-table striped widefat activity-log">
+        <tbody id="bbconnect_activity_log_items">
 <?php
-        bbconnect_output_activity_log_page($activities, $user_id);
+    bbconnect_output_activity_log_page($activities, $user_id);
 ?>
-            </tbody>
-            <tr id="bbconnect_activity_loadmore_wrapper">
-                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
-            </tr>
-        </table>
-        <script>
-            jQuery(document).ready(function() {
-                var processing = false;
-                var to_date = new Date();
-                var from_date = new Date();
-                to_date.setDate(from_date.getDate() - 7);
-                from_date.setDate(to_date.getDate() - 6);
-                jQuery('#bbconnect_activity_loadmore').click(function() {
-                    if (processing) {
-                        return;
-                    }
-                    processing = true;
-                    var the_button = jQuery(this);
-                    the_button.html('<i class="dashicons dashicons-update bbspin"></i>');
-                    jQuery.post(ajaxurl,
-                            {
-                                action: 'bbconnect_activity_log_load_page',
-                                from_date: jQuery.datepicker.formatDate('yy-mm-dd', from_date),
-                                to_date: jQuery.datepicker.formatDate('yy-mm-dd', to_date),
-                                user_id: '<?php echo $user_id; ?>'
-                            },
-                            function(data) {
-                                jQuery('table.activity-log tbody#bbconnect_activity_log_items').append(data);
-                                from_date.setDate(from_date.getDate() - 7);
-                                to_date.setDate(to_date.getDate() - 7);
-                                the_button.html('Load More');
-                                processing = false;
-                            }
-                    );
-                });
+        </tbody>
+        <tr id="bbconnect_activity_loadmore_wrapper">
+            <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
+        </tr>
+    </table>
+    <script>
+        jQuery(document).ready(function() {
+            var processing = false;
+            var to_date = new Date('<?php echo $to_datetime->format('Y-m-d'); ?>');
+            var from_date = new Date('<?php echo $from_datetime->format('Y-m-d'); ?>');
+            jQuery('#bbconnect_activity_loadmore').click(function() {
+                if (processing) {
+                    return;
+                }
+                processing = true;
+                var the_button = jQuery(this);
+                the_button.html('<i class="dashicons dashicons-update bbspin"></i>');
+                jQuery.post(ajaxurl,
+                        {
+                            action: 'bbconnect_activity_log_load_page',
+                            from_date: jQuery.datepicker.formatDate('yy-mm-dd', from_date),
+                            to_date: jQuery.datepicker.formatDate('yy-mm-dd', to_date),
+                            user_id: '<?php echo $user_id; ?>'
+                        },
+                        function(data) {
+                            jQuery('table.activity-log tbody#bbconnect_activity_log_items').append(data);
+                            from_date.setDate(from_date.getDate() - 7);
+                            to_date.setDate(to_date.getDate() - 7);
+                            the_button.html('Load More');
+                            processing = false;
+                        }
+                );
             });
-        </script>
+        });
+    </script>
 <?php
 }
 
@@ -144,15 +146,13 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
     }
 
     // Get everything from last 7 days by default
-    if (empty($from_date)) {
-        $from_date = strtotime('-6 days');
-    }
-    $from_datetime = bbconnect_get_datetime($from_date);
-
-    if (empty($to_date)) {
-        $to_date = time();
-    }
     $to_datetime = bbconnect_get_datetime($to_date);
+    if (empty($from_date)) {
+        $from_datetime = clone($to_datetime);
+        $from_datetime->sub(new DateInterval('P6D'));
+    } else {
+        $from_datetime = bbconnect_get_datetime($from_date);
+    }
 
     // Notes
     $args = array(
