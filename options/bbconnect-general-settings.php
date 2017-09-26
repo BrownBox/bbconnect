@@ -38,7 +38,7 @@ function bbconnect_option_welcome( $active ) {
 			<div id="suggestions" class="option-block">
 				<h3><?php _e( 'Suggestions', 'bbconnect' ); ?></h3>
 				<ol>
-					<li><?php printf( __( '%1$sContact Us%2$s: We want to hear from you! Please make sure to visit our site %3$sbrownbox.net.au%4$s to let us know what you think of the application.', 'bbconnect' ), '<strong>', '</strong>', '<a href="http://bbconnect.com/">', '</a>'  ); ?></li>
+					<li><?php printf( __( '%1$sContact Us%2$s: We want to hear from you! Please make sure to visit our site %3$sbrownbox.net.au%4$s to let us know what you think of the application.', 'bbconnect' ), '<strong>', '</strong>', '<a href="http://brownbox.net.au/">', '</a>'  ); ?></li>
 				</ol>
 			</div>
 		</div>
