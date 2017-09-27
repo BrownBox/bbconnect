@@ -48,7 +48,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
 ?>
         <tfoot id="bbconnect_activity_loadmore_wrapper">
             <tr>
-                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
+                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a><i class="dashicons dashicons-update bbspin" id="bbconnect_activity_loading" style="display: none;"></i></p></td>
             </tr>
         </tfoot>
     </table>
@@ -64,7 +64,8 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                 }
                 processing = true;
                 var the_button = jQuery(this);
-                the_button.html('<i class="dashicons dashicons-update bbspin"></i>');
+                the_button.hide();
+                jQuery('#bbconnect_activity_loading').show();
                 jQuery.post(ajaxurl,
                         {
                             action: 'bbconnect_activity_log_load_page',
@@ -77,7 +78,8 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                             bbconnect_activity_log_apply_filters();
                             from_date.setDate(from_date.getDate() - 7);
                             to_date.setDate(to_date.getDate() - 7);
-                            the_button.html('Load More');
+                            the_button.show();
+                            jQuery('#bbconnect_activity_loading').hide();
                             processing = false;
                         }
                 );
