@@ -28,23 +28,33 @@ function bbconnect_activity_log_load_page() {
 }
 
 function bbconnect_output_activity_log($activities, $user_id = null) {
+    $activity_types = bbconnect_activity_type_list();
     $to_datetime = bbconnect_get_datetime();
     $to_datetime->sub(new DateInterval('P7D'));
     $from_datetime = clone($to_datetime);
     $from_datetime->sub(new DateInterval('P6D'));
+
+    echo '<ul class="activity-log-filters">'."\n";
+    echo '    <li class="button button-primary show-all" data-type="all">Show All Types</li>' . "\n";
+    foreach ($activity_types as $type => $label) {
+        echo '    <li class="button button-primary" data-type="'.$type.'">'.$label.'</li>'."\n";
+    }
+    echo '    <li class="button show-none" data-type="none">Hide All Types</li>' . "\n";
+    echo '</ul>'."\n";
 ?>
     <table class="wp-list-table striped widefat activity-log">
-        <tbody id="bbconnect_activity_log_items">
 <?php
     bbconnect_output_activity_log_page($activities, $user_id);
 ?>
-        </tbody>
-        <tr id="bbconnect_activity_loadmore_wrapper">
-            <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
-        </tr>
+        <tfoot id="bbconnect_activity_loadmore_wrapper">
+            <tr>
+                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a></p></td>
+            </tr>
+        </tfoot>
     </table>
     <script>
         jQuery(document).ready(function() {
+            // Pagination
             var processing = false;
             var to_date = new Date('<?php echo $to_datetime->format('Y-m-d'); ?>');
             var from_date = new Date('<?php echo $from_datetime->format('Y-m-d'); ?>');
@@ -63,7 +73,8 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                             user_id: '<?php echo $user_id; ?>'
                         },
                         function(data) {
-                            jQuery('table.activity-log tbody#bbconnect_activity_log_items').append(data);
+                            jQuery('table.activity-log tfoot#bbconnect_activity_loadmore_wrapper').before(data);
+                            bbconnect_activity_log_apply_filters();
                             from_date.setDate(from_date.getDate() - 7);
                             to_date.setDate(to_date.getDate() - 7);
                             the_button.html('Load More');
@@ -71,27 +82,70 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                         }
                 );
             });
+
+            // Filters
+            jQuery('ul.activity-log-filters li').on('click', function() {
+                var the_li = jQuery(this);
+                var type = the_li.attr('data-type');
+                if (type == 'all') {
+                    jQuery('ul.activity-log-filters li:not(.show-all, .show-none)').addClass('button-primary');
+                } else if (type == 'none') {
+                    jQuery('ul.activity-log-filters li:not(.show-all, .show-none)').removeClass('button-primary');
+                } else {
+                    if (the_li.hasClass('button-primary')) {
+                        the_li.removeClass('button-primary');
+                    } else {
+                        the_li.addClass('button-primary');
+                    }
+                }
+                bbconnect_activity_log_apply_filters();
+            });
+
+            function bbconnect_activity_log_apply_filters() {
+        	        jQuery('ul.activity-log-filters li').each(function() {
+                    var the_li = jQuery(this);
+                    var type = the_li.attr('data-type');
+                    if (the_li.data('type') == 'all' || the_li.data('type') == 'none') {
+                        return;
+                    }
+                    if (the_li.hasClass('button-primary')) {
+                        jQuery('table.activity-log tbody tr.type-'+type).show();
+                    } else {
+                        jQuery('table.activity-log tbody tr.type-'+type).hide();
+                    }
+                    jQuery('table.activity-log tbody tr.date-header').each(function() {
+                        if (jQuery(this).nextUntil('tr.date-header', ':visible').length > 0) {
+                            jQuery(this).show();
+                        } else {
+                            jQuery(this).hide();
+                        }
+                    });
+        	        });
+            }
         });
     </script>
 <?php
 }
 
 function bbconnect_output_activity_log_page($activities, $user_id) {
+    echo '<tbody>';
     if (count($activities) > 0) {
+        $activity_types = bbconnect_activity_type_list();
         $last_date = null;
         $datetime_format = get_option('date_format').' '.get_option('time_format');
         foreach ($activities as $activity) {
+            $activity_type = isset($activity_types[$activity['type']]) ? $activity_types[$activity['type']] : $activity['type'];
             $activity_datetime = bbconnect_get_datetime($activity['date']);
             if ($activity_datetime->format('Y-m-d') != $last_date) {
 ?>
-            <tr>
+            <tr class="date-header">
                 <th colspan="5"><h2><?php echo $activity_datetime->format('jS F'); ?></h2></th>
             </tr>
 <?php
             }
 ?>
-            <tr>
-                <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', '', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity['type']; ?>"></p></td>
+            <tr class="type-<?php echo $activity['type']; ?>">
+                <td class="center"><p><img src="<?php echo apply_filters('bbconnect_activity_icon', '', $activity['type']); ?>" alt="<?php echo $activity['type']; ?>" title="<?php echo $activity_type; ?>"></p></td>
 <?php
             $user_display = $activity['user'];
             if (!empty($activity['user_id']) && (empty($user_id) || $user_id != $activity['user_id'])) {
@@ -130,6 +184,7 @@ function bbconnect_output_activity_log_page($activities, $user_id) {
             </tr>
 <?php
     }
+    echo '</tbody>';
 }
 
 function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_date = null) {
@@ -328,6 +383,19 @@ function bbconnect_form_activity_details($activity, $form, $entry, $agent) {
             break;
     }
     return $activity;
+}
+
+function bbconnect_activity_type_list() {
+    $types = array(
+            'email' => 'Email',
+            'form' => 'Form Entry',
+            'note' => 'Note',
+            'action' => 'Recorded Action',
+            'activity' => 'User Activity',
+    );
+    $types = apply_filters('bbconnect_activity_types', $types);
+    natcasesort($types);
+    return $types;
 }
 
 function bbconnect_activity_icon($icon, $activity_type) {

@@ -728,6 +728,7 @@ ul.bbconnect li .chzn-choices {
     ACTIVITY LOG
     ------------------------------------------------------- */
 
+#bbconnect ul.activity-log-filters li {display: inline-block; float: left; width: auto; clear: none; margin: 0 0.25rem 0.25rem 0;}
 #bbconnect table.activity-log {box-shadow:none;border:none;}
 #bbconnect table.activity-log th {background-color: #7bb5d1;border-bottom: 1px solid #ddd;border-top: 1.2rem solid #f1f1f1;}
 #bbconnect table.activity-log th h2 {color: #fff;font-size: 0.8rem;margin: 0;padding: 0;text-transform: uppercase;}
@@ -738,8 +739,8 @@ ul.bbconnect li .chzn-choices {
 #bbconnect table.activity-log td h3 {font-size:14px;color:#555;margin:0;padding:0;}
 #bbconnect table.activity-log td > a, #bbconnect table.activity-log td > p > a, #bbconnect table.activity-log span.secondary {font-size:0.8rem;color:#aaa;font-weight:300;}
 #bbconnect table.activity-log td:last-child > p {color: #aaa;font-size: 0.7rem;font-weight: 300;padding-right: 1rem;}
-#bbconnect table.activity-log tr#bbconnect_activity_loadmore_wrapper {background-color: #f1f1f1;}
-#bbconnect table.activity-log tr#bbconnect_activity_loadmore_wrapper a.button {color: #555;}
+#bbconnect table.activity-log tfoot#bbconnect_activity_loadmore_wrapper {background-color: #f1f1f1;}
+#bbconnect table.activity-log tfoot#bbconnect_activity_loadmore_wrapper a.button {color: #555;}
 
 .dashicons.bbspin {animation: dashicons-spin 1s infinite; animation-timing-function: linear;}
 @keyframes dashicons-spin {
