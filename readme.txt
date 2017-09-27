@@ -44,6 +44,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.6.0 =
+* Updated logo
+* Track user meta changes in activity log
+* Added pagination to activity log
+* Added filters to activity log
+* Bug fixes
+
 = 2.5.10 =
 * Major decoupling of Work Queues from core
 * Better sorting of quicklinks
