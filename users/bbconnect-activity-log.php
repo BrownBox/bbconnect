@@ -27,12 +27,18 @@ function bbconnect_activity_log_load_page() {
     die();
 }
 
+function bbconnect_activity_log_days_per_page($user_id) {
+    $days = !empty($user_id) ? 30 : 7;
+    return apply_filters('bbconnect_activity_log_days_per_page', $days, $user_id);
+}
+
 function bbconnect_output_activity_log($activities, $user_id = null) {
+    $days_per_page = bbconnect_activity_log_days_per_page($user_id);
     $activity_types = bbconnect_activity_type_list();
     $to_datetime = bbconnect_get_datetime();
-    $to_datetime->sub(new DateInterval('P7D'));
+    $to_datetime->sub(new DateInterval('P'.$days_per_page.'D'));
     $from_datetime = clone($to_datetime);
-    $from_datetime->sub(new DateInterval('P6D'));
+    $from_datetime->sub(new DateInterval('P'.($days_per_page-1).'D'));
 
     echo '<ul class="activity-log-filters">'."\n";
     echo '    <li class="button button-primary show-all" data-type="all">Show All Types</li>' . "\n";
@@ -76,8 +82,8 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                         function(data) {
                             jQuery('table.activity-log tfoot#bbconnect_activity_loadmore_wrapper').before(data);
                             bbconnect_activity_log_apply_filters();
-                            from_date.setDate(from_date.getDate() - 7);
-                            to_date.setDate(to_date.getDate() - 7);
+                            from_date.setDate(from_date.getDate() - <?php echo $days_per_page; ?>);
+                            to_date.setDate(to_date.getDate() - <?php echo $days_per_page; ?>);
                             the_button.show();
                             jQuery('#bbconnect_activity_loading').hide();
                             processing = false;
@@ -203,10 +209,11 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
     }
 
     // Get everything from last 7 days by default
+    $days_per_page = bbconnect_activity_log_days_per_page($user_id);
     $to_datetime = bbconnect_get_datetime($to_date);
     if (empty($from_date)) {
         $from_datetime = clone($to_datetime);
-        $from_datetime->sub(new DateInterval('P6D'));
+        $from_datetime->sub(new DateInterval('P'.($days_per_page-1).'D'));
     } else {
         $from_datetime = bbconnect_get_datetime($from_date);
     }
