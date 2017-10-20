@@ -44,6 +44,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.6.1 =
+* Show 500 users per page by default instead of 5000
+* Added filter to control number of days per page in activity log
+
 = 2.6.0 =
 * Updated logo
 * Track user meta changes in activity log
