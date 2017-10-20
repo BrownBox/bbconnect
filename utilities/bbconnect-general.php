@@ -5,19 +5,19 @@
  *
  * @since 1.0.0
  *
- * @param str $needle Required. The value to search for.
- * @param arr $haystack Required. The array to search in.
- * @param str $retval Optional. Whether or not to return the array key.
+ * @param string $needle Required. The value to search for.
+ * @param array $haystack Required. The array to search in.
+ * @param string $retval Optional. Whether or not to return the array key.
  *
- * @return boolean|str True/False by default. If $retval is true, return the array key.
+ * @return boolean|string True/False by default. If $retval is true, return the array key.
  */
 function in_array_r($needle, $haystack, $retval = false) {
     foreach ($haystack as $key => $value) {
         if ($value == $needle || (is_array($value) && in_array_r($needle, $value))) {
             if ($retval === false) {
-            	return true;
+                return true;
             } else {
-            	return $key;
+                return $key;
             }
         }
     }
