@@ -18,7 +18,7 @@ function bbconnect_filter_profile( $args = '' ) {
 					'order_by' => 'ID',
 					'order' => 'DESC',
 					'mod_results' => 'AND',
-					'users_per_page' => '5000',
+					'users_per_page' => '500',
 					'action' => array()
 				);
 
