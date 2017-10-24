@@ -262,6 +262,9 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
         $gf_from_datetime->setTimezone($utc);
         $gf_to_datetime = clone($to_datetime);
         $gf_to_datetime->setTimezone($utc);
+        // Because we're playing with different timezones we need to extend the criteria a bit and we'll filter out anything that doesn't fit our date range properly later
+        $gf_from_datetime->sub(new DateInterval('P1D'));
+        $gf_to_datetime->add(new DateInterval('P1D'));
 
         $search_criteria = array(
                 'start_date' => $gf_from_datetime->format('Y-m-d'),
@@ -287,11 +290,14 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
         } while ($offset < $total_count);
 
         foreach ($entries as $entry) {
+            $created = bbconnect_get_datetime($entry['date_created'], $utc); // Again we're assuming DB is configured to use UTC...
+            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
+            if ($created->getTimestamp() < $from_datetime->getTimestamp() || $created->getTimestamp() > ($to_datetime->getTimestamp()+DAY_IN_SECONDS)) {
+                continue;
+            }
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
-            $created = bbconnect_get_datetime($entry['date_created'], $utc); // Again we're assuming DB is configured to use UTC...
-            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
             $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
             $agent_details = '';
             $agent = null;
