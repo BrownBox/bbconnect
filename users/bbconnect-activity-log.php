@@ -197,18 +197,11 @@ function bbconnect_output_activity_log_page($activities, $user_id) {
 
 function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_date = null) {
     global $wpdb;
+    ini_set('memory_limit', '512M'); // This process can be REALLY heavy depending on the amount of data...
 
     $activities = $userlist = array();
-    if ($user_id) {
-        $userlist[$user_id] = get_user_by('id', $user_id);
-    } else {
-        $users = get_users();
-        foreach ($users as $user) {
-            $userlist[$user->ID] = $user;
-        }
-    }
 
-    // Get everything from last 7 days by default
+    // Set up date filters
     $days_per_page = bbconnect_activity_log_days_per_page($user_id);
     $to_datetime = bbconnect_get_datetime($to_date);
     if (empty($from_date)) {
@@ -244,6 +237,9 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
     }
     $notes = get_posts($args);
     foreach ($notes as $note) {
+        if (!isset($userlist[$note->post_author])) {
+            $userlist[$note->post_author] = get_user_by('id', $note->post_author);
+        }
         $activities[] = array(
                 'date' => $note->post_date,
                 'user' => $userlist[$note->post_author]->display_name,
@@ -253,6 +249,7 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
                 'type' => 'note',
         );
     }
+    unset($notes);
 
     // Form Entries
     if (class_exists('GFAPI')) { // Gravity Forms
@@ -295,6 +292,12 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
             if ($created->getTimestamp() < $from_datetime->getTimestamp() || $created->getTimestamp() > ($to_datetime->getTimestamp()+DAY_IN_SECONDS)) {
                 continue;
             }
+            if (!empty($entry['created_by']) && !isset($userlist[$entry['created_by']])) {
+                $userlist[$entry['created_by']] = get_user_by('id', $entry['created_by']);
+            }
+            if (!empty($entry['agent_id']) && !isset($userlist[$entry['agent_id']])) {
+                $userlist[$entry['agent_id']] = get_user_by('id', $entry['agent_id']);
+            }
             if (!isset($forms[$entry['form_id']])) {
                 $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
             }
@@ -327,13 +330,24 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
             $activity = apply_filters('bbconnect_form_activity_details', $activity, $forms[$entry['form_id']], $entry, $agent);
             $activities[] = $activity;
         }
+        unset($entries);
 
         // Form Notes
         $where = ' AND n.date_created BETWEEN "'.$gf_from_datetime->format('Y-m-d').'" AND "'.$gf_to_datetime->format('Y-m-d').' 23:59:59" ';
         if ($user_id) {
             $where .= ' AND (user_id = '.$user_id.' OR l.created_by = '.$user_id.') ';
         }
-        $results = $wpdb->get_results('SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY n.date_created DESC;');
+
+        $offset = 0;
+        $page_size = 100;
+        $results = array();
+        $sql = 'SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY n.date_created DESC;';
+        do {
+            $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
+            $results = array_merge($results, $page_results);
+            $offset += $page_size;
+        } while (count($page_results) > 0);
+
         foreach ($results as $result) {
             $created = bbconnect_get_datetime($result->date_created, bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
             $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
@@ -346,6 +360,7 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
                     'type' => 'form',
             );
         }
+        unset($results);
     }
 
     // CRM Activities
@@ -353,8 +368,21 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
     if ($user_id) {
         $where .= ' AND user_id = '.$user_id;
     }
-    $results = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC;');
+
+    $offset = 0;
+    $page_size = 100;
+    $results = array();
+    $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC';
+    do {
+        $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
+        $results = array_merge($results, $page_results);
+        $offset += $page_size;
+    } while (count($page_results) > 0);
+
     foreach ($results as $result) {
+        if (!empty($result->user_id) && !isset($userlist[$result->user_id])) {
+            $userlist[$result->user_id] = get_user_by('id', $result->user_id);
+        }
         $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
         $activities[] = array(
                 'date' => $result->created_at,
@@ -365,6 +393,7 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
                 'type' => $result->activity_type,
         );
     }
+    unset($results);
 
     $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id, $from_datetime, $to_datetime);
 
