@@ -14,6 +14,7 @@ class profile_10_submit_gravity_form_quicklink extends bb_modal_quicklink {
         echo '<p>Which form would you like to complete on behalf of this user?</p>'."\n";
         echo '<div class="bbconnect-form-tiles">'."\n";
         $forms = GFAPI::get_forms();
+        $forms = apply_filters('bbconnect_gf_quicklink_form_list', $forms);
         usort($forms, array($this, 'sort_forms'));
         foreach ($forms as $form) {
             echo '<a href="users.php?page=bbconnect_submit_gravity_form&user_id='.$user_ids[0].'&form_id='.$form['id'].'" target="_blank">'."\n";
