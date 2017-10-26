@@ -547,6 +547,16 @@ function bbconnect_get_crm_forms(array $forms) {
     return $forms;
 }
 
+add_filter('bbconnect_gf_quicklink_form_list', 'bbconnect_gf_quicklink_hide_forms');
+function bbconnect_gf_quicklink_hide_forms($forms) {
+    foreach ($forms as $idx => $form) {
+        if ($form['id'] == bbconnect_get_send_email_form()) {
+            unset($forms[$idx]);
+        }
+    }
+    return $forms;
+}
+
 add_action('init', 'bbconnect_form_locking', 999); // Run as late as possible to make sure GF has inited first
 function bbconnect_form_locking() {
     if (class_exists('GFFormLocking')) {
