@@ -396,17 +396,17 @@ jQuery(document).ready(function () {
 		jQuery(document).on('click', 'a.bbconnectpanels-toggle', bbconnectpanels_process);
 		jQuery('li.bbconnectpanels-toggle').on('click', 'a', bbconnectpanels_process);
 		
-		jQuery('*').each(function() {
+		/*jQuery('*').each(function() {
 			if ( jQuery(this).css('position') == 'fixed' ) {
 				//var item = jQuery(this)[0].nodeName + jQuery(this).attr('id');
 				var position = jQuery(this).position();
 				var height = jQuery(this).height();
 				//alert( item + "left: " + position.left + ", top: " + position.top );
 				if ( position.top == 0 && jQuery(this).is(':visible') ) {
-					jQuery('#bbconnect').css('padding-top',height + 50);
+					jQuery('#bbconnect').css('padding-top', height);
 				}
 			}
-		});
+		});*/
 	}
 	
 	
