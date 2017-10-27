@@ -777,3 +777,36 @@ function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_
     }
     bbconnect_track_activity($args);
 }
+
+add_action('user_register', 'bbconnect_new_user_default_meta', 0, 1);
+function bbconnect_new_user_default_meta($user_id) {
+    $cols = get_option('_bbconnect_user_meta');
+    foreach ($cols as $col_fields) {
+        foreach ($col_fields as $col_field) {
+            $field = get_option($col_field);
+            if ($field['options']['field_type'] == 'section' || $field['options']['field_type'] == 'group') {
+                foreach ($field['options']['choices'] as $choice) {
+                    $sub_field = bbconnect_get_option($choice);
+                    if ($sub_field['options']['field_type'] == 'group') {
+                        foreach ($sub_field['options']['choices'] as $sub_choice) {
+                            $sub_sub_field = bbconnect_get_option($sub_choice);
+                            if ($sub_sub_field['options']['field_type'] == 'checkbox') {
+                                $key = strpos($sub_sub_field['source'], 'bbconnect') === false ? $sub_sub_field['meta_key'] : bbconnect_get_option($sub_sub_field['meta_key'], true);
+                                $val = is_array($sub_sub_field['options']['choices']) ? 'false' : $sub_sub_field['options']['choices'];
+                                update_user_meta($user_id, $key, $val);
+                            }
+                        }
+                    } elseif ($sub_field['options']['field_type'] == 'checkbox') {
+                        $key = strpos($sub_field['source'], 'bbconnect') === false ? $sub_field['meta_key'] : bbconnect_get_option($sub_field['meta_key'], true);
+                        $val = is_array($sub_field['options']['choices']) ? 'false' : $sub_field['options']['choices'];
+                        update_user_meta($user_id, $key, $val);
+                    }
+                }
+            } elseif ($field['options']['field_type'] == 'checkbox') {
+                $key = strpos($field['source'], 'bbconnect') === false ? $field['meta_key'] : bbconnect_get_option($field['meta_key'], true);
+                $val = is_array($field['options']['choices']) ? 'false' : $field['options']['choices'];
+                update_user_meta($user_id, $key, $val);
+            }
+        }
+    }
+}
