@@ -198,8 +198,9 @@ function bbctheme_toggle_view( $views ) {
 function bbconnect_report_process() {
 
     // RUN A SECURITY CHECK
-    if ( ! wp_verify_nonce( $_POST['bbconnect_report_nonce'], 'bbconnect-report-nonce' ) )
-        die ( 'terribly sorry.' );
+    if (!wp_verify_nonce($_POST['bbconnect_report_nonce'], 'bbconnect-report-nonce')) {
+        die(__('Failed security check. Usually this means you left the page sitting open for too long without doing anything. Please refresh the page and try again.', 'bbconnect'));
+    }
 
     // MAKE SURE WE HAVE A CLEAN START...
     $_POST = bbconnect_scrub( 'bbconnect_sanitize', $_POST );
@@ -641,7 +642,7 @@ function bbconnect_report_display( $ret_res = array() ) {
                         echo '<p>No records found.</p>';
 
                 } else {
-                    echo '<p>' . __( 'terribly sorry. i did not find anything.', 'bbconnect' ) . '</p>';
+                    echo '<p>' . __( 'An unknown error occured. Please refresh the page and try again.', 'bbconnect' ) . '</p>';
                 }
 
                 ?>

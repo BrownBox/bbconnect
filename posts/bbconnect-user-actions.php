@@ -436,8 +436,9 @@ function bbconnect_get_post_to_edit() {
 
 function bbconnect_save_new_post() {
 
-    if ( ! wp_verify_nonce( $_POST['bbconnect_admin_nonce'], 'bbconnect-admin-nonce' ) )
-        die (  __( 'Terribly sorry.', 'bbconnect' ) );
+    if (!wp_verify_nonce($_POST['bbconnect_admin_nonce'], 'bbconnect-admin-nonce')) {
+        die(__('Failed security check. Usually this means you left the page sitting open for too long without doing anything. Please refresh the page and try again.', 'bbconnect'));
+    }
 
     if ( isset( $_POST['data'] ) ) {
 

@@ -961,8 +961,9 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 
 function bbconnect_new_elements_forms() {
 
-	if ( ! wp_verify_nonce( $_POST['bbconnect_admin_nonce'], 'bbconnect-admin-nonce' ) )
-			die(  __( 'terribly sorry.', 'bbconnect' ) );
+	if (!wp_verify_nonce($_POST['bbconnect_admin_nonce'], 'bbconnect-admin-nonce')) {
+		die(__('Failed security check. Usually this means you left the page sitting open for too long without doing anything. Please refresh the page and try again.', 'bbconnect'));
+    }
 
 	if ( isset( $_POST['data'] ) ) {
 		$args = array(

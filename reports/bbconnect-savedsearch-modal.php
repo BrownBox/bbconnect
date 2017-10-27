@@ -26,8 +26,9 @@ function bbconnect_save_search() {
 //create entry in the search saved custom post
 function bbconnect_create_search_post(){
 	// RUN A SECURITY CHECK
-	if ( ! wp_verify_nonce( $_POST['bbconnect_report_nonce'], 'bbconnect-report-nonce' ) )
-		die ( 'terribly sorry.' );
+	if (!wp_verify_nonce($_POST['bbconnect_report_nonce'], 'bbconnect-report-nonce')) {
+		die(__('Failed security check. Usually this means you left the page sitting open for too long without doing anything. Please refresh the page and try again.', 'bbconnect'));
+	}
 	global $current_user;
 
 	if( !empty($_POST) ) {
