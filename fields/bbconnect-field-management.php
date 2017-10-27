@@ -1,11 +1,10 @@
 <?php
 
 function bbconnect_profile_fields_update() {
-
 	if ( isset( $_POST['data'] ) ) {
-
-		if ( !check_ajax_referer( 'bbconnect-admin-nonce', 'bbconnect_admin_nonce', false ) )
+		if ( !check_ajax_referer( 'bbconnect-admin-nonce', 'bbconnect_admin_nonce', false ) ) {
 			wp_die( __( 'that was an illegal action. no data was saved.', 'bbconnect' ) );
+		}
 
 		$post_data = stripslashes_deep( maybe_unserialize( rawurldecode( $_POST['data'] ) ) );
 		$post_vars = explode( '&bbconnect_user_', $post_data );
@@ -16,20 +15,7 @@ function bbconnect_profile_fields_update() {
 		foreach( $post_vars as $var ) {
 			$pairs = explode('=', $var);
 			preg_match_all( "/\[.*?\]/", $pairs[0], $matches );
-			//$post_proc[] = count($matches[0]);
 			$match = $matches[0];
-			/*
-			$tproc = '';
-			foreach ( $match as $m ) {
-				$pre_proc = str_replace(array('[',']'),'',$m);
-				if ( '' == $pre_proc )
-					$pre_proc = bbconnect_random();
-
-				$tproc .= '['.$pre_proc.']';
-				$tproc = substr($tproc,-1,-1);
-			}
-			$test_proc{$tproc} = urldecode( $pairs[1] );
-			 */
 			if ( 1 == count( $match ) ) {
 				$post_proc[str_replace(array('[',']'),'',$match[0])] = urldecode( $pairs[1] );
 			} else if ( 2 == count( $match ) ) {
@@ -52,18 +38,8 @@ function bbconnect_profile_fields_update() {
 			} else if ( 8 == count( $match ) ) {
 				$post_proc[str_replace(array('[',']'),'',$match[0])][str_replace(array('[',']'),'',$match[1])][str_replace(array('[',']'),'',$match[2])][str_replace(array('[',']'),'',$match[3])][str_replace(array('[',']'),'',$match[4])][str_replace(array('[',']'),'',$match[5])][str_replace(array('[',']'),'',$match[6])][str_replace(array('[',']'),'',$match[7])] = urldecode( $pairs[1] );
 			}
-
 		}
-
-		//unset( $_POST['data'] );
-		//parse_str( $post_data, $_POST );
-		//echo count( $_POST ) . ' items and ' . memory_get_peak_usage(true) . ' memory';
-		//$post_processed = bbconnect_meta_options_pre_form( $post_proc );
-
 		bbconnect_meta_options_form_save( $post_proc );
-
-		//echo 'memory='.memory_get_peak_usage(true);
-
 	} else {
 		_e( 'There seems to be a problem.', 'bbconnect' );
 	}
