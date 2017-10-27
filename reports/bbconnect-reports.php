@@ -855,7 +855,7 @@ function bbconnect_rows( $args = null ) {
 
         foreach ( $table_body as $key => $value ) {
             //declare an empty array to hold temporal total values
-             $positionInarray++;
+            $positionInarray++;
             // HORRIBLY HACKISH MANIPULATIONS FOR ADDRESSES...
             if ( false != strstr( $key, 'address' ) ) {
                 // THE KEY WITH THE NUMERIC IDENTIFIER
@@ -1010,20 +1010,18 @@ function bbconnect_rows( $args = null ) {
                         $cur_address = array();
 
                         for ( $i = 1; $i <= $bbconnect_address_count; $i++ ) {
-                            $cur_ite = $add_base . '_' . $i;
+                            $cur_ite = $key . '_' . $i;
                             if ( isset( $po_add ) ) {
                                 if ( $i != $po_add ) {
                                     continue;
                                 } else {
-                                    $sub_ite = $add_base . '_' . $po_add;
+                                    $sub_ite = $key . '_' . $po_add;
                                     $cur_address[$cur_ite] = $current_member->$cur_ite;
-                                    $cur_grex_key = $cur_ite;
                                 }
                             } else {
-                                if ( isset( $post_vars['search'][$thiskey]['query'] ) && !empty( $post_vars['search'][$thiskey]['query'] ) ) {
-
-                                    if ( is_array( $post_vars['search'][$thiskey]['query'] ) ) {
-                                        foreach ( $post_vars['search'][$thiskey]['query'] as $val ) {
+                                if (!empty($post_vars['search'][$positionInarray]['query']) && !empty($post_vars['search'][$positionInarray]['operator']) ) {
+                                    if ( is_array( $post_vars['search'][$positionInarray]['query'] ) ) {
+                                        foreach ( $post_vars['search'][$positionInarray]['query'] as $val ) {
                                             if ( false !== stripos( $current_member->$cur_ite, $val ) ) {
                                                 $cur_address[$cur_ite] = $current_member->$cur_ite;
                                                 $cur_grex_key = $cur_ite;
@@ -1031,13 +1029,12 @@ function bbconnect_rows( $args = null ) {
                                             }
                                         }
                                     } else {
-                                        if ( false !== stripos( $current_member->$cur_ite, $post_vars['search'][$thiskey]['query'] ) ) {
+                                        if ( false !== stripos( $current_member->$cur_ite, $post_vars['search'][$positionInarray]['query'] ) ) {
                                             $cur_address[$cur_ite] = $current_member->$cur_ite;
                                             $cur_grex_key = $cur_ite;
                                             break;
                                         }
                                     }
-
                                 } else {
                                     if ( $current_member->$cur_ite ) {
                                         $cur_address[$cur_ite] = $current_member->$cur_ite;
@@ -1049,7 +1046,6 @@ function bbconnect_rows( $args = null ) {
                                 }
                             }
                         }
-
 
                         if ( false == $return ) {
 
@@ -1087,6 +1083,13 @@ function bbconnect_rows( $args = null ) {
                             if ( false === $post_vars ) {
                                 if ( false !== strpos( $origkey, 'address_state' ) ) {
                                     $return_val[$origkey] = bbconnect_state_lookdown( $origkey, $current_member->$origkey );
+                                } elseif (false !== strpos($origkey, 'address_country')) {
+                                    $bbconnect_helper_country = bbconnect_helper_country();
+                                    if (array_key_exists($current_member->$origkey, $bbconnect_helper_country)) {
+                                        $return_val[$origkey] = $bbconnect_helper_country[$current_member->$origkey];
+                                    } else {
+                                        $return_val[$origkey] = $va;
+                                    }
                                 } else {
                                     $return_val[$origkey] = $current_member->$origkey;
                                 }
@@ -1094,14 +1097,20 @@ function bbconnect_rows( $args = null ) {
                                 foreach ( $cur_address as $ka => $va ) {
                                     // EXCEPTIONS FOR STATES
                                     if ( false !== strpos( $ka, 'address_state' ) ) {
-                                        $return_val[$ka] = bbconnect_state_lookdown( $ka, $va );
+                                        $return_val[$ka] = bbconnect_state_lookdown($ka, $va);
+                                    } elseif (false !== strpos($ka, 'address_country')) {
+                                        $bbconnect_helper_country = bbconnect_helper_country();
+                                        if (array_key_exists($va, $bbconnect_helper_country)) {
+                                            $return_val[$ka] = $bbconnect_helper_country[$va];
+                                        } else {
+                                            $return_val[$ka] = $va;
+                                        }
                                     } else {
                                         $return_val[$ka] = $va;
                                     }
                                 }
                                 //$return_val[$origkey] = implode( '|', $cur_address );
                             }
-
                         }
                         unset( $cur_address );
                         unset( $cur_grex_key );

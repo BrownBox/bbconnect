@@ -610,16 +610,7 @@ function bbconnect_filter_process( $post_data ) {
                     } elseif ( 'bbconnect' != $user_meta['source'] ) {
                         $table_body[$fkey] = $fkey;
                     } elseif ( 'bbconnect' == $user_meta['source'] ) {
-                        if ( 'address' == substr( $user_meta['group'], 0, 7 ) ) {
-                            if ( 2 != count( $key ) ) {
-                                $atk = '_'.$key;
-                            } else {
-                                $atk = $key;
-                            }
-                            $table_body[$option_key . $atk] = $fkey;
-                        } else {
-                            $table_body[$option_key] = $fkey;
-                        }
+                        $table_body[$option_key] = $fkey;
                     }
 
                 }
@@ -728,13 +719,11 @@ function bbconnect_filter_process( $post_data ) {
             } else {
                 $all_order = "ORDER BY $wpdb->users.$order_by $order";
             }
-            $all_query = "SELECT $wpdb->users.ID FROM $wpdb->users $all_order"; //
+            $all_query = "SELECT $wpdb->users.ID FROM $wpdb->users $all_order";
             $all_search = $wpdb->get_col( $all_query );
             $wpdb->flush();
 
         }
-        //echo $all_query;
-        //print_r($post_data);
 
         // IF THE POST OPERATOR IS SET, FILTER THE RESULTS
         if ( !empty( $post_operator ) ) {
@@ -881,7 +870,7 @@ function bbconnect_query_builder( $key, $value ) {
             //$table_body[$key] = 'meta';
         } elseif ( 'bbconnect' == $bbconnect_{$key}['source'] ) {
             if ( isset( $bbconnect_{$key}['group'] ) && 'address' == substr( $bbconnect_{$key}['group'], 0, 7 ) ) {
-                $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$value}%') OR (meta_key = '$option_two_key' AND meta_value LIKE '%{$value}%')";
+                $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$value}%') OR (meta_key = '$option_two_key' AND meta_value LIKE '%{$value}%') OR (meta_key = '$option_three_key' AND meta_value LIKE '%{$value}%')";
             } else {
                 $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$value}%')";
             }
