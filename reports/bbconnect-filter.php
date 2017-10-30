@@ -291,15 +291,13 @@ function bbconnect_filter_process( $post_data ) {
                 }
 
                 // STANDARDIZE WORDPRESS META FIELDS
-                if ( isset( $user_meta['source'] ) ) {
-                    if ( 'wp' == $user_meta['source'] && 'taxonomy' != $user_meta['options']['field_type'] ) {
+                if (isset($user_meta['source'])) {
+                    if ('wp' == $user_meta['source'] && 'taxonomy' != $user_meta['options']['field_type']) {
                         $wp_meta_col = $fkey;
-                    } else if ( 'wp' == $user_meta['source'] && 'taxonomy' == $user_meta['options']['field_type'] ) {
-                        $user_meta_col = '';
-                    } else if ( 'user' == $user_meta['source']) {
-                        $user_meta_col = '';
-                    } else {
+                    } elseif ('bbconnect' == $user_meta['source']) {
                         $user_meta_col = 'bbconnect_';
+                    } else {
+                        $user_meta_col = '';
                     }
                 }
 
