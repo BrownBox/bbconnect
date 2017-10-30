@@ -720,9 +720,9 @@ ul.bbconnect li .chzn-choices {
 #bbconnect #quicklinks-wrapper li a { background: #eee none repeat scroll 0 0; color: #222; font-size: 0.675rem !important; font-weight: bold; margin: 0.25rem 0; padding: 0.125rem 0.25rem; text-decoration: none; width: auto;}
 #bbconnect #quicklinks-wrapper li { display: inline; float: none;}
 #bbconnect #quicklinks-wrapper li a.s-quicklinks:hover { background: #ccc none repeat scroll 0 0;}
-#TB_ajaxContent .bbconnect-form-tiles a {display: block; float: left; width: 43.5%; padding: 2.5%; margin: 0 1% 1% 0; height: 150px; overflow: hidden; text-decoration: none; border: 1px solid #25AAE1; background-color: rgba(37, 170, 225, 0.5);}
-#TB_ajaxContent .bbconnect-form-tiles a h3 {text-align: center;}
-#TB_ajaxContent .bbconnect-form-tiles a p {color: black;}
+#TB_ajaxContent .bbconnect-form-tiles a {display: block; padding: 1%; margin: 0 0 1% 0; text-decoration: none; border: 1px solid #25AAE1; background-color: rgba(37, 170, 225, 0.3);}
+#TB_ajaxContent .bbconnect-form-tiles a p {color: black; margin: 0;}
+#TB_ajaxContent .bbconnect-form-tiles a:after {display: block; content: ' '; clear: both;}
 
 /*  ------------------------------------------------------- 
     ACTIVITY LOG

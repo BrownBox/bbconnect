@@ -18,7 +18,7 @@ class profile_10_submit_gravity_form_quicklink extends bb_modal_quicklink {
         usort($forms, array($this, 'sort_forms'));
         foreach ($forms as $form) {
             echo '<a href="users.php?page=bbconnect_submit_gravity_form&user_id='.$user_ids[0].'&form_id='.$form['id'].'" target="_blank">'."\n";
-            echo '    <h3>'.$form['title'].'</h3>'."\n";
+            echo '    <p><strong>'.$form['title'].'</strong></p>'."\n";
             echo '    <p>'.$form['description'].'</p>'."\n";
             echo '</a>'."\n";
         }
