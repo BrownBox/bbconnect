@@ -27,13 +27,16 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 
 == Current Add-ons ==
 
+* Action Notes & Work Queues
+* Impersonation
+* Import
 * MailChimp
-* Action Notes & Workqueues
 * Mailgun
-* Relationships & Groups
-* Postie
-* Rolling KPIs & Segment Status
 * Personalisation
+* Postie
+* Relationships & Groups
+* Rolling KPIs & Segment Status
+* WholesaleSMS
 
 == Installation ==
 
@@ -44,6 +47,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.6.3 =
+* Added filter to GF quicklink to allow hiding forms
+* Don't show send email form in quicklink
+* Set default values for checkbox fields when new user created
+* Styling changes for submit form quicklink
+* Bug fixes
+
 = 2.6.2 =
 * Major performance improvements for activity log
 * Bug fixes
