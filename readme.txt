@@ -47,6 +47,9 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.6.4 =
+* Bug fix
+
 = 2.6.3 =
 * Added filter to GF quicklink to allow hiding forms
 * Don't show send email form in quicklink
