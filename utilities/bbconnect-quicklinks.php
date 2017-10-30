@@ -136,7 +136,7 @@ abstract class bb_form_quicklink extends bb_modal_quicklink {
      * Outputs the quicklink button
      */
     public function show_link(array $user_ids, array $args = array()) {
-        $url = '#TB_inline?width=600&height=550&inlineId='.$this->modal_id;
+        $url = '#TB_inline?width='.$this->modal_width.'&height='.$this->modal_height.'&inlineId='.$this->modal_id;
         printf($this->link_template, 'thickbox', $url, $attrs, $this->title);
 
         $this->output_modal($user_ids, $args);
