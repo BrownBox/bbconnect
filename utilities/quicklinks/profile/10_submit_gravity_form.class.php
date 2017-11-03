@@ -17,9 +17,15 @@ class profile_10_submit_gravity_form_quicklink extends bb_modal_quicklink {
         $forms = apply_filters('bbconnect_gf_quicklink_form_list', $forms);
         usort($forms, array($this, 'sort_forms'));
         foreach ($forms as $form) {
+            if (strstr($form['title'], '[')) {
+                $form_namespace = substr($form['title'], strpos($form['title'], '['), strpos($form['title'], ']')+1);
+                $title = str_replace($form_namespace, '', $form['title']);
+            } else {
+                $title = $form['title'];
+            }
             echo '<a href="users.php?page=bbconnect_submit_gravity_form&user_id='.$user_ids[0].'&form_id='.$form['id'].'" target="_blank">'."\n";
-            echo '    <p><strong>'.$form['title'].'</strong></p>'."\n";
-            echo '    <p>'.$form['description'].'</p>'."\n";
+            echo '    <span class="dashicons dashicons-format-aside"></span>';
+            echo '    <p><strong>'.$title.'</strong><br>'.$form['description'].'</p>'."\n";
             echo '</a>'."\n";
         }
         echo '</div>'."\n";
