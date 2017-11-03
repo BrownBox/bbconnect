@@ -246,6 +246,7 @@ function bbconnect_filter_process( $post_data ) {
                 $user_meta = get_option( $option_key );
 
                 // STANDARDIZE WORDPRESS INCONSISTENCIES FOR RESERVED FIELDS
+                $wp_col = '';
                 if ( isset( $user_meta['source'] ) && 'wpr' == $user_meta['source'] ) {
 
                     // EMAIL
@@ -291,6 +292,7 @@ function bbconnect_filter_process( $post_data ) {
                 }
 
                 // STANDARDIZE WORDPRESS META FIELDS
+                $user_meta_col = '';
                 if (isset($user_meta['source'])) {
                     if ('wp' == $user_meta['source'] && 'taxonomy' != $user_meta['options']['field_type']) {
                         $wp_meta_col = $fkey;
@@ -362,7 +364,7 @@ function bbconnect_filter_process( $post_data ) {
                             $q_val = apply_filters('bbconnect_filter_process_q_val', $q_val, $user_meta, $subvalue);
 
                             // THIS IS A WORDPRESS USER FIELD
-                            if ( isset( $wp_col ) ) {
+                            if ( !empty( $wp_col ) ) {
                                 if ( $wp_col == 'user_registered' ) {
                                     if ( date( 'Y-m-d', strtotime( $subvalue ) ) == $subvalue ) {
                                         $temp_arr[] = "DATE('" . $subvalue . "')";
@@ -370,7 +372,7 @@ function bbconnect_filter_process( $post_data ) {
                                 } else {
                                     $temp_arr[] = "(" . $wp_col . " " . $op . " " . $q_val . ")";
                                 }
-                            } else if ( isset( $wp_meta_col ) ) {
+                            } else if ( !empty( $wp_meta_col ) ) {
                                 $temp_arr[] = $mtc_dot . "meta_value " . $op . " " . $q_val;
                             } else {
                                 $temp_arr[] = $mtc_dot . "meta_value " . $op . " " . $q_val;
@@ -378,7 +380,7 @@ function bbconnect_filter_process( $post_data ) {
                         }
 
                         // JOIN THE JOIN
-                        if ( isset( $wp_col ) ) {
+                        if ( !empty( $wp_col ) ) {
                             if ( $wp_col == 'user_registered' ) {
                                 if ( '!=' == $op || 'NOT LIKE' == $op ) {
                                     $reg_op = " NOT BETWEEN ";
@@ -392,15 +394,15 @@ function bbconnect_filter_process( $post_data ) {
                             }
                         }
 
-                            else {
-                        //if ( !isset( $wp_col ) )
+                        else {
+                            //if ( empty( $wp_col ) )
                             $mtjoin[$mtc] = "INNER JOIN $wpdb->usermeta " . $mtc_as . "ON ($wpdb->users.ID = " . $mtc_dot . "user_id)";
 
                             // JOIN THE QUERY TEMP ARRAY
-                            if ( isset( $wp_meta_col ) ) {
+                            if ( !empty( $wp_meta_col ) ) {
                                 $mtquery[$mtc] = "(" . $mtc_dot . "meta_key = '" . $wp_meta_col . "' AND " . implode( ' '.$sop.' ', $temp_arr ) . ")";
                             } else {
-                                if ( isset( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
+                                if ( !empty( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
                                     $mod_key = substr( $fkey, 0, -1 );
                                     // PREPARE $mod_comp = "meta_key LIKE '%".$user_meta_col. $mod_key . "%'";
                                     $mod_comp = $wpdb->prepare( "meta_key LIKE %s", "%".$user_meta_col.$mod_key."%" );
@@ -443,7 +445,7 @@ function bbconnect_filter_process( $post_data ) {
                             $q_val = $wpdb->prepare( "%s", '%'.$value_query.'%' );
                         } else if ( 'IS NULL' === $op || 'IS NOT NULL' === $op || '' == $value_query || empty( $value_query ) || !
                             isset( $value_query ) ) {
-                            if ( isset( $wp_col ) ) {
+                            if ( !empty( $wp_col ) ) {
                                 if ( 'IS NULL' === $op || '=' === $op ) {
                                     $op = "=";
                                 } else {
@@ -452,10 +454,10 @@ function bbconnect_filter_process( $post_data ) {
                                 $q_val = "''";
                             } else {
                                 if ( '' == $value_query || empty( $value_query ) || !isset( $value_query ) ) {
-                                    if ( '=' === $op && !isset( $wp_meta_col ) ) {
+                                    if ( '=' === $op && empty( $wp_meta_col ) ) {
                                         $op = "IS NULL";
                                         $q_val = "";
-                                    } else if ( '!=' == $op && !isset( $wp_meta_col ) ) {
+                                    } else if ( '!=' == $op && empty( $wp_meta_col ) ) {
                                         $op = "IS NOT NULL";
                                         $q_val = "";
                                     } else {
@@ -483,17 +485,17 @@ function bbconnect_filter_process( $post_data ) {
                         }
 
                         // THIS IS A WORDPRESS USER FIELD
-                        if ( isset( $wp_col ) ) {
+                        if ( !empty( $wp_col ) ) {
                             $mtquery[$mtc] = "(" . $wp_col . " " . $op . " " . $q_val . ")";
                         } else {
                             $mtjoin[$mtc] = "INNER JOIN $wpdb->usermeta " . $mtc_as . "ON ($wpdb->users.ID = " . $mtc_dot . "user_id)";
 
                             // TEST FOR NULL COMPARISONS
                             if ( 'IS NULL' === $op ) {
-                                if ( isset( $wp_meta_col ) ) {
+                                if ( !empty( $wp_meta_col ) ) {
                                     $mtquery[$mtc] = "(" . $mtc_dot . "meta_key = '" . $wp_meta_col . "' AND " . $mtc_dot . "meta_value = '')";
                                 } else {
-                                    if ( isset( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
+                                    if ( !empty( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
                                         $mod_key = substr( $fkey, 0, -1 );
                                         // PREPARE $mod_comp = "meta_key = '%".$user_meta_col. $mod_key . "%'";
                                         $mod_comp = $wpdb->prepare( "meta_key LIKE %s", "%".$user_meta_col.$mod_key."%" );
@@ -505,10 +507,10 @@ function bbconnect_filter_process( $post_data ) {
                                     $mtquery[$mtc] = "( ".$mtc_dot."user_id NOT IN(SELECT DISTINCT ".$wpdb->usermeta.".user_id FROM ".$wpdb->usermeta." WHERE ".$wpdb->usermeta."." . $mod_comp . ") )";
                                 }
                             } else {
-                                if ( isset( $wp_meta_col ) ) {
+                                if ( !empty( $wp_meta_col ) ) {
                                     $mtquery[$mtc] = "(" . $mtc_dot . "meta_key = '" . $wp_meta_col . "' AND " . $mtc_dot . "meta_value " . $op . " " . $q_val . ")";
                                 } else {
-                                    if ( isset( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
+                                    if ( !empty( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
                                         $mod_key = substr( $fkey, 0, -1 );
                                         // PREPARE $mod_comp = "meta_key LIKE '%".$user_meta_col. $mod_key . "%'";
                                         $mod_comp = $wpdb->prepare( "meta_key LIKE %s", "%".$user_meta_col.$mod_key."%" );
@@ -600,9 +602,9 @@ function bbconnect_filter_process( $post_data ) {
 
                     // THE BODY
                     if ( 'wpr' == $user_meta['source'] ) {
-                        if ( isset( $wp_col ) ) {
+                        if ( !empty( $wp_col ) ) {
                             $table_body[$wp_col] = $fkey;
-                        } else if ( isset( $wp_meta_col ) ) {
+                        } else if ( !empty( $wp_meta_col ) ) {
                             $table_body[$wp_meta_col] = $fkey;
                         }
                     } elseif ( 'bbconnect' != $user_meta['source'] ) {
