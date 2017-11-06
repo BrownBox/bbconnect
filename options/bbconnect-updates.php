@@ -16,6 +16,7 @@ function bbconnect_versions() {
             '2.2.2' => 'bbconnect_update_v_2_2_2',
             '2.3.2' => 'bbconnect_update_v_2_3_2',
             '2.5.1' => 'bbconnect_update_v_2_5_1',
+            '2.6.5' => 'bbconnect_update_v_2_6_5',
     );
 
     return $bbconnect_versions;
@@ -468,6 +469,7 @@ function bbconnect_update_v_2_3_2() {
 
 function bbconnect_update_v_2_5_1() {
     global $wpdb;
+    $charset_collate = $wpdb->get_charset_collate();
     $new_table = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix."bbconnect_activity_tracking (
                     id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
                     activity_type VARCHAR(32) NOT NULL,
@@ -480,6 +482,28 @@ function bbconnect_update_v_2_5_1() {
                     PRIMARY KEY (id),
                     KEY (created_at),
                     KEY (user_id)
-                ) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+                ) ".$charset_collate.";";
+    $wpdb->query($new_table);
+}
+
+function bbconnect_update_v_2_6_5() {
+    global $wpdb;
+    $charset_collate = $wpdb->get_charset_collate();
+    $new_table = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix."bbconnect_activity_log (
+                    id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+                    type VARCHAR(32) NOT NULL DEFAULT 'activity',
+                    created_at DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                    user VARCHAR(256),
+                    user_id BIGINT(20),
+                    user_info VARCHAR(32),
+                    title VARCHAR(256),
+                    details TEXT,
+                    external_id INT,
+                    external_ref VARCHAR(32),
+                    PRIMARY KEY (id),
+                    UNIQUE KEY (external_ref, external_id),
+                    KEY (created_at),
+                    KEY (user_id)
+                ) ".$charset_collate.";";
     $wpdb->query($new_table);
 }
