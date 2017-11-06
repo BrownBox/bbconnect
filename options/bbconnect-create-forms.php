@@ -318,6 +318,7 @@ function bbconnect_get_action_form() {
                             'label' => 'Work Queue',
                             'isRequired' => false,
                             'visibility' => 'administrative',
+                            'inputName' => 'workqueue',
                     ),
                     6 => array(
                             'type' => 'section',
