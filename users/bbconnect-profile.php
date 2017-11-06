@@ -221,10 +221,10 @@ function bbconnect_edit_user( $user_id = '' ) {
                                     'subs' => false,
                             ),
 
-        'actions' => array(
+        /*'actions' => array(
                                     'title' => __( 'History', 'bbconnect' ),
                                     'subs' => false,
-                            ),
+                            ),*/
 
         'activity' => array(
                                     'title' => __( 'Activity Log', 'bbconnect' ),
