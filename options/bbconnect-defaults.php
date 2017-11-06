@@ -62,6 +62,10 @@ function bbconnect_activate() {
     if (!wp_next_scheduled('bbconnect_do_daily_updates')) {
         wp_schedule_event(strtotime('6am'), 'daily', 'bbconnect_do_daily_updates');
     }
+
+    if (!wp_next_scheduled('bbconnect_do_hourly_updates')) {
+        wp_schedule_event(time(), 'hourly', 'bbconnect_do_hourly_updates');
+    }
 }
 
 /**
@@ -70,12 +74,18 @@ function bbconnect_activate() {
  */
 function bbconnect_deactivate() {
     wp_clear_scheduled_hook('bbconnect_do_daily_updates');
+    wp_clear_scheduled_hook('bbconnect_do_hourly_updates');
 }
 
 add_action('bbconnect_do_daily_updates', 'bbconnect_daily_updates');
 function bbconnect_daily_updates() {
     bbconnect_update_days_since_kpi();
     bbconnect_send_activity_note_reminders();
+}
+
+add_action('bbconnect_do_hourly_updates', 'bbconnect_hourly_updates');
+function bbconnect_hourly_updates() {
+    bbconnect_update_activity_log();
 }
 
 /**
