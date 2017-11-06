@@ -47,6 +47,7 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
     }
     echo '    <li class="button show-none" data-type="none">Hide All Types</li>' . "\n";
     echo '</ul>'."\n";
+    echo '<p>Please note that activity log data may be delayed by up to an hour.</p>'."\n";
 ?>
     <table class="wp-list-table striped widefat activity-log">
 <?php
@@ -143,7 +144,7 @@ function bbconnect_output_activity_log_page($activities, $user_id) {
         $datetime_format = get_option('date_format').' '.get_option('time_format');
         foreach ($activities as $activity) {
             $activity_type = isset($activity_types[$activity['type']]) ? $activity_types[$activity['type']] : $activity['type'];
-            $activity_datetime = bbconnect_get_datetime($activity['date']);
+            $activity_datetime = bbconnect_get_datetime($activity['created_at']);
             if ($activity_datetime->format('Y-m-d') != $last_date) {
 ?>
             <tr class="date-header">
@@ -197,9 +198,6 @@ function bbconnect_output_activity_log_page($activities, $user_id) {
 
 function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_date = null) {
     global $wpdb;
-    ini_set('memory_limit', '512M'); // This process can be REALLY heavy depending on the amount of data...
-
-    $activities = $userlist = array();
 
     // Set up date filters
     $days_per_page = bbconnect_activity_log_days_per_page($user_id);
@@ -211,159 +209,6 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
         $from_datetime = bbconnect_get_datetime($from_date);
     }
 
-    // Notes
-    $args = array(
-            'post_type' => 'bb_note',
-            'posts_per_page' => -1,
-            'post_status' => array('publish', 'private'),
-            'date_query' => array(
-                    array(
-                            'after' => array(
-                                    'year'  => $from_datetime->format('Y'),
-                                    'month' => $from_datetime->format('m'),
-                                    'day'   => $from_datetime->format('d'),
-                            ),
-                            'before' => array(
-                                    'year'  => $to_datetime->format('Y'),
-                                    'month' => $to_datetime->format('m'),
-                                    'day'   => $to_datetime->format('d'),
-                            ),
-                            'inclusive' => true,
-                    ),
-            ),
-    );
-    if ($user_id) {
-        $args['author'] = $user_id;
-    }
-    $notes = get_posts($args);
-    foreach ($notes as $note) {
-        if (!isset($userlist[$note->post_author])) {
-            $userlist[$note->post_author] = get_user_by('id', $note->post_author);
-        }
-        $activities[] = array(
-                'date' => $note->post_date,
-                'user' => $userlist[$note->post_author]->display_name,
-                'user_id' => $note->post_author,
-                'title' => $note->post_title,
-                'details' => apply_filters('the_content', $note->post_content),
-                'type' => 'note',
-        );
-    }
-    unset($notes);
-
-    // Form Entries
-    if (class_exists('GFAPI')) { // Gravity Forms
-        // GF stores entries in DB timezone not WP timezone, so we're working on the assumption that's UTC
-        $utc = bbconnect_get_timezone('UTC');
-        $gf_from_datetime = clone($from_datetime);
-        $gf_from_datetime->setTimezone($utc);
-        $gf_to_datetime = clone($to_datetime);
-        $gf_to_datetime->setTimezone($utc);
-        // Because we're playing with different timezones we need to extend the criteria a bit and we'll filter out anything that doesn't fit our date range properly later
-        $gf_from_datetime->sub(new DateInterval('P1D'));
-        $gf_to_datetime->add(new DateInterval('P1D'));
-
-        $search_criteria = array(
-                'start_date' => $gf_from_datetime->format('Y-m-d'),
-                'end_date' => $gf_to_datetime->format('Y-m-d'),
-                'field_filters' => array(
-                        array(
-                                'key' => 'status',
-                                'value' => 'active',
-                        ),
-                ),
-        );
-        if ($user_id) {
-            $search_criteria['field_filters'][] = array('key' => 'created_by', 'value' => $user_id);
-        }
-
-        $offset = 0;
-        $page_size = 100;
-        $entries = array();
-        do {
-            $paging = array('offset' => $offset, 'page_size' => $page_size);
-            $entries = array_merge($entries, GFAPI::get_entries(0, $search_criteria, null, $paging, $total_count));
-            $offset += $page_size;
-        } while ($offset < $total_count);
-
-        foreach ($entries as $entry) {
-            $created = bbconnect_get_datetime($entry['date_created'], $utc); // Again we're assuming DB is configured to use UTC...
-            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
-            if ($created->getTimestamp() < $from_datetime->getTimestamp() || $created->getTimestamp() > ($to_datetime->getTimestamp()+DAY_IN_SECONDS)) {
-                continue;
-            }
-            if (!empty($entry['created_by']) && !isset($userlist[$entry['created_by']])) {
-                $userlist[$entry['created_by']] = get_user_by('id', $entry['created_by']);
-            }
-            if (!empty($entry['agent_id']) && !isset($userlist[$entry['agent_id']])) {
-                $userlist[$entry['agent_id']] = get_user_by('id', $entry['agent_id']);
-            }
-            if (!isset($forms[$entry['form_id']])) {
-                $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
-            }
-            $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
-            $agent_details = '';
-            $agent = null;
-            if (!empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by']) {
-                if (!array_key_exists($entry['agent_id'], $userlist)) {
-                    $userlist[$entry['agent_id']] = new WP_User($entry['agent_id']);
-                }
-                $agent = $userlist[$entry['agent_id']];
-                $agent_details = ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')';
-            } else {
-                $agent = $userlist[$entry['created_by']];
-            }
-            $activity_type = 'form';
-            foreach ($forms[$entry['form_id']]['fields'] as $field) {
-                if ($field->uniqueName == 'bb_activity_type') {
-                    $activity_type = $entry[$field->id];
-                }
-            }
-            $activity = array(
-                    'date' => $created->format('Y-m-d H:i:s'),
-                    'user' => $user_name,
-                    'user_id' => $entry['created_by'],
-                    'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
-                    'details' => '<a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry #'.$entry['id'].'</a>',
-                    'type' => $activity_type,
-            );
-            $activity = apply_filters('bbconnect_form_activity_details', $activity, $forms[$entry['form_id']], $entry, $agent);
-            $activities[] = $activity;
-        }
-        unset($entries);
-
-        // Form Notes
-        $where = ' AND n.date_created BETWEEN "'.$gf_from_datetime->format('Y-m-d').'" AND "'.$gf_to_datetime->format('Y-m-d').' 23:59:59" ';
-        if ($user_id) {
-            $where .= ' AND (user_id = '.$user_id.' OR l.created_by = '.$user_id.') ';
-        }
-
-        $offset = 0;
-        $page_size = 100;
-        $results = array();
-        $sql = 'SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY n.date_created DESC;';
-        do {
-            $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
-            $results = array_merge($results, $page_results);
-            $offset += $page_size;
-        } while (count($page_results) > 0);
-
-        foreach ($results as $result) {
-            $created = bbconnect_get_datetime($result->date_created, bbconnect_get_timezone('UTC')); // We're assuming DB is configured to use UTC...
-            $created->setTimezone(bbconnect_get_timezone()); // Convert to local timezone
-            $activities[] = array(
-                    'date' => $created->format('Y-m-d H:i:s'),
-                    'user' => $result->user_name,
-                    'user_id' => $result->user_id,
-                    'title' => 'Form Note Added',
-                    'details' => $result->value.'<br><a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$result->form_id.'&lid='.$result->lead_id.'" target="_blank">View Entry #'.$result->lead_id.'</a>',
-                    'type' => 'form',
-            );
-        }
-        unset($results);
-    }
-
-    // CRM Activities
     $where = ' AND created_at BETWEEN "'.$from_datetime->format('Y-m-d').'" AND "'.$to_datetime->format('Y-m-d').' 23:59:59" ';
     if ($user_id) {
         $where .= ' AND user_id = '.$user_id;
@@ -371,35 +216,222 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
 
     $offset = 0;
     $page_size = 100;
-    $results = array();
-    $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY created_at DESC';
+    $activities = array();
+    $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE 1=1 '.$where.' ORDER BY created_at DESC';
     do {
-        $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
-        $results = array_merge($results, $page_results);
+        $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset, ARRAY_A);
+        $activities = array_merge($activities, $page_results);
         $offset += $page_size;
     } while (count($page_results) > 0);
 
-    foreach ($results as $result) {
-        if (!empty($result->user_id) && !isset($userlist[$result->user_id])) {
-            $userlist[$result->user_id] = get_user_by('id', $result->user_id);
-        }
-        $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
-        $activities[] = array(
-                'date' => $result->created_at,
-                'user' => $user_name,
-                'user_id' => $result->user_id,
-                'title' => $result->title,
-                'details' => $result->description,
-                'type' => $result->activity_type,
-        );
-    }
-    unset($results);
-
-    $activities = apply_filters('bbconnect_get_recent_activity', $activities, $user_id, $from_datetime, $to_datetime);
-
-    usort($activities, 'bbconnect_sort_activities');
+    $activities = apply_filters('bbconnect_activity_log', $activities);
 
     return $activities;
+}
+
+function bbconnect_update_activity_log() {
+    global $wpdb;
+
+    $userlist = array();
+
+    // Notes
+    $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "note"');
+    if ($latest) {
+        $note_ids = $wpdb->get_col('SELECT ID FROM '.$wpdb->posts.' WHERE post_type = "bb_note" AND ID > '.$latest);
+    }
+    $offset = 0;
+    $page_size = 100;
+    do {
+        $activities = array();
+        $args = array(
+                'post_type' => 'bb_note',
+                'posts_per_page' => $page_size,
+                'offset' => $offset,
+                'orderby' => 'ID',
+                'order' => 'ASC',
+                'post_status' => array('publish', 'private'),
+        );
+        if (!empty($note_ids)) {
+            $args['post__in'] = $note_ids;
+        }
+        $notes = get_posts($args);
+        foreach ($notes as $note) {
+            if (!isset($userlist[$note->post_author])) {
+                $userlist[$note->post_author] = get_user_by('id', $note->post_author);
+            }
+            $activities[] = array(
+                    'created_at' => $note->post_date,
+                    'user' => $userlist[$note->post_author]->display_name,
+                    'user_id' => $note->post_author,
+                    'title' => $note->post_title,
+                    'details' => apply_filters('the_content', $note->post_content),
+                    'type' => 'note',
+                    'external_id' => $note->ID,
+                    'external_ref' => 'note',
+            );
+        }
+        if (!empty($activities)) {
+            bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+        }
+        $offset += $page_size;
+    } while (count($notes) > 0);
+
+    unset($note_ids, $notes);
+
+    // Form Entries
+    if (class_exists('GFAPI')) { // Gravity Forms
+        $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "form"');
+        $search_criteria = array(
+                'field_filters' => array(
+                        array(
+                                'key' => 'status',
+                                'value' => 'active',
+                        ),
+                ),
+        );
+        if ($latest) {
+            $search_criteria['field_filters'][] = array(
+                    'key' => 'id',
+                    'value' => $latest,
+                    'operator' => '>',
+            );
+        }
+
+        $utc = bbconnect_get_timezone('UTC');
+        $local_tz = bbconnect_get_timezone();
+        $sorting = array('key' => 'id', 'direction' => 'ASC', 'is_numeric' => true);
+        $offset = 0;
+        $page_size = 100;
+        do {
+            $activities = array();
+            $paging = array('offset' => $offset, 'page_size' => $page_size);
+            $entries = GFAPI::get_entries(0, $search_criteria, $sorting, $paging, $total_count);
+            foreach ($entries as $entry) {
+                $created = bbconnect_get_datetime($entry['date_created'], $utc); // We're assuming DB is configured to use UTC...
+                $created->setTimezone($local_tz); // Convert to local timezone
+                if (!empty($entry['created_by']) && !isset($userlist[$entry['created_by']])) {
+                    $userlist[$entry['created_by']] = get_user_by('id', $entry['created_by']);
+                }
+                if (!empty($entry['agent_id']) && !isset($userlist[$entry['agent_id']])) {
+                    $userlist[$entry['agent_id']] = get_user_by('id', $entry['agent_id']);
+                }
+                if (!isset($forms[$entry['form_id']])) {
+                    $forms[$entry['form_id']] = GFAPI::get_form($entry['form_id']);
+                }
+                $user_name = !empty($entry['created_by']) ? $userlist[$entry['created_by']]->display_name : 'Anonymous User';
+                $agent_details = '';
+                $agent = null;
+                if (!empty($entry['agent_id']) && $entry['agent_id'] != $entry['created_by']) {
+                    if (!array_key_exists($entry['agent_id'], $userlist)) {
+                        $userlist[$entry['agent_id']] = new WP_User($entry['agent_id']);
+                    }
+                    $agent = $userlist[$entry['agent_id']];
+                    $agent_details = ' (Submitted by '.$userlist[$entry['agent_id']]->display_name.')';
+                } else {
+                    $agent = $userlist[$entry['created_by']];
+                }
+                $activity_type = 'form';
+                foreach ($forms[$entry['form_id']]['fields'] as $field) {
+                    if ($field->uniqueName == 'bb_activity_type') {
+                        $activity_type = $entry[$field->id];
+                    }
+                }
+                $activity = array(
+                        'created_at' => $created->format('Y-m-d H:i:s'),
+                        'user' => $user_name,
+                        'user_id' => $entry['created_by'],
+                        'title' => 'Form Submission: '.$forms[$entry['form_id']]['title'].$agent_details,
+                        'details' => '<a class="form-entry" data-entry-id="'.$entry['id'].'" href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'" target="_blank">View Entry #'.$entry['id'].'</a>',
+                        'type' => $activity_type,
+                        'external_id' => $entry['id'],
+                        'external_ref' => 'form',
+                );
+                $activity = apply_filters('bbconnect_form_activity_details', $activity, $forms[$entry['form_id']], $entry, $agent);
+                $activities[] = $activity;
+            }
+            if (!empty($activities)) {
+                bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+            }
+            $offset += $page_size;
+        } while ($offset < $total_count);
+        unset($entries);
+
+        // Form Notes
+        $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "form_note"');
+        $where = '';
+        if ($latest) {
+            $where = ' AND n.id > '.$latest;
+        }
+
+        $offset = 0;
+        $page_size = 100;
+        $sql = 'SELECT n.*, l.form_id FROM '.$wpdb->prefix.'rg_lead_notes n JOIN '.$wpdb->prefix.'rg_lead l ON (l.id = n.lead_id) WHERE 1=1 '.$where.' ORDER BY n.id ASC';
+        do {
+            $activities = array();
+            $results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
+            foreach ($results as $result) {
+                $created = bbconnect_get_datetime($result->date_created, $utc); // Again we're assuming DB is configured to use UTC...
+                $created->setTimezone($local_tz); // Convert to local timezone
+                $activities[] = array(
+                        'created_at' => $created->format('Y-m-d H:i:s'),
+                        'user' => $result->user_name,
+                        'user_id' => $result->user_id,
+                        'title' => 'Form Note Added',
+                        'details' => $result->value.'<br><a class="form-entry" data-entry-id="'.$entry['id'].'" href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$result->form_id.'&lid='.$result->lead_id.'" target="_blank">View Entry #'.$result->lead_id.'</a>',
+                        'type' => 'form_note',
+                        'external_id' => $result->id,
+                        'external_ref' => 'form_note',
+                );
+            }
+            if (!empty($activities)) {
+                bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+            }
+            $offset += $page_size;
+        } while (count($page_results) > 0);
+        unset($results);
+    }
+
+    // CRM Activities
+    $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "bbconnect"');
+    $where = '';
+    if ($latest) {
+        $where = ' AND id > '.$latest;
+    }
+    $offset = 0;
+    $page_size = 100;
+    $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE 1=1 '.$where.' ORDER BY id ASC';
+    do {
+        $activities = array();
+        $results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset);
+        foreach ($results as $result) {
+            if (!empty($result->user_id) && !isset($userlist[$result->user_id])) {
+                $userlist[$result->user_id] = get_user_by('id', $result->user_id);
+            }
+            $user_name = !empty($result->user_id) ? $userlist[$result->user_id]->display_name : 'Anonymous User';
+            $activities[] = array(
+                    'created_at' => $result->created_at,
+                    'user' => $user_name,
+                    'user_id' => $result->user_id,
+                    'title' => $result->title,
+                    'details' => $result->description,
+                    'type' => $result->activity_type,
+                    'external_id' => $result->id,
+                    'external_ref' => 'bbconnect',
+            );
+        }
+        if (!empty($activities)) {
+            bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+        }
+        $offset += $page_size;
+    } while (count($page_results) > 0);
+    unset($results);
+
+    $activities = array();
+    $activities = apply_filters('bbconnect_update_activity_log', $activities);
+    if (!empty($activities)) {
+        bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+    }
+    return true;
 }
 
 function bbconnect_sort_activities($a, $b) {
@@ -454,6 +486,7 @@ function bbconnect_activity_icon($icon, $activity_type) {
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/note.png';
             break;
         case 'form':
+        case 'form_note':
         case 'activity':
         default:
             return trailingslashit(BBCONNECT_URL).'assets/g/activity-log/activity.png';
