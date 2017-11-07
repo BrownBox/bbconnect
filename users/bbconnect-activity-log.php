@@ -455,6 +455,24 @@ function bbconnect_update_activity_log() {
     return true;
 }
 
+add_action('bb_express_identify_user', 'bbconnect_update_activity_log_user', 10, 2);
+function bbconnect_update_activity_log_user($user, $client_id) {
+    global $wpdb;
+    $data = array(
+            'user_id' => $user->ID,
+            'user' => $user->display_name,
+    );
+    $where = array(
+            'user_info' => $client_id,
+            'user_id' => null,
+    );
+    $wpdb->update($wpdb->prefix.'bbconnect_activity_log', $data, $where);
+
+    // Covering our bases
+    $where['user_id'] = 0;
+    $wpdb->update($wpdb->prefix.'bbconnect_activity_log', $data, $where);
+}
+
 function bbconnect_sort_activities($a, $b) {
     $a_date = bbconnect_get_datetime($a['date']);
     $b_date = bbconnect_get_datetime($b['date']);
