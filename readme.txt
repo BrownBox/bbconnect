@@ -47,6 +47,14 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.6.5 =
+* More styling tweaks for submit form modal
+* Close submit form modal when link clicked
+* Hide History tab on user profile
+* Allow pre-render of work queue field in action form
+* Major rework of activity log to resolve performance issues
+* Bug fixes
+
 = 2.6.4 =
 * Bug fix
 
