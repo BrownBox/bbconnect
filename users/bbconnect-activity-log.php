@@ -33,12 +33,7 @@ function bbconnect_activity_log_days_per_page($user_id) {
 }
 
 function bbconnect_output_activity_log($activities, $user_id = null) {
-    $days_per_page = bbconnect_activity_log_days_per_page($user_id);
     $activity_types = bbconnect_activity_type_list();
-    $to_datetime = bbconnect_get_datetime();
-    $to_datetime->sub(new DateInterval('P'.$days_per_page.'D'));
-    $from_datetime = clone($to_datetime);
-    $from_datetime->sub(new DateInterval('P'.($days_per_page-1).'D'));
 
     echo '<ul class="activity-log-filters">'."\n";
     echo '    <li class="button button-primary show-all" data-type="all">Show All Types</li>' . "\n";
@@ -48,17 +43,22 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
     echo '    <li class="button show-none" data-type="none">Hide All Types</li>' . "\n";
     echo '</ul>'."\n";
     echo '<p>Please note that activity log data may be delayed by up to an hour.</p>'."\n";
-?>
-    <table class="wp-list-table striped widefat activity-log">
-<?php
+    echo '<table class="wp-list-table striped widefat activity-log">'."\n";
     bbconnect_output_activity_log_page($activities, $user_id);
+    if (!empty($activities)) {
+        echo '    <tfoot id="bbconnect_activity_loadmore_wrapper">'."\n";
+        echo '        <tr>'."\n";
+        echo '            <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a><i class="dashicons dashicons-update bbspin" id="bbconnect_activity_loading" style="display: none;"></i></p></td>'."\n";
+        echo '        </tr>'."\n";
+        echo '    </tfoot>'."\n";
+        echo '</table>'."\n";
+        $earliest_activity = array_pop($activities);
+        $days_per_page = bbconnect_activity_log_days_per_page($user_id);
+        $to_datetime = bbconnect_get_datetime($earliest_activity['created_at']);
+        $to_datetime->sub(new DateInterval('P1D'));
+        $from_datetime = clone($to_datetime);
+        $from_datetime->sub(new DateInterval('P'.($days_per_page-1).'D'));
 ?>
-        <tfoot id="bbconnect_activity_loadmore_wrapper">
-            <tr>
-                <td colspan="5"><p style="text-align: center;"><a class="button" id="bbconnect_activity_loadmore">Load More</a><i class="dashicons dashicons-update bbspin" id="bbconnect_activity_loading" style="display: none;"></i></p></td>
-            </tr>
-        </tfoot>
-    </table>
     <script>
         jQuery(document).ready(function() {
             // Pagination
@@ -82,11 +82,14 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
                         },
                         function(data) {
                             jQuery('table.activity-log tfoot#bbconnect_activity_loadmore_wrapper').before(data);
+                            var end_date = jQuery('table.activity-log tbody p').last().html(); // There has to be a better way...
                             bbconnect_activity_log_apply_filters();
-                            from_date.setDate(from_date.getDate() - <?php echo $days_per_page; ?>);
-                            to_date.setDate(to_date.getDate() - <?php echo $days_per_page; ?>);
                             the_button.show();
                             jQuery('#bbconnect_activity_loading').hide();
+                            to_date.setTime(Date.parse(end_date));
+                            to_date.setDate(to_date.getDate() - 1);
+                            from_date.setTime(to_date.getTime());
+                            from_date.setDate(from_date.getDate() - <?php echo $days_per_page-1; ?>);
                             processing = false;
                         }
                 );
@@ -134,6 +137,9 @@ function bbconnect_output_activity_log($activities, $user_id = null) {
         });
     </script>
 <?php
+    } else {
+        echo '</table>'."\n";
+    }
 }
 
 function bbconnect_output_activity_log_page($activities, $user_id) {
@@ -208,25 +214,40 @@ function bbconnect_get_recent_activity($user_id = null, $from_date = null, $to_d
     } else {
         $from_datetime = bbconnect_get_datetime($from_date);
     }
+    $earliest_datetime = bbconnect_get_earliest_activity($user_id);
 
-    $where = ' AND created_at BETWEEN "'.$from_datetime->format('Y-m-d').'" AND "'.$to_datetime->format('Y-m-d').' 23:59:59" ';
+    do {
+        $where = ' AND created_at BETWEEN "'.$from_datetime->format('Y-m-d').'" AND "'.$to_datetime->format('Y-m-d').' 23:59:59" ';
+        if ($user_id) {
+            $where .= ' AND user_id = '.$user_id;
+        }
+
+        $offset = 0;
+        $page_size = 100;
+        $activities = array();
+        $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE 1=1 '.$where.' ORDER BY created_at DESC';
+        do {
+            $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset, ARRAY_A);
+            $activities = array_merge($activities, $page_results);
+            $offset += $page_size;
+        } while (count($page_results) > 0);
+
+        $activities = apply_filters('bbconnect_activity_log', $activities);
+        $to_datetime->sub(new DateInterval('P'.$days_per_page.'D'));
+        $from_datetime->sub(new DateInterval('P'.$days_per_page.'D'));
+    } while (empty($activities) && $to_datetime->format('Ymd') >= $earliest_datetime->format('Ymd'));
+
+    return $activities;
+}
+
+function bbconnect_get_earliest_activity($user_id) {
+    global $wpdb;
     if ($user_id) {
         $where .= ' AND user_id = '.$user_id;
     }
-
-    $offset = 0;
-    $page_size = 100;
-    $activities = array();
-    $sql = 'SELECT * FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE 1=1 '.$where.' ORDER BY created_at DESC';
-    do {
-        $page_results = $wpdb->get_results($sql.' LIMIT '.$page_size.' OFFSET '.$offset, ARRAY_A);
-        $activities = array_merge($activities, $page_results);
-        $offset += $page_size;
-    } while (count($page_results) > 0);
-
-    $activities = apply_filters('bbconnect_activity_log', $activities);
-
-    return $activities;
+    $sql = 'SELECT MIN(created_at) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE 1=1 '.$where;
+    $earliest = $wpdb->get_var($sql);
+    return bbconnect_get_datetime($earliest);
 }
 
 function bbconnect_update_activity_log() {
