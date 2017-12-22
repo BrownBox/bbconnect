@@ -108,10 +108,15 @@ function bbconnect_get_field( $args = '' ) {
             } else if ( 'wp' == $meta['source'] || 'user' == $meta['source'] ) {
                 $field['value'] = bbconnect_scrub( 'bbconnect_esc_attr', get_user_meta( $id, $key, true ) );
             } else {
-                if ( 'textarea' == $meta['options']['field_type'] ) {
-                    $field['value'] = bbconnect_scrub( 'bbconnect_esc_html', get_user_meta( $id, 'bbconnect_'.$key, true ) );
+                if ('bbconnect' == $user_meta['source']) {
+                    $meta_prefix = 'bbconnect_';
                 } else {
-                    $field['value'] = bbconnect_scrub( 'bbconnect_esc_attr', get_user_meta( $id, 'bbconnect_'.$key, true ) );
+                    $meta_prefix = '';
+                }
+                if ( 'textarea' == $meta['options']['field_type'] ) {
+                    $field['value'] = bbconnect_scrub( 'bbconnect_esc_html', get_user_meta( $id, $meta_prefix.$key, true ) );
+                } else {
+                    $field['value'] = bbconnect_scrub( 'bbconnect_esc_attr', get_user_meta( $id, $meta_prefix.$key, true ) );
                 }
             }
 
