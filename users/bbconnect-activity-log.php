@@ -34,6 +34,9 @@ function bbconnect_activity_log_days_per_page($user_id) {
 
 function bbconnect_output_activity_log($activities, $user_id = null) {
     $activity_types = bbconnect_activity_type_list();
+    if ($_GET['update'] == 'log') {
+        bbconnect_update_activity_log();
+    }
 
     echo '<ul class="activity-log-filters">'."\n";
     echo '    <li class="button button-primary show-all" data-type="all">Show All Types</li>' . "\n";
@@ -257,51 +260,52 @@ function bbconnect_update_activity_log() {
 
     // Notes
     $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "note"');
-    if ($latest) {
-        $note_ids = $wpdb->get_col('SELECT ID FROM '.$wpdb->posts.' WHERE post_type = "bb_note" AND ID > '.$latest);
+    if (!$latest) {
+        $latest = 0;
     }
-    $offset = 0;
-    $page_size = 100;
-    do {
-        $activities = array();
-        $args = array(
-                'post_type' => 'bb_note',
-                'posts_per_page' => $page_size,
-                'offset' => $offset,
-                'orderby' => 'ID',
-                'order' => 'ASC',
-                'post_status' => array('publish', 'private'),
-        );
-        if (!empty($note_ids)) {
-            $args['post__in'] = $note_ids;
-        }
-        $notes = get_posts($args);
-        foreach ($notes as $note) {
-            if (!isset($userlist[$note->post_author])) {
-                $userlist[$note->post_author] = get_user_by('id', $note->post_author);
-            }
-            $activities[] = array(
-                    'created_at' => $note->post_date,
-                    'user' => $userlist[$note->post_author]->display_name,
-                    'user_id' => $note->post_author,
-                    'title' => $note->post_title,
-                    'details' => apply_filters('the_content', $note->post_content),
-                    'type' => 'note',
-                    'external_id' => $note->ID,
-                    'external_ref' => 'note',
+    $note_ids = $wpdb->get_col('SELECT ID FROM '.$wpdb->posts.' WHERE post_type = "bb_note" AND ID > '.$latest);
+    if (!empty($note_ids)) {
+        $offset = 0;
+        $page_size = 100;
+        do {
+            $activities = array();
+            $args = array(
+                    'post_type' => 'bb_note',
+                    'posts_per_page' => $page_size,
+                    'offset' => $offset,
+                    'orderby' => 'ID',
+                    'order' => 'ASC',
+                    'post_status' => array('publish', 'private'),
+                    'post__in' => $note_ids,
             );
-        }
-        if (!empty($activities)) {
-            bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
-        }
-        $offset += $page_size;
-    } while (count($notes) > 0);
+            $notes = get_posts($args);
+            foreach ($notes as $note) {
+                if (!isset($userlist[$note->post_author])) {
+                    $userlist[$note->post_author] = get_user_by('id', $note->post_author);
+                }
+                $activities[] = array(
+                        'created_at' => $note->post_date,
+                        'user' => $userlist[$note->post_author]->display_name,
+                        'user_id' => $note->post_author,
+                        'title' => $note->post_title,
+                        'details' => apply_filters('the_content', $note->post_content),
+                        'type' => 'note',
+                        'external_id' => $note->ID,
+                        'external_ref' => 'note',
+                );
+            }
+            if (!empty($activities)) {
+                bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
+            }
+            $offset += $page_size;
+        } while (count($notes) > 0);
+        unset($note_ids, $notes);
+    }
 
-    unset($note_ids, $notes);
 
     // Form Entries
     if (class_exists('GFAPI')) { // Gravity Forms
-        $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref = "form"');
+        $latest = $wpdb->get_var('SELECT MAX(external_id) FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE external_ref IN ("form", "action")');
         $search_criteria = array(
                 'field_filters' => array(
                         array(
@@ -323,6 +327,7 @@ function bbconnect_update_activity_log() {
         $sorting = array('key' => 'id', 'direction' => 'ASC', 'is_numeric' => true);
         $offset = 0;
         $page_size = 100;
+        $total_count = true;
         do {
             $activities = array();
             $paging = array('offset' => $offset, 'page_size' => $page_size);
@@ -408,7 +413,7 @@ function bbconnect_update_activity_log() {
                 bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
             }
             $offset += $page_size;
-        } while (count($page_results) > 0);
+        } while (count($results) > 0);
         unset($results);
     }
 
@@ -444,7 +449,7 @@ function bbconnect_update_activity_log() {
             bbconnect_insert_rows($wpdb->prefix.'bbconnect_activity_log', $activities);
         }
         $offset += $page_size;
-    } while (count($page_results) > 0);
+    } while (count($results) > 0);
     unset($results);
 
     $activities = array();
