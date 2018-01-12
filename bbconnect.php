@@ -492,10 +492,6 @@ add_action( 'bbconnect_options_post', 'bbconnect_option_goodbye' );
 // BBCPANELS SHORT CODES
 add_shortcode( 'ppf_link', 'bbconnectpanels_link_shortcode' );
 
-// SETS THE MAIL DEFAULTS
-add_filter( 'wp_mail_from', 'bbconnect_mail_from' );
-add_filter( 'wp_mail_from_name', 'bbconnect_mail_from_name' );
-
 // DON'T NOTIFY USERS WHEN EMAIL IS CHANGED
 add_filter('send_email_change_email', '__return_false', 999);
 
