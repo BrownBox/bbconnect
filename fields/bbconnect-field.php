@@ -108,7 +108,7 @@ function bbconnect_get_field( $args = '' ) {
             } else if ( 'wp' == $meta['source'] || 'user' == $meta['source'] ) {
                 $field['value'] = bbconnect_scrub( 'bbconnect_esc_attr', get_user_meta( $id, $key, true ) );
             } else {
-                if ('bbconnect' == $user_meta['source']) {
+                if ('bbconnect' == $meta['source']) {
                     $meta_prefix = 'bbconnect_';
                 } else {
                     $meta_prefix = '';
