@@ -261,6 +261,9 @@ function bbconnect_edit_user( $user_id = '' ) {
                 case 'meta' :
 ?>
         <form id="user-form" class="bbconnect-form" enctype="multipart/form-data" action="<?php echo $formdes . '&tab=' . $active; ?>" autocomplete="off" method="POST">
+            <div style="clear: both;">
+                <p><input id="profile-submission-top" type="submit" name="edit_user_profile" value="<?php _e( 'Update!', 'bbconnect' ); ?>" class="button-primary"></p>
+            </div>
 <?php
                     wp_nonce_field( 'bbconnect-edit-user-nonce' );
                     do_action( 'bbconnect_pre_admin_profile_fields' );
@@ -276,12 +279,12 @@ function bbconnect_edit_user( $user_id = '' ) {
             <input type="hidden" name="update" value="<?php echo $active; ?>" />
             <input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
             <div style="clear: both;">
-                <input id="profile-submission" type="submit" name="edit_user_profile" value="<?php _e( 'Update!', 'bbconnect' ); ?>" class="button-primary" />
+                <p><input id="profile-submission" type="submit" name="edit_user_profile" value="<?php _e( 'Update!', 'bbconnect' ); ?>" class="button-primary"></p>
             </div>
             <?php if ( !current_user_can( 'edit_users' ) ) : ?>
             <script type="text/javascript">
                 jQuery(document).ready(function(){
-                    jQuery('#bbconnect').on('click', '#profile-submission', check_profile);
+                    jQuery('#bbconnect').on('click', '#profile-submission-top, #profile-submission', check_profile);
                 });
             </script>
             <?php endif; ?>
