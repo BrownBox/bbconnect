@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.7.0 =
+* Major restyling of Connexions pages
+* Added support for creating/updating multiple users from single form submission
+* Performance improvements
+* Bug fixes
+
 = 2.6.7 =
 * Allow non-admins to update user roles
 * Bug fix
