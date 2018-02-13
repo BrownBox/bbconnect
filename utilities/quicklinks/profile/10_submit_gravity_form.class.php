@@ -13,9 +13,15 @@ class profile_10_submit_gravity_form_quicklink extends bb_modal_quicklink {
     protected function modal_contents(array $user_ids = array(), array $args = array()) {
         echo '<p>Which form would you like to complete on behalf of this user?</p>'."\n";
         echo '<div class="bbconnect-form-tiles">'."\n";
-        $forms = GFAPI::get_forms();
-        $forms = apply_filters('bbconnect_gf_quicklink_form_list', $forms);
-        usort($forms, array($this, 'sort_forms'));
+        $t_period = DAY_IN_SECONDS;
+        $transient_forms = 'bbconnect_forms';
+        if ($_GET['transient'] == 'false') delete_transient($transient_forms);
+        if (false === ($forms = get_transient($transient_forms))) {
+            $forms = GFAPI::get_forms();
+            $forms = apply_filters('bbconnect_gf_quicklink_form_list', $forms);
+            usort($forms, array($this, 'sort_forms'));
+            set_transient($transient_forms, $forms, $t_period);
+        }
         foreach ($forms as $form) {
             if (strstr($form['title'], '[')) {
                 $form_namespace = substr($form['title'], strpos($form['title'], '['), strpos($form['title'], ']')+1);
