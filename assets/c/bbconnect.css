@@ -83,9 +83,23 @@ textarea:disabled, select:disabled, input:disabled {background: #ddd none repeat
 	GENERAL FORM ELEMENTS
 	------------------------------------------------------- */
 
+.icon-admin, .help {
+	position: absolute;
+	left: -1.75rem;
+	opacity: 0.125;
+}
+.bbconnect-label {
+	position: relative;
+}
+.t-wrapper.group .t-panel {
+	background-color: rgba(53,72,92,0.375);
+	border: none;
+}
 #bbconnect.wrap {position: relative;}
 #quicklinks-wrapper { background: #fff none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.2); display: block; margin-bottom: 0.5rem; min-height: 1.5rem; min-width: 100px; padding: 0.2rem 0.5rem 0; position: relative; right: 0;	top: 0; width: 98%;}
-
+#profile-submission, #profile-submission-top {
+	border: none;
+}
 #bbconnect input[type="text"],
 #bbconnect textarea,
 #bbconnect .regular-text.ui-autocomplete-input,
@@ -95,9 +109,9 @@ textarea:disabled, select:disabled, input:disabled {background: #ddd none repeat
 #bbconnect select.regular-text,
 textarea {
 	width: 90%;
-	padding: .3em;
+	padding: 0.8rem;
 	margin: .2em 0;
-	border: 1px solid #CCCCCC;
+	border: 0;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
@@ -175,7 +189,7 @@ textarea {
 
 /*	WRAPPERS ---------------------------------------------- */
 .t-wrapper, .tn-wrapper, .action-count {
-	background-color: #DDDDDD;
+	background-color: rgba(153,172,192,0.2);
 	color: #000000;
 	cursor: pointer;
 	-moz-border-radius: 3px;
@@ -185,7 +199,7 @@ textarea {
 	margin: 2px;
 }
 .t-wrapper:hover, .tn-wrapper:hover {
-	background-color: #CCCCCC;
+	background-color: rgba(53,72,92,0.25);
 	/* color: #CCCCCC; */
 }
 .t-wrapper:hover h2, .tn-wrapper:hover h2 {

@@ -1,10 +1,66 @@
 /*	------------------------------------------------------- 
 	BBCONNECT STYLES
 	------------------------------------------------------- */
+	
+	/* rgba(153,172,192,0.2); */
+	/* rgba(53,72,92,0.05); */
 
+.float-right{float:right;}
+.float-left{float:left;}
+
+
+#wp-admin-bar-top-secondary::before {
+    content: "";
+    width: 100px;
+    height: 2rem;
+    display: inline-block;
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+}
+
+.connexions_footer > a:hover {opacity:1;color:#fff;}
+.connexions_footer > a {display: inline-block; padding: 0.3rem 0.6rem; background: #35485c; color: #fff; text-decoration: none;	z-index: 1; opacity:0.5;}
+.connexions_footer {position: fixed; bottom: 0; display: inline-block; width: calc(100% - 2rem); height: 1.8rem; left: 2rem; background-color: #35485c; z-index: 1;}
+
+.chosen-container-single .chosen-single {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	padding: 0 0 0 8px;
+	height: 23px;
+	border: none;
+	border-radius: 3px;
+	background-color: #fff;
+	background: #fff;
+	color: #444;
+	text-decoration: none;
+	white-space: nowrap;
+	line-height: 24px;
+}
+.chosen-container.chosen-container-single {
+	margin: 0 4px;
+}
+.chosen-container-multi .chosen-choices {border: 0px; margin-right:2px;}
 .container.mini-container {
 	width: 460px;
 }
+form#filter-form > div {
+	display: inline-block;
+}
+
+#bbconnect form#report-data-form table.widefat {background: rgba(255,255,255,0);}
+#bbconnect form#report-data-form .widefat tr th, #bbconnect form#report-data-form .widefat tr td {border-bottom: 1px solid rgba(53,72,92,0.05); white-space: nowrap; text-overflow: ellipsis; overflow: hidden !important; border-right: 1px solid rgba(53,72,92,0.025); max-width: 5rem; width: 5rem; background-color:#ffffff;}
+#bbconnect form#report-data-form .widefat tr th {font-weight:bold; background-color:rgba(255,255,255,0.2);}
+#bbconnect form#report-data-form .widefat tr th:first-of-type{background-color:rgba(53,72,92,0.05);}
+#bbconnect form#report-data-form .widefat tr td:first-of-type{background-color:rgba(255,255,255,0.875);}
+#bbconnect form#report-data-form .widefat tr:hover > * {background-color:rgba(53,72,92,0.025)!important;}
+
+.wp-core-ui .button, .wp-core-ui .button-secondary {box-shadow: none;border: none;}
+#report-navigation { background-color: rgba(153,172,192,0.2)!important; border: none!important; padding: 0.5rem 0;}
+
+.bbconnect-reports-user-actions {opacity: 0.25;}
+tr:hover .bbconnect-reports-user-actions {opacity: 1;}
 
 .button.t-trigger:hover, 
 .button.t-trigger.open {
@@ -262,7 +318,7 @@ span.example-text {
 #report-navigation {
 	width: 100%;
 	float: left;
-	background-color: #EFEFEF;
+	background-color: rgba(255,255,255,0.675);
 	border: 1px solid #CCCCCC;
 	margin: 10px 0;
 	-moz-border-radius: 3px;
@@ -274,20 +330,17 @@ span.example-text {
 #report-options {
 	width: 100%;
 	float: left;
-	border-right: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
-	border-left: 1px solid #CCCCCC;
 	-moz-border-radius-bottomright: 3px;
 	-moz-border-radius-bottomleft: 3px; 
 	-webkit-border-bottom-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	border-radius-bottom-right: 3px;
 	border-radius-bottom-left: 3px;
-	background-color: #EFEFEF;
+	background-color: rgba(255,255,255,0.675);
 }
 #report-nav a.nav-tab-active {
-	background-color: #EFEFEF;
-	border-color: #CCC #CCC #EFEFEF;
+	background-color: rgba(255,255,255,0.675);
+	border-color: #CCC #CCC rgba(255,255,255,0.675);
 }
 a.nav-tab-active {
 	color: #CF5F13;
@@ -384,7 +437,7 @@ a.close {
 #bbconnect-user-actions input[type="text"].input-micro {
 	padding: 2px;
 	margin: 1px 0;
-	border: 1px solid #CCC;
+	border: 0px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -466,7 +519,7 @@ a.close {
 tr.odd td { background-color: #DDDDDD; }
 tr.even td { background-color: #EEEEEE; }
 .tab {
-	background-color: #EFEFEF;
+	background-color: rgba(255,255,255,0.675);
 	-moz-border-radius-topright: 3px;
 	-moz-border-radius-topleft: 3px; 
 	-webkit-border-top-right-radius: 3px;
@@ -711,15 +764,20 @@ ul.bbconnect li .chzn-choices {
 }
 
 .nav-tab-wrapper.non-responsive { display: none; }
-.nav-tab-wrapper.responsive { display: block; background-color: #EFEFEF; padding: 10px; }
+.nav-tab-wrapper.responsive { display: block; background-color: rgba(255,255,255,0.675); padding: 10px; }
 
 /* Quicklinks */
-#quicklinks-wrapper { background: #fff none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.2); display: block; margin-bottom: 0.5rem; min-height: 1.5rem; min-width: 100px; padding: 1.375rem 0.375rem 0.25rem; position: relative; right: 0; top: 0; width: 98%;}
-#quicklinks-wrapper > strong { box-sizing: border-box; float: left; font-size: 8px; left: 0; padding-left: 5px; position: absolute; top: 0; width: 100%;}
+
+#report-options .query-buttons {top: 25%; opacity:0.25;}
+#report-options .query-buttons:hover {opacity:1;}
+
+#bbconnect #quicklinks-wrapper {background-color:rgba(0,0,0,0); border: none; display: block; margin-bottom: 0.5rem; min-height: 1.5rem; min-width: 100px; padding: 0.375rem 0rem; position: relative; right: 0; top: 0.5rem; width: 98%;}
+#bbconnect #quicklinks-wrapper > strong {box-sizing: border-box; float: left; font-size: 8px; left: 0; padding-left: 5px; position: absolute; width: 100%; opacity: 0.25; top: -1.1rem; width: calc(100% - 0.5rem); border-bottom: 1px solid #bbb;}
 #bbconnect #quicklinks-wrapper ul {white-space: nowrap;}
-#bbconnect #quicklinks-wrapper li a { background: #eee none repeat scroll 0 0; color: #222; font-size: 0.675rem !important; font-weight: bold; margin: 0.25rem 0; padding: 0.125rem 0.25rem; text-decoration: none; width: auto;}
+#bbconnect #quicklinks-wrapper li a {background: #d4dbe4; font-size: 0.675rem !important; font-weight: bold; margin: 0.25rem 0; padding: 0.25rem 0.5rem; text-decoration: none; width: auto; border-radius: 3px; border: none; color: #555; line-height: 1rem; height: auto; text-shadow: 1px 1px 1px #fff;}
 #bbconnect #quicklinks-wrapper li { display: inline; float: none;}
 #bbconnect #quicklinks-wrapper li a.s-quicklinks:hover { background: #ccc none repeat scroll 0 0;}
+
 #TB_ajaxContent .bbconnect-form-tiles a {display: block; padding: 1%; margin: 0 0 1% 0; text-decoration: none; background-color: rgba(37, 170, 225, 0.1);}
 #TB_ajaxContent .bbconnect-form-tiles a:hover {background-color: rgba(37, 170, 225, 0.3);}
 #TB_ajaxContent .bbconnect-form-tiles a > span {float: left; padding: 4px;}
@@ -729,13 +787,16 @@ ul.bbconnect li .chzn-choices {
 #TB_ajaxContent h2 {margin-bottom: 0;margin-top: 0.5rem;}
 #TB_ajaxContent > div > p {margin: 0;opacity: 0.5;}
 
+
+.bbconnect-label {width: 30%; max-width: 80px; font-size: 0.7rem; opacity: 0.7;}
+
 /*  ------------------------------------------------------- 
     ACTIVITY LOG
     ------------------------------------------------------- */
 
 #bbconnect ul.activity-log-filters li {display: inline-block; float: left; width: auto; clear: none; margin: 0 0.25rem 0.25rem 0;}
 #bbconnect table.activity-log {box-shadow:none;border:none;}
-#bbconnect table.activity-log th {background-color: #7bb5d1;border-bottom: 1px solid #ddd;border-top: 1.2rem solid #f1f1f1;}
+#bbconnect table.activity-log th {background-color: #7bb5d1;border-bottom: 1px solid #ddd;}
 #bbconnect table.activity-log th h2 {color: #fff;font-size: 0.8rem;margin: 0;padding: 0;text-transform: uppercase;}
 #bbconnect table.activity-log td {padding-top: 0.75rem;}
 #bbconnect table.activity-log td h2, #bbconnect table.activity-log td h3 {margin-top: 0; padding-top: 0; border-bottom: none;}

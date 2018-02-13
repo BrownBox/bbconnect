@@ -355,6 +355,26 @@ function bbconnect_menu() {
 
 }
 
+function bbconnect_admin_style() {
+    $admin_pages = array('bbconnect_reports','bbconnect_edit_user','bbconnect_new_user','bbconnect_activity_log','donor_report_submenu','segment_report_submenu','work_queues_submenu');
+    if(in_array( $_GET['page'], $admin_pages)) {
+        echo "<script type='text/javascript' >document.body.className+=' folded';</script>";
+
+        echo '<style>';
+        echo '.users_page_'.$_GET['page'].' #wpadminbar {background-color: #0073aa;}';
+        echo '.users_page_'.$_GET['page'].' {background: #ebeff5;}';
+        echo '.users_page_'.$_GET['page'].' > * {margin-bottom: 2rem; padding-bottom: 3rem;}';
+        echo '.users_page_'.$_GET['page'].' #adminmenu {background-color: #35485c;}';
+        echo '.users_page_'.$_GET['page'].' #adminmenuwrap {background-color: #35485c;}';
+        echo '.users_page_'.$_GET['page'].' #wp-admin-bar-top-secondary::before {background-image: url(http://connexions.brownbox.hosting/wp-content/uploads/sites/7/2017/08/tagline.png);}';
+        echo '</style>';
+
+        echo '<div class="connexions_footer">';
+        echo '  <a href="http://connexionscrm.com/" class="float-right">Powered by Connexions</a>';
+        echo '</div>';
+    }
+}
+add_action('adminmenu', 'bbconnect_admin_style', 1);
 
 function bbconnect_actions_link( $links ) {
 	$settings_link = '<a href="' . admin_url() . '?page=bbconnect_options">Settings</a>';

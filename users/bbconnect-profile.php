@@ -11,7 +11,7 @@ function bbconnect_new_user() {
 
     // STOP THEM IF THEY SHOULDN'T BE HERE
     if ( !current_user_can( 'add_users' ) ) {
-            wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
     }
 
     // SET GLOBAL VARIABLES
@@ -57,7 +57,7 @@ function bbconnect_new_user() {
 
         <div id="bbconnect" class="wrap">
         <div id="icon-users" class="icon32"><br /></div>
-            <h2><?php _e( 'Add New User', 'bbconnect' ); ?></h2>
+            <h2><a href="/wp-admin/users.php?page=bbconnect_reports">All Users</a> \ <?php _e( 'Add New User', 'bbconnect' ); ?></h2>
             <form id="user-form" enctype="multipart/form-data" action="<?php echo admin_url( 'users.php?page=bbconnect_new_user' ); ?>" autocomplete="off" method="POST">
 
             <?php wp_nonce_field('bbconnect-nonce'); ?>
@@ -66,7 +66,7 @@ function bbconnect_new_user() {
                 <?php bbconnect_profile_user_meta( array( 'bbconnect_cap' => $bbconnect_cap, 'action' => 'edit' ) ); ?>
             </div>
             <div>
-                <input id="profile-submission" type="submit" name="new_user" value="<?php _e( 'Add Them!', 'bbconnect' ); ?>" class="button-primary" />
+                <input id="profile-submission" type="submit" name="new_user" value="<?php _e( 'Add Them!', 'bbconnect' ); ?>" class="button-primary">
             </div>
 
             </form>
@@ -251,9 +251,11 @@ function bbconnect_edit_user( $user_id = '' ) {
 
     <div id="bbconnect" class="wrap">
     <div id="icon-users" class="icon32"><br /></div>
-        <h2><?php echo bbconnect_get_username( $user_id ); ?></h2>
+        <h2><a href="/wp-admin/users.php?page=bbconnect_reports">All Users</a> \ <?php echo bbconnect_get_username( $user_id ); ?></h2>
         <h2 class="nav-tab-wrapper"><?php echo $tab_nav; ?></h2>
-        <?php bbconnect_profile_quicklinks($user_id); ?>
+<?php
+    bbconnect_profile_quicklinks($user_id);
+?>
         <div>
         <?php
             switch( $active ) {
@@ -318,16 +320,15 @@ function bbconnect_edit_user( $user_id = '' ) {
  * @return html formatted profile fields.
  */
 function bbconnect_profile_user_meta( $args = '' ) {
-
     // SET THE DEFAULTS TO BE OVERRIDDEN AS DESIRED
     $defaults = array(
-                    'user_id' => '',
-                    'bbconnect_cap' => '',
-                    'group_override' => false,
-                    'action' => false,
-                    'bbconnect_user_meta' => get_option( '_bbconnect_user_meta' ),
-                    'post_arr' => false,
-                );
+            'user_id' => '',
+            'bbconnect_cap' => '',
+            'group_override' => false,
+            'action' => false,
+            'bbconnect_user_meta' => get_option( '_bbconnect_user_meta' ),
+            'post_arr' => false,
+    );
 
     // PARSE THE INCOMING ARGS
     $args = wp_parse_args( $args, $defaults );
@@ -354,84 +355,82 @@ function bbconnect_profile_user_meta( $args = '' ) {
             }
         }
     }
-
-    ?>
+?>
     <div class="bbconnect-fields">
         <div id="column_1_holder"<?php echo $column_one; ?>>
             <ul id="column_1">
-            <?php
-                foreach ( $bbconnect_user_meta['column_1'] as $key => $value ) {
+<?php
+    foreach ( $bbconnect_user_meta['column_1'] as $key => $value ) {
 
-                    // GET THE OPTION
-                    $user_meta = bbconnect_get_option( $value );
+        // GET THE OPTION
+        $user_meta = bbconnect_get_option( $value );
 
-                    $args = array(
-                                    'meta' => $user_meta,
-                                    'bbconnect_cap' => $bbconnect_cap,
-                                    'group_override' => $group_override,
-                                    'action' => $action
-                                );
-                    $hide_meta = bbconnect_hide_meta( $args );
-                    if ( $hide_meta )
-                        continue;
+        $args = array(
+                        'meta' => $user_meta,
+                        'bbconnect_cap' => $bbconnect_cap,
+                        'group_override' => $group_override,
+                        'action' => $action
+                    );
+        $hide_meta = bbconnect_hide_meta( $args );
+        if ( $hide_meta )
+            continue;
 
-                    $post_val = false;
-                    if ( isset( $post_vars ) ) {
-                        // FOR SECTIONS & GROUPS
-                        if ( in_array( $user_meta['options']['field_type'], array( 'group', 'section' ) ) ) {
-                            $post_val = $post_vars;
-                        } else if ( isset( $post_vars[$user_meta['meta_key']] ) ) {
-                            $post_val = $post_vars[$user_meta['meta_key']];
-                        }
-                    }
+        $post_val = false;
+        if ( isset( $post_vars ) ) {
+            // FOR SECTIONS & GROUPS
+            if ( in_array( $user_meta['options']['field_type'], array( 'group', 'section' ) ) ) {
+                $post_val = $post_vars;
+            } else if ( isset( $post_vars[$user_meta['meta_key']] ) ) {
+                $post_val = $post_vars[$user_meta['meta_key']];
+            }
+        }
 
-                    bbconnect_get_field( array( 'meta' => $user_meta, 'id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => $action, 'type' => 'user', 'post_val' => $post_val ) );
-                }
-            ?>
+        bbconnect_get_field( array( 'meta' => $user_meta, 'id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => $action, 'type' => 'user', 'post_val' => $post_val ) );
+    }
+?>
             </ul>
         </div>
-
-        <?php if ( isset( $column_two ) ) { ?>
-
+<?php
+    if ( isset( $column_two ) ) {
+?>
         <div id="column_2_holder">
             <ul id="column_2">
-            <?php
-                foreach ( $bbconnect_user_meta['column_2'] as $key => $value ) {
+<?php
+        foreach ( $bbconnect_user_meta['column_2'] as $key => $value ) {
 
-                    // GET THE OPTION
-                    $user_meta = bbconnect_get_option( $value );
+            // GET THE OPTION
+            $user_meta = bbconnect_get_option( $value );
 
-                    $args = array(
-                                    'meta' => $user_meta,
-                                    'bbconnect_cap' => $bbconnect_cap,
-                                    'group_override' => $group_override,
-                                    'action' => $action
-                                );
-                    $hide_meta = bbconnect_hide_meta( $args );
-                    if ( $hide_meta )
-                        continue;
+            $args = array(
+                            'meta' => $user_meta,
+                            'bbconnect_cap' => $bbconnect_cap,
+                            'group_override' => $group_override,
+                            'action' => $action
+                        );
+            $hide_meta = bbconnect_hide_meta( $args );
+            if ( $hide_meta )
+                continue;
 
-                    $post_val = false;
-                    if ( isset( $post_vars ) ) {
-                        // FOR SECTIONS & GROUPS
-                        if ( in_array( $user_meta['options']['field_type'], array( 'group', 'section' ) ) ) {
-                            $post_val = $post_vars;
-                        } else if ( isset( $post_vars[$user_meta['meta_key']] ) ) {
-                            $post_val = $post_vars[$user_meta['meta_key']];
-                        }
-                    }
-
-                    bbconnect_get_field( array( 'meta' => $user_meta, 'id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => $action, 'type' => 'user', 'post_val' => $post_val ) );
+            $post_val = false;
+            if ( isset( $post_vars ) ) {
+                // FOR SECTIONS & GROUPS
+                if ( in_array( $user_meta['options']['field_type'], array( 'group', 'section' ) ) ) {
+                    $post_val = $post_vars;
+                } else if ( isset( $post_vars[$user_meta['meta_key']] ) ) {
+                    $post_val = $post_vars[$user_meta['meta_key']];
                 }
-            ?>
+            }
+
+            bbconnect_get_field( array( 'meta' => $user_meta, 'id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => $action, 'type' => 'user', 'post_val' => $post_val ) );
+        }
+?>
             </ul>
         </div>
-
-        <?php } ?>
-
+<?php
+    }
+?>
     </div>
-        <?php
-
+<?php
 }
 
 
