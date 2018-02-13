@@ -131,65 +131,60 @@ function bbconnect_gf_addon_launch() {
 
     add_action('gform_after_submission', 'bb_crm_create_update_user', 10, 2);
     /**
-     * Automatically add/update user on any form submission
+     * Automatically add/update user(s) on any form submission
      * @param array $entry
      * @param array $form
      */
     function bb_crm_create_update_user($entry, $form) {
-        // First look for an email address so we can locate the user
-        $user = $email = null;
+        // First look for email addresses so we can locate the user(s)
+        $emails = array();
         foreach ($form['fields'] as $field) {
             if ($field->type == 'email') {
-                $email = $entry[$field->id];
-                $user = get_user_by('email', $email);
-                break;
+                $emails[] = $entry[$field->id];
             }
         }
 
-        if (!empty($email)) {
-            $firstname = $lastname = 'Unknown';
-            $usermeta = array();
+        if (!empty($emails)) {
+            $i = 0;
+            $usermeta = $phone_numbers = array();
             // Go through the fields again to get relevant data
             foreach ($form['fields'] as $field) {
                 switch ($field->type) {
                     case 'name':
                         foreach ($field->inputs as $input) {
                             if ($input['id'] == $field->id.'.3') {
-                                $firstname = $entry[(string)$input['id']];
+                                $usermeta['nickname'][] = $usermeta['first_name'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.6') {
-                                $lastname = $entry[(string)$input['id']];
+                                $usermeta['last_name'][] = $entry[(string)$input['id']];
                             }
                         }
-                        $usermeta['first_name'] = $firstname;
-                        $usermeta['nickname'] = $firstname;
-                        $usermeta['last_name'] = $lastname;
                         break;
                     case 'address':
                         $countries = bbconnect_helper_country();
                         foreach ($field->inputs as $input) {
                             if ($input['id'] == $field->id.'.1') {
-                                $usermeta['bbconnect_address_one_1'] = $entry[(string)$input['id']];
+                                $usermeta['bbconnect_address_one_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.2') {
-                                $usermeta['bbconnect_address_two_1'] = $entry[(string)$input['id']];
+                                $usermeta['bbconnect_address_two_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.3') {
-                                $usermeta['bbconnect_address_city_1'] = $entry[(string)$input['id']];
+                                $usermeta['bbconnect_address_city_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.4') {
-                                $usermeta['bbconnect_address_state_1'] = $entry[(string)$input['id']];
+                                $usermeta['bbconnect_address_state_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.5') {
-                                $usermeta['bbconnect_address_postal_code_1'] = $entry[(string)$input['id']];
+                                $usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.6') {
                                 $country = $entry[(string)$input['id']];
                                 if (in_array($country, $countries)) {
                                     $countries = array_flip($countries);
-                                    $usermeta['bbconnect_address_country_1'] = $countries[$country];
+                                    $usermeta['bbconnect_address_country_1'][] = $countries[$country];
                                 } else {
-                                    $usermeta['bbconnect_address_country_1'] = $country;
+                                    $usermeta['bbconnect_address_country_1'][] = $country;
                                 }
                             }
                         }
                         break;
                     case 'phone':
-                        $phone_number = $entry[$field['id']];
+                        $phone_numbers[] = $entry[$field['id']];
                         break;
                 }
                 if (!empty($field->inputs)) {
@@ -197,10 +192,10 @@ function bbconnect_gf_addon_launch() {
                         if (!empty($input['usermeta_key'])) {
                             switch ($input['usermeta_key']) {
                                 case 'telephone':
-                                    $phone_number = $entry[$input['id']];
+                                    $phone_numbers[] = $entry[$input['id']];
                                     break;
                                 default:
-                                    $usermeta[$input['usermeta_key']] = $entry[$input['id']];
+                                    $usermeta[$input['usermeta_key']][] = $entry[$input['id']];
                                     break;
                             }
                         }
@@ -208,68 +203,91 @@ function bbconnect_gf_addon_launch() {
                 } elseif (!empty($field->usermeta_key)) {
                     switch ($field->usermeta_key) {
                         case 'telephone':
-                            $phone_number = $entry[$field['id']];
+                            $phone_numbers[] = $entry[$field['id']];
                             break;
                         default:
-                            $usermeta[$field->usermeta_key] = $entry[$field['id']];
+                            $usermeta[$field->usermeta_key][] = $entry[$field['id']];
                             break;
                     }
                 }
             }
 
-            if ($user instanceof WP_User) { // Update
-                if (is_multisite() && !is_user_member_of_blog($user->ID, $blog_id)) {
-                    add_existing_user_to_blog(array('user_id' => $user->ID, 'role' => 'subscriber'));
-                }
-                if (!empty($phone_number)) {
-                    $phone_data = maybe_unserialize(get_user_meta($user->ID, 'telephone', true));
-                    $phone_exists = false;
-                    if (is_array($phone_data)) {
-                        foreach ($phone_data as $existing_phone) {
-                            if (isset($existing_phone['value']) && $existing_phone['value'] == $phone) {
-                                $phone_exists = true;
-                                break;
+            $email_count = count($emails);
+            foreach ($emails as $n => $email) {
+                $user = get_user_by('email', $email);
+                if ($user instanceof WP_User) { // Update
+                    if (is_multisite() && !is_user_member_of_blog($user->ID, $blog_id)) {
+                        add_existing_user_to_blog(array('user_id' => $user->ID, 'role' => 'subscriber'));
+                    }
+                    $phone_number = bbconnect_get_matching_submitted_value($n, $phone_numbers, $email_count);
+                    if (!empty($phone_number)) {
+                        $phone_data = maybe_unserialize(get_user_meta($user->ID, 'telephone', true));
+                        $phone_exists = false;
+                        if (is_array($phone_data)) {
+                            foreach ($phone_data as $existing_phone) {
+                                if (isset($existing_phone['value']) && $existing_phone['value'] == $phone_number) {
+                                    $phone_exists = true;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (!$phone_exists) {
-                        $phone_data[] = array(
-                                'value' => $phone_number,
-                                'type' => 'home',
-                        );
-                        $usermeta['telephone'] = $phone_data;
-                    }
-                }
-                foreach ($usermeta as $meta_key => $meta_value) {
-                    update_user_meta($user->ID, $meta_key, $meta_value);
-                }
-                $user_id = $user->ID;
-            } else { // Create
-                do {
-                    $username = wp_generate_password(12, false);
-                } while (username_exists($username));
-                $userdata = array(
-                        'user_login' => $username,
-                        'user_nicename' => $firstname.' '.$lastname,
-                        'display_name' => $firstname.' '.$lastname,
-                        'user_email' => $email,
-                        'first_name' => $firstname,
-                        'nickname' => $firstname,
-                        'last_name' => $lastname,
-                        'role' => 'subscriber',
-                );
-                $user_id = wp_insert_user($userdata);
-                if (!empty($phone_number)) {
-                    $usermeta['telephone'] = array(
-                            array(
+                        if (!$phone_exists) {
+                            $phone_data[] = array(
                                     'value' => $phone_number,
                                     'type' => 'home',
-                            )
+                            );
+                            update_user_meta($user->ID, 'telephone', $phone_data);
+                        }
+                    }
+                    foreach ($usermeta as $meta_key => $meta_values) {
+                        $meta_value = bbconnect_get_matching_submitted_value($n, $meta_values, $email_count);
+                        if (!empty($meta_value)) {
+                            update_user_meta($user->ID, $meta_key, $meta_value);
+                        }
+                    }
+                    $user_id = $user->ID;
+                } else { // Create
+                    do {
+                        $username = wp_generate_password(12, false);
+                    } while (username_exists($username));
+
+                    $firstname = bbconnect_get_matching_submitted_value($n, $usermeta['first_name'], $email_count);
+                    if (empty($firstname)) {
+                        $firstname = 'Unknown';
+                    }
+                    $lastname = bbconnect_get_matching_submitted_value($n, $usermeta['last_name'], $email_count);
+                    if (empty($lastname)) {
+                        $lastname = 'Unknown';
+                    }
+                    $userdata = array(
+                            'user_login' => $username,
+                            'user_nicename' => $firstname.' '.$lastname,
+                            'display_name' => $firstname.' '.$lastname,
+                            'user_email' => $email,
+                            'first_name' => $firstname,
+                            'nickname' => $firstname,
+                            'last_name' => $lastname,
+                            'role' => 'subscriber',
                     );
-                }
-                $usermeta['bbconnect_source'] = 'form';
-                foreach ($usermeta as $meta_key => $meta_value) {
-                    update_user_meta($user_id, $meta_key, $meta_value);
+                    $user_id = wp_insert_user($userdata);
+                    $phone_number = bbconnect_get_matching_submitted_value($n, $phone_numbers, $email_count);
+                    if (!empty($phone_number)) {
+                        $phone_data = array(
+                                array(
+                                        'value' => $phone_number,
+                                        'type' => 'home',
+                                )
+                        );
+                    }
+                    update_user_meta($user->ID, 'telephone', $phone_data);
+                    update_user_meta($user->ID, 'bbconnect_source', 'form');
+
+                    foreach ($usermeta as $meta_key => $meta_values) {
+                        $meta_value = bbconnect_get_matching_submitted_value($n, $meta_values, $email_count);
+                        if (!empty($meta_value)) {
+                            update_user_meta($user_id, $meta_key, $meta_value);
+                        }
+                    }
                 }
             }
             if (is_user_logged_in()) {
@@ -283,6 +301,18 @@ function bbconnect_gf_addon_launch() {
             $entry['created_by'] = $user_id;
             GFAPI::update_entry($entry, $entry['id']);
         }
+    }
+
+    function bbconnect_get_matching_submitted_value($n, $values, $c) {
+        if (!empty($values)) {
+            if ($n == 0 || count($values) == $c) {
+                return $values[$n];
+            }
+            if (count($values) == 1) {
+                return $values[0];
+            }
+        }
+        return null;
     }
 
     //Pre render user meta value and set the field visibilty to administrative
