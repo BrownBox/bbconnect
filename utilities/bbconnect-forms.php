@@ -146,7 +146,7 @@ function bbconnect_gf_addon_launch() {
 
         if (!empty($emails)) {
             $i = 0;
-            $usermeta = $phone_numbers = array();
+            $usermeta = $phone_numbers = $passwords = array();
             // Go through the fields again to get relevant data
             foreach ($form['fields'] as $field) {
                 switch ($field->type) {
@@ -184,8 +184,10 @@ function bbconnect_gf_addon_launch() {
                         }
                         break;
                     case 'phone':
-                        $phone_numbers[] = $entry[$field['id']];
+                        $phone_numbers[] = $entry[$field->id];
                         break;
+                    case 'password':
+                        $passwords[] = $entry[$field->id];
                 }
                 if (!empty($field->inputs)) {
                     foreach ($field->inputs as $input) {
@@ -218,6 +220,14 @@ function bbconnect_gf_addon_launch() {
                 if ($user instanceof WP_User) { // Update
                     if (is_multisite() && !is_user_member_of_blog($user->ID, $blog_id)) {
                         add_existing_user_to_blog(array('user_id' => $user->ID, 'role' => 'subscriber'));
+                    }
+                    $password = bbconnect_get_matching_submitted_value($n, $passwords, $email_count);
+                    if (!empty($password)) {
+                        $auth = wp_authenticate($user->user_login, $password);
+                        if (is_wp_error($auth)) {
+                            // If there's a password field and they entered the wrong password, don't update anything
+                            continue;
+                        }
                     }
                     $phone_number = bbconnect_get_matching_submitted_value($n, $phone_numbers, $email_count);
                     if (!empty($phone_number)) {
@@ -269,6 +279,10 @@ function bbconnect_gf_addon_launch() {
                             'last_name' => $lastname,
                             'role' => 'subscriber',
                     );
+                    $password = bbconnect_get_matching_submitted_value($n, $passwords, $email_count);
+                    if (!empty($password)) {
+                        $userdata['user_pass'] = $password;
+                    }
                     $user_id = wp_insert_user($userdata);
                     $phone_number = bbconnect_get_matching_submitted_value($n, $phone_numbers, $email_count);
                     if (!empty($phone_number)) {
