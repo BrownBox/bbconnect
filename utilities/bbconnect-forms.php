@@ -12,93 +12,95 @@ function bbconnect_gf_addon_launch() {
      * @return array $form
      */
     function bbconnect_populate_form_with_user_details($form) {
-        if (is_admin() && isset($_GET['user_id'])) { // If we're in WP Admin and have a user ID in querystring let's start there
-            $user = get_user_by('id', (int)$_GET['user_id']);
-        } else {
-            $user = wp_get_current_user(); // Otherwise if user is logged in we'll use them
-        }
-        $user = apply_filters('bbconnect_identify_user', $user); // Allow override by other plugins etc
-        if ($user instanceof WP_User) {
-            // Get user meta for later
-            $usermeta = get_user_meta($user->ID);
+        if (rgar($form, 'bbconnect_no_prerender') != 'true') {
+            if (is_admin() && isset($_GET['user_id'])) { // If we're in WP Admin and have a user ID in querystring let's start there
+                $user = get_user_by('id', (int)$_GET['user_id']);
+            } else {
+                $user = wp_get_current_user(); // Otherwise if user is logged in we'll use them
+            }
+            $user = apply_filters('bbconnect_identify_user', $user); // Allow override by other plugins etc
+            if ($user instanceof WP_User) {
+                // Get user meta for later
+                $usermeta = get_user_meta($user->ID);
 
-            // Phone numbers are a special case
-            $phone_number = '';
-            $phone_data = maybe_unserialize($usermeta['telephone'][0]);
-            if (is_array($phone_data)) {
-                foreach ($phone_data as $existing_phone) {
-                    if (!empty($existing_phone['value'])) {
-                        $phone_number = $existing_phone['value'];
-                        break;
+                // Phone numbers are a special case
+                $phone_number = '';
+                $phone_data = maybe_unserialize($usermeta['telephone'][0]);
+                if (is_array($phone_data)) {
+                    foreach ($phone_data as $existing_phone) {
+                        if (!empty($existing_phone['value'])) {
+                            $phone_number = $existing_phone['value'];
+                            break;
+                        }
                     }
                 }
-            }
-            foreach ($form['fields'] as &$field) {
-                // Standard fields
-                switch ($field->type) {
-                    case 'email':
-                        $field->defaultValue = $user->user_email;
-                        break;
-                    case 'name':
-                        foreach ($field->inputs as &$input) {
-                            if ($input['id'] == $field->id.'.3') {
-                                $input['defaultValue'] = $user->user_firstname;
-                            } elseif ($input['id'] == $field->id.'.6') {
-                                $input['defaultValue'] = $user->user_lastname;
+                foreach ($form['fields'] as &$field) {
+                    // Standard fields
+                    switch ($field->type) {
+                        case 'email':
+                            $field->defaultValue = $user->user_email;
+                            break;
+                        case 'name':
+                            foreach ($field->inputs as &$input) {
+                                if ($input['id'] == $field->id.'.3') {
+                                    $input['defaultValue'] = $user->user_firstname;
+                                } elseif ($input['id'] == $field->id.'.6') {
+                                    $input['defaultValue'] = $user->user_lastname;
+                                }
                             }
-                        }
-                        break;
-                    case 'address':
+                            break;
+                        case 'address':
+                            foreach ($field->inputs as &$input) {
+                                if ($input['id'] == $field->id.'.1') {
+                                    $input['defaultValue'] = $usermeta['bbconnect_address_one_1'][0];
+                                } elseif ($input['id'] == $field->id.'.2') {
+                                    $input['defaultValue'] = $usermeta['bbconnect_address_two_1'][0];
+                                } elseif ($input['id'] == $field->id.'.3') {
+                                    $input['defaultValue'] = $usermeta['bbconnect_address_city_1'][0];
+                                } elseif ($input['id'] == $field->id.'.4') {
+                                    $input['defaultValue'] = $usermeta['bbconnect_address_state_1'][0];
+                                } elseif ($input['id'] == $field->id.'.5') {
+                                    $input['defaultValue'] = $usermeta['bbconnect_address_postal_code_1'][0];
+                                } elseif ($input['id'] == $field->id.'.6') {
+                                    $countries = bbconnect_helper_country();
+                                    $country = $usermeta['bbconnect_address_country_1'][0];
+                                    if (array_key_exists($country, $countries)) {
+                                        $input['defaultValue'] = $countries[$country];
+                                    } else {
+                                        $input['defaultValue'] = $country;
+                                    }
+                                }
+                            }
+                            break;
+                    }
+
+                    // Fields mapped to user meta
+                    if (!empty($field->inputs)) {
                         foreach ($field->inputs as &$input) {
-                            if ($input['id'] == $field->id.'.1') {
-                                $input['defaultValue'] = $usermeta['bbconnect_address_one_1'][0];
-                            } elseif ($input['id'] == $field->id.'.2') {
-                                $input['defaultValue'] = $usermeta['bbconnect_address_two_1'][0];
-                            } elseif ($input['id'] == $field->id.'.3') {
-                                $input['defaultValue'] = $usermeta['bbconnect_address_city_1'][0];
-                            } elseif ($input['id'] == $field->id.'.4') {
-                                $input['defaultValue'] = $usermeta['bbconnect_address_state_1'][0];
-                            } elseif ($input['id'] == $field->id.'.5') {
-                                $input['defaultValue'] = $usermeta['bbconnect_address_postal_code_1'][0];
-                            } elseif ($input['id'] == $field->id.'.6') {
-                                $countries = bbconnect_helper_country();
-                                $country = $usermeta['bbconnect_address_country_1'][0];
-                                if (array_key_exists($country, $countries)) {
-                                    $input['defaultValue'] = $countries[$country];
-                                } else {
-                                    $input['defaultValue'] = $country;
+                            if (!empty($input['usermeta_key'])) {
+                                switch ($input['usermeta_key']) {
+                                    case 'telephone':
+                                        $input['defaultValue'] = $phone_number;
+                                        break;
+                                    default:
+                                        if (isset($usermeta[$input['usermeta_key']])) {
+                                            $input['defaultValue'] = $usermeta[$input['usermeta_key']][0];
+                                        }
+                                        break;
                                 }
                             }
                         }
-                        break;
-                }
-
-                // Fields mapped to user meta
-                if (!empty($field->inputs)) {
-                    foreach ($field->inputs as &$input) {
-                        if (!empty($input['usermeta_key'])) {
-                            switch ($input['usermeta_key']) {
-                                case 'telephone':
-                                    $input['defaultValue'] = $phone_number;
-                                    break;
-                                default:
-                                    if (isset($usermeta[$input['usermeta_key']])) {
-                                        $input['defaultValue'] = $usermeta[$input['usermeta_key']][0];
-                                    }
-                                    break;
-                            }
+                    } elseif (!empty($field->usermeta_key)) {
+                        switch ($field->usermeta_key) {
+                            case 'telephone':
+                                $field->defaultValue = $phone_number;
+                                break;
+                            default:
+                                if (isset($usermeta[$field->usermeta_key])) {
+                                    $field->defaultValue = $usermeta[$field->usermeta_key][0];
+                                }
+                                break;
                         }
-                    }
-                } elseif (!empty($field->usermeta_key)) {
-                    switch ($field->usermeta_key) {
-                        case 'telephone':
-                            $field->defaultValue = $phone_number;
-                            break;
-                        default:
-                            if (isset($usermeta[$field->usermeta_key])) {
-                                $field->defaultValue = $usermeta[$field->usermeta_key][0];
-                            }
-                            break;
                     }
                 }
             }
@@ -481,6 +483,28 @@ function bbconnect_gf_addon_launch() {
                 return $_GET['entry_id'];
             }
         }
+    }
+
+    add_filter('gform_form_settings', 'bbconnect_custom_form_setting', 10, 2);
+    function bbconnect_custom_form_setting($settings, $form) {
+        if (rgar($form, 'bbconnect_no_prerender') == 'true') {
+            $checked_text = 'checked="checked"';
+        } else {
+            $checked_text = '';
+        }
+
+        $settings['Form Options']['bbconnect_no_prerender'] = '
+        <tr>
+            <th><label for="bbconnect_no_prerender">Don\'t auto-populate user details</label></th>
+            <td><label><input type="checkbox" value="true" '.$checked_text.' name="bbconnect_no_prerender"> Connexions automatically fills in the current user\'s details when they are logged in. Tick this option to override this functionality.</label></td>
+        </tr>';
+        return $settings;
+    }
+
+    add_filter('gform_pre_form_settings_save', 'bbconnect_save_form_setting');
+    function bbconnect_save_form_setting($form) {
+        $form['bbconnect_no_prerender'] = rgpost('bbconnect_no_prerender');
+        return $form;
     }
 
     add_action('gform_field_advanced_settings', 'bb_crm_field_settings', 10, 2);
