@@ -5,29 +5,31 @@
 
 function cpt_savedsearch() {
 	$labels = array(
-		'name'               => _x( 'Saved searches', 'post type general name', 'tn_' ),
-		'singular_name'      => _x( 'Saved search', 'post type singular name', 'tn_' ),
-		'add_new'            => _x( 'Add New', 'Saved searche', 'tn_' ),
-		'add_new_item'       => __( 'Add New Saved searche', 'tn_' ),
-		'edit_item'          => __( 'Edit Saved search', 'tn_' ),
-		'new_item'           => __( 'New Saved search', 'tn_' ),
-		'all_items'          => __( 'All Saved searches', 'tn_' ),
-		'view_item'          => __( 'View Saved search', 'tn_' ),
-		'search_items'       => __( 'Search Saved searches', 'tn_' ),
-		'not_found'          => __( 'No Saved searches found', 'tn_' ),
-		'not_found_in_trash' => __( 'No Saved searches found in the Trash', 'tn_' ),
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Saved searches'
+    		'name'               => _x( 'Saved searches', 'post type general name', 'tn_' ),
+    		'singular_name'      => _x( 'Saved search', 'post type singular name', 'tn_' ),
+    		'add_new'            => _x( 'Add New', 'Saved searche', 'tn_' ),
+    		'add_new_item'       => __( 'Add New Saved searche', 'tn_' ),
+    		'edit_item'          => __( 'Edit Saved search', 'tn_' ),
+    		'new_item'           => __( 'New Saved search', 'tn_' ),
+    		'all_items'          => __( 'All Saved searches', 'tn_' ),
+    		'view_item'          => __( 'View Saved search', 'tn_' ),
+    		'search_items'       => __( 'Search Saved searches', 'tn_' ),
+    		'not_found'          => __( 'No Saved searches found', 'tn_' ),
+    		'not_found_in_trash' => __( 'No Saved searches found in the Trash', 'tn_' ),
+    		'parent_item_colon'  => '',
+    		'menu_name'          => 'Saved searches'
 	);
 
 	$args = array(
-		'labels'        => $labels,
-		'description'   => 'Holds our Saved search posts',
-		'public'        => true,
-		'menu_position' => 20,
-	 	'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-		'has_archive'   => true,
-		'hierarchical' 	=> true
+        	'labels'        => $labels,
+        	'description'   => 'Holds our Saved search posts',
+        	'public'        => false,
+        	'menu_position' => 20,
+         	'supports'      => array('title', 'editor', 'author', 'revisions', 'page-attributes'),
+        	'has_archive'   => false,
+	        'hierarchical' 	=> true,
+	        'query_var'     => false,
+	        'show_ui'       => true,
 	);
 	register_post_type( 'savedsearch', $args );
 }
