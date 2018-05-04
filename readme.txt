@@ -4,7 +4,7 @@ Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 4.8
+Tested up to: 4.9
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.7.1 =
+* Added support for passwords in form submissions
+* Added option to not pre-render user details into Gravity Forms
+* Added quicklink to allow editing of user profile with default WP interface
+* Bug fix
+
 = 2.7.0 =
 * Major restyling of Connexions pages
 * Added support for creating/updating multiple users from single form submission
