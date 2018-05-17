@@ -6,7 +6,6 @@
  * @since 1.0.0
  */
 function bbconnect_versions() {
-
     $bbconnect_versions = array(
             '0.9.2' => 'bbconnect_update_v_0_9_2',
             '0.9.4' => 'bbconnect_update_v_0_9_4',
@@ -17,14 +16,12 @@ function bbconnect_versions() {
             '2.3.2' => 'bbconnect_update_v_2_3_2',
             '2.5.1' => 'bbconnect_update_v_2_5_1',
             '2.6.5' => 'bbconnect_update_v_2_6_5',
+            '2.8.0' => 'bbconnect_update_v_2_8_0',
     );
-
     return $bbconnect_versions;
-
 }
 
 function bbconnect_update_v_0_9_2() {
-
     $um = array( '1', '2', '3', '4' );
     foreach ( $um as $m ) {
 
@@ -63,9 +60,7 @@ function bbconnect_update_v_0_9_2() {
             }
             $meta['options']['choices'] = $address_keys;
             update_option( bbconnect_get_option( 'address_' . $m, true ), $meta );
-
         }
-
     }
 
     return 'success!';
@@ -73,7 +68,6 @@ function bbconnect_update_v_0_9_2() {
 
 
 function bbconnect_update_v_0_9_4() {
-
     // UPDATE RESERVED OPTIONS TO UNDERSCORE PREFIXES
     $optcon = array(
                     'bbconnect_post_types' => '_bbconnect_post_types',
@@ -236,7 +230,6 @@ function bbconnect_update_v_0_9_4() {
 
 
 function bbconnect_update_v_1_0_0() {
-
     global $wpdb;
     $q_query = $wpdb->get_col( "SELECT $wpdb->posts.ID from $wpdb->posts where post_type = 'bbc_item'" );
     $allct = 0;
@@ -253,7 +246,6 @@ function bbconnect_update_v_1_0_0() {
     }
 
     return "All is $allct and Old is $oldct and now, new is $newct";
-
 }
 
 function bbconnect_update_v_2_0_0() {
@@ -301,7 +293,7 @@ function bbconnect_update_v_2_2_1() {
 
     // Add new base KPI fields
     $field = array(
-            array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_amount', 'tag' => '', 'name' => __('Total Transactions', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),
+            array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_amount', 'tag' => '', 'name' => __('Total Transactions ($)', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),
             array('source' => 'bbconnect', 'meta_key' => 'kpi_transaction_count', 'tag' => '', 'name' => __('Transaction Count', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array()), 'help' => ''),
             array('source' => 'bbconnect', 'meta_key' => 'kpi_last_transaction_date', 'tag' => '', 'name' => __('Last Transaction Date', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'text', 'choices' => array()), 'help' => ''),
             array('source' => 'bbconnect', 'meta_key' => 'kpi_days_since_last_transaction', 'tag' => '', 'name' => __('Days Since Last Transaction', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array()), 'help' => ''),
@@ -506,4 +498,46 @@ function bbconnect_update_v_2_6_5() {
                     KEY (user_id)
                 ) ".$charset_collate.";";
     $wpdb->query($new_table);
+}
+
+function bbconnect_update_v_2_8_0() {
+    // Add new base KPI field
+    $field = array(
+            array('source' => 'bbconnect', 'meta_key' => 'kpi_last_transaction_amount', 'tag' => '', 'name' => __('Last Transaction Amount', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),
+    );
+    $field_keys = array();
+
+    foreach ($field as $key => $value) {
+        if (false != get_option('bbconnect_'.$value['meta_key'])) {
+            continue;
+        }
+
+        $field_keys[] = $value['meta_key'];
+        add_option('bbconnect_'.$value['meta_key'], $value);
+    }
+
+    $umo = get_option('_bbconnect_user_meta');
+    if (!empty($field_keys)) {
+        foreach ($umo as $uk => $uv) {
+            // Add to the account info section
+            foreach ($uv as $suk => $suv) {
+                if ('bbconnect_account_information' == $suv) {
+                    $acct = get_option($suv);
+                    foreach ($field_keys as $fk => $fv) {
+                        $acct['options']['choices'][] = $fv;
+                    }
+                    update_option($suv, $acct);
+                    $aok = true;
+                }
+            }
+        }
+        // If we couldn't find the account info section just add to column 3
+        if (!isset($aok)) {
+            foreach ($field_keys as $fk => $fv) {
+                $umo['column_3'][] = 'bbconnect_' . $fv;
+            }
+
+            update_option('_bbconnect_user_meta', $umo);
+        }
+    }
 }
