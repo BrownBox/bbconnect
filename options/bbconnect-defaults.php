@@ -59,6 +59,10 @@ function bbconnect_activate() {
         }
     }
 
+    if (!wp_next_scheduled('bbconnect_do_weekly_updates')) {
+        wp_schedule_event(strtotime('4am'), 'weekly', 'bbconnect_do_weekly_updates');
+    }
+
     if (!wp_next_scheduled('bbconnect_do_daily_updates')) {
         wp_schedule_event(strtotime('6am'), 'daily', 'bbconnect_do_daily_updates');
     }
@@ -73,8 +77,23 @@ function bbconnect_activate() {
  * @since 2.2.2
  */
 function bbconnect_deactivate() {
+    wp_clear_scheduled_hook('bbconnect_do_weekly_updates');
     wp_clear_scheduled_hook('bbconnect_do_daily_updates');
     wp_clear_scheduled_hook('bbconnect_do_hourly_updates');
+}
+
+add_filter('cron_schedules', 'bbconnect_cron_schedules');
+function bbconnect_cron_schedules($schedules) {
+    $schedules['weekly'] = array(
+            'interval' => WEEK_IN_SECONDS,
+            'display' => __('Once Weekly'),
+    );
+    return $schedules;
+}
+
+add_action('bbconnect_do_weekly_updates', 'bbconnect_weekly_updates');
+function bbconnect_weekly_updates() {
+    bbconnect_bb_cart_recalculate_kpis();
 }
 
 add_action('bbconnect_do_daily_updates', 'bbconnect_daily_updates');
