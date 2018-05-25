@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.0 =
+* Added Last Transaction Amount KPI field
+* KPIs now auto-recalculated weekly to ensure accuracy
+* Added licensing support
+* Bug fix
+
 = 2.7.1 =
 * Added support for passwords in form submissions
 * Added option to not pre-render user details into Gravity Forms
