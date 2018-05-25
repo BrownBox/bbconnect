@@ -69,6 +69,7 @@ if (is_admin()) {
 include_once( 'options/bbconnect-defaults.php' );
 include_once( 'options/bbconnect-settings.php' );
 include_once( 'options/bbconnect-general-settings.php' );
+include_once( 'options/bbconnect-licence-settings.php' );
 include_once( 'options/bbconnect-user-settings.php' );
 include_once( 'options/bbconnect-actions-settings.php' );
 include_once( 'options/bbconnect-system-settings.php' );

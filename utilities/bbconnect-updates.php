@@ -24,9 +24,12 @@ class BbConnectUpdates {
         add_filter("upgrader_post_install", array($this, "postInstall"), 10, 3);
 
         $this->pluginFile = $pluginFile;
+        $this->slug = plugin_basename($this->pluginFile);
         $this->username = $gitHubUsername;
         $this->repo = $gitHubProjectName;
         $this->accessToken = $accessToken;
+
+        add_action('after_plugin_row_'.$this->slug, array($this, 'licence_message'), 10, 2);
     }
 
     /**
@@ -34,9 +37,40 @@ class BbConnectUpdates {
      * @return null
      */
     private function initPluginData() {
-        $this->slug = plugin_basename($this->pluginFile);
-
         $this->pluginData = get_plugin_data($this->pluginFile);
+    }
+
+    public function licence_message($file, $plugin_data) {
+        if (!bbconnect_licence_valid($file)) {
+            switch (bbconnect_licence_status($file)) {
+                case 'empty':
+                    $message_type = 'error';
+                    $message = 'You have not entered your licence details for <strong>'.$plugin_data['Name'].'</strong>. <a href="'.admin_url('?page=bbconnect_options&tab=bbconnect_licence_settings').'">Configure now</a>. If you do not have a licence, please <a href="https://brownbox.net.au/contact/" target="_blank">contact us</a> to purchase a licence or discuss your options.';
+                    break;
+                case 'unknown':
+                    $message_type = 'warning';
+                    $message = 'We were unable to confirm your licence status for <strong>'.$plugin_data['Name'].'</strong>. Please check back later, and <a href="https://brownbox.net.au/contact/" target="_blank">contact us</a> if this message persists for more than 48 hours.';
+                    break;
+                case 'expired':
+                    $message_type = 'error';
+                    $message = 'Your licence for <strong>'.$plugin_data['Name'].'</strong> has expired. Please <a href="https://brownbox.net.au/contact/" target="_blank">contact us</a> to renew or discuss your options.';
+                    break;
+                case 'invalid':
+                default:
+                    $message_type = 'error';
+                    $message = 'You do not have a valid licence for <strong>'.$plugin_data['Name'].'</strong>. Please <a href="https://brownbox.net.au/contact/" target="_blank">contact us</a> to purchase a licence or discuss your options.';
+                    break;
+            }
+            if ($message_type == 'error') {
+                $message .= "\n".'You can continue to use the plugin without a valid licence, however a licence is required in order to be eligible to receive updates.';
+            }
+            $wp_list_table = _get_list_table('WP_Plugins_List_Table');
+            printf(
+                    '<tr class="plugin-update-tr"><td colspan="%s" class="plugin-update update-message notice inline notice-'.$message_type.' notice-alt"><div class="update-message">%s</div></td></tr>',
+                    $wp_list_table->get_column_count(),
+                    wpautop($message)
+            );
+        }
     }
 
     /**
@@ -44,7 +78,7 @@ class BbConnectUpdates {
      * @return null
      */
     private function getRepoReleaseInfo() {
-        if (!empty($this->githubAPIResult)) {
+        if (!bbconnect_licence_valid(dirname($this->slug)) || !empty($this->githubAPIResult)) {
             return;
         }
 
