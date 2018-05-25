@@ -1135,7 +1135,7 @@ function bbconnect_rows( $args = null ) {
                                 $return_html .= '$'.number_format($current_member->$key, 2);
                             } else {
                                 $field_val = apply_filters('bbconnect_field_value', $current_member->$key, $key, $current_member);
-                                if (is_string($field_val)) {
+                                if (!empty($field_val)) {
                                     $return_html .= $field_val;
                                 }
                             }
