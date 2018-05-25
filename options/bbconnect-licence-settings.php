@@ -55,7 +55,6 @@ function bbconnect_licence_settings_updated($old_value, $new_value) {
  */
 function bbconnect_licence_details() {
     $transient_name = 'connexions_licence_details';
-    delete_transient($transient_name);
     if (false === ($licence_details = get_transient($transient_name))) {
         $licence_details = array(
                 'licence_status' => 'empty',
@@ -65,8 +64,7 @@ function bbconnect_licence_details() {
         $licence = get_option('_bbconnect_licence');
         if (!empty($licence)) {
             $licence_details['licence_status'] = 'unknown';
-//             $url = 'https://connexionscrm.com/wp-json/bb-connexions/v1/check-licence?licence='.$licence.'&amp;host='.$_SERVER['HTTP_HOST'];
-            $url = 'http://connexions.hosting-bbdev.net/wp-json/bb-connexions/v1/check-licence?licence='.$licence.'&amp;host='.$_SERVER['HTTP_HOST'];
+            $url = 'https://connexionscrm.com/wp-json/bb-connexions/v1/check-licence?licence='.$licence.'&amp;host='.$_SERVER['HTTP_HOST'];
             $response = wp_remote_get($url);
             if (!is_wp_error($response)) {
                 $response_code = wp_remote_retrieve_response_code($response);
