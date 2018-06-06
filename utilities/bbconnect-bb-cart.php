@@ -97,15 +97,17 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
     $meta['bbconnect_kpi_transaction_count'] = count($transactions);
     foreach ($transactions as $transaction) {
         $amount = get_post_meta($transaction->ID, 'total_amount', true);
-        if (is_null($meta['bbconnect_kpi_last_transaction_date'])) {
-            $date_last_transaction = bbconnect_get_datetime($transaction->post_date);
-            $date_last_transaction->setTime(0, 0, 0);
-            $meta['bbconnect_kpi_last_transaction_date'] = $date_last_transaction->format('Y-m-d');
-            $days_since_last_transaction = $date_last_transaction->diff($now, true);
-            $meta['bbconnect_kpi_days_since_last_transaction'] = $days_since_last_transaction->days;
-            $meta['bbconnect_kpi_last_transaction_amount'] = $amount;
+        if ($amount > 0) {
+            if (is_null($meta['bbconnect_kpi_last_transaction_date'])) {
+                $date_last_transaction = bbconnect_get_datetime($transaction->post_date);
+                $date_last_transaction->setTime(0, 0, 0);
+                $meta['bbconnect_kpi_last_transaction_date'] = $date_last_transaction->format('Y-m-d');
+                $days_since_last_transaction = $date_last_transaction->diff($now, true);
+                $meta['bbconnect_kpi_days_since_last_transaction'] = $days_since_last_transaction->days;
+                $meta['bbconnect_kpi_last_transaction_amount'] = $amount;
+            }
+            $meta['bbconnect_kpi_transaction_amount'] += $amount;
         }
-        $meta['bbconnect_kpi_transaction_amount'] += $amount;
     }
     unset($transactions);
     foreach ($meta as $key => $value) {
