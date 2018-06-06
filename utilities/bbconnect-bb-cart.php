@@ -69,10 +69,9 @@ function bbconnect_bb_cart_post_import($user, $amount, $transaction_id = null) {
 }
 
 function bbconnect_bb_cart_recalculate_kpis() {
-    global $wpdb;
-    $users = $wpdb->get_col('SELECT DISTINCT(post_author) FROM '.$wpdb->posts);
-    foreach ($users as $user_id) {
-        bbconnect_bb_cart_recalculate_kpis_for_user($user_id);
+    $users = get_users(array('fields' => array('ID')));
+    foreach ($users as $user) {
+        bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
     }
 }
 
