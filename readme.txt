@@ -47,6 +47,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.1 =
+* Added helper function to get user country
+* Bug fixes
+
 = 2.8.0 =
 * Added Last Transaction Amount KPI field
 * KPIs now auto-recalculated weekly to ensure accuracy
