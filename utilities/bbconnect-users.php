@@ -212,7 +212,7 @@ function bbconnect_admin_body_class( $admin_body_class ) {
  * @param array $args
  * @param string $other
  * @param string $is_new_contact
- * @return boolean|number|unknown
+ * @return integer|boolean User ID if user successfully found/created, otherwise false
  */
 function bbconnect_get_user($args, $other = null, &$is_new_contact = false) {
     extract($args);
@@ -316,9 +316,55 @@ function bbconnect_process_country($country) {
     } else {
         $country = substr($country, 0, 2);
     }
-    return $country;
+    return strtoupper($country);
 }
 
 function bbconnect_address_compare($val1, $val2) {
     return preg_replace('/[^a-zA-Z0-9]/', '', strtolower($val1)) == preg_replace('/[^a-zA-Z0-9]/', '', strtolower($val2));
+}
+
+define('BBCONNECT_DEFAULT_COUNTRY', '*');
+function bbconnect_get_user_country($user_id = null) {
+    if (is_user_logged_in() && empty($user_id)) {
+        $user_id = get_current_user_id();
+    }
+    if (!empty($user_id)) {
+        $country = get_user_meta($user_id, 'bbconnect_address_country_1', true);
+        if (!empty($country)) {
+            return $country;
+        }
+    }
+
+    if (!session_id()) {
+        session_start();
+    }
+    if (isset($_SESSION['country_code'])) {
+        $country = $_SESSION['country_code'];
+    } elseif (!empty($_SERVER['HTTP_CF_IPCOUNTRY'])) {
+        $country = $_SESSION['country_code'] = $_SERVER['HTTP_CF_IPCOUNTRY'];
+    } else {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']) && filter_var($_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP)) {
+            // Check IP from shared internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']) && filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
+            // Check IP from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $response = file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip);
+        if ($response && $ip_data = json_decode($response)) {
+            if ($ip_data && $ip_data->geoplugin_countryName != null) {
+                $returned_code = $ip_data->geoplugin_countryCode == 'GB' ? 'UK' : $ip_data->geoplugin_countryCode;
+                $country = $_SESSION['country_code'] = $returned_code;
+            }
+        }
+    }
+
+    if (empty($country)) {
+        $country = $_SESSION['country_code'] = BBCONNECT_DEFAULT_COUNTRY;
+    }
+
+    return $country;
 }
