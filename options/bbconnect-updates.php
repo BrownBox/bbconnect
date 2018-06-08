@@ -548,4 +548,9 @@ function bbconnect_update_v_2_8_2() {
     $field = get_option('bbconnect_additional_email');
     $field['options']['choices'][__('archive', 'bbconnect')] = __('Archive', 'bbconnect');
     update_option('bbconnect_additional_email', $field);
+
+    // Update field definition for user source field (add import)
+    $field = get_option('bbconnect_source');
+    $field['options']['choices'][__('import', 'bbconnect')] = __('Import', 'bbconnect');
+    update_option('bbconnect_source', $field);
 }
