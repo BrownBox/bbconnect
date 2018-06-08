@@ -810,3 +810,39 @@ function bbconnect_new_user_default_meta($user_id) {
         }
     }
 }
+
+/**
+ * Helper function for avoiding duplicate values in recursive meta fields ("multitext")
+ * @param integer $user_id User to update
+ * @param mixed $value New meta value to add
+ * @param string $type Type of value
+ * @param string $meta_key Field to update
+ */
+function bbconnect_maybe_add_recursive_meta($user_id, $value, $type, $meta_key) {
+    $meta_data = maybe_unserialize(get_user_meta($user_id, $meta_key, true));
+    $meta_exists = false;
+    if (is_array($meta_data)) {
+        foreach ($meta_data as $idx => $existing_meta) {
+            if (isset($existing_meta['value']) && $existing_meta['value'] == $value) {
+                $meta_data[$idx]['type'] = $type;
+                $meta_exists = true;
+                break;
+            }
+        }
+    }
+    if (!$meta_exists) {
+        $meta_data[] = array(
+                'value' => $value,
+                'type' => $type,
+        );
+    }
+    update_user_meta($user_id, $meta_key, $meta_data);
+}
+
+function bbconnect_maybe_add_telephone($user_id, $value, $type) {
+    bbconnect_maybe_add_recursive_meta($user_id, $value, $type, 'telephone');
+}
+
+function bbconnect_maybe_add_additional_email($user_id, $value, $type) {
+    bbconnect_maybe_add_recursive_meta($user_id, $value, $type, 'additional_email');
+}
