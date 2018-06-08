@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.2 =
+* Added archive type to additional email field
+* Added import as option for user source field
+* Added helper functions to simplify working with multitext fields
+* Added Connexions styling to more pages, and added filter so addons can inherit styling
+    
 = 2.8.1 =
 * Added helper function to get user country
 * Bug fixes
