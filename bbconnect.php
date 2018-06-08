@@ -117,6 +117,7 @@ include_once( 'fields/bbconnect-field-helpers.php' );
 include_once( 'fields/bbconnect-form.php' );
 
 include_once( 'theme/bbconnectpanels.php' );
+include_once('theme/bbconnect-style.php');
 
 // SETS TRANSLATION SOURCES
 function bbconnect_textdomain() {
@@ -149,7 +150,6 @@ function bbconnect_textdomain() {
 			define( 'BBCONNECT_' . strtoupper( $k ), $v );
 	}
 }
-
 
 /**
  * Register the Administration supporting files
@@ -332,7 +332,7 @@ function bbconnect_menu() {
 	$bbconnect_menu['bbconnect_activity_log'] = add_submenu_page( 'users.php', __( 'Connexions Activity Log', 'bbconnect' ), __( 'Activity Log', 'bbconnect' ), 'add_users', 'bbconnect_activity_log', 'bbconnect_activity_log');
 
 	// CREATE THE ADMINISTRATIVE MENU
-	$bbconnect_menu['bbconnect_caps_options'] = add_menu_page( __( 'Connexions', 'bbconnect' ), __( 'Connexions', 'bbconnect' ), 'list_users', 'bbconnect_options', 'bbconnect_options', BBCONNECT_URL.'/assets/g/bbconnect.png', '70.1' );
+	$bbconnect_menu['bbconnect_options'] = add_menu_page( __( 'Connexions', 'bbconnect' ), __( 'Connexions', 'bbconnect' ), 'manage_options', 'bbconnect_options', 'bbconnect_options', BBCONNECT_URL.'/assets/g/bbconnect.png', '70.1' );
 
 	// ADD THE USER OPTIONS PAGES TO THE WORDPRESS SYSTEM
 	$bbconnect_menu['bbconnect_meta_options'] = add_submenu_page( 'bbconnect_options', __( 'Manage Fields', 'bbconnect' ), __( 'Manage Fields', 'bbconnect' ), 'activate_plugins', 'bbconnect_meta_options', 'bbconnect_meta_options_form' );
@@ -349,40 +349,17 @@ function bbconnect_menu() {
 
 	$bbconnect_menu = apply_filters( 'bbconnect_push_menu', $bbconnect_menu );
 
-	foreach ( $bbconnect_menu as $key => $value ) {
-		add_action( 'admin_print_styles-' . $value, 'bbconnect_admin_scripts', 9 );
-		add_action( 'load-' . $value, 'bbconnect_help_screens' );
+	foreach ($bbconnect_menu as $key => $value) {
+		add_action('admin_print_styles-'.$value, 'bbconnect_admin_scripts', 9);
+		add_action('load-'.$value, 'bbconnect_help_screens');
 	}
-
 }
-
-function bbconnect_admin_style() {
-    $admin_pages = array('bbconnect_reports','bbconnect_edit_user','bbconnect_new_user','bbconnect_activity_log','donor_report_submenu','segment_report_submenu','work_queues_submenu');
-    if(in_array( $_GET['page'], $admin_pages)) {
-        echo "<script type='text/javascript' >document.body.className+=' folded';</script>";
-
-        echo '<style>';
-        echo '.users_page_'.$_GET['page'].' #wpadminbar {background-color: #0073aa;}';
-        echo '.users_page_'.$_GET['page'].' {background: #ebeff5;}';
-        echo '.users_page_'.$_GET['page'].' > * {margin-bottom: 2rem; padding-bottom: 3rem;}';
-        echo '.users_page_'.$_GET['page'].' #adminmenu {background-color: #35485c;}';
-        echo '.users_page_'.$_GET['page'].' #adminmenuwrap {background-color: #35485c;}';
-        echo '.users_page_'.$_GET['page'].' #wp-admin-bar-top-secondary::before {background-image: url(http://connexions.brownbox.hosting/wp-content/uploads/sites/7/2017/08/tagline.png);}';
-        echo '</style>';
-
-        echo '<div class="connexions_footer">';
-        echo '  <a href="http://connexionscrm.com/" class="float-right">Powered by Connexions</a>';
-        echo '</div>';
-    }
-}
-add_action('adminmenu', 'bbconnect_admin_style', 1);
 
 function bbconnect_actions_link( $links ) {
 	$settings_link = '<a href="' . admin_url() . '?page=bbconnect_options">Settings</a>';
   	array_unshift($links, $settings_link);
   	return $links;
 }
-
 
 /**
  * WordPress Actions & Filters
