@@ -17,6 +17,7 @@ function bbconnect_versions() {
             '2.5.1' => 'bbconnect_update_v_2_5_1',
             '2.6.5' => 'bbconnect_update_v_2_6_5',
             '2.8.0' => 'bbconnect_update_v_2_8_0',
+            '2.8.2' => 'bbconnect_update_v_2_8_2',
     );
     return $bbconnect_versions;
 }
@@ -540,4 +541,11 @@ function bbconnect_update_v_2_8_0() {
             update_option('_bbconnect_user_meta', $umo);
         }
     }
+}
+
+function bbconnect_update_v_2_8_2() {
+    // Update field definition for additional email field (add archive type)
+    $field = get_option('bbconnect_additional_email');
+    $field['options']['choices'][__('archive', 'bbconnect')] = __('Archive', 'bbconnect');
+    update_option('bbconnect_additional_email', $field);
 }
