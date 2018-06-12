@@ -78,7 +78,7 @@ class BbConnectUpdates {
      * @return null
      */
     private function getRepoReleaseInfo() {
-        if (!bbconnect_licence_valid(dirname($this->slug)) || !empty($this->githubAPIResult)) {
+        if (!bbconnect_licence_valid($this->slug) || !empty($this->githubAPIResult)) {
             return;
         }
 
