@@ -47,6 +47,11 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.3 =
+* Added Merge Users quicklink
+* Added basic toggle of profile fields section on click of heading
+* Bug fixes
+
 = 2.8.2 =
 * Added archive type to additional email field
 * Added import as option for user source field
