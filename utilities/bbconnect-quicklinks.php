@@ -47,7 +47,8 @@ function bbconnect_quicklinks_recursive_include($dir_name, $parent_dir = '', $st
         } elseif (strpos($filename, '.php') !== false) {
             include_once($dir_name.$filename);
             $quicklink_prefix = !empty($dir_name) ? str_replace('/', '_', str_replace($starting_dir, '', $dir_name)) : '';
-            $quicklink_name = $quicklink_prefix.array_shift(explode('.', $filename)).'_quicklink';
+            $bits = explode('.', $filename);
+            $quicklink_name = $quicklink_prefix.array_shift($bits).'_quicklink';
             $quicklinks[$quicklink_name] = new $quicklink_name();
         }
     }

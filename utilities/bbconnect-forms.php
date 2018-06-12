@@ -403,7 +403,7 @@ function bbconnect_gf_addon_launch() {
     }
 
     // Add support for updating existing entry
-    if ($_GET['page'] == 'bbconnect_submit_gravity_form' && is_numeric($_GET['entry_id'])) {
+    if (!empty($_GET['page']) && $_GET['page'] == 'bbconnect_submit_gravity_form' && is_numeric($_GET['entry_id'])) {
         $entry = GFAPI::get_entry($_GET['entry_id']);
         if ($entry['form_id'] == $_GET['form_id']) {
             add_filter('gform_pre_render_'.$_GET['form_id'], 'bbconnect_populate_form_with_existing_entry');

@@ -702,7 +702,7 @@ function bbconnect_retrieve_question_data(){
                 continue;
             }
 
-            if (is_array($maybe_section['options']['choices'])) {
+            if (!empty($maybe_section['options']['choices']) && is_array($maybe_section['options']['choices'])) {
                 foreach ($maybe_section['options']['choices'] as $ck => $cv) {
                     $field = get_option('bbconnect_'.$cv);
                     if (!empty($field['options']['question_type'])) {

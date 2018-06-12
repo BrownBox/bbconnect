@@ -6,7 +6,11 @@
 class profile_1_edit_with_wordpress_quicklink extends bb_page_quicklink {
     public function __construct() {
         parent::__construct();
-        $user_id = $_GET['user_id'];
+        if (isset($_GET['user_id'])) {
+            $user_id = $_GET['user_id'];
+        } else {
+            $user_id = get_current_user_id();
+        }
         if (get_current_user_id() == $user_id) {
             $edit_link = get_edit_profile_url($user_id);
         } else {
