@@ -165,6 +165,11 @@ function bbconnect_select_toggle() {
 	});
 }
 
+function bbconnect_profile_section_toggle() {
+    var section = jQuery(this).next('ul');
+    section.toggle();
+}
+
 function toggle_placeholder() {
 	/*
 	$(document).ready(function() {
@@ -315,6 +320,8 @@ jQuery(document).ready(function () {
 	
 	jQuery('#bbconnect').on('change', '.state-province-field', bbconnect_selopt);
 	jQuery('#bbconnect').on('change', '.country-field', bbconnect_selopt);
+	
+	jQuery('#bbconnect').on('click', '.meta-item > h3', bbconnect_profile_section_toggle);
 	
 });
 
