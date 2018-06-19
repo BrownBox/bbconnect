@@ -28,47 +28,33 @@ function bbconnect_new_user() {
 
     // PROCESS THE FORM
     if ( isset( $_POST['new_user'] ) ) {
-
         // SECURITY CHECK
         check_admin_referer( 'bbconnect-nonce' );
 
         $bbconnect_success = bbconnect_insert_user( array( 'ivals' => $_POST ) );
-
         if ( !is_wp_error( $bbconnect_success ) ) {
-            ?>
-                <div id="message" class="updated">
-                    <p><strong><?php _e( 'User created!', 'bbconnect' ) ?></strong></p>
-                </div>
-            <?php
-            bbconnect_edit_user( $bbconnect_success );
-            return false;
-
+            wp_redirect(admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success));
+            exit;
         } else {
-        ?>
+?>
             <div id="message" class="error">
                 <p><strong><?php echo $bbconnect_success->get_error_message(); ?></strong></p>
             </div>
-        <?php
+<?php
         }
-
     }
-
 ?>
-
         <div id="bbconnect" class="wrap">
         <div id="icon-users" class="icon32"><br /></div>
             <h2><a href="/wp-admin/users.php?page=bbconnect_reports">All Users</a> \ <?php _e( 'Add New User', 'bbconnect' ); ?></h2>
             <form id="user-form" enctype="multipart/form-data" action="<?php echo admin_url( 'users.php?page=bbconnect_new_user' ); ?>" autocomplete="off" method="POST">
-
             <?php wp_nonce_field('bbconnect-nonce'); ?>
-
             <div>
                 <?php bbconnect_profile_user_meta( array( 'bbconnect_cap' => $bbconnect_cap, 'action' => 'edit' ) ); ?>
             </div>
             <div>
                 <input id="profile-submission" type="submit" name="new_user" value="<?php _e( 'Add Them!', 'bbconnect' ); ?>" class="button-primary">
             </div>
-
             </form>
         </div>
 <?php
