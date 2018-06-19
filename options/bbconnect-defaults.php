@@ -323,7 +323,8 @@ function bbconnect_preferences_fields() {
             array( 'source' => 'wp', 'meta_key' => 'comment_shortcuts', 'tag' => '', 'name' => __( 'Keyboard Shortcuts', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => false, 'signup' => false, 'reports' => false, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ) ),
 
             // EMAIL PREFERENCES -- WILL NOT BE SYNCED
-            array( 'source' => 'bbconnect', 'meta_key' => 'bbc_subscription', 'tag' => '', 'name' => __( 'Subscribe to email updates', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
+            array('source' => 'bbconnect', 'meta_key' => 'bbc_subscription', 'tag' => '', 'name' => __('Subscribe to email updates', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array('false')), 'help' => false),
+            array('source' => 'bbconnect', 'meta_key' => 'bbc_print_mail', 'tag' => '', 'name' => __('Subscribe to print mailings', 'bbconnect'), 'options' => array('admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array('true')), 'help' => false),
 
             // CONTACT PREFERENCES -- WILL NOT BE SYNCED
             array( 'source' => 'bbconnect', 'meta_key' => 'bbc_contact', 'tag' => '', 'name' => __( 'Allow others to contact me', 'bbconnect' ), 'options' => array( 'admin' => true, 'user' => true, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'checkbox', 'choices' => array( 'false' ) ), 'help' => false ),
