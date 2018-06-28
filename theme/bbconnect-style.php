@@ -5,6 +5,7 @@ function bbconnect_admin_style() {
             'bbconnect_options',
             'bbconnect_meta_options',
             'bbconnect_edit_user',
+            'bbconnect_edit_user_profile',
             'bbconnect_new_user',
             'bbconnect_activity_log',
             'donor_report_submenu',
