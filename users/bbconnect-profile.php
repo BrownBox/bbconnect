@@ -229,7 +229,6 @@ function bbconnect_edit_user( $user_id = '' ) {
         $tab_nav .= '<a href="' . $formdes . '&tab=' . $key . '" class="nav-tab' . $act_tab . '">' . $val['title'] . '</a>';
     }
 
-    if( $user_id == $current_user->ID ) echo '<style>#column_2{display:none;}</style>';
 
     do_action( 'bbconnect_pre_admin_profile' );
 
