@@ -333,7 +333,7 @@ function bbconnect_get_field( $args = '' ) {
     }
 
     if ( ($admin_only == true && current_user_can('manage_padlock_fields')) || $admin_only == false ) {
-        if ( $wrap ) echo '<li class="meta-item">';
+        if ( $wrap ) echo '<li class="meta-item'.bbconnect_field_disabled($meta["meta_key"]).'">';
 
             if ( $label_wrap ) echo '<span class="bbconnect-label'.$required.'">'.$mayberequired;
                 if ( $lock ) echo '<a class="rui off" title="' . $key . $action . '">';
@@ -1379,6 +1379,7 @@ function bbconnect_field_disabled($key) {
     $valid_pages = array(
             'users_page_bbconnect_new_user',
             'users_page_bbconnect_edit_user',
+            'toplevel_page_bbconnect_edit_user_profile',
     );
     if (!in_array($current_screen->id, $valid_pages)) {
         return '';

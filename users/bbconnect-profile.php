@@ -229,6 +229,9 @@ function bbconnect_edit_user( $user_id = '' ) {
         $tab_nav .= '<a href="' . $formdes . '&tab=' . $key . '" class="nav-tab' . $act_tab . '">' . $val['title'] . '</a>';
     }
 
+    if ($user_id == $current_user->ID) {
+        echo '<style>li.meta-item.disabled {display: none !important;}</style>';
+    }
 
     do_action( 'bbconnect_pre_admin_profile' );
 
