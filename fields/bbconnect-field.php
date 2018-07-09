@@ -1300,7 +1300,7 @@ function bbconnect_field( $meta, $args = array() ) {
                 }
 
                 if ( '-search' != $action ) {
-                    if ( 'user_login' == $key && !empty( $value ) ) { $disabled = ' disabled'; }
+                    if ( 'user_login' == $key && !empty( $value ) ) { $disabled = ' disabled autocomplete="username"'; }
                     if ( 'ID' == $key && !empty( $value ) ) { $disabled = ' disabled'; }
                     if ( 'user_registered' == $key && !empty( $value ) ) { $disabled = ' disabled'; }
                 }
