@@ -151,22 +151,25 @@ function bbconnect_edit_user( $user_id = '' ) {
     // WORDPRESS SETUP
     wp_reset_vars(array('action', 'redirect', 'profile', 'user_id', 'wp_http_referer'));
 
-    if ( empty( $_GET['user_id'] ) )
+    if ( empty( $_GET['user_id'] ) ) {
         define('IS_PROFILE_PAGE', true );
+    }
 
     // SET THE USER INFORMATION
     global $user_id;
     $user_id = (int) $user_id;
     $current_user = wp_get_current_user();
-    if ( ! defined( 'IS_PROFILE_PAGE' ) )
+    if ( ! defined( 'IS_PROFILE_PAGE' ) ) {
         define( 'IS_PROFILE_PAGE', ( $user_id == $current_user->ID ) );
+    }
 
-    if ( ! $user_id && IS_PROFILE_PAGE )
+    if ( ! $user_id && IS_PROFILE_PAGE ) {
         $user_id = $current_user->ID;
-    elseif ( ! $user_id && ! IS_PROFILE_PAGE )
+    } elseif ( ! $user_id && ! IS_PROFILE_PAGE ) {
         wp_die(__( 'Invalid user ID.' ) );
-    elseif ( ! get_userdata( $user_id ) )
+    } elseif ( ! get_userdata( $user_id ) ) {
         wp_die( __('Invalid user ID.') );
+    }
 
     //if ( !current_user_can('edit_user', $user_id) )
     if ( !bbconnect_user_can( 'edit_user', array( 'one' => $current_user->ID, 'two' => $user_id ) ) )
@@ -259,11 +262,13 @@ function bbconnect_edit_user( $user_id = '' ) {
                     do_action( 'bbconnect_pre_admin_profile_fields' );
                     bbconnect_profile_user_meta( array( 'user_id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => 'edit' ) );
 
-                    /* THIS IS HERE FOR TEMPORARY HISTORICAL REFERENCES
-                        if ( IS_PROFILE_PAGE )
-                            do_action( 'show_user_profile', $profileuser );
-                        else
-                            do_action( 'edit_user_profile', $profileuser );
+                    /* WIP on hooking in custom user meta from other plugins etc */
+                    /*
+                    if (IS_PROFILE_PAGE) {
+                        do_action( 'show_user_profile', $profileuser );
+                    } else {
+                        do_action( 'edit_user_profile', $profileuser );
+                    }
                     */
 ?>
             <input type="hidden" name="update" value="<?php echo $active; ?>" />
@@ -281,6 +286,14 @@ function bbconnect_edit_user( $user_id = '' ) {
         </form>
 <?php
                     break;
+
+                /*case 'custom_meta':
+                    if (IS_PROFILE_PAGE) {
+                        do_action( 'show_user_profile', $profileuser );
+                    } else {
+                        do_action( 'edit_user_profile', $profileuser );
+                    }
+                    break;*/
 
                 case 'actions' :
                     bbconnect_actions_editor( array( 'user_id' => $user_id, 'bbconnect_cap' => $bbconnect_cap, 'action' => 'edit' ) );
