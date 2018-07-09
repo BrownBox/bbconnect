@@ -85,6 +85,22 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
             'bbconnect_kpi_last_transaction_date' => null,
             'bbconnect_kpi_days_since_last_transaction' => null,
     );
+
+    $offsets = array(
+            'transaction_amount',
+            'transaction_count',
+            'last_transaction_amount',
+            'last_transaction_date',
+            'days_since_last_transaction',
+    );
+    $user_meta = get_user_meta($user_id);
+    foreach ($offsets as $offset) {
+        if (!empty($user_meta['bbconnect_offset_'.$offset][0])) {
+            $meta['bbconnect_kpi_'.$offset] = $user_meta['bbconnect_offset_'.$offset][0];
+        }
+    }
+
+    if (!empty($user_meta))
     $args = array(
             'posts_per_page' => -1,
             'post_type'      => 'transaction',
