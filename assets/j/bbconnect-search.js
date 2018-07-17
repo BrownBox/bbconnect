@@ -466,6 +466,9 @@ function bbconnect_report_submit() {
 	            	resizeMap();
 	            });
 	        }, 
+	        error: function(XHR, textStatus, errorThrown) {
+	        	jQuery('#report-display').html('<p>An error occurred retrieving your search results: <em>'+errorThrown+'</em>. Please try again.');
+	        },
 	        timeout: 60000
 	    });
 	}    
