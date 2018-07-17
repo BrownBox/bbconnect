@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.6 =
+* Various improvements to profile pages
+* Added support for hidden offsets for KPIs
+* Added new first transaction KPI fields
+* Bug fixes
+
 = 2.8.5 =
 * Added new print mail subscribe field
 * Bug fix
