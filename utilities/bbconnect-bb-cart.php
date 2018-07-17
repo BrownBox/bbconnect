@@ -81,6 +81,8 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
     $meta = array(
             'bbconnect_kpi_transaction_amount' => 0,
             'bbconnect_kpi_transaction_count' => 0,
+            'bbconnect_kpi_first_transaction_amount' => null,
+            'bbconnect_kpi_first_transaction_date' => null,
             'bbconnect_kpi_last_transaction_amount' => null,
             'bbconnect_kpi_last_transaction_date' => null,
             'bbconnect_kpi_days_since_last_transaction' => null,
@@ -89,9 +91,10 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
     $offsets = array(
             'transaction_amount',
             'transaction_count',
+            'first_transaction_amount',
+            'first_transaction_date',
             'last_transaction_amount',
             'last_transaction_date',
-            'days_since_last_transaction',
     );
     $user_meta = get_user_meta($user_id);
     foreach ($offsets as $offset) {
@@ -100,7 +103,6 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
         }
     }
 
-    if (!empty($user_meta))
     $args = array(
             'posts_per_page' => -1,
             'post_type'      => 'transaction',
@@ -114,18 +116,27 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
     foreach ($transactions as $transaction) {
         $amount = get_post_meta($transaction->ID, 'total_amount', true);
         if ($amount > 0) {
-            if (is_null($meta['bbconnect_kpi_last_transaction_date'])) {
-                $date_last_transaction = bbconnect_get_datetime($transaction->post_date);
-                $date_last_transaction->setTime(0, 0, 0);
-                $meta['bbconnect_kpi_last_transaction_date'] = $date_last_transaction->format('Y-m-d');
-                $days_since_last_transaction = $date_last_transaction->diff($now, true);
-                $meta['bbconnect_kpi_days_since_last_transaction'] = $days_since_last_transaction->days;
+            $transaction_date = bbconnect_get_datetime($transaction->post_date);
+            $transaction_date->setTime(0, 0, 0);
+            if (is_null($meta['bbconnect_kpi_first_transaction_date']) || strtotime($meta['bbconnect_kpi_first_transaction_date']) > $transaction_date->getTimestamp()) {
+                $meta['bbconnect_kpi_first_transaction_date'] = $transaction_date->format('Y-m-d');
+                $meta['bbconnect_kpi_first_transaction_amount'] = $amount;
+            }
+            if (is_null($meta['bbconnect_kpi_last_transaction_date']) || strtotime($meta['bbconnect_kpi_last_transaction_date']) < $transaction_date->getTimestamp()) {
+                $meta['bbconnect_kpi_last_transaction_date'] = $transaction_date->format('Y-m-d');
                 $meta['bbconnect_kpi_last_transaction_amount'] = $amount;
             }
             $meta['bbconnect_kpi_transaction_amount'] += $amount;
         }
     }
     unset($transactions);
+
+    if (!empty($meta['bbconnect_kpi_last_transaction_date'])) {
+        $last_transaction_date = new DateTime($meta['bbconnect_kpi_last_transaction_date']);
+        $days_since_last_transaction = $last_transaction_date->diff($now, true);
+        $meta['bbconnect_kpi_days_since_last_transaction'] = $days_since_last_transaction->days;
+    }
+
     foreach ($meta as $key => $value) {
         update_user_meta($user_id, $key, $value);
     }

@@ -19,6 +19,7 @@ function bbconnect_versions() {
             '2.8.0' => 'bbconnect_update_v_2_8_0',
             '2.8.2' => 'bbconnect_update_v_2_8_2',
             '2.8.5' => 'bbconnect_update_v_2_8_5',
+            '2.8.6' => 'bbconnect_update_v_2_8_6',
     );
     return $bbconnect_versions;
 }
@@ -588,6 +589,49 @@ function bbconnect_update_v_2_8_5() {
             }
         }
         // If we couldn't find the preferences section just add to column 3
+        if (!isset($aok)) {
+            foreach ($field_keys as $fk => $fv) {
+                $umo['column_3'][] = 'bbconnect_' . $fv;
+            }
+
+            update_option('_bbconnect_user_meta', $umo);
+        }
+    }
+}
+
+function bbconnect_update_v_2_8_6() {
+    // Add new base KPI fields
+    $field = array(
+            array('source' => 'bbconnect', 'meta_key' => 'kpi_first_transaction_amount', 'tag' => '', 'name' => __('First Transaction Amount', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'number', 'choices' => array(), 'is_currency' => true), 'help' => ''),
+            array('source' => 'bbconnect', 'meta_key' => 'kpi_first_transaction_date', 'tag' => '', 'name' => __('First Transaction Date', 'bbconnect'), 'options' => array('admin' => true, 'user' => false, 'signup' => false, 'reports' => true, 'public' => false, 'req' => false, 'field_type' => 'text', 'choices' => array()), 'help' => ''),
+    );
+    $field_keys = array();
+
+    foreach ($field as $key => $value) {
+        if (false != get_option('bbconnect_'.$value['meta_key'])) {
+            continue;
+        }
+
+        $field_keys[] = $value['meta_key'];
+        add_option('bbconnect_'.$value['meta_key'], $value);
+    }
+
+    $umo = get_option('_bbconnect_user_meta');
+    if (!empty($field_keys)) {
+        foreach ($umo as $uk => $uv) {
+            // Add to the account info section
+            foreach ($uv as $suk => $suv) {
+                if ('bbconnect_account_information' == $suv) {
+                    $acct = get_option($suv);
+                    foreach ($field_keys as $fk => $fv) {
+                        $acct['options']['choices'][] = $fv;
+                    }
+                    update_option($suv, $acct);
+                    $aok = true;
+                }
+            }
+        }
+        // If we couldn't find the account info section just add to column 3
         if (!isset($aok)) {
             foreach ($field_keys as $fk => $fv) {
                 $umo['column_3'][] = 'bbconnect_' . $fv;
