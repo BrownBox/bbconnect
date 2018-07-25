@@ -112,21 +112,43 @@ function bbconnect_hourly_updates() {
  * Intended to be run as a daily cron - shouldn't ever be called directly!
  */
 function bbconnect_update_days_since_kpi() {
-    global $blog_id;
-    $args = array(
-            'blog_id' => $blog_id,
-    );
-    $users = get_users($args);
-
     $today = bbconnect_get_current_datetime();
-    foreach ($users as $userkey => $user) {
-        $last_transaction_date = get_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', true);
-        if (!empty($last_transaction_date)) {
-            $date_last_transaction = bbconnect_get_datetime($last_transaction_date);
-            $days_since_last_transaction = $date_last_transaction->diff($today, true);
-            update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', $days_since_last_transaction->days);
+    $offset = 0;
+    $limit = 100;
+    $get_total = true;
+    global $blog_id;
+    do {
+        $args = array(
+                'blog_id' => $blog_id,
+                'number' => $limit,
+                'offset' => $offset,
+                'count_total' => $get_total,
+                'meta_query' => array(
+                        array(
+                                'key' => 'bbconnect_kpi_last_transaction_date',
+                                'value' => '',
+                                'compare' => '!=',
+                        ),
+                ),
+        );
+        $query = new WP_User_Query($args);
+        $users = $query->get_results();
+        if ($get_total) {
+            $total_users = $query->get_total();
         }
-    }
+
+        foreach ($users as $user) {
+            $last_transaction_date = get_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', true);
+            if (!empty($last_transaction_date)) {
+                $date_last_transaction = bbconnect_get_datetime($last_transaction_date);
+                $days_since_last_transaction = $date_last_transaction->diff($today, true);
+                update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', $days_since_last_transaction->days);
+            }
+        }
+        $get_total = false;
+        $offset += $limit;
+        unset($query, $users);
+    } while ($offset <= $total_users);
 }
 
 /**

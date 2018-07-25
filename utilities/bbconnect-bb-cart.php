@@ -69,10 +69,38 @@ function bbconnect_bb_cart_post_import($user, $amount, $transaction_id = null) {
 }
 
 function bbconnect_bb_cart_recalculate_kpis() {
-    $users = get_users(array('fields' => array('ID')));
-    foreach ($users as $user) {
-        bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
-    }
+    $offset = 0;
+    $limit = 100;
+    $get_total = true;
+    global $blog_id;
+    do {
+        $args = array(
+                'fields' => array('ID'),
+                'blog_id' => $blog_id,
+                'number' => $limit,
+                'offset' => $offset,
+                'count_total' => $get_total,
+                'meta_query' => array(
+                        array(
+                                'key' => 'bbconnect_kpi_last_transaction_date',
+                                'value' => '',
+                                'compare' => '!=',
+                        ),
+                ),
+        );
+        $query = new WP_User_Query($args);
+        $users = $query->get_results();
+        if ($get_total) {
+            $total_users = $query->get_total();
+        }
+
+        foreach ($users as $user) {
+            bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
+        }
+        $get_total = false;
+        $offset += $limit;
+        unset($query, $users);
+    } while ($offset <= $total_users);
 }
 
 function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
