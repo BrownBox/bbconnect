@@ -141,7 +141,7 @@ function bbconnect_gf_addon_launch() {
         // First look for email addresses so we can locate the user(s)
         $emails = array();
         foreach ($form['fields'] as $field) {
-            if ($field->type == 'email') {
+            if ($field->type == 'email' && !empty($entry[$field->id])) {
                 $emails[] = $entry[$field->id];
             }
         }
