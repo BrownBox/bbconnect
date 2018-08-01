@@ -20,6 +20,7 @@ function bbconnect_versions() {
             '2.8.2' => 'bbconnect_update_v_2_8_2',
             '2.8.5' => 'bbconnect_update_v_2_8_5',
             '2.8.6' => 'bbconnect_update_v_2_8_6',
+            '2.8.7' => 'bbconnect_update_v_2_8_7',
     );
     return $bbconnect_versions;
 }
@@ -640,4 +641,11 @@ function bbconnect_update_v_2_8_6() {
             update_option('_bbconnect_user_meta', $umo);
         }
     }
+}
+
+function bbconnect_update_v_2_8_7() {
+    // Remove blank contacts that were created due to bug in form handling
+    global $wpdb;
+    $wpdb->query('DELETE FROM '.$wpdb->usermeta.' WHERE user_id IN (SELECT ID FROM '.$wpdb->users.' WHERE user_email = "" AND display_name = "Unknown Unknown")');
+    $wpdb->query('DELETE FROM '.$wpdb->users.' WHERE user_email = "" AND display_name = "Unknown Unknown"');
 }
