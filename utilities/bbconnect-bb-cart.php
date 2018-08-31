@@ -140,7 +140,7 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
             'order'          => 'DESC',
     );
     $transactions = get_posts($args);
-    $meta['bbconnect_kpi_transaction_count'] = count($transactions);
+    $meta['bbconnect_kpi_transaction_count'] += count($transactions);
     foreach ($transactions as $transaction) {
         $amount = get_post_meta($transaction->ID, 'total_amount', true);
         if ($amount > 0) {
