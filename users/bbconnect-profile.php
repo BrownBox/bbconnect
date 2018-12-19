@@ -33,7 +33,12 @@ function bbconnect_new_user() {
 
         $bbconnect_success = bbconnect_insert_user( array( 'ivals' => $_POST ) );
         if ( !is_wp_error( $bbconnect_success ) ) {
-            wp_redirect(admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success));
+            wp_redirect(admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success.'&msg=new'));
+?>
+            <script>
+                window.location.href = '<?php echo admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success); ?>';
+            </script>
+<?php
             exit;
         } else {
 ?>
@@ -182,6 +187,12 @@ function bbconnect_edit_user( $user_id = '' ) {
 ?>
     <div id="message" class="updated">
         <p><strong><?php echo $updated; ?></strong></p>
+    </div>
+<?php
+    } elseif (!empty($_GET['msg']) && $_GET['msg'] == 'new') {
+?>
+    <div id="message" class="updated">
+        <p><strong><?php echo __('User Created.', 'bbconnect'); ?></strong></p>
     </div>
 <?php
     }
