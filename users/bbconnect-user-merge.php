@@ -12,9 +12,13 @@ function bbconnect_merge_users_process($from_user, $to_user, $return = false) {
     $old_user = new WP_User($from_user);
     do_action('bbconnect_merge_users', $to_user, $old_user); // Same parameters as profile_update so we can hook the same methods into it
 
-    // GF doesn't hook into delete_user so we need to change leads manually
+    // GF doesn't hook into delete_user so we need to change entries manually
+    // GF < 2.3
     $wpdb->query('UPDATE '.GFFormsModel::get_lead_table_name().' SET created_by = '.$to_user.' WHERE created_by = '.$from_user);
     $wpdb->query('UPDATE '.GFFormsModel::get_lead_meta_table_name().' SET meta_value = '.$to_user.' WHERE meta_key = "agent_id" AND meta_value = '.$from_user);
+    // GF >= 2.3
+    $wpdb->query('UPDATE '.GFFormsModel::get_entry_table_name().' SET created_by = '.$to_user.' WHERE created_by = '.$from_user);
+    $wpdb->query('UPDATE '.GFFormsModel::get_entry_meta_table_name().' SET meta_value = '.$to_user.' WHERE meta_key = "agent_id" AND meta_value = '.$from_user);
 
     // Update Connexions activity tracking records
     $wpdb->query('UPDATE '.$wpdb->prefix.'bbconnect_activity_log SET user_id = '.$to_user.' WHERE user_id = '.$from_user);
