@@ -72,7 +72,10 @@ function bbconnect_bb_cart_recalculate_kpis() {
     $offset = 0;
     $limit = 100;
     $get_total = true;
+    $processed_users = array();
     global $blog_id;
+
+    // First process any users with an offset amount - i.e. historical transactions that don't exist in the system as discrete records
     do {
         $args = array(
                 'fields' => array('ID'),
@@ -82,7 +85,7 @@ function bbconnect_bb_cart_recalculate_kpis() {
                 'count_total' => $get_total,
                 'meta_query' => array(
                         array(
-                                'key' => 'bbconnect_kpi_last_transaction_date',
+                                'key' => 'bbconnect_offset_transaction_count',
                                 'value' => '',
                                 'compare' => '!=',
                         ),
@@ -96,14 +99,24 @@ function bbconnect_bb_cart_recalculate_kpis() {
 
         foreach ($users as $user) {
             bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
+            $processed_users[] = $user->ID;
         }
         $get_total = false;
         $offset += $limit;
-        unset($query, $users);
+        unset($query, $users, $user);
     } while ($offset <= $total_users);
+
+    // Now anyone with discrete transaction records (if not already processed above)
+    global $wpdb;
+    $users = $wpdb->get_col('SELECT DISTINCT(post_author) FROM '.$wpdb->posts.' WHERE post_type = "transaction" AND NOT post_author IN ('.implode(',', $processed_users).')');
+    unset($processed_users);
+    foreach ($users as $user_id) {
+        bbconnect_bb_cart_recalculate_kpis_for_user($user_id);
+    }
 }
 
 function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
+    set_time_limit(600);
     $now = bbconnect_get_current_datetime();
     $now->setTime(0, 0, 0);
     $meta = array(
@@ -131,33 +144,47 @@ function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
         }
     }
 
-    $args = array(
-            'posts_per_page' => -1,
-            'post_type'      => 'transaction',
-            'status'         => 'publish',
-            'author'         => $user_id,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-    );
-    $transactions = get_posts($args);
-    $meta['bbconnect_kpi_transaction_count'] += count($transactions);
-    foreach ($transactions as $transaction) {
-        $amount = get_post_meta($transaction->ID, 'total_amount', true);
-        if ($amount > 0) {
-            $transaction_date = bbconnect_get_datetime($transaction->post_date);
-            $transaction_date->setTime(0, 0, 0);
-            if (is_null($meta['bbconnect_kpi_first_transaction_date']) || strtotime($meta['bbconnect_kpi_first_transaction_date']) > $transaction_date->getTimestamp()) {
-                $meta['bbconnect_kpi_first_transaction_date'] = $transaction_date->format('Y-m-d');
-                $meta['bbconnect_kpi_first_transaction_amount'] = $amount;
-            }
-            if (is_null($meta['bbconnect_kpi_last_transaction_date']) || strtotime($meta['bbconnect_kpi_last_transaction_date']) < $transaction_date->getTimestamp()) {
-                $meta['bbconnect_kpi_last_transaction_date'] = $transaction_date->format('Y-m-d');
-                $meta['bbconnect_kpi_last_transaction_amount'] = $amount;
-            }
-            $meta['bbconnect_kpi_transaction_amount'] += $amount;
+    $offset = 0;
+    $limit = 20;
+    $get_total = true;
+    do {
+        set_time_limit(600);
+        $args = array(
+                'post_type'      => 'transaction',
+                'status'         => 'publish',
+                'author'         => $user_id,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'posts_per_page' => $limit,
+                'offset'         => $offset,
+        );
+        $query = new WP_Query($args);
+        $transactions = $query->get_posts();
+        if ($get_total) {
+            $total_transactions = $query->found_posts;
+            $meta['bbconnect_kpi_transaction_count'] += $total_transactions;
+            $get_total = false;
         }
-    }
-    unset($transactions);
+
+        foreach ($transactions as $transaction) {
+            $amount = get_post_meta($transaction->ID, 'total_amount', true);
+            if ($amount > 0) {
+                $transaction_date = bbconnect_get_datetime($transaction->post_date);
+                $transaction_date->setTime(0, 0, 0);
+                if (is_null($meta['bbconnect_kpi_first_transaction_date']) || strtotime($meta['bbconnect_kpi_first_transaction_date']) > $transaction_date->getTimestamp()) {
+                    $meta['bbconnect_kpi_first_transaction_date'] = $transaction_date->format('Y-m-d');
+                    $meta['bbconnect_kpi_first_transaction_amount'] = $amount;
+                }
+                if (is_null($meta['bbconnect_kpi_last_transaction_date']) || strtotime($meta['bbconnect_kpi_last_transaction_date']) < $transaction_date->getTimestamp()) {
+                    $meta['bbconnect_kpi_last_transaction_date'] = $transaction_date->format('Y-m-d');
+                    $meta['bbconnect_kpi_last_transaction_amount'] = $amount;
+                }
+                $meta['bbconnect_kpi_transaction_amount'] += $amount;
+            }
+        }
+        $offset += $limit;
+        unset($query, $transactions, $transaction, $transaction_date);
+    } while ($offset <= $total_transactions);
 
     if (!empty($meta['bbconnect_kpi_last_transaction_date'])) {
         $last_transaction_date = new DateTime($meta['bbconnect_kpi_last_transaction_date']);
