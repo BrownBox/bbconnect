@@ -1019,30 +1019,12 @@ function bbconnect_rows( $args = null ) {
                                     $cur_address[$cur_ite] = $current_member->$cur_ite;
                                 }
                             } else {
-                                if (!empty($post_vars['search'][$positionInarray]['query']) && !empty($post_vars['search'][$positionInarray]['operator']) ) {
-                                    if ( is_array( $post_vars['search'][$positionInarray]['query'] ) ) {
-                                        foreach ( $post_vars['search'][$positionInarray]['query'] as $val ) {
-                                            if ( false !== stripos( $current_member->$cur_ite, $val ) ) {
-                                                $cur_address[$cur_ite] = $current_member->$cur_ite;
-                                                $cur_grex_key = $cur_ite;
-                                                break;
-                                            }
-                                        }
-                                    } else {
-                                        if ( false !== stripos( $current_member->$cur_ite, $post_vars['search'][$positionInarray]['query'] ) ) {
-                                            $cur_address[$cur_ite] = $current_member->$cur_ite;
-                                            $cur_grex_key = $cur_ite;
-                                            break;
-                                        }
-                                    }
+                                if ( $current_member->$cur_ite ) {
+                                    $cur_address[$cur_ite] = $current_member->$cur_ite;
+                                    $cur_grex_key[] = $cur_ite;
                                 } else {
-                                    if ( $current_member->$cur_ite ) {
-                                        $cur_address[$cur_ite] = $current_member->$cur_ite;
-                                        $cur_grex_key[] = $cur_ite;
-                                    } else {
-                                        $cur_address[$cur_ite] = false;
-                                        $cur_grex_key[] = $cur_ite;
-                                    }
+                                    $cur_address[$cur_ite] = false;
+                                    $cur_grex_key[] = $cur_ite;
                                 }
                             }
                         }
