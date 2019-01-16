@@ -306,6 +306,18 @@ function bbconnect_filter_process( $post_data ) {
                 $wp_col = apply_filters('bbconnect_filter_process_wp_col', $wp_col, $user_meta, $value);
                 $op = apply_filters('bbconnect_filter_process_op', $op, $user_meta, $value);
 
+                // THIS IS A SUBQUERY
+                if ( isset( $value['query'] ) ) {
+                    $value_query = $value['query'];
+                } else {
+                    $value_query = '';
+                }
+
+                // Don't filter on LIKE/NOT LIKE if no search term passed
+                if (empty($value_query) && in_array($op, array('LIKE', 'NOT LIKE'))) {
+                    $op = 'skip';
+                }
+
                 // IF WE'RE JUST DISPLAYING RESULTS, SIT THIS PART OUT
                 if ( 'skip' != $op ) {
 
@@ -317,13 +329,6 @@ function bbconnect_filter_process( $post_data ) {
                         $mtc_as = 'AS mt' . $mtc . ' ';
                         $mtc_dot = 'mt' . $mtc . '.';
                         // FUTURE $mtselect[] = 'mt' . $mtc.'.meta_value';
-                    }
-
-                    // THIS IS A SUBQUERY
-                    if ( isset( $value['query'] ) ) {
-                        $value_query = $value['query'];
-                    } else {
-                        $value_query = '';
                     }
 
                     if ( is_array( $value_query ) ) {
