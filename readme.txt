@@ -47,6 +47,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.8 =
+* Added support for KPI offsets
+* Added success message on new user creation
+* Added support for GF2.3+
+* Now treats LIKE/NOT LIKE search as SHOW if no search term passed  
+* Bug fixes
+
 = 2.8.7 =
 * Major performance improvements to KPI calculations
 * Bug fix
