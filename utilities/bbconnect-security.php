@@ -33,34 +33,34 @@ function bbconnect_restrict_redirect(){
     global $pagenow;
 
     // IF IT'S AN ADMIN REQUEST
-    if ( is_admin() && empty($_GET['no_redirect'])) {
-        	if ( 'true' === get_option( '_bbconnect_access' ) ) {
-        		if ( is_user_logged_in() && !current_user_can( 'edit_posts' ) ) {
-        			if ( $pagenow == 'profile.php' || $pagenow == 'index.php'  || $pagenow == 'admin.php' ) {
-        				wp_redirect( site_url() );
-        				die();
-        			}
-        		}
-        	}
+    if (is_admin() && empty($_GET['no_redirect']) && empty($_POST)) {
+        if ( 'true' === get_option( '_bbconnect_access' ) ) {
+            if ( is_user_logged_in() && !current_user_can( 'edit_posts' ) ) {
+                if ( $pagenow == 'profile.php' || $pagenow == 'index.php'  || $pagenow == 'admin.php' ) {
+                    wp_redirect( site_url() );
+                    die();
+                }
+            }
+        }
 
-        	// IF THEY'RE TRYING TO ACCESS THE ORIGINAL PROFILE PAGE, REDIRECT THEM
-        	if ($pagenow == 'profile.php' || $pagenow == 'user-edit.php' && !is_network_admin()) {
-            	wp_redirect( admin_url( 'admin.php?page=bbconnect_edit_user_profile&user_id=' . $_GET['user_id'] ) );
-            	die();
+        // IF THEY'RE TRYING TO ACCESS THE ORIGINAL PROFILE PAGE, REDIRECT THEM
+        if ($pagenow == 'profile.php' || $pagenow == 'user-edit.php' && !is_network_admin()) {
+            wp_redirect( admin_url( 'admin.php?page=bbconnect_edit_user_profile&user_id=' . $_GET['user_id'] ) );
+            die();
         }
 
         // IF THEY'RE TRYING TO ACCESS THE ORIGINAL CREATE PROFILE PAGE, REDIRECT THEM
         if ( $pagenow == 'user-new.php' ) {
-            	wp_redirect( admin_url( 'admin.php?page=bbconnect_new_user' ) );
-            	die();
+            wp_redirect( admin_url( 'admin.php?page=bbconnect_new_user' ) );
+            die();
         }
 
         // IF THEY'RE TRYING TO ACCESS THE ORIGINAL ALL USERS PAGE, REDIRECT THEM
         if ($pagenow == 'users.php' && !isset($_GET['page']) && !is_network_admin()) {
             if ( 'true' != get_option( '_bbconnect_compatability_mode' ) ) {
-                	wp_redirect( admin_url( 'users.php?page=bbconnect_reports' ) );
-                	die();
-	        }
+                wp_redirect( admin_url( 'users.php?page=bbconnect_reports' ) );
+                die();
+            }
         }
     }
 }
