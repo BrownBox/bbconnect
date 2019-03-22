@@ -27,20 +27,64 @@ function bbconnect_merge_users_process($from_user, $to_user, $return = false) {
     // Copy across user meta if empty in target record
     $old_meta = get_user_meta($from_user);
     $new_meta = get_user_meta($to_user);
+    $update_first_trans = $update_last_trans = false;
     foreach ($old_meta as $meta_key => $meta_value) {
-        if (empty($new_meta[$meta_key]) && !empty($meta_value)) {
-            if (count($meta_value) == 1) {
-                update_user_meta($to_user, $meta_key, $meta_value[0]);
-            } else {
-                foreach ($meta_value as $v) {
-                    add_user_meta($to_user, $meta_key, $v);
+        switch ($meta_key) {
+            case 'bbconnect_offset_transaction_amount':
+            case 'bbconnect_offset_transaction_count':
+                if (!empty($meta_value[0])) {
+                    if (!empty($new_meta[$meta_key][0])) {
+                        update_user_meta($to_user, $meta_key, $new_meta[$meta_key][0]+$meta_value[0]);
+                    } else {
+                        update_user_meta($to_user, $meta_key, $meta_value[0]);
+                    }
                 }
-            }
+                break;
+            case 'bbconnect_offset_first_transaction_amount':
+                // Have to check date so just save this for later
+                $first_transaction_amount = $meta_value[0];
+                break;
+            case 'bbconnect_offset_first_transaction_date':
+                if (!empty($meta_value[0]) && (empty($new_meta[$meta_key]) || strtotime($meta_value[0]) < strtotime($new_meta[$meta_key][0]))) {
+                    update_user_meta($to_user, $meta_key, $meta_value[0]);
+                    $update_first_trans = true;
+                }
+                break;
+            case 'bbconnect_offset_last_transaction_amount':
+                // Have to check date so just save this for later
+                $last_transaction_amount = $meta_value[0];
+            case 'bbconnect_offset_last_transaction_date':
+                if (!empty($meta_value[0]) && (empty($new_meta[$meta_key]) || strtotime($meta_value[0]) > strtotime($new_meta[$meta_key][0]))) {
+                    update_user_meta($to_user, $meta_key, $meta_value[0]);
+                    $update_last_trans = true;
+                }
+                break;
+            default:
+                if (empty($new_meta[$meta_key]) && !empty($meta_value)) {
+                    if (count($meta_value) == 1) {
+                        update_user_meta($to_user, $meta_key, $meta_value[0]);
+                    } else {
+                        foreach ($meta_value as $v) {
+                            add_user_meta($to_user, $meta_key, $v);
+                        }
+                    }
+                }
+                break;
         }
+    }
+
+    if ($update_first_trans) {
+        update_user_meta($to_user, 'bbconnect_offset_first_transaction_amount', $first_transaction_amount);
+    }
+    if ($update_last_trans) {
+        update_user_meta($to_user, 'bbconnect_offset_last_transaction_amount', $last_transaction_amount);
     }
 
     // WP handles posts etc for us :-)
     wp_delete_user($from_user, $to_user);
+
+    // After transaction records have been moved
+    bbconnect_bb_cart_recalculate_kpis_for_user($to_user);
 
     if ($return) {
         return true;
