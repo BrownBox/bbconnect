@@ -392,8 +392,18 @@ function bbconnect_gf_addon_launch() {
             $user = get_user_by('id', $user_id);
             $form = GFAPI::get_form($form_id);
             if ($user && $form) {
-                echo '<h1>'.$user->display_name.' ('.$user->user_email.')</h1>'."\n";
-                echo '<p>When you are done just close this tab to return to the user profile.</p>'."\n";
+?>
+                <style>
+                    body .wrap .gform_wrapper .gform_footer {margin-left: 0; width: 100%;}
+                </style>
+                <script>
+                    jQuery(document).ready(function() {
+                        jQuery('input.gform_button').addClass('button-primary');
+                    });
+                </script>
+                <h1><?php echo $user->display_name; ?> (<?php echo $user->user_email; ?>)</h1>
+                <p>When you are done just close this tab to return to the user profile.</p>
+<?php
                 gravity_form($form_id);
             }
         } else {
