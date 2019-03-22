@@ -2,7 +2,10 @@
 add_action('bb_cart_post_purchase', 'bbconnect_bb_cart_post_purchase', 10, 4);
 function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transaction_id) {
     $user = null;
-    if (is_user_logged_in()) {
+    $transaction = get_post($transaction_id);
+    if ($transaction instanceof WP_Post && !empty($transaction->post_author)) {
+        $user = new WP_User($transaction->post_author);
+    } elseif (is_user_logged_in()) {
         $user = wp_get_current_user();
     } else {
         // Look for an email address so we can locate the user
@@ -69,6 +72,7 @@ function bbconnect_bb_cart_post_import($user, $amount, $transaction_id = null) {
 }
 
 function bbconnect_bb_cart_recalculate_kpis() {
+    ini_set('memory_limit', '2048M');
     $offset = 0;
     $limit = 100;
     $get_total = true;
