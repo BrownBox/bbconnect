@@ -171,17 +171,23 @@ function bbconnect_gf_addon_launch() {
                             } elseif ($input['id'] == $field->id.'.3') {
                                 $usermeta['bbconnect_address_city_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.4') {
-                                $usermeta['bbconnect_address_state_1'][] = $entry[(string)$input['id']];
+                                $state = $entry[(string)$input['id']];
+                                foreach ($state_groups as $country => $states) {
+                                    if (in_array($state, $states)) {
+                                        $states = array_flip($states);
+                                        $state = $states[$state];
+                                    }
+                                }
+                                $usermeta['bbconnect_address_state_1'][] = $state;
                             } elseif ($input['id'] == $field->id.'.5') {
                                 $usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.6') {
                                 $country = $entry[(string)$input['id']];
                                 if (in_array($country, $countries)) {
                                     $countries = array_flip($countries);
-                                    $usermeta['bbconnect_address_country_1'][] = $countries[$country];
-                                } else {
-                                    $usermeta['bbconnect_address_country_1'][] = $country;
+                                    $country = $countries[$country];
                                 }
+                                $usermeta['bbconnect_address_country_1'][] = $country;
                             }
                         }
                         break;
