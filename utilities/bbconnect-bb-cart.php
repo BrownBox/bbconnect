@@ -112,7 +112,11 @@ function bbconnect_bb_cart_recalculate_kpis() {
 
     // Now anyone with discrete transaction records (if not already processed above)
     global $wpdb;
-    $users = $wpdb->get_col('SELECT DISTINCT(post_author) FROM '.$wpdb->posts.' WHERE post_type = "transaction" AND NOT post_author IN ('.implode(',', $processed_users).')');
+    $sql = 'SELECT DISTINCT(post_author) FROM '.$wpdb->posts.' WHERE post_type = "transaction"';
+    if (!empty($processed_users)) {
+        $sql .= ' AND NOT post_author IN ('.implode(',', $processed_users).')';
+    }
+    $users = $wpdb->get_col($sql);
     unset($processed_users);
     foreach ($users as $user_id) {
         bbconnect_bb_cart_recalculate_kpis_for_user($user_id);
