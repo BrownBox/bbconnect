@@ -47,6 +47,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.9 =
+* Added MailChimp as default option for user source
+* Made submit button more obvious when submitting form for user in admin area
+* Added logic to map states from full text to code when handling form submissions
+* State and country matching for form submissions is now case-insensitive
+* Bug fixes
+
 = 2.8.8 =
 * Added support for KPI offsets
 * Added success message on new user creation
