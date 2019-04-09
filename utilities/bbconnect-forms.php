@@ -162,6 +162,7 @@ function bbconnect_gf_addon_launch() {
                         }
                         break;
                     case 'address':
+                        $state_groups = bbconnect_get_helper_states();
                         $countries = bbconnect_helper_country();
                         foreach ($field->inputs as $input) {
                             if ($input['id'] == $field->id.'.1') {
@@ -171,10 +172,10 @@ function bbconnect_gf_addon_launch() {
                             } elseif ($input['id'] == $field->id.'.3') {
                                 $usermeta['bbconnect_address_city_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.4') {
-                                $state = $entry[(string)$input['id']];
+                                $state = strtoupper($entry[(string)$input['id']]);
                                 foreach ($state_groups as $country => $states) {
-                                    if (in_array($state, $states)) {
-                                        $states = array_flip($states);
+                                    $states = array_flip(array_map('strtoupper', $states));
+                                    if (isset($states[$state])) {
                                         $state = $states[$state];
                                     }
                                 }
@@ -183,8 +184,8 @@ function bbconnect_gf_addon_launch() {
                                 $usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.6') {
                                 $country = $entry[(string)$input['id']];
-                                if (in_array($country, $countries)) {
-                                    $countries = array_flip($countries);
+                                $countries = array_flip(array_map('strtoupper', $countries));
+                                if (isset($countries[$country])) {
                                     $country = $countries[$country];
                                 }
                                 $usermeta['bbconnect_address_country_1'][] = $country;
