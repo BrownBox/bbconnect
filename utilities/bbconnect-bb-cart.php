@@ -1,36 +1,62 @@
 <?php
 add_action('bb_cart_post_purchase', 'bbconnect_bb_cart_post_purchase', 10, 4);
 function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transaction_id) {
-    $user = null;
-    $transaction = get_post($transaction_id);
-    if ($transaction instanceof WP_Post && !empty($transaction->post_author)) {
-        $user = new WP_User($transaction->post_author);
-    } elseif (is_user_logged_in()) {
-        $user = wp_get_current_user();
-    } else {
-        // Look for an email address so we can locate the user
-        foreach ($form['fields'] as $field) {
-            if ($field->type == 'email') {
-                $email = $entry[$field->id];
-                $user = get_user_by('email', $email);
-                break;
+    if (get_post_status($transaction_id) == 'publish') { // Only process for completed transactions - anything else will be caught by the bb_cart_complete_pending_transaction hook below
+        $user = null;
+        if (is_user_logged_in()) {
+            $user = wp_get_current_user();
+        } else {
+            // Look for an email address so we can locate the user
+            foreach ($form['fields'] as $field) {
+                if ($field->type == 'email') {
+                    $email = $entry[$field->id];
+                    $user = get_user_by('email', $email);
+                    break;
+                }
             }
         }
-    }
 
+        if ($user instanceof WP_User) {
+            $total = get_post_meta($transaction_id, 'total_amount', true);
+            $previous_total = (float)get_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', true);
+            $previous_count = (int)get_user_meta($user->ID, 'bbconnect_kpi_transaction_count', true);
+
+            update_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', $total+$previous_total);
+            update_user_meta($user->ID, 'bbconnect_kpi_transaction_count', $previous_count+1);
+            update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_amount', $total);
+            update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', bbconnect_get_current_datetime()->format('Y-m-d'));
+            update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', 0);
+
+            // Add note to user record
+            $description = 'Transaction for $'.$total.' processed successfully. <a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>';
+            bbconnect_insert_user_note($user->ID, 'Transaction - '.$form['title'], $description, array('type' => 'system', 'subtype' => 'transaction'), $transaction_id);
+        }
+    }
+}
+
+add_action('bb_cart_complete_pending_transaction', 'bbconnect_bb_cart_complete_pending_transaction', 10, 4);
+function bbconnect_bb_cart_complete_pending_transaction($transaction_id, $date, $entry, $form) {
+    // Look for an email address so we can locate the user
+    foreach ($form['fields'] as $field) {
+        if ($field->type == 'email') {
+            $email = $entry[$field->id];
+            $user = get_user_by('email', $email);
+            break;
+        }
+    }
     if ($user instanceof WP_User) {
-        $total = get_post_meta($transaction_id, 'total_amount', true);
+        $amount = get_post_meta($transaction_id, 'total_amount', true);
         $previous_total = (float)get_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', true);
         $previous_count = (int)get_user_meta($user->ID, 'bbconnect_kpi_transaction_count', true);
 
-        update_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', $total+$previous_total);
+        update_user_meta($user->ID, 'bbconnect_kpi_transaction_amount', $amount+$previous_total);
         update_user_meta($user->ID, 'bbconnect_kpi_transaction_count', $previous_count+1);
-        update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_amount', $total);
-        update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', bbconnect_get_current_datetime()->format('Y-m-d'));
+        update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_amount', $amount);
+        update_user_meta($user->ID, 'bbconnect_kpi_last_transaction_date', date('Y-m-d', strtotime($date)));
         update_user_meta($user->ID, 'bbconnect_kpi_days_since_last_transaction', 0);
 
         // Add note to user record
-        $description = 'Transaction for $'.$total.' processed successfully. <a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>';
+        $description = 'Transaction for $'.$amount.' processed successfully. <a href="/wp-admin/admin.php?page=gf_entries&view=entry&id='.$entry['form_id'].'&lid='.$entry['id'].'">Entry details can be viewed here.</a>';
         bbconnect_insert_user_note($user->ID, 'Transaction - '.$form['title'], $description, array('type' => 'system', 'subtype' => 'transaction'), $transaction_id);
     }
 }
