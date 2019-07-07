@@ -233,8 +233,13 @@ function bbconnect_admin_scripts(){
 	wp_enqueue_style( 'wp-color-picker' );
 
 	// QUEUE THIRD-PARTY STYLES
-	if ( defined( 'USER_AVATAR_UPLOAD_PATH' ) )
-		wp_enqueue_style( 'user-avatar' );
+	if ( defined( 'USER_AVATAR_UPLOAD_PATH' ) ) {
+	    wp_enqueue_style( 'user-avatar' );
+	}
+
+	// DEQUEUE THIRD-PARTY SCRIPTS THAT CONFLICT WITH CONNEXIONS
+	wp_dequeue_script('mandrill');
+	wp_dequeue_script('mandrill-report-script');
 
 	// HOOK THE AJAX ENGINE FOR SEARCH
 	wp_localize_script( 'bbconnectSearchJS', 'bbconnectSearchAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'bbconnect_search_nonce' => wp_create_nonce( 'bbconnect-search-nonce' ), 'ajaxload' => plugins_url('/assets/g/loading.gif', __FILE__) ) );
