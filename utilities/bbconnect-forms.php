@@ -15,7 +15,7 @@ function bbconnect_gf_addon_launch() {
         if (rgar($form, 'bbconnect_no_prerender') != 'true') {
             if (is_admin() && isset($_GET['user_id'])) { // If we're in WP Admin and have a user ID in querystring let's start there
                 $user = get_user_by('id', (int)$_GET['user_id']);
-            } else {
+            } elseif (is_user_logged_in()) {
                 $user = wp_get_current_user(); // Otherwise if user is logged in we'll use them
             }
             $user = apply_filters('bbconnect_identify_user', $user); // Allow override by other plugins etc
