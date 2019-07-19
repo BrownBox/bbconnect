@@ -360,14 +360,12 @@ function bbconnect_get_field( $args = '' ) {
 
 }
 
-function bbconnect_field_defaults( $meta_key, $value ){
-
-    switch ( $meta_key ) {
-        case 'address_country_1':
-            $value = 'AU';
-            break;
-
-    }
+function bbconnect_field_defaults($meta_key, $value) {
+    //     switch ($meta_key) {
+    //         case 'address_country_1':
+    //             $value = 'AU';
+    //             break;
+    //     }
     return $value;
 }
 
