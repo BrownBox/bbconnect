@@ -829,6 +829,8 @@ function bbconnect_maybe_add_recursive_meta($user_id, $value, $type, $meta_key) 
                 break;
             }
         }
+    } else {
+        $meta_data = array();
     }
     if (!$meta_exists) {
         $meta_data[] = array(
