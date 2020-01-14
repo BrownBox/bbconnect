@@ -122,7 +122,7 @@ function bbconnect_random( $args = null ) {
                     $underscores--;
                 } else {
                     $i--;
-    				continue;
+    				continue(2);
                 }
             	break;
         }
