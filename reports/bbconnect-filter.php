@@ -650,26 +650,17 @@ function bbconnect_filter_process( $post_data ) {
                 }
 
                 $mtjoin[$mtc] = "INNER JOIN $wpdb->usermeta " . $mtc_as . "ON ($wpdb->users.ID = " . $mtc_dot . "user_id)";
-                if ( in_array( $order_by, $skip_arr ) ) {
 
-                    // GET THE META TO TEST
-                    $t_order_by = bbconnect_get_option( $order_by );
-                    if ( false != $t_order_by ) {
-                        if ( 'bbconnect' == $t_order_by['source'] )
-                            $order_by = 'bbconnect_'.$order_by;
-                    }
-
+                // GET THE META TO TEST
+                $t_order_by = bbconnect_get_option( $order_by );
+                if ( false != $t_order_by ) {
+                    if ( 'bbconnect' == $t_order_by['source'] )
+                        $order_by = 'bbconnect_'.$order_by;
+                }
+                if ( in_array( $order_by, $skip_arr ) || in_array('bbconnect_'.$order_by, $skip_arr) ) {
                     $nullquo = $wpdb->prepare( "IFNULL(" . $mtc_dot . "meta_key = %s,0) = %s", $order_by, $order_by );
                     $nullval = " ORDER BY IFNULL(". $mtc_dot ."meta_value," . $mtc_dot . "meta_key) $order";
                 } else {
-
-                    // GET THE META TO TEST
-                    $t_order_by = bbconnect_get_option( $order_by );
-                    if ( false != $t_order_by ) {
-                        if ( 'bbconnect' == $t_order_by['source'] )
-                            $order_by = 'bbconnect_'.$order_by;
-                    }
-
                     if ( isset( $t_order_by['group'] ) && false !== strpos( $t_order_by['group'], 'address' ) ) {
                         $addext = count( strrchr( $t_order_by['meta_key'], '_' ) );
                         $addapp = substr( $t_order_by['meta_key'], 0, -$addext );

@@ -138,8 +138,9 @@ function sub_search_row() {
 
 // PULL THE CONTEXTUAL QUERY FIELDS VIA AJAX
 function select_search_form() { 
-	
+	var prev = jQuery(this).data('prev');
 	var fid = jQuery(this).val();
+	jQuery(this).data("prev", fid);
 	var sid = jQuery(this).attr('id');
 	var fname = jQuery('option:selected',this).text();
 	var key = jQuery(this).parent().attr('title');
@@ -155,8 +156,21 @@ function select_search_form() {
             jQuery('#'+key+'-child').html(response);
             //jQuery( 'input.bbconnect-date' ).datepicker({ dateFormat: 'yy-mm-dd', changeMonth: true, changeYear: true });
             bbconnect_bind_events();
-            if ( jQuery('[name="order_by"] option[value="'+fid+'"]').length == 0 && jQuery('#'+sid+' option:selected').hasClass('orderable') ) {
-            	jQuery('[name="order_by"] optgroup:first').prepend('<option value="'+fid+'">'+fname+'</option>');
+            
+            // Remove old value from order selection if no longer included in filters
+            var fieldcount = 0;
+            jQuery('.query-list .query-parent').each(function() {
+                if (jQuery(this).val() == prev) {
+                    fieldcount++;
+                }
+            });
+            if (jQuery('[name="order_by"] option[value="'+prev+'"]').length > 0 && fieldcount == 0) {
+                jQuery('[name="order_by"] option[value="'+prev+'"]').remove();
+                jQuery('[name="order_by"]').trigger('liszt:updated');
+            }
+            // Add new value to order selection
+            if (jQuery('[name="order_by"] option[value="'+fid+'"]').length == 0 && jQuery('#'+sid+' option:selected').hasClass('orderable')) {
+            	jQuery('[name="order_by"] optgroup:first').append('<option value="'+fid+'">'+fname+'</option>');
             	jQuery('[name="order_by"]').trigger('liszt:updated');
             }
             
@@ -502,6 +516,11 @@ jQuery(document).ready(function () {
 	// LOAD THE ADDITIONAL QUERY FIELDS
 	jQuery('.query-list').on('change', '.query-parent', select_search_form);
 	
+	// TRACK FIELD SELECTIONS SO WE CAN UPDATE ORDERBY OPTION PROPERLY
+	jQuery('.query-list .query-parent').each(function() {
+	    jQuery(this).data('prev', jQuery(this).val());
+	});
+	
 	// MANAGE THE SEARCH ROWS	
 	jQuery('#bbconnect').on('click', '.query-add', add_new_search_row);
 	jQuery('#bbconnect').on('click', '.query-sub', sub_search_row);
@@ -570,6 +589,7 @@ jQuery(document).ready(function () {
 	*/
 	jQuery("#select_users_per_page").change(function(){
 				jQuery('#users_per_page').val(jQuery(this).val());
+				jQuery(this).val('');
 			});
 
 });

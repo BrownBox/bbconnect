@@ -29,62 +29,62 @@ function bbconnect_filter_profile( $args = '' ) {
 	extract( $args, EXTR_SKIP );
 
 	global $current_user, $ret_res;
-
-
-
 ?>
 <div id="saved-search-notice" ></div>
 <div id="my-content-id" style="display:none;">
 </div>
 <div id="filter" class="drawer"<?php if ( 'open' === $display ) { echo ' style="display: block;"'; } ?>>
 	<div class="inside">
-		<?php
-			$r_subnav = array();
-			if ( false != get_option( '_bbconnect_' . $current_user->ID . '_current' ) )
-				// $r_subnav[] = '<a href="' . admin_url( 'users.php?page=bbconnect_reports' ) . '">' . __( 'Re-load last search', 'bbconnect' ) . '</a>';
-				// $r_subnav[] = '<a href="' . admin_url( 'users.php?page=bbconnect_reports&reset=true' ) . '">' . __( 'Reset current search', 'bbconnect' ) . '</a>';
-				$r_subnav[] = '<a id="open_save_search" href="#TB_inline?width=600&height=550&inlineId=my-content-id" class="thickbox">' . __( 'Save current search', 'bbconnect' ) . '</a>';
-			echo implode( ' | ', $r_subnav );
-		?>
+<?php
+	$r_subnav = array();
+	if ( false != get_option( '_bbconnect_' . $current_user->ID . '_current' ) )
+		// $r_subnav[] = '<a href="' . admin_url( 'users.php?page=bbconnect_reports' ) . '">' . __( 'Re-load last search', 'bbconnect' ) . '</a>';
+		// $r_subnav[] = '<a href="' . admin_url( 'users.php?page=bbconnect_reports&reset=true' ) . '">' . __( 'Reset current search', 'bbconnect' ) . '</a>';
+		$r_subnav[] = '<a id="open_save_search" href="#TB_inline?width=600&height=550&inlineId=my-content-id" class="thickbox">' . __( 'Save current search', 'bbconnect' ) . '</a>';
+	echo implode( ' | ', $r_subnav );
+?>
 	</div>
 	<form id="filter-form" class="report-form" enctype="multipart/form-data" action="<?php echo admin_url( 'users.php' ); ?>" method="POST">
-
 		<div id="filter-profile"><div class="inside">
 			<?php $bbconnect_user_queries = get_option( '_bbconnect_user_queries' ); ?>
 			<div id="toggle-user-meta" class="m-panel">
 				<ul id="filter-list" class="query-list sortable">
-				<?php
-				if(isset($_GET['savedsearch'])){
-					//RETRIEVE THE CLICKED SEARCH RESULT BY ID
-					$search_id = $_GET['savedsearch'];
-					$search_post = get_post($search_id);
-					$serialised_search = $search_post->post_content;
-					$search = unserialize($serialised_search);
+<?php
+	if(isset($_GET['savedsearch'])){
+		//RETRIEVE THE CLICKED SEARCH RESULT BY ID
+		$search_id = $_GET['savedsearch'];
+		$search_post = get_post($search_id);
+		$serialised_search = $search_post->post_content;
+		$search = unserialize($serialised_search);
 
-				}
-				else{
-					$last_search = get_option( '_bbconnect_' . $current_user->ID . '_current' );
-					if (!empty($last_search['search'])) {
-					    $search = $last_search['search'];
-				    }
-				}
+	}
+	else{
+		$last_search = get_option( '_bbconnect_' . $current_user->ID . '_current' );
+		if (!empty($last_search['search'])) {
+		    $search = $last_search['search'];
+	    }
+	}
 
-					$ac = count( $search );
-					$lc = 1;
-					foreach( $search as $key => $val ) {
-						$args = array();
-						$args['skey'] = $lc;
-						$args['sval'] = $val;
-						if ( isset( $val['field'] ) )
-							$args['meta_key'] = $val['field'];
+	$ob_ppum = array();
+	$ac = count( $search );
+	$lc = 1;
+	foreach( $search as $key => $val ) {
+		$args = array();
+		$args['skey'] = $lc;
+		$args['sval'] = $val;
+		if ( isset( $val['field'] ) ) {
+			$args['meta_key'] = $val['field'];
+			$ob_ppum[] = 'bbconnect_'.$val['field'];
+		}
 
-						if ( $ac > $lc )
-							$args['button'] = 'sub';
+		if ( $ac > $lc ) {
+			$args['button'] = 'sub';
+		}
 
-						bbconnect_search_row( $args );
-						$lc++;
-					}
-				?>
+		bbconnect_search_row( $args );
+		$lc++;
+	}
+?>
 				</ul>
 			</div>
 		</div></div>
@@ -93,12 +93,12 @@ function bbconnect_filter_profile( $args = '' ) {
 				<span class="filter-tab"><?php _e( 'Order', 'bbconnect' ); ?>: <select name="order"><option value="DESC"<?php selected( $order, 'DESC' ); ?>><?php _e( 'Descending', 'bbconnect' ); ?></option><option value="ASC"<?php selected( $mod_results, 'ASC' ); ?>><?php _e( 'Ascending', 'bbconnect' ); ?></option></select></span><span class="filter-tab"><?php
 											_e( 'Order by', 'bbconnect' );
 											echo ': ';
-											$ob_ppum = array( 'bbconnect_ID', 'bbconnect_user_registered', 'bbconnect_first_name', 'bbconnect_last_name', 'bbconnect_user_login', 'bbconnect_role' );
-											// bbconnect_user_data_select( array( 'meta_key' => $order_by, 'value' => $order_by, 'name' => 'order_by', 'ppum' => $ob_ppum, 'chosen' => false, 's_context' => 'orderby' ) );
+// 											$ob_ppum = array( 'bbconnect_ID', 'bbconnect_user_registered', 'bbconnect_first_name', 'bbconnect_last_name', 'bbconnect_email', 'bbconnect_user_login', 'bbconnect_role' );
+											bbconnect_user_data_select( array( 'meta_key' => $order_by, 'value' => $order_by, 'name' => 'order_by', 'ppum' => $ob_ppum, 'chosen' => false, 's_context' => 'orderby' ) );
 									?></span>
-
 				<span><?php _e( 'Results Per Page', 'bbconnect' ); ?>: <input class="input-short small-text" id="users_per_page" type="text" name="users_per_page" value="<?php echo $users_per_page; ?>" />
 				<select class="small-text" name="select_users_per_page" id="select_users_per_page"  style="width: 21px; margin-left: -5px; height: 28px; line-height: 31px; padding: 2px; vertical-align: middle;">
+                                <option></option>
 								<option>1</option>
 								<option>5</option>
 								<option>10</option>
@@ -123,23 +123,22 @@ function bbconnect_filter_profile( $args = '' ) {
 				</span>
 			</div>
 		</div>
-		<?php
-			$puq_title = '';
-			if ( isset( $_GET['query'] ) ) {
-				$bbconnect_user_queries = get_option( '_bbconnect_user_queries' );
-				foreach( $bbconnect_user_queries as $qk => $qv ) {
-					if ( $qv['query'] == $_GET['query'] )
-						$puq_title = $qv['title'];
-				}
-			}
-		?>
+<?php
+	$puq_title = '';
+	if ( isset( $_GET['query'] ) ) {
+		$bbconnect_user_queries = get_option( '_bbconnect_user_queries' );
+		foreach( $bbconnect_user_queries as $qk => $qv ) {
+			if ( $qv['query'] == $_GET['query'] )
+				$puq_title = $qv['title'];
+		}
+	}
+?>
 		<input type="hidden" id="get_param" title="<?php echo $puq_title; ?>" />
 		<input type="hidden" name="action[bbconnect_filter_process]" value="" />
 	</form>
 </div>
 <?php
 }
-
 
 function bbconnect_add_search_row() {
 
@@ -175,7 +174,8 @@ function bbconnect_search_row( $args = '' ) {
 				<?php bbconnect_user_data_select( array(
 														'class' => 'query-parent',
 														'meta_key' => $meta_key,
-														'value' => $sval
+														'value' => $sval,
+				                                        'id' => $skey.'_select',
 												) ); ?>
 			</span>
 
@@ -232,7 +232,7 @@ function bbconnect_user_data_select( $args = '' ) {
 
 	// FOR THE SELECT, USE THE $NAME VARIABLE TO DETERMINE WETHER OR NOT THE VALUES SHOULD BE SUBMITTED.
 ?>
-	<select class="<?php echo $class . $chosen; ?>"<?php if ( false !== $name ) { echo ' name="' . $name . '"'; } if ( false !== $multiple ) { echo ' multiple="multiple"'; } ?>>
+	<select class="<?php echo $class . $chosen; ?>"<?php if (!empty($id)) { echo ' id="'.$id.'"'; } if ( false !== $name ) { echo ' name="' . $name . '"'; } if ( false !== $multiple ) { echo ' multiple="multiple"'; } ?>>
 		<option value=""><?php _e( 'Make a selection', 'bbconnect' ); ?></option>
 		<optgroup label="<?php _e( 'Profile Fields', 'bbconnect' ); ?>">
 	<?php
