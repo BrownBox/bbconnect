@@ -183,7 +183,7 @@ function bbconnect_gf_addon_launch() {
                             } elseif ($input['id'] == $field->id.'.5') {
                                 $usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
                             } elseif ($input['id'] == $field->id.'.6') {
-                                $country = $entry[(string)$input['id']];
+                                $country = strtoupper($entry[(string)$input['id']]);
                                 $countries = array_flip(array_map('strtoupper', $countries));
                                 if (isset($countries[$country])) {
                                     $country = $countries[$country];
