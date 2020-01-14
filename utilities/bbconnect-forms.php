@@ -249,6 +249,8 @@ function bbconnect_gf_addon_launch() {
                                     break;
                                 }
                             }
+                        } else {
+                            $phone_data = array();
                         }
                         if (!$phone_exists) {
                             $phone_data[] = array(
