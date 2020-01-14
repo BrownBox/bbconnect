@@ -110,11 +110,9 @@ textarea:disabled, select:disabled, input:disabled {background: #ddd none repeat
 textarea {
 	width: 90%;
 	padding: 0.8rem;
-	margin: .2em 0;
-	border: 0;
+	margin: 0;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
-	border-radius: 2px;
 	font: 1em Helvetica, sans-serif;
 	background-color: #FFFFFF;
 	color: #444;
@@ -135,7 +133,20 @@ textarea {
 	max-width: 95%;
 }
 #bbconnect input[type="text"].input-short {
-	width: 3em;
+	width: 5em;
+}
+#bbconnect input[type="text"].small-text {
+    padding: 0 6px;
+}
+#bbconnect input[type="text"]#users_per_page {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#bbconnect select#select_users_per_page {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 #bbconnect span.bbconnect-label input[type="text"] {
 	width: 90%;
