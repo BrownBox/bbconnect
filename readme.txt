@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.11 =
+* Updated US country name to United States of America
+* Added ability to sort user search results by any included field
+* Updated styles to better fit with WP5.3
+* Bug fixes
+    
 = 2.8.10 =
 * Removed hard-coded default country
 * Bug fixes
