@@ -121,6 +121,7 @@ function bbconnect_gf_addon_launch() {
         foreach ($form['fields'] as &$field) {
             if ($field['uniquenameField'] == 'state') {
                 $states = bbconnect_get_helper_states();
+                $items = array();
                 $items[] = array('text' => 'Please Select...', 'value' => '');
                 foreach ($states['AU'] as $state => $name) {
                     $items[] = array('text' => $name, 'value' => $state);
@@ -147,7 +148,6 @@ function bbconnect_gf_addon_launch() {
         }
 
         if (!empty($emails)) {
-            $i = 0;
             $usermeta = $phone_numbers = $passwords = array();
             // Go through the fields again to get relevant data
             foreach ($form['fields'] as $field) {
@@ -225,6 +225,7 @@ function bbconnect_gf_addon_launch() {
 
             $submitter_id = null;
             $email_count = count($emails);
+            $blog_id = get_current_blog_id();
             foreach ($emails as $n => $email) {
                 $user = get_user_by('email', $email);
                 if ($user instanceof WP_User) { // Update
@@ -461,7 +462,6 @@ function bbconnect_gf_addon_launch() {
                 if ('fileupload' == $field['type']) {
                     $id 			= $field['id'];
                     $multiple_files	= $field['multipleFiles'];
-                    $file_list_id 	= "gform_preview_" . $form_id . "_". $id;
                     $file_urls = $multiple_files ? json_decode($value) : array($value);
                     $preview .= sprintf("<div id='preview_existing_files_%d' data-formid='%d' class='ginput_preview'>", $id, $form_id);
                     if ($file_urls) {
@@ -705,7 +705,7 @@ function bbconnect_gf_addon_launch() {
             if (!empty($entry['agent_id']) && $usermeta = get_userdata($entry['agent_id'])) {
 ?>
                 Submitter:
-                <a href="user-edit.php?user_id=<?php echo absint($entry['agent_id']); ?>" alt="<?php esc_attr_e('View user profile', 'gravityforms'); ?>" title="<?php esc_attr_e('View user profile', 'gravityforms'); ?>"><?php echo esc_html($usermeta->user_login); ?></a>
+                <a href="user-edit.php?user_id=<?php echo absint($entry['agent_id']); ?>" title="<?php esc_attr_e('View user profile', 'gravityforms'); ?>"><?php echo esc_html($usermeta->user_login); ?></a>
                 <br><br>
 <?php
             }
