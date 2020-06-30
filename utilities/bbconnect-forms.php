@@ -223,6 +223,7 @@ function bbconnect_gf_addon_launch() {
                 }
             }
 
+            $submitter_id = null;
             $email_count = count($emails);
             foreach ($emails as $n => $email) {
                 $user = get_user_by('email', $email);
@@ -314,16 +315,20 @@ function bbconnect_gf_addon_launch() {
                         }
                     }
                 }
+                // Assume that the first email address is the submitter's own
+                if (is_null($submitter_id)) {
+                	$submitter_id = $user_id;
+                }
             }
             if (is_user_logged_in()) {
                 $agent_id = get_current_user_id();
             } elseif (!empty($entry['created_by'])) {
                 $agent_id = $entry['created_by'];
             } else {
-                $agent_id = $user_id;
+                $agent_id = $submitter_id;
             }
             $entry['agent_id'] = $agent_id;
-            $entry['created_by'] = $user_id;
+            $entry['created_by'] = $submitter_id;
             GFAPI::update_entry($entry, $entry['id']);
         }
     }
