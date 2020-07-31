@@ -2,19 +2,23 @@
 add_action('bb_cart_post_purchase', 'bbconnect_bb_cart_post_purchase', 10, 4);
 function bbconnect_bb_cart_post_purchase($cart_items, $entry, $form, $transaction_id) {
     if (get_post_status($transaction_id) == 'publish') { // Only process for completed transactions - anything else will be caught by the bb_cart_complete_pending_transaction hook below
-        $user = null;
-        if (is_user_logged_in()) {
-            $user = wp_get_current_user();
-        } else {
-            // Look for an email address so we can locate the user
-            foreach ($form['fields'] as $field) {
-                if ($field->type == 'email') {
-                    $email = $entry[$field->id];
-                    $user = get_user_by('email', $email);
-                    break;
-                }
-            }
-        }
+    	$user = null;
+    	$transaction = get_post($transaction_id);
+    	if ($transaction instanceof WP_Post && !empty($transaction->post_author)) {
+    		$user = new WP_User($transaction->post_author);
+    	} elseif (is_user_logged_in()) {
+    		$user = wp_get_current_user();
+    	} else {
+    		// Look for an email address so we can locate the user
+    		foreach ($form['fields'] as $field) {
+    			if ($field->type == 'email') {
+    				$email = $entry[$field->id];
+    				$user = get_user_by('email', $email);
+    				break;
+    			}
+    		}
+    	}
+    	$user = apply_filters('bbconnect_identify_user', $user); // Allow override by other plugins etc
 
         if ($user instanceof WP_User) {
             $total = get_post_meta($transaction_id, 'total_amount', true);
@@ -98,55 +102,89 @@ function bbconnect_bb_cart_post_import($user, $amount, $transaction_id = null) {
 }
 
 function bbconnect_bb_cart_recalculate_kpis() {
-    ini_set('memory_limit', '2048M');
-    $offset = 0;
-    $limit = 100;
-    $get_total = true;
-    $processed_users = array();
-    global $blog_id;
+	ini_set('memory_limit', '2048M');
+	$offset = 0;
+	$limit = 100;
+	$get_total = true;
+	$processed_users = array();
+	global $blog_id;
 
-    // First process any users with an offset amount - i.e. historical transactions that don't exist in the system as discrete records
-    do {
-        $args = array(
-                'fields' => array('ID'),
-                'blog_id' => $blog_id,
-                'number' => $limit,
-                'offset' => $offset,
-                'count_total' => $get_total,
-                'meta_query' => array(
-                        array(
-                                'key' => 'bbconnect_offset_transaction_count',
-                                'value' => '',
-                                'compare' => '!=',
-                        ),
-                ),
-        );
-        $query = new WP_User_Query($args);
-        $users = $query->get_results();
-        if ($get_total) {
-            $total_users = $query->get_total();
-        }
+	// First process any users with an offset amount - i.e. historical transactions that don't exist in the system as discrete records
+	do {
+		$args = array(
+				'fields' => array('ID'),
+				'blog_id' => $blog_id,
+				'number' => $limit,
+				'offset' => $offset,
+				'count_total' => $get_total,
+				'meta_query' => array(
+						array(
+								'key' => 'bbconnect_offset_transaction_count',
+								'value' => '',
+								'compare' => '!=',
+						),
+				),
+		);
+		$query = new WP_User_Query($args);
+		$users = $query->get_results();
+		if ($get_total) {
+			$total_users = $query->get_total();
+		}
 
-        foreach ($users as $user) {
-            bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
-            $processed_users[] = $user->ID;
-        }
-        $get_total = false;
-        $offset += $limit;
-        unset($query, $users, $user);
-    } while ($offset <= $total_users);
+		foreach ($users as $user) {
+			bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
+			$processed_users[] = $user->ID;
+		}
+		$get_total = false;
+		$offset += $limit;
+		unset($query, $users, $user);
+	} while ($offset <= $total_users);
 
-    // Now anyone with discrete transaction records (if not already processed above)
-    global $wpdb;
-    $sql = 'SELECT DISTINCT(post_author) FROM '.$wpdb->posts.' WHERE post_type = "transaction"';
-    if (!empty($processed_users)) {
-        $sql .= ' AND NOT post_author IN ('.implode(',', $processed_users).')';
-    }
-    $users = $wpdb->get_col($sql);
-    unset($processed_users);
-    foreach ($users as $user_id) {
-        bbconnect_bb_cart_recalculate_kpis_for_user($user_id);
-    }
+	// Next any users with existing KPI values
+	do {
+		$args = array(
+				'fields' => array('ID'),
+				'blog_id' => $blog_id,
+				'number' => $limit,
+				'offset' => $offset,
+				'count_total' => $get_total,
+				'meta_query' => array(
+						array(
+								'key' => 'bbconnect_kpi_transaction_count',
+								'value' => '0',
+								'compare' => '>',
+						),
+				),
+		);
+		if (!empty($processed_users)) { // Skip users who have already been processed
+			$args['exclude'] = $processed_users;
+		}
+		$query = new WP_User_Query($args);
+		$users = $query->get_results();
+		if ($get_total) {
+			$total_users = $query->get_total();
+		}
+
+		foreach ($users as $user) {
+			bbconnect_bb_cart_recalculate_kpis_for_user($user->ID);
+			$processed_users[] = $user->ID;
+		}
+		$get_total = false;
+		$offset += $limit;
+		unset($query, $users, $user);
+	} while ($offset <= $total_users);
+
+	// And finally anyone with discrete transaction records (if not already processed above)
+	global $wpdb;
+	$sql = 'SELECT DISTINCT(post_author) FROM '.$wpdb->posts.' WHERE post_type = "transaction"';
+	if (!empty($processed_users)) {
+		$sql .= ' AND NOT post_author IN ('.implode(',', $processed_users).')';
+	}
+	$users = $wpdb->get_col($sql);
+	unset($processed_users);
+	foreach ($users as $user_id) {
+		bbconnect_bb_cart_recalculate_kpis_for_user($user_id);
+	}
 }
 
 function bbconnect_bb_cart_recalculate_kpis_for_user($user_id) {
