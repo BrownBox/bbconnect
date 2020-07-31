@@ -34,44 +34,62 @@ function bbconnect_gf_addon_launch() {
                         }
                     }
                 }
+                $email_count = $name_count = $address_count = $phone_count = 0;
                 foreach ($form['fields'] as &$field) {
                     // Standard fields
                     switch ($field->type) {
-                        case 'email':
-                            $field->defaultValue = $user->user_email;
+                    	case 'email':
+                    		if (0 == $email_count) {
+                    			$field->defaultValue = $user->user_email;
+                    			$email_count++;
+                    		}
                             break;
-                        case 'name':
-                            foreach ($field->inputs as &$input) {
-                                if ($input['id'] == $field->id.'.3') {
-                                    $input['defaultValue'] = $user->user_firstname;
-                                } elseif ($input['id'] == $field->id.'.6') {
-                                    $input['defaultValue'] = $user->user_lastname;
-                                }
-                            }
+                    	case 'name':
+                    		if (0 == $name_count) {
+                    			foreach ($field->inputs as &$input) {
+                    				if ($input['id'] == $field->id.'.2') {
+                    					$input['defaultValue'] = $usermeta['title'][0];
+                    				} elseif ($input['id'] == $field->id.'.3') {
+                    					$input['defaultValue'] = $user->user_firstname;
+                    				} elseif ($input['id'] == $field->id.'.6') {
+                    					$input['defaultValue'] = $user->user_lastname;
+                    				}
+                    			}
+                    			$name_count++;
+                    		}
                             break;
-                        case 'address':
-                            foreach ($field->inputs as &$input) {
-                                if ($input['id'] == $field->id.'.1') {
-                                    $input['defaultValue'] = $usermeta['bbconnect_address_one_1'][0];
-                                } elseif ($input['id'] == $field->id.'.2') {
-                                    $input['defaultValue'] = $usermeta['bbconnect_address_two_1'][0];
-                                } elseif ($input['id'] == $field->id.'.3') {
-                                    $input['defaultValue'] = $usermeta['bbconnect_address_city_1'][0];
-                                } elseif ($input['id'] == $field->id.'.4') {
-                                    $input['defaultValue'] = $usermeta['bbconnect_address_state_1'][0];
-                                } elseif ($input['id'] == $field->id.'.5') {
-                                    $input['defaultValue'] = $usermeta['bbconnect_address_postal_code_1'][0];
-                                } elseif ($input['id'] == $field->id.'.6') {
-                                    $countries = bbconnect_helper_country();
-                                    $country = $usermeta['bbconnect_address_country_1'][0];
-                                    if (array_key_exists($country, $countries)) {
-                                        $input['defaultValue'] = $countries[$country];
-                                    } else {
-                                        $input['defaultValue'] = $country;
-                                    }
-                                }
-                            }
-                            break;
+                    	case 'address':
+                    		if (0 == $address_count) {
+	                            foreach ($field->inputs as &$input) {
+	                                if ($input['id'] == $field->id.'.1') {
+	                                    $input['defaultValue'] = $usermeta['bbconnect_address_one_1'][0];
+	                                } elseif ($input['id'] == $field->id.'.2') {
+	                                    $input['defaultValue'] = $usermeta['bbconnect_address_two_1'][0];
+	                                } elseif ($input['id'] == $field->id.'.3') {
+	                                    $input['defaultValue'] = $usermeta['bbconnect_address_city_1'][0];
+	                                } elseif ($input['id'] == $field->id.'.4') {
+	                                    $input['defaultValue'] = $usermeta['bbconnect_address_state_1'][0];
+	                                } elseif ($input['id'] == $field->id.'.5') {
+	                                    $input['defaultValue'] = $usermeta['bbconnect_address_postal_code_1'][0];
+	                                } elseif ($input['id'] == $field->id.'.6') {
+	                                    $countries = bbconnect_helper_country();
+	                                    $country = $usermeta['bbconnect_address_country_1'][0];
+	                                    if (array_key_exists($country, $countries)) {
+	                                        $input['defaultValue'] = $countries[$country];
+	                                    } else {
+	                                        $input['defaultValue'] = $country;
+	                                    }
+	                                }
+	                            }
+                    		}
+                    		$address_count++;
+                    		break;
+                    	case 'phone':
+                    		if (0 == $phone_count) {
+                    			$field->defaultValue = $phone_number;
+                    			$phone_count++;
+                    		}
+                    		break;
                     }
 
                     // Fields mapped to user meta
