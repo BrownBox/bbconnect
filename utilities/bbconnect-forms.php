@@ -166,83 +166,100 @@ function bbconnect_gf_addon_launch() {
         }
 
         if (!empty($emails)) {
+        	$email_count = count($emails);
             $usermeta = $phone_numbers = $passwords = array();
             // Go through the fields again to get relevant data
             foreach ($form['fields'] as $field) {
-                switch ($field->type) {
-                    case 'name':
-                        foreach ($field->inputs as $input) {
-                            if ($input['id'] == $field->id.'.3') {
-                                $usermeta['nickname'][] = $usermeta['first_name'][] = $entry[(string)$input['id']];
-                            } elseif ($input['id'] == $field->id.'.6') {
-                                $usermeta['last_name'][] = $entry[(string)$input['id']];
-                            }
-                        }
-                        break;
-                    case 'address':
-                        $state_groups = bbconnect_get_helper_states();
-                        $countries = bbconnect_helper_country();
-                        foreach ($field->inputs as $input) {
-                            if ($input['id'] == $field->id.'.1') {
-                                $usermeta['bbconnect_address_one_1'][] = $entry[(string)$input['id']];
-                            } elseif ($input['id'] == $field->id.'.2') {
-                                $usermeta['bbconnect_address_two_1'][] = $entry[(string)$input['id']];
-                            } elseif ($input['id'] == $field->id.'.3') {
-                                $usermeta['bbconnect_address_city_1'][] = $entry[(string)$input['id']];
-                            } elseif ($input['id'] == $field->id.'.4') {
-                                $state = strtoupper($entry[(string)$input['id']]);
-                                foreach ($state_groups as $country => $states) {
-                                    $states = array_flip(array_map('strtoupper', $states));
-                                    if (isset($states[$state])) {
-                                        $state = $states[$state];
-                                    }
-                                }
-                                $usermeta['bbconnect_address_state_1'][] = $state;
-                            } elseif ($input['id'] == $field->id.'.5') {
-                                $usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
-                            } elseif ($input['id'] == $field->id.'.6') {
-                                $country = strtoupper($entry[(string)$input['id']]);
-                                $countries = array_flip(array_map('strtoupper', $countries));
-                                if (isset($countries[$country])) {
-                                    $country = $countries[$country];
-                                }
-                                $usermeta['bbconnect_address_country_1'][] = $country;
-                            }
-                        }
-                        break;
-                    case 'phone':
-                        $phone_numbers[] = $entry[$field->id];
-                        break;
-                    case 'password':
-                        $passwords[] = $entry[$field->id];
-                }
-                if (!empty($field->inputs)) {
-                    foreach ($field->inputs as $input) {
-                        if (!empty($input['usermeta_key'])) {
-                            switch ($input['usermeta_key']) {
-                                case 'telephone':
-                                    $phone_numbers[] = $entry[$input['id']];
-                                    break;
-                                default:
-                                    $usermeta[$input['usermeta_key']][] = $entry[$input['id']];
-                                    break;
-                            }
-                        }
-                    }
-                } elseif (!empty($field->usermeta_key)) {
-                    switch ($field->usermeta_key) {
-                        case 'telephone':
-                            $phone_numbers[] = $entry[$field['id']];
-                            break;
-                        default:
-                            $usermeta[$field->usermeta_key][] = $entry[$field['id']];
-                            break;
-                    }
-                }
+            	switch ($field->type) {
+            		case 'name':
+            			if ($email_count > 1 || !empty($entry[$field->id.'.3']) || !empty($entry[$field->id.'.6'])) {
+            				foreach ($field->inputs as $input) {
+            					if ($input['id'] == $field->id.'.3') {
+            						$usermeta['nickname'][] = $usermeta['first_name'][] = $entry[(string)$input['id']];
+            					} elseif ($input['id'] == $field->id.'.6') {
+            						$usermeta['last_name'][] = $entry[(string)$input['id']];
+            					}
+            				}
+            			}
+            			break;
+            		case 'address':
+            			$state_groups = bbconnect_get_helper_states();
+            			$countries = bbconnect_helper_country();
+            			if ($email_count > 1 || !empty($entry[$field->id.'.1']) || !empty($entry[$field->id.'.3'])) {
+            				foreach ($field->inputs as $input) {
+            					if ($input['id'] == $field->id.'.1') {
+            						$usermeta['bbconnect_address_one_1'][] = $entry[(string)$input['id']];
+            					} elseif ($input['id'] == $field->id.'.2') {
+            						$usermeta['bbconnect_address_two_1'][] = $entry[(string)$input['id']];
+            					} elseif ($input['id'] == $field->id.'.3') {
+            						$usermeta['bbconnect_address_city_1'][] = $entry[(string)$input['id']];
+            					} elseif ($input['id'] == $field->id.'.4') {
+            						$state = strtoupper($entry[(string)$input['id']]);
+            						foreach ($state_groups as $country => $states) {
+            							$states = array_flip(array_map('strtoupper', $states));
+            							if (isset($states[$state])) {
+            								$state = $states[$state];
+            							}
+            						}
+            						$usermeta['bbconnect_address_state_1'][] = $state;
+            					} elseif ($input['id'] == $field->id.'.5') {
+            						$usermeta['bbconnect_address_postal_code_1'][] = $entry[(string)$input['id']];
+            					} elseif ($input['id'] == $field->id.'.6') {
+            						$country = strtoupper($entry[(string)$input['id']]);
+            						$countries = array_flip(array_map('strtoupper', $countries));
+            						if (isset($countries[$country])) {
+            							$country = $countries[$country];
+            						}
+            						$usermeta['bbconnect_address_country_1'][] = $country;
+            					}
+            				}
+            			}
+            			break;
+            		case 'phone':
+            			if ($email_count > 1 || !empty($entry[$field->id])) {
+            				$phone_numbers[] = $entry[$field->id];
+            			}
+            			break;
+            		case 'password':
+            			if ($email_count > 1 || !empty($entry[$field->id])) {
+            				$passwords[] = $entry[$field->id];
+            			}
+            			break;
+            	}
+            	if (!empty($field->inputs)) {
+            		foreach ($field->inputs as $input) {
+            			if (!empty($input['usermeta_key'])) {
+            				switch ($input['usermeta_key']) {
+            					case 'telephone':
+            						if ($email_count > 1 || !empty($entry[$input['id']])) {
+            							$phone_numbers[] = $entry[$input['id']];
+            						}
+            						break;
+            					default:
+            						if ($email_count > 1 || !empty($entry[$input['id']])) {
+            							$usermeta[$input['usermeta_key']][] = $entry[$input['id']];
+            						}
+            						break;
+            				}
+            			}
+            		}
+            	} elseif (!empty($field->usermeta_key)) {
+            		switch ($field->usermeta_key) {
+            			case 'telephone':
+            				if ($email_count > 1 || !empty($entry[$field->id])) {
+            					$phone_numbers[] = $entry[$field->id];
+            				}
+            				break;
+            			default:
+            				if ($email_count > 1 || !empty($entry[$field->id])) {
+            					$usermeta[$field->usermeta_key][] = $entry[$field->id];
+            				}
+            				break;
+            		}
+            	}
             }
 
             $submitter_id = null;
-            $email_count = count($emails);
             $blog_id = get_current_blog_id();
             foreach ($emails as $n => $email) {
                 $user = get_user_by('email', $email);
@@ -324,8 +341,8 @@ function bbconnect_gf_addon_launch() {
                                 )
                         );
                     }
-                    update_user_meta($user->ID, 'telephone', $phone_data);
-                    update_user_meta($user->ID, 'bbconnect_source', 'form');
+                    update_user_meta($user_id, 'telephone', $phone_data);
+                    update_user_meta($user_id, 'bbconnect_source', 'form');
 
                     foreach ($usermeta as $meta_key => $meta_values) {
                         $meta_value = bbconnect_get_matching_submitted_value($n, $meta_values, $email_count);
