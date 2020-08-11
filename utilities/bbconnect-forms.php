@@ -451,7 +451,7 @@ function bbconnect_gf_addon_launch() {
                         jQuery('input.gform_button').addClass('button-primary');
                     });
                 </script>
-                <h1><?php echo $user->display_name; ?> (<?php echo $user->user_email; ?>)</h1>
+                <h1>#<?php echo $user_id; ?> <?php echo $user->display_name; ?> (<?php echo $user->user_email; ?>)</h1>
                 <p>When you are done just close this tab to return to the user profile.</p>
 <?php
                 gravity_form($form_id);
