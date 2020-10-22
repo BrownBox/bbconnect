@@ -778,6 +778,30 @@ function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_
     bbconnect_track_activity($args);
 }
 
+add_action('profile_update', 'bbconnect_email_update', 10, 2);
+/**
+ * Track changes to email address
+ * @param integer $user_id User being updated
+ * @param array $old_user_data User data before update
+ */
+function bbconnect_email_update($user_id, $old_user_data) {
+	$new_user_data = get_user_by('id', $user_id);
+	$new_email = $new_user_data->user_email;
+	$old_email = $old_user_data->user_email;
+	if (!empty($new_email) && !empty($old_email) && $new_email != $old_email) {
+		$args = array(
+				'user_id' => $user_id,
+				'title' => 'User Email Address Updated',
+				'description' => 'Old Value: '.$old_email.'<br>New Value: '.$new_email,
+		);
+		if (is_user_logged_in() && get_current_user_id() != $user_id) {
+			$user = wp_get_current_user();
+			$args['title'] .= ' (changed by '.$user->display_name.')';
+		}
+		bbconnect_track_activity($args);
+	}
+}
+
 add_action('user_register', 'bbconnect_new_user_default_meta', 0, 1);
 function bbconnect_new_user_default_meta($user_id) {
     $cols = get_option('_bbconnect_user_meta');
