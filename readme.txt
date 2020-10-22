@@ -47,6 +47,12 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.12 =
+* Only pre-render user details into first matching field of each type
+* Show user ID in submit form page
+* Track user email address changes in activity log
+* Bug fixes
+
 = 2.8.11 =
 * Updated US country name to United States of America
 * Added ability to sort user search results by any included field
