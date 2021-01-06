@@ -726,28 +726,40 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 }
 
 // Track user meta changes in activity log
-add_filter('update_user_metadata', 'bbconnect_user_meta_update', 9999, 5);
-function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $prev_value) {
-    if (empty($prev_value)) { // Sometimes WP doesn't give us the old value
-        $prev_value = get_user_meta($object_id, $meta_key, true);
-    }
-
-    if (is_null($null) && $meta_value != $prev_value) {
-        bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
-    }
-
-    return $null;
+function bbconnect_track_user_meta_keys() {
+	$keys_to_track = array(
+			'first_name',
+			'last_name',
+	);
+	return apply_filters('bbconnect_track_user_meta_keys', $keys_to_track);
 }
 
-add_filter('delete_user_metadata', 'bbconnect_user_meta_delete', 9999, 5);
+add_filter('update_user_metadata', 'bbconnect_user_meta_update', PHP_INT_MAX, 5);
+function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $prev_value) {
+	if (in_array($meta_key, bbconnect_track_user_meta_keys())) {
+		if (empty($prev_value)) { // Sometimes WP doesn't give us the old value
+			$prev_value = get_user_meta($object_id, $meta_key, true);
+		}
+
+		if (is_null($null) && $meta_value != $prev_value) {
+			bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
+		}
+	}
+
+	return $null;
+}
+
+add_filter('delete_user_metadata', 'bbconnect_user_meta_delete', PHP_INT_MAX, 5);
 function bbconnect_user_meta_delete($null, $object_id, $meta_key, $meta_value, $delete_all) {
-    $prev_value = get_user_meta($object_id, $meta_key, true);
+	if (in_array($meta_key, bbconnect_track_user_meta_keys())) {
+		$prev_value = get_user_meta($object_id, $meta_key, true);
 
-    if (is_null($null) && !empty($prev_value)) {
-        bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, '');
-    }
+		if (is_null($null) && !empty($prev_value)) {
+			bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, '');
+		}
+	}
 
-    return $null;
+	return $null;
 }
 
 function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_value) {

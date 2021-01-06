@@ -20,7 +20,8 @@ function bbconnect_versions() {
             '2.8.2' => 'bbconnect_update_v_2_8_2',
             '2.8.5' => 'bbconnect_update_v_2_8_5',
             '2.8.6' => 'bbconnect_update_v_2_8_6',
-            '2.8.7' => 'bbconnect_update_v_2_8_7',
+    		'2.8.7' => 'bbconnect_update_v_2_8_7',
+    		'2.8.13' => 'bbconnect_update_v_2_8_13',
     );
     return $bbconnect_versions;
 }
@@ -648,4 +649,11 @@ function bbconnect_update_v_2_8_7() {
     global $wpdb;
     $wpdb->query('DELETE FROM '.$wpdb->usermeta.' WHERE user_id IN (SELECT ID FROM '.$wpdb->users.' WHERE user_email = "" AND display_name = "Unknown Unknown")');
     $wpdb->query('DELETE FROM '.$wpdb->users.' WHERE user_email = "" AND display_name = "Unknown Unknown"');
+}
+
+function bbconnect_update_v_2_8_13() {
+	// Delete meta changes from activity log unless we really want them
+	global $wpdb;
+	$wpdb->query('DELETE FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE type = "activity" AND title LIKE "User Meta Updated - %" AND NOT title LIKE "User Meta Updated - first_name %" AND NOT title LIKE "User Meta Updated - last_name %"');
+	$wpdb->query('DELETE FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE activity_type = "activity" AND title LIKE "User Meta Updated - %" AND NOT title LIKE "User Meta Updated - first_name %" AND NOT title LIKE "User Meta Updated - last_name %"');
 }
