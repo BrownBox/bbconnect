@@ -86,6 +86,7 @@ function bbconnect_licence_details() {
  * @return boolean
  */
 function bbconnect_licence_valid($plugin = BBCONNECT_SLUG) {
+	return true; // Treat all licences as valid since updates API is no longer available
     $details = bbconnect_licence_details();
     if ($plugin == BBCONNECT_SLUG) {
         return $details['licence_status'] == 'active';
@@ -100,6 +101,7 @@ function bbconnect_licence_valid($plugin = BBCONNECT_SLUG) {
  * @return string Licence status (active, expired, invalid)
  */
 function bbconnect_licence_status($plugin = BBCONNECT_SLUG) {
+	return 'active'; // Treat all licences as valid since updates API is no longer available
     $details = bbconnect_licence_details();
     if ($plugin == BBCONNECT_SLUG) {
         return $details['licence_status'];
