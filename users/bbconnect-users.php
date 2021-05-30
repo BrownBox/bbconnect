@@ -726,24 +726,14 @@ function bbconnect_primary_marker( $meta, $user_id = '' ) {
 }
 
 // Track user meta changes in activity log
-function bbconnect_track_user_meta_keys() {
-	$keys_to_track = array(
-			'first_name',
-			'last_name',
-	);
-	return apply_filters('bbconnect_track_user_meta_keys', $keys_to_track);
-}
-
 add_filter('update_user_metadata', 'bbconnect_user_meta_update', PHP_INT_MAX, 5);
 function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $prev_value) {
-	if (in_array($meta_key, bbconnect_track_user_meta_keys())) {
-		if (empty($prev_value)) { // Sometimes WP doesn't give us the old value
-			$prev_value = get_user_meta($object_id, $meta_key, true);
-		}
+	if (empty($prev_value)) { // Sometimes WP doesn't give us the old value
+		$prev_value = get_user_meta($object_id, $meta_key, true);
+	}
 
-		if (is_null($null) && $meta_value != $prev_value) {
-			bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
-		}
+	if (is_null($null) && $meta_value != $prev_value) {
+		bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
 	}
 
 	return $null;
@@ -751,43 +741,70 @@ function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $
 
 add_filter('delete_user_metadata', 'bbconnect_user_meta_delete', PHP_INT_MAX, 5);
 function bbconnect_user_meta_delete($null, $object_id, $meta_key, $meta_value, $delete_all) {
-	if (in_array($meta_key, bbconnect_track_user_meta_keys())) {
-		$prev_value = get_user_meta($object_id, $meta_key, true);
+	$prev_value = get_user_meta($object_id, $meta_key, true);
 
-		if (is_null($null) && !empty($prev_value)) {
-			bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, '');
-		}
+	if (is_null($null) && !empty($prev_value)) {
+		bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, '');
 	}
 
 	return $null;
 }
 
-function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_value) {
-    // Indicate empty values
-    if (empty($old_value)) {
-        $old_value = '(empty)';
-    }
-    if (empty($new_value)) {
-        $new_value = '(empty)';
-    }
+function bbconnect_get_tracked_fields() {
+	$tracked_fields = array(
+			'title' => 'Title',
+			'first_name' => 'First Name',
+			'middle_name' => 'Middle Name',
+			'last_name' => 'Last Name',
+			'organization' => 'Organisation',
+			'bbconnect_address_recipient_1' => 'Address Recipient',
+			'bbconnect_address_organization_1' => 'Address Organisation',
+			'bbconnect_address_address_one_1' => 'Address Line 1',
+			'bbconnect_address_address_two_1' => 'Address Line 2',
+			'bbconnect_address_address_three_1' => 'Address Line 3',
+			'bbconnect_address_city_1' => 'City',
+			'bbconnect_address_postal_code_1' => 'Zip/Postcode',
+			'bbconnect_address_state_1' => 'State',
+			'bbconnect_address_country_1' => 'Country',
+			'telephone' => 'Telephone',
+			'bbconnect_bbc_subscription' => 'Subscribe to Email Updates',
+			'bbconnect_bbc_print_mail' => 'Subscribe to Print Mailings',
+	);
 
-    // It's not pretty, but better than just showing "Array"
-    if (is_array($old_value)) {
-        $old_value = print_r($old_value, true);
-    }
-    if (is_array($new_value)) {
-        $new_value = print_r($new_value, true);
-    }
-    $args = array(
-            'user_id' => $user_id,
-            'title' => 'User Meta Updated - '.$meta_key,
-            'description' => 'Old Value: '.$old_value.'<br>New Value: '.$new_value,
-    );
-    if (is_user_logged_in() && get_current_user_id() != $user_id) {
-        $user = wp_get_current_user();
-        $args['title'] .= ' (changed by '.$user->display_name.')';
-    }
-    bbconnect_track_activity($args);
+	return apply_filters('bbconnect_meta_tracked_fields', $tracked_fields);
+}
+
+function bbconnect_track_user_meta_change($user_id, $meta_key, $old_value, $new_value) {
+	$tracked_fields = bbconnect_get_tracked_fields();
+	if (!array_key_exists($meta_key, $tracked_fields)) {
+		return;
+	}
+
+	// Indicate empty values
+	if (empty($old_value)) {
+		$old_value = '(empty)';
+	}
+	if (empty($new_value)) {
+		$new_value = '(empty)';
+	}
+
+	// It's not pretty, but better than just showing "Array"
+	if (is_array($old_value)) {
+		$old_value = print_r($old_value, true);
+	}
+	if (is_array($new_value)) {
+		$new_value = print_r($new_value, true);
+	}
+	$args = array(
+			'user_id' => $user_id,
+			'title' => 'User Meta Updated - '.$tracked_fields[$meta_key],
+			'description' => 'Old Value: '.$old_value.'<br>New Value: '.$new_value,
+	);
+	if (is_user_logged_in() && get_current_user_id() != $user_id) {
+		$user = wp_get_current_user();
+		$args['title'] .= ' (changed by '.$user->display_name.')';
+	}
+	bbconnect_track_activity($args);
 }
 
 add_action('profile_update', 'bbconnect_email_update', 10, 2);

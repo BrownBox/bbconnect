@@ -652,8 +652,18 @@ function bbconnect_update_v_2_8_7() {
 }
 
 function bbconnect_update_v_2_8_13() {
-	// Delete meta changes from activity log unless we really want them
+	// Remove noise from activity logs
 	global $wpdb;
-	$wpdb->query('DELETE FROM '.$wpdb->prefix.'bbconnect_activity_log WHERE type = "activity" AND title LIKE "User Meta Updated - %" AND NOT title LIKE "User Meta Updated - first_name %" AND NOT title LIKE "User Meta Updated - last_name %"');
-	$wpdb->query('DELETE FROM '.$wpdb->prefix.'bbconnect_activity_tracking WHERE activity_type = "activity" AND title LIKE "User Meta Updated - %" AND NOT title LIKE "User Meta Updated - first_name %" AND NOT title LIKE "User Meta Updated - last_name %"');
+	$tracked_fields = bbconnect_get_tracked_fields();
+	$tables = array(
+			$wpdb->prefix.'bbconnect_activity_tracking',
+			$wpdb->prefix.'bbconnect_activity_log',
+	);
+	foreach ($tables as $table) {
+		$sql = 'DELETE FROM '.$table.' WHERE title LIKE "User Meta Updated %"';
+		foreach (array_keys($tracked_fields) as $key) {
+			$sql .= ' AND NOT title LIKE "User Meta Updated - '.$key.'%"';
+		}
+		$wpdb->query($sql);
+	}
 }
