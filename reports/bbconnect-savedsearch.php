@@ -29,7 +29,7 @@ function cpt_savedsearch() {
         	'has_archive'   => false,
 	        'hierarchical' 	=> true,
 	        'query_var'     => false,
-	        'show_ui'       => true,
+	        'show_ui'       => false,
 	);
 	register_post_type( 'savedsearch', $args );
 }
