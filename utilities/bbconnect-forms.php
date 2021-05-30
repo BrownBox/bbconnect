@@ -150,6 +150,16 @@ function bbconnect_gf_addon_launch() {
         return $form;
     }
 
+    add_filter('gform_countries', 'bbconnect_populate_countries');
+    /**
+     * Populate "Country" field with our country list rather than the default GF one
+     * @param array $countries
+     * @return array
+     */
+    function bbconnect_populate_countries($countries) {
+    	return bbconnect_helper_country();
+    }
+
     add_action('gform_after_submission', 'bb_crm_create_update_user', 10, 2);
     /**
      * Automatically add/update user(s) on any form submission
