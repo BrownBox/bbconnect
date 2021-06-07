@@ -41,7 +41,7 @@ function bbconnect_activate() {
         $update_log = array();
 
         foreach( $bbconnect_versions as $key => $value ) {
-            if ( $key > $dbv ) {
+        	if (version_compare($key, $dbv) == 1) {
                 $update_log[$key] = call_user_func( $value );
                 update_option( '_bbconnect_version', $key );
                 update_option( 'bbconnect_version', $key );
