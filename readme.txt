@@ -47,6 +47,13 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.13 =
+* Only track meta changes for selected fields
+* Don't show Saved Searches in admin menu
+* Populate GF country field with Connexions list
+* Treat all licences as valid since updates API is no longer available
+* Code improvements
+
 = 2.8.12 =
 * Only pre-render user details into first matching field of each type
 * Show user ID in submit form page
