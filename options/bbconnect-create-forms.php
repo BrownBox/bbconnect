@@ -129,7 +129,7 @@ function bbconnect_get_send_email_form() {
                             'id' => 5,
                             'label' => 'Message',
                             'isRequired' => false,
-                            'useRichTextEditor' => true,
+//                             'useRichTextEditor' => true,
                     ),
                     5 => array(
                             'type' => 'hidden',
@@ -339,7 +339,7 @@ function bbconnect_get_action_form() {
                             'id' => 8,
                             'label' => 'Details',
                             'isRequired' => false,
-                            'useRichTextEditor' => true,
+//                             'useRichTextEditor' => true,
                     ),
                     9 => array(
                             'type' => 'fileupload',
@@ -412,7 +412,7 @@ function bbconnect_get_action_form() {
                                             ),
                                     ),
                             ),
-                            'useRichTextEditor' => true,
+//                             'useRichTextEditor' => true,
                     ),
                     14 => array(
                             'type' => 'email',
