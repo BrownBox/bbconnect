@@ -5,7 +5,8 @@ function bbconnect_get_send_email_form() {
             'title' => '[Connexions] Sent Messages',
             'description' => 'Connexions form for tracking sent emails and SMS messages',
             'is_active' => true,
-            'cssClass' => 'bbconnect',
+    		'cssClass' => 'bbconnect',
+    		'markupVersion' => 2,
             'button' => array(
                     'type' => 'text',
                     'text' => 'Send',
@@ -186,7 +187,8 @@ function bbconnect_get_action_form() {
             'title' => '[Connexions] Action Notes',
             'description' => 'Connexions form for tracking actions',
             'is_active' => true,
-            'cssClass' => 'bbconnect',
+    		'cssClass' => 'bbconnect',
+    		'markupVersion' => 2,
             'button' => array(
                     'type' => 'text',
                     'text' => 'Save',
@@ -454,7 +456,8 @@ function bbconnect_get_question_form(){
             'title' => '[Connexions] Question Form',
             'description' => 'Connexions form for get to know you questions',
             'is_active' => true,
-            'cssClass' => 'bbconnect',
+    		'cssClass' => 'bbconnect',
+    		'markupVersion' => 2,
             'button' => array(
                     'type' => 'text',
                     'text' => 'Submit',
