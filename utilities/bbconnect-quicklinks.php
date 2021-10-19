@@ -106,7 +106,7 @@ abstract class bb_modal_quicklink extends bb_quicklink {
         add_thickbox(); // Make sure modal library is loaded
 ?>
 <div id="<?php echo $this->modal_id; ?>" style="display: none;">
-    <div style="overflow: scroll;">
+    <div style="overflow: scroll; height: inherit;">
         <h2><?php echo $this->title; ?></h2>
         <?php $this->modal_contents($user_ids, $args); ?>
     </div>
