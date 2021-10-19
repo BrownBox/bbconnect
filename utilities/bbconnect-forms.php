@@ -286,6 +286,9 @@ function bbconnect_gf_addon_launch() {
                         }
                     }
                     $phone_number = bbconnect_get_matching_submitted_value($n, $phone_numbers, $email_count);
+                    if (!apply_filters('bbconnect_should_update_user', true, $user, $usermeta, $phone_number)) {
+                    	continue;
+                    }
                     if (!empty($phone_number)) {
                         $phone_data = maybe_unserialize(get_user_meta($user->ID, 'telephone', true));
                         $phone_exists = false;
