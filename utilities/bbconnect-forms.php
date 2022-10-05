@@ -160,6 +160,22 @@ function bbconnect_gf_addon_launch() {
     	return bbconnect_helper_country();
     }
 
+    add_filter('gform_predefined_choices', 'bbconnect_predefined_countries');
+    /**
+     * Update predefined country choices with our country list rather than the default GF one
+     * @param array $choices
+     * @return array
+     */
+    function bbconnect_predefined_countries($choices) {
+    	$countries = bbconnect_helper_country();
+    	$country_choices = array();
+    	foreach ($countries as $code => $country) {
+    		$country_choices[] = $country.'|'.$code;
+    	}
+    	$choices['Countries'] = $country_choices;
+    	return $choices;
+    }
+
     add_action('gform_after_submission', 'bb_crm_create_update_user', 10, 2);
     /**
      * Automatically add/update user(s) on any form submission
