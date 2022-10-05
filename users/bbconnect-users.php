@@ -732,7 +732,7 @@ function bbconnect_user_meta_update($null, $object_id, $meta_key, $meta_value, $
 		$prev_value = get_user_meta($object_id, $meta_key, true);
 	}
 
-	if (is_null($null) && $meta_value != $prev_value) {
+	if (is_null($null) && $meta_value != $prev_value && htmlspecialchars($meta_value) != $prev_value && $meta_value != htmlspecialchars($prev_value)) {
 		bbconnect_track_user_meta_change($object_id, $meta_key, $prev_value, $meta_value);
 	}
 
