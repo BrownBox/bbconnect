@@ -47,6 +47,16 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.14 =
+* Fix address field names in meta tracking
+* Clean up HTML chars when comparing meta values
+* Added filter to allow override of default functionality to update existing records
+* Fix ability to scroll form list in quicklink
+* Use new GF2.5 form markup
+* Don't use rich editor in forms as it no longer works on submit form page
+* Replace GF list of predefined country choices with our country list
+* Updated user profile takeover logic to allow access in order to set up 2FA with WP 2FA plugin
+
 = 2.8.13 =
 * Only track meta changes for selected fields
 * Don't show Saved Searches in admin menu
