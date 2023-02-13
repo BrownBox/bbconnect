@@ -33,7 +33,7 @@ function bbconnect_restrict_redirect(){
     global $pagenow;
 
     // IF IT'S AN ADMIN REQUEST
-    if (is_admin() && empty($_GET['no_redirect']) && empty($_POST)) {
+    if (is_admin() && empty($_GET['no_redirect']) && empty('wp-2fa-setup') && empty($_POST)) {
         if ( 'true' === get_option( '_bbconnect_access' ) ) {
             if ( is_user_logged_in() && !current_user_can( 'edit_posts' ) ) {
                 if ( $pagenow == 'profile.php' || $pagenow == 'index.php'  || $pagenow == 'admin.php' ) {
