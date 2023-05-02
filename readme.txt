@@ -4,7 +4,7 @@ Plugin URI: http://brownbox.net.au
 Contributors: havahula,brownbox
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
-Tested up to: 4.9
+Tested up to: 6.2
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,9 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.15 =
+* Fix user pages takeover logic as previous change for 2FA compatibility broke the redirects completely
+
 = 2.8.14 =
 * Fix address field names in meta tracking
 * Clean up HTML chars when comparing meta values
