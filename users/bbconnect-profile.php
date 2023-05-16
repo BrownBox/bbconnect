@@ -36,7 +36,7 @@ function bbconnect_new_user() {
             wp_redirect(admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success.'&msg=new'));
 ?>
             <script>
-                window.location.href = '<?php echo admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success); ?>';
+                window.location.href = '<?php echo admin_url('/users.php?page=bbconnect_edit_user&user_id='.$bbconnect_success.'&msg=new'); ?>';
             </script>
 <?php
             exit;
