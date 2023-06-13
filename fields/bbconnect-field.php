@@ -649,9 +649,11 @@ function bbconnect_field( $meta, $args = array() ) {
                     echo '<select '.$disabled.' name="' . $name . '" id="' . $id . '" class="regular-text' . $class . $autocomp . '"' . $multiple . '>';
 
                     if ( is_array( $value ) ) {
-                        $user_role = $value;
+                    	$user_role = $value;
+                    } elseif (is_object($value) && is_array($value->roles)) {
+                    	$user_role = array_intersect( array_values( $value->roles ), array_keys( get_editable_roles() ) );
                     } else {
-                        $user_role = array_intersect( array_values( $value->roles ), array_keys( get_editable_roles() ) );
+                    	$user_role = null;
                     }
 
                     // print the full list of roles with the primary one selected.

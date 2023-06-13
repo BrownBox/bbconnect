@@ -744,11 +744,11 @@ function bbconnect_filter_process( $post_data ) {
                 // LOOP THROUGH THE VALUES AND IF THEY DON'T AGREE, UNSET THE VALUE
                 for ($i = 2; $i <= $po_arr_count; $i++) {
                     if ( substr( $value[$i], $po_count ) != $po_index )
-                        $cur_{$key} = true;
+                    	${'cur_'.$key} = true;
                 }
 
                 // IF THERE'S A MATCH, RE-BUILD THE ALL SEARCH ARRAY
-                if ( !isset( $cur_{$key} ) )
+                if ( !isset( ${'cur_'.$key} ) )
                     $po_all_search[] = $value[0];
 
             }
@@ -841,31 +841,31 @@ function bbconnect_query_builder( $key, $value ) {
 
     if ( is_array( $value ) ) {
         foreach ( $value as $subkey => $subvalue ) {
-            if ( 'wp' == $bbconnect_{$key}['source'] ) {
+        	if ( 'wp' == ${'bbconnect_'.$key}['source'] ) {
                 $where_clause[] = "(meta_key = '$key' AND meta_value LIKE '%{$subvalue}%')";
-            } elseif ( 'bbconnect' == $bbconnect_{$key}['source'] ) {
+        	} elseif ( 'bbconnect' == ${'bbconnect_'.$key}['source'] ) {
                 // IF IT'S AN ADDRESS, GROUP ALL ADDRESSES
-                if ( 'address' == substr( $bbconnect_{$key}['group'], 0, 7 ) ) {
+        		if ( 'address' == substr( ${'bbconnect_'.$key}['group'], 0, 7 ) ) {
                     $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$subvalue}%') OR (meta_key = '$option_two_key' AND meta_value LIKE '%{$subvalue}%') OR (meta_key = '$option_three_key' AND meta_value LIKE '%{$subvalue}%')";
                 } else {
                     $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$subvalue}%')";
                 }
             }
         }
-        if ( 'wp' == $bbconnect_{$key}['source'] ) {
+        if ( 'wp' == ${'bbconnect_'.$key}['source'] ) {
             // SAVE THE DATA FOR THE COLUMNS
             //$table_body[$key] = 'meta';
-        } elseif ( 'bbconnect' == $bbconnect_{$key}['source'] ) {
+        } elseif ( 'bbconnect' == ${'bbconnect_'.$key}['source'] ) {
             // SAVE THE DATA FOR THE COLUMNS
             //$table_body[$option_key] = 'meta';
         }
     } else {
-        if ( 'wp' == $bbconnect_{$key}['source'] ) {
+    	if ( 'wp' == ${'bbconnect_'.$key}['source'] ) {
             $where_clause[] = "(meta_key = '$key' AND meta_value LIKE '%{$value}%')";
             // SAVE THE DATA FOR THE COLUMNS
             //$table_body[$key] = 'meta';
-        } elseif ( 'bbconnect' == $bbconnect_{$key}['source'] ) {
-            if ( isset( $bbconnect_{$key}['group'] ) && 'address' == substr( $bbconnect_{$key}['group'], 0, 7 ) ) {
+    	} elseif ( 'bbconnect' == ${'bbconnect_'.$key}['source'] ) {
+    		if ( isset( ${'bbconnect_'.$key}['group'] ) && 'address' == substr( ${'bbconnect_'.$key}['group'], 0, 7 ) ) {
                 $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$value}%') OR (meta_key = '$option_two_key' AND meta_value LIKE '%{$value}%') OR (meta_key = '$option_three_key' AND meta_value LIKE '%{$value}%')";
             } else {
                 $where_clause[] = "(meta_key = '$option_key' AND meta_value LIKE '%{$value}%')";

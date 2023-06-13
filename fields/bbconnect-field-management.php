@@ -825,59 +825,59 @@ function bbconnect_meta_choices( $user_meta, $taxonomy = null ) {
 				$user_meta['options']['choices'] = array( '' => '' );
 
 			$uvar = $meta_key;
-			$count_{$uvar} = 0;
-			$sum_{$uvar} = count( $user_meta['options']['choices'] );
+			${'count_'.$uvar} = 0;
+			${'sum_'.$uvar} = count( $user_meta['options']['choices'] );
 			printf( __( 'Choices%1$sOptionally enter pre-selected qualities for each row.%2$s', 'bbconnect' ), '<br /><span class="example-text">', '</span><br />' );
 			echo '<ul id="'.$uvar.'_choices">';
 			foreach ( $user_meta['options']['choices'] as $key => $value ) {
 				// LEGACY CODE FOR RADIOS
 				if ( is_array( $value ) && isset( $value['value'] ) ) {
 					?>
-					<li id="<?php echo $uvar; ?>_choices_<?php echo $count_{$uvar}; ?>" class="multilist">
-						<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][key]" value="<?php echo $value['value']; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][value]" value="<?php echo $value['label']; ?>" style="width: 8em;" />
-						<?php if ( $count_{$uvar} == ( $sum_{$uvar} - 1 ) ) { ?>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-add" class="button add" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-						<?php } elseif ( $count_{$uvar} == 0 ) { ?>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>" style="display:none;">&nbsp;</a>
+					<li id="<?php echo $uvar; ?>_choices_<?php echo ${'count_'.$uvar}; ?>" class="multilist">
+						<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][key]" value="<?php echo $value['value']; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][value]" value="<?php echo $value['label']; ?>" style="width: 8em;" />
+						<?php if ( ${'count_'.$uvar} == ( ${'sum_'.$uvar} - 1 ) ) { ?>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-add" class="button add" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+						<?php } elseif ( ${'count_'.$uvar} == 0 ) { ?>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>" style="display:none;">&nbsp;</a>
 						<?php } else { ?>
-							<a class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
+							<a class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
 						<?php } ?>
 					</li>
 					<?php
-					$count_{$uvar}++;
+					${'count_'.$uvar}++;
 				} else if ( is_array( $value ) && !isset( $value['value'] ) ) {
 					foreach ( $value as $skey => $svalue ) {
 					?>
-					<li id="<?php echo $uvar; ?>_choices_<?php echo $count_{$uvar}; ?>" class="multilist">
-						<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][key]" value="<?php echo $skey; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][value]" value="<?php echo $svalue; ?>" style="width: 8em;" />
-						<?php if ( $count_{$uvar} == ( $sum_{$uvar} - 1 ) ) { ?>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-add" class="button add" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-						<?php } elseif ( $count_{$uvar} == 0 ) { ?>
-							<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>" style="display:none;">&nbsp;</a>
+					<li id="<?php echo $uvar; ?>_choices_<?php echo ${'count_'.$uvar}; ?>" class="multilist">
+						<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][key]" value="<?php echo $skey; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][value]" value="<?php echo $svalue; ?>" style="width: 8em;" />
+						<?php if ( ${'count_'.$uvar} == ( ${'sum_'.$uvar} - 1 ) ) { ?>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-add" class="button add" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+						<?php } elseif ( ${'count_'.$uvar} == 0 ) { ?>
+							<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>" style="display:none;">&nbsp;</a>
 						<?php } else { ?>
-							<a class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
+							<a class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
 						<?php } ?>
 					</li>
 					<?php
-					$count_{$uvar}++;
+					${'count_'.$uvar}++;
 					}
 				} else {
 				?>
-				<li id="<?php echo $uvar; ?>_choices_<?php echo $count_{$uvar}; ?>" class="multilist">
-					<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][key]" value="<?php echo $key; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo $count_{$uvar}; ?>][value]" value="<?php echo $value; ?>" style="width: 8em;" />
-					<?php if ( $count_{$uvar} == ( $sum_{$uvar} - 1 ) ) { ?>
-						<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-						<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-add" class="button add" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
-					<?php } elseif ( $count_{$uvar} == 0 ) { ?>
-						<a id="<?php echo $key; ?>-<?php echo $count_{$uvar}; ?>-sub" class="button sub" title="<?php echo $count_{$uvar}; ?>" style="display:none;">&nbsp;</a>
+				<li id="<?php echo $uvar; ?>_choices_<?php echo ${'count_'.$uvar}; ?>" class="multilist">
+					<?php _e('key:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][key]" value="<?php echo $key; ?>" style="width: 6em;" /> <?php _e('label:','bbconnect'); ?> <input class="regular-text" type="text" name="bbconnect_user_meta_options[<?php echo $meta_key; ?>][options][choices][<?php echo ${'count_'.$uvar}; ?>][value]" value="<?php echo $value; ?>" style="width: 8em;" />
+					<?php if ( ${'count_'.$uvar} == ( ${'sum_'.$uvar} - 1 ) ) { ?>
+						<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+						<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-add" class="button add" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
+					<?php } elseif ( ${'count_'.$uvar} == 0 ) { ?>
+						<a id="<?php echo $key; ?>-<?php echo ${'count_'.$uvar}; ?>-sub" class="button sub" title="<?php echo ${'count_'.$uvar}; ?>" style="display:none;">&nbsp;</a>
 					<?php } else { ?>
-						<a class="button sub" title="<?php echo $count_{$uvar}; ?>">&nbsp;</a>
+						<a class="button sub" title="<?php echo ${'count_'.$uvar}; ?>">&nbsp;</a>
 					<?php } ?>
 				</li>
 				<?php
-				$count_{$uvar}++;
+					${'count_'.$uvar}++;
 				}
 
 			}
@@ -1219,5 +1219,3 @@ function bbconnect_get_reserved_terms() {
 		)
 	);
 }
-
-?>

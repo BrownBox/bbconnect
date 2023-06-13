@@ -271,7 +271,7 @@ function bbconnect_user_data_select( $args = '' ) {
 
 							// IF WE'RE LOCKED, DEFAULT TO THE FIRST ADDRESS GROUP
 							if ( '1' != strrchr( $user_meta['meta_key'], '_' ) ) {
-								$ext = count( strrchr( $user_meta['meta_key'], '_' ) );
+								$ext = strlen( strrchr( $user_meta['meta_key'], '_' ) );
 								$add_app = substr( $user_meta['meta_key'], 0, -$ext );
 								$fid = $add_app . '1';
 								$user_meta = get_option( 'bbconnect_'.$fid );
