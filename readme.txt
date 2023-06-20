@@ -47,6 +47,9 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.17 =
+* No changes - released due to error in versioning
+
 = 2.8.16 =
 * Updated fallback JS redirect to new user page to include parameter to display success message
 * Various fixes to PHP8 compatibility
