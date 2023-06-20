@@ -47,13 +47,16 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
-= 2.8.17 =
+= 2.8.18 =
 * No changes - released due to error in versioning
 
-= 2.8.16 =
+= 2.8.17 =
 * Updated fallback JS redirect to new user page to include parameter to display success message
 * Various fixes to PHP8 compatibility
 * Added custom action hooks before and after creating user records from Gravity Forms submissions
+
+= 2.8.16 =
+* Not released due to error in versioning
 
 = 2.8.15 =
 * Fix user pages takeover logic as previous change for 2FA compatibility broke the redirects completely
