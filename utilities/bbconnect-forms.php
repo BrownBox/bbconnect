@@ -192,6 +192,7 @@ function bbconnect_gf_addon_launch() {
         }
 
         if (!empty($emails)) {
+        	do_action('bbconnect_before_create_user');
         	$email_count = count($emails);
             $usermeta = $phone_numbers = $passwords = array();
             // Go through the fields again to get relevant data
@@ -395,6 +396,7 @@ function bbconnect_gf_addon_launch() {
             $entry['agent_id'] = $agent_id;
             $entry['created_by'] = $submitter_id;
             GFAPI::update_entry($entry, $entry['id']);
+            do_action('bbconnect_after_create_user');
         }
     }
 
