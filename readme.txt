@@ -1,7 +1,7 @@
 === Connexions - A CRM for WordPress ===
 Author URI: http://brownbox.net.au
 Plugin URI: http://brownbox.net.au
-Contributors: havahula,brownbox
+Contributors: havahula,brownbox,markparnell
 Tags: WordPress CRM, CRM, users, contacts, contact form, search, registration, user management, user query, user profiles, custom user fields, bulk edits, e-commerce, donations, Paypal, email, email marketing, newsletter, MailChimp, admin, membership, members
 Requires at least: 3.5
 Tested up to: 6.2
@@ -47,6 +47,9 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.19 =
+* Fix error that meant address fields weren't shown in field drop-down in user reports
+
 = 2.8.18 =
 * No changes - released due to error in versioning
 
