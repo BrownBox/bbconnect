@@ -134,7 +134,7 @@ function bbconnect_filter_profile( $args = '' ) {
 	}
 ?>
 		<input type="hidden" id="get_param" title="<?php echo $puq_title; ?>" />
-		<input type="hidden" name="action[bbconnect_filter_process]" value="" />
+		<input type="hidden" name="bb_action[bbconnect_filter_process]" value="" />
 	</form>
 </div>
 <?php

@@ -218,9 +218,9 @@ function bbconnect_report_process() {
         parse_str( $_POST['fdata'], $_POST );
 
     // RUN THE SWITCH
-    $post_keys = array_keys( $_POST['action'] );
+    $post_keys = array_keys( $_POST['bb_action'] );
     $pro_func = array_shift( $post_keys );
-    $pro_var = array_shift( $_POST['action'] );
+    $pro_var = array_shift( $_POST['bb_action'] );
     global $ret_res;
     $ret_res = $pro_func( $_POST );
 
