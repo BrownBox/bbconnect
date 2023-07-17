@@ -47,6 +47,9 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.20 =
+* Fix conflict with WP Migrate on PHP8
+
 = 2.8.19 =
 * Fix error that meant address fields weren't shown in field drop-down in user reports
 
