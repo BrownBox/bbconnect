@@ -467,7 +467,7 @@ function bbconnect_search_form( $args = '' ) {
 <?php
 			// SPECIAL EXCEPTION FOR ADDRESSES
 			if ( isset( $user_meta['group'] ) && false !== strpos( $user_meta['group'], 'address' ) ) {
-				$ext = count( strrchr( $fid, '_' ) );
+				$ext = strlen( strrchr( $fid, '_' ) );
 				$add_app = substr( $fid, 0, -$ext );
 				$fid = $add_app . '1';
 				//$fid = $add_app;

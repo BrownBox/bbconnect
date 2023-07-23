@@ -662,7 +662,7 @@ function bbconnect_filter_process( $post_data ) {
                     $nullval = " ORDER BY IFNULL(". $mtc_dot ."meta_value," . $mtc_dot . "meta_key) $order";
                 } else {
                     if ( isset( $t_order_by['group'] ) && false !== strpos( $t_order_by['group'], 'address' ) ) {
-                        $addext = count( strrchr( $t_order_by['meta_key'], '_' ) );
+                        $addext = strlen( strrchr( $t_order_by['meta_key'], '_' ) );
                         $addapp = substr( $t_order_by['meta_key'], 0, -$addext );
                         $nullquo = $wpdb->prepare( $mtc_dot . "meta_key LIKE %s", '%bbconnect_'.$addapp.'%' );
                     } else {
