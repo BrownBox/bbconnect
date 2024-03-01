@@ -1,12 +1,12 @@
 <?php
 /**
- * Edit With Wordpress quicklink
+ * Edit With WordPress quicklink
  * @author markparnell
  */
 class profile_1_edit_with_wordpress_quicklink extends bb_page_quicklink {
     public function __construct() {
         parent::__construct();
-        if (isset($_GET['user_id'])) {
+        if (!empty($_GET['user_id'])) {
             $user_id = $_GET['user_id'];
         } else {
             $user_id = get_current_user_id();
@@ -18,6 +18,6 @@ class profile_1_edit_with_wordpress_quicklink extends bb_page_quicklink {
         }
         $edit_link = add_query_arg('no_redirect', '1', $edit_link);
         $this->url = $edit_link;
-        $this->title = 'Edit with Wordpress';
+        $this->title = 'Edit with WordPress';
     }
 }
