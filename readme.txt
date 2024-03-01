@@ -47,6 +47,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.23 =
+* Check whether user ID is not empty in URL instead of whether parameter exists
+* Updated search to allow searching for zero on number fields
+
 = 2.8.22 =
 * Fix further issues with searching on address fields
 
@@ -101,7 +105,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 * Added ability to sort user search results by any included field
 * Updated styles to better fit with WP5.3
 * Bug fixes
-    
+
 = 2.8.10 =
 * Removed hard-coded default country
 * Bug fixes
@@ -117,7 +121,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 * Added support for KPI offsets
 * Added success message on new user creation
 * Added support for GF2.3+
-* Now treats LIKE/NOT LIKE search as SHOW if no search term passed  
+* Now treats LIKE/NOT LIKE search as SHOW if no search term passed
 * Bug fixes
 
 = 2.8.7 =
@@ -147,7 +151,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 * Added import as option for user source field
 * Added helper functions to simplify working with multitext fields
 * Added Connexions styling to more pages, and added filter so addons can inherit styling
-    
+
 = 2.8.1 =
 * Added helper function to get user country
 * Bug fixes
@@ -255,7 +259,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 * Show form locked message on forms list page for Connexions forms
 * Added internal and external reference fields to send email form
 * Bug fixes
-        
+
 = 2.5.3 =
 * Added ability for Connexions to create and manage its own Gravity Forms
 * Created first form for tracking sent emails
@@ -274,7 +278,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 
 = 2.4.2 =
 * Form submissions in activity log now require BB Express
-* Styling updates for activity log 
+* Styling updates for activity log
 
 = 2.4.1 =
 * Added Gravity Forms submissions to activity log
@@ -321,7 +325,7 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 
 * Added Saved Searches
 * Started work on several new add-ons
-* Rework of user actions with a completely new, extensible architecture 
+* Rework of user actions with a completely new, extensible architecture
 
 == PauPress Changelog (pre-fork) ==
 
