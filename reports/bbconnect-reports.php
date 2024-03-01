@@ -4,7 +4,7 @@
 /* -----------------------------------------------------------
     REPORT NAVIGATION
    ----------------------------------------------------------- */
-   global $totalValues;
+	global $totalValues;
     $totalValues = array(); // hold an array of totals;
 
 function bbconnect_pagination( $ret_res, $display = false ) {
@@ -15,23 +15,23 @@ function bbconnect_pagination( $ret_res, $display = false ) {
         global $query_transient;
 
         if ( isset( $_GET['page_num'] ) ) {
-           $page_num = $_GET['page_num'];
+			$page_num = $_GET['page_num'];
         } else {
-           $page_num = 1;
+			$page_num = 1;
         }
 
         if ( isset( $query_transient ) ) {
-           $trail = '&trans=' . $query_transient;
+			$trail = '&trans=' . $query_transient;
         } elseif ( isset( $_GET['trans'] ) ) {
-           $trail = '&trans=' . $_GET['trans'];
+			$trail = '&trans=' . $_GET['trans'];
         } else {
             $trail = false;
         }
 
         if ( isset( $_GET['order_by'] ) ) {
-           $order_query = '&order_by=' . $_GET['order_by'];
+			$order_query = '&order_by=' . $_GET['order_by'];
         } else {
-           $order_query = false;
+			$order_query = false;
         }
 
         /*
@@ -59,9 +59,9 @@ function bbconnect_pagination( $ret_res, $display = false ) {
     } else {
 
         if ( isset( $ret_res['page_num'] ) ) {
-           $page_num = $ret_res['page_num'];
+			$page_num = $ret_res['page_num'];
         } else {
-           $page_num = 1;
+			$page_num = 1;
         }
 
         $cur_url = ( $page_num + 1 );
@@ -73,79 +73,79 @@ function bbconnect_pagination( $ret_res, $display = false ) {
 
     $return_html = '<div class="pagination">';
 
-     // DISPLAY DATA
+	// DISPLAY DATA
 
-     //check if user per page is all
-     if(strtolower($ret_res['users_per_page'])=='all'){
-         $cpc = $ret_res['users_count'];
-     }
-     else{
-         $cpc = $ret_res['users_per_page'];
-     }
+	//check if user per page is all
+	if(strtolower($ret_res['users_per_page'])=='all'){
+		$cpc = $ret_res['users_count'];
+	}
+	else{
+		$cpc = $ret_res['users_per_page'];
+	}
 
-     $cpg = $cpc * ( $page_num - 1 ) + 1;
-     $ecpg = $cpc * ( $page_num - 1 ) + 1;
-     $cpgr = $cpg + ( $cpc - 1 );
-     $npc = $page_num + 1;
-     $npg = $cpc * ( $npc - 1 ) + 1;
-     $ppc = $page_num - 1;
-     $ppg = $cpc * ( $ppc - 1 ) + 1;
+	$cpg = $cpc * ( $page_num - 1 ) + 1;
+	$ecpg = $cpc * ( $page_num - 1 ) + 1;
+	$cpgr = $cpg + ( $cpc - 1 );
+	$npc = $page_num + 1;
+	$npg = $cpc * ( $npc - 1 ) + 1;
+	$ppc = $page_num - 1;
+	$ppg = $cpc * ( $ppc - 1 ) + 1;
 
-     // TRANSLATION CONSOLIDATION
-     $t_of = __( 'of', 'bbconnect' );
+	// TRANSLATION CONSOLIDATION
+	$t_of = __( 'of', 'bbconnect' );
 
-     // RESULT CEILING START
-     $return_html .= '<span class="muted">';
+	// RESULT CEILING START
+	$return_html .= '<span class="muted">';
 
-     //MODIFY THE RANGE IF ON THE LAST PAGE
-     if ( $page_num == $ret_res['max_num_pages'] ) {
-         $return_html .= $ecpg . '-' . $ret_res['users_count'] . ' ' . $t_of . ' ' . $ret_res['users_count'] . ' ';
-     } else {
-         $return_html .= $cpg . '-' . $cpgr . ' ' . $t_of . ' ' . $ret_res['users_count'] . ' ';
-     }
+	//MODIFY THE RANGE IF ON THE LAST PAGE
+	if ( $page_num == $ret_res['max_num_pages'] ) {
+		$return_html .= $ecpg . '-' . $ret_res['users_count'] . ' ' . $t_of . ' ' . $ret_res['users_count'] . ' ';
+	} else {
+		$return_html .= $cpg . '-' . $cpgr . ' ' . $t_of . ' ' . $ret_res['users_count'] . ' ';
+	}
 
-     // RESULT CEILING END
-     $return_html .= '</span>';
+	// RESULT CEILING END
+	$return_html .= '</span>';
 
-     // IF THIS IS A GET REQUESET
-     if ( false != $display ) {
+	// IF THIS IS A GET REQUESET
+	if ( false != $display ) {
 
-         // IF THE USER IS ON THE FIRST PAGE, DISABLE THE NAVIGATION
-         if ( $page_num > 1 ) {
-             $return_html .= '<a href="' . $first_url . '" class="button round pppag">&laquo;</a> <a href="' . $prev_url . '" class="button round pppag">&lsaquo;</a> ';
-         } else {
-             $return_html .= '<a class="button disabled round pppag">&laquo;</a> <a class="button disabled round pppag">&lsaquo;</a> ';
-         }
+		// IF THE USER IS ON THE FIRST PAGE, DISABLE THE NAVIGATION
+		if ( $page_num > 1 ) {
+			$return_html .= '<a href="' . $first_url . '" class="button round pppag">&laquo;</a> <a href="' . $prev_url . '" class="button round pppag">&lsaquo;</a> ';
+		} else {
+			$return_html .= '<a class="button disabled round pppag">&laquo;</a> <a class="button disabled round pppag">&lsaquo;</a> ';
+		}
 
-         // DISPLAY THE CURRENT PAGE AND RANGE
-         $return_html .= sprintf( __( 'Page %1$s', 'bbconnect' ), $page_num.' '.$t_of.' '.$ret_res['max_num_pages'] );
+		// DISPLAY THE CURRENT PAGE AND RANGE
+		$return_html .= sprintf( __( 'Page %1$s', 'bbconnect' ), $page_num.' '.$t_of.' '.$ret_res['max_num_pages'] );
 
-         // IF THE USER IS ON THE LAST PAGE, DISABLE THE NAVIGATION
-         if ( $page_num == ( $ret_res['max_num_pages'] ) ) {
-             $return_html .= ' <a class="button disabled round pppag">&rsaquo;</a> <a class="button disabled round pppag">&raquo;</a>';
-         } elseif ( $page_num < $ret_res['max_num_pages'] ) {
-             $return_html .= ' <a href="' . $cur_url . '" class="button round pppag">&rsaquo;</a> <a href="' . $last_url . '" class="button round pppag">&raquo;</a>';
-         }
+		// IF THE USER IS ON THE LAST PAGE, DISABLE THE NAVIGATION
+		if ( $page_num == ( $ret_res['max_num_pages'] ) ) {
+			$return_html .= ' <a class="button disabled round pppag">&rsaquo;</a> <a class="button disabled round pppag">&raquo;</a>';
+		} elseif ( $page_num < $ret_res['max_num_pages'] ) {
+			$return_html .= ' <a href="' . $cur_url . '" class="button round pppag">&rsaquo;</a> <a href="' . $last_url . '" class="button round pppag">&raquo;</a>';
+		}
 
-     } else {
+	} else {
 
-         // IF THE USER IS ON THE FIRST PAGE, DISABLE THE NAVIGATION
-         // <a class="report-go outside" title="filter-form" rel="2">go again</a>
-         if ( $page_num > 1 ) {
-             $return_html .= '<a class="button report-go outside" title="filter-form" rel="' . $first_url . '" rev="page_num">&laquo;</a> <a class="button report-go outside" title="filter-form" rel="' . $prev_url . '" rev="page_num">&lsaquo;</a> ';
-         } else {
-             $return_html .= '<a class="button disabled">&laquo;</a> <a class="button disabled">&lsaquo;</a> ';
-         }
+		// IF THE USER IS ON THE FIRST PAGE, DISABLE THE NAVIGATION
+		// <a class="report-go outside" title="filter-form" rel="2">go again</a>
+		if ( $page_num > 1 ) {
+			$return_html .= '<a class="button report-go outside" title="filter-form" rel="' . $first_url . '" rev="page_num">&laquo;</a> <a class="button report-go outside" title="filter-form" rel="' . $prev_url . '" rev="page_num">&lsaquo;</a> ';
+		} else {
+			$return_html .= '<a class="button disabled">&laquo;</a> <a class="button disabled">&lsaquo;</a> ';
+		}
 
-         // DISPLAY THE CURRENT PAGE AND RANGE
-         $return_html .= sprintf( __( 'Page %1$s', 'bbconnect' ), $page_num.' '.$t_of.' '.$ret_res['max_num_pages'] );
+		// DISPLAY THE CURRENT PAGE AND RANGE
+		$return_html .= sprintf( __( 'Page %1$s', 'bbconnect' ), $page_num.' '.$t_of.' '.$ret_res['max_num_pages'] );
 
-         // IF THE USER IS ON THE LAST PAGE, DISABLE THE NAVIGATION
-         if ( $page_num == ( $ret_res['max_num_pages'] ) ) {
-             $return_html .= ' <a class="button disabled">&rsaquo;</a> <a class="button disabled">&raquo;</a>';
-         } elseif ( $page_num < $ret_res['max_num_pages'] ) {
-             $return_html .= ' <a class="button report-go outside" title="filter-form" rel="' . $cur_url . '" rev="page_num">&rsaquo;</a> <a class="button report-go outside" title="filter-form" rel="' . $last_url . '" rev="page_num">&raquo;</a>';
-         }
+		// IF THE USER IS ON THE LAST PAGE, DISABLE THE NAVIGATION
+		if ( $page_num == ( $ret_res['max_num_pages'] ) ) {
+			$return_html .= ' <a class="button disabled">&rsaquo;</a> <a class="button disabled">&raquo;</a>';
+		} elseif ( $page_num < $ret_res['max_num_pages'] ) {
+			$return_html .= ' <a class="button report-go outside" title="filter-form" rel="' . $cur_url . '" rev="page_num">&rsaquo;</a> <a class="button report-go outside" title="filter-form" rel="' . $last_url . '" rev="page_num">&raquo;</a>';
+		}
 
     }
 
@@ -1113,8 +1113,12 @@ function bbconnect_rows( $args = null ) {
                             } elseif($fieldInfo['options']['field_type'] == 'date' && is_real_date($current_member->$key)){
                                 $new_date_string = date('d F Y',strtotime($current_member->$key));
                                 $return_html .= $new_date_string;
-                            } elseif ($fieldInfo['options']['field_type'] == 'number' && $fieldInfo['options']['is_currency'] && $current_member->$key != '') {
-                                $return_html .= '$'.number_format($current_member->$key, 2);
+                            } elseif ($fieldInfo['options']['field_type'] == 'number') {
+								if ($fieldInfo['options']['is_currency'] && $current_member->$key != '') {
+									$return_html .= '$'.number_format($current_member->$key, 2);
+								} else {
+                                    $return_html .= $current_member->$key;
+								}
                             } else {
                                 $field_val = apply_filters('bbconnect_field_value', $current_member->$key, $key, $current_member);
                                 if (!empty($field_val)) {

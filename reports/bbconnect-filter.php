@@ -448,7 +448,7 @@ function bbconnect_filter_process( $post_data ) {
                         if ( 'LIKE' === $op || 'NOT LIKE' === $op ) {
                             // PREPARE $q_val = "'%" . $value_query . "%'";
                             $q_val = $wpdb->prepare( "%s", '%'.$value_query.'%' );
-                        } else if ( 'IS NULL' === $op || 'IS NOT NULL' === $op || '' == $value_query || empty( $value_query ) || !
+                        } else if ( 'IS NULL' === $op || 'IS NOT NULL' === $op || '' == $value_query || (empty($value_query) && $user_meta['options']['field_type'] != 'number') || !
                             isset( $value_query ) ) {
                             if ( !empty( $wp_col ) ) {
                                 if ( 'IS NULL' === $op || '=' === $op ) {
@@ -458,7 +458,7 @@ function bbconnect_filter_process( $post_data ) {
                                 }
                                 $q_val = "''";
                             } else {
-                                if ( '' == $value_query || empty( $value_query ) || !isset( $value_query ) ) {
+                                if ( '' == $value_query || (empty($value_query) && $user_meta['options']['field_type'] != 'number') || !isset($value_query) ) {
                                     if ( '=' === $op && empty( $wp_meta_col ) ) {
                                         $op = "IS NULL";
                                         $q_val = "";
