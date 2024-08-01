@@ -641,7 +641,7 @@ function bbconnect_field( $meta, $args = array() ) {
 
                 // LET'S HANDLE ROLES
                 if ( 'wpr' == $meta['source'] && 'role' == $key ) {
-                    if (defined('MDMR_PATH')) { // Multiple Roles plugin in use
+                    if (defined('MDMR_PATH') && $action == '-edit') { // Multiple Roles plugin in use
                         $name = 'md_multiple_roles[]';
                         $multiple = ' multiple="multiple"';
                         wp_nonce_field( 'update-md-multiple-roles', 'md_multiple_roles_nonce' );
