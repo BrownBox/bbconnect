@@ -47,6 +47,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.24 =
+* Allow @example.com email addresses when submitted Gravity Forms in admin
+* Fix issue with rendering of Gravity Forms in admin area in GF 2.9.29+
+
 = 2.8.23 =
 * Check whether user ID is not empty in URL instead of whether parameter exists
 * Updated search to allow searching for zero on number fields
