@@ -464,6 +464,14 @@ function bbconnect_gf_addon_launch() {
         }
     }
 
+	// Enqueue form scripts as needed for admin pages
+	add_action('admin_init', 'bbconnect_enqueue_form_scripts');
+	function bbconnect_enqueue_form_scripts() {
+		if (!empty($_GET['page']) && $_GET['page'] == 'bbconnect_submit_gravity_form' && is_numeric($_GET['form_id'])) {
+			gravity_form_enqueue_scripts((int)$_GET['form_id']);
+		}
+	};
+
     // Output page for GF completion in admin
     function bbconnect_submit_gravity_form() {
         echo '<div class="wrap">'."\n";
