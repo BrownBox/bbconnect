@@ -689,6 +689,20 @@ function bbconnect_gf_addon_launch() {
        $tooltips['form_field_bbconnect_usermeta_key'] = "<h6>User Meta Key</h6> To save the value of a field into user meta enter the meta key you want to save it to (requires an email field to be present in the form).";
        return $tooltips;
     }
+
+    add_filter('gform_email_field_rejectable_values', 'bbconnect_allow_example_emails');
+    function bbconnect_allow_example_emails($values) {
+        if (is_admin()) {
+            foreach ($values as $idx => $value) {
+                if ($value === '@example.com') {
+                    unset($values[$idx]);
+                }
+            }
+        }
+
+        return $values;
+    }
+
     if (!method_exists('GFForms', 'include_addon_framework')) {
         return;
     }
