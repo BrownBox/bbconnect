@@ -346,6 +346,10 @@ function bbconnect_update_activity_log() {
 			foreach ($entries as $entry) {
 				$created = bbconnect_get_datetime($entry['date_created'], $utc); // We're assuming DB is configured to use UTC...
 				$created->setTimezone($local_tz); // Convert to local timezone
+				if (!empty($entry['agent_id']) && !is_numeric($entry['agent_id'])) {
+					// A failed user creation on submission stores the WP_Error here instead of a user ID
+					$entry['agent_id'] = '';
+				}
 				if (!empty($entry['created_by']) && !isset($userlist[$entry['created_by']])) {
 					$userlist[$entry['created_by']] = get_user_by('id', $entry['created_by']);
 				}
