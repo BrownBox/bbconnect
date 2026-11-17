@@ -349,7 +349,7 @@ function bbconnect_gf_addon_launch() {
 					}
 					$userdata = array(
 							'user_login' => $username,
-							'user_nicename' => $firstname.' '.$lastname,
+							'user_nicename' => mb_substr($firstname.' '.$lastname, 0, 50), // WordPress refuses to create a user whose nicename is longer than 50 characters
 							'display_name' => $firstname.' '.$lastname,
 							'user_email' => $email,
 							'first_name' => $firstname,
