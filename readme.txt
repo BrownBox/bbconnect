@@ -47,6 +47,10 @@ Connexions will expand your understanding of user behaviour and allow you to bet
 5. Go to **Connexions Options > Manage Fields** to add fields and modify the new layout
 
 == Changelog ==
+= 2.8.25 =
+* Fix the hourly activity log update stopping at a form entry whose submitter could not be created
+* Shorten the nicename of contacts created from form submissions so long names no longer stop the contact being created
+
 = 2.8.24 =
 * Allow @example.com email addresses when submitted Gravity Forms in admin
 * Fix issue with rendering of Gravity Forms in admin area in GF 2.9.29+
